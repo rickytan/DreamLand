@@ -65,6 +65,8 @@
     _cachedData = nil;
     [_dataToSave release];
     _dataToSave = nil;
+    [_tmpPath release];
+    _tmpPath = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
@@ -77,12 +79,7 @@
         _cachedData = [[NSMutableData alloc] initWithCapacity:4*1024*1024];
         _dataToSave = [[NSMutableData alloc] initWithCapacity:1024*1024];
         
-        NSArray *arr = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-        self.dataFilePath = [[arr lastObject] stringByAppendingPathComponent:@"wave.db"];
-        
-        NSFileManager *fm = [NSFileManager defaultManager];
-        [fm removeItemAtPath:self.dataFilePath
-                       error:NULL];
+        _tmpPath = [[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.dat"] retain];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleMemoryWarning:)
@@ -96,6 +93,20 @@
 {
     @synchronized(self) {
         [data appendToData:_cachedData];
+    }
+}
+
+- (void)clear
+{
+    @synchronized(self) {
+        _cachedData.data = nil;
+        _dataToSave.data = nil;
+        
+        
+        
+        NSFileHandle *fh = [NSFileHandle fileHandleForWritingAtPath:_tmpPath];
+        [fh truncateFileAtOffset:0lu];
+        [fh closeFile];
     }
 }
 
@@ -114,12 +125,13 @@
 - (void)saveToDisk
 {
     NSFileManager *fm = [NSFileManager defaultManager];
-    if (![fm fileExistsAtPath:self.dataFilePath]) {
-        [fm createFileAtPath:self.dataFilePath
+    if (![fm fileExistsAtPath:_tmpPath]) {
+        [fm createFileAtPath:_tmpPath
                     contents:nil
                   attributes:nil];
     }
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:self.dataFilePath];
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForWritingAtPath:_tmpPath];
     [fileHandle seekToEndOfFile];
     [fileHandle writeData:_dataToSave];
     [fileHandle synchronizeFile];
@@ -136,6 +148,38 @@
         _dataToSave = _cachedData;
         _cachedData = tmp;
         [self saveToDisk];
+        
+        NSFileManager *fm = [NSFileManager defaultManager];
+        
+        NSString *fileSavePath = nil;
+        if (self.dataFilePath) {
+            NSString *dirPath = [self.dataFilePath stringByDeletingLastPathComponent];
+            NSString *fileName = [[self.dataFilePath lastPathComponent] stringByDeletingPathExtension];
+            NSString *ext = [self.dataFilePath pathExtension];
+            
+            NSString *fullPath = self.dataFilePath;
+            NSInteger i = 1;
+            while ([fm fileExistsAtPath:fullPath]) {
+                NSString *tmp = [NSString stringWithFormat:@"%@(%d).%@",fileName,i++, ext];
+                fullPath = [dirPath stringByAppendingPathComponent:tmp];
+            }
+            fileSavePath = fullPath;
+        }
+        else {
+            NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *doc = [arr lastObject];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"YYYYMMDDHHmmss";
+            NSString *file = [NSString stringWithFormat:@"%@.dat",[formatter stringFromDate:[NSDate date]]];
+            
+            fileSavePath = [doc stringByAppendingPathComponent:file];
+        }
+        
+        [fm moveItemAtPath:_tmpPath
+                    toPath:fileSavePath
+                     error:NULL];
+        
+        [self clear];
     }
 }
 

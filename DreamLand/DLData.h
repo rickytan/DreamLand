@@ -26,8 +26,11 @@ typedef struct Unit {
 {
     NSMutableData       * _cachedData;
     NSMutableData       * _dataToSave;
+    
+    NSString            * _tmpPath;
 }
-@property (nonatomic, retain) NSString *dataFilePath;
+@property (nonatomic, retain) NSString *dataFilePath;   // Default /Documents/YYYYMMDDHHmmss.dat
 - (void)addData:(DLData*)data;
+- (void)clear;
 - (void)flushToFile;
 @end
