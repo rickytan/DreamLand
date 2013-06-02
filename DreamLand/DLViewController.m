@@ -97,10 +97,10 @@ RTPulseWaveViewDatasource>
     self.pulseView.paused = YES;
     
 #if !TARGET_IPHONE_SIMULATOR
-     [[BTStackManager sharedInstance] setDelegate:self];
-     [[BTStackManager sharedInstance] addListener:self];
-     
-     [[BTStackManager sharedInstance] activate];
+    [[BTStackManager sharedInstance] setDelegate:self];
+    [[BTStackManager sharedInstance] addListener:self];
+    
+    [[BTStackManager sharedInstance] activate];
 #endif
     
     //CIDetector *detector = [[CIDetector detectorOfType:CIDetectorTypeFace
@@ -184,11 +184,14 @@ RTPulseWaveViewDatasource>
         self.startItem.enabled = NO;
         self.doneItem.title = @"Reset";
         
+        
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+
             NSString *filePath = [dataBuffer flushToFile];
             
             FILE *file = fopen(filePath.UTF8String, "r");
+
             if (file) {
                 fseek(file, 0, SEEK_END);
                 long size = ftell(file);
@@ -205,27 +208,23 @@ RTPulseWaveViewDatasource>
                     [self.yValue addObject:[NSNumber numberWithDouble:unit.value]];
                 }
                 fclose(file);
-                
+
                 double min = [[self.xValue objectAtIndex:0] doubleValue];
                 double max = [[self.xValue lastObject] doubleValue];
                 
                 double len = MIN(max - min, 600);
                 
+                
                 CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
                 plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
                                                                 length:CPTDecimalFromDouble(len)];
+                [graph reloadData];
+                [SVProgressHUD dismiss];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    //[self.graphView reloadData];
-                    //[graph.defaultPlotSpace scaleToFitPlots:graph.allPlots];
-                    [graph reloadData];
-                    [SVProgressHUD dismiss];
-                });
             }
             else {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
-                });
+                [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
+                
             }
         });
     }
@@ -282,25 +281,34 @@ RTPulseWaveViewDatasource>
                                                     length:CPTDecimalFromFloat(4.0)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.5)
                                                     length:CPTDecimalFromFloat(3.0)];
-
+    
     CPTMutableLineStyle *style = nil;
     // Axes
-    CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
-    CPTXYAxis *x          = axisSet.xAxis;
-    x.majorIntervalLength         = CPTDecimalFromFloat(1.0f);
-    x.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0f);
-    x.minorTicksPerInterval       = 1;
-    x.labelingPolicy              = CPTAxisLabelingPolicyAutomatic;
-    x.delegate                    = self;
-    x.labelRotation               = M_PI / 3;
-    x.title                       = @"时间";
+    CPTXYAxisSet *axisSet           = (CPTXYAxisSet *)graph.axisSet;
+    CPTXYAxis *x                    = axisSet.xAxis;
+    x.majorIntervalLength           = CPTDecimalFromFloat(1.0f);
+    x.orthogonalCoordinateDecimal   = CPTDecimalFromFloat(0.0f);
+    x.minorTicksPerInterval         = 1;
+    x.labelingPolicy                = CPTAxisLabelingPolicyAutomatic;
+    //x.delegate                      = self;
+    x.labelRotation                 = M_PI / 3;
+    x.title                         = @"时间";
     
-    style                         = [CPTMutableLineStyle lineStyle];
-    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
-    style.lineWidth               = 1.0f;
-    x.majorGridLineStyle          = style;
+    style                           = [CPTMutableLineStyle lineStyle];
+    style.lineColor                 = [CPTColor colorWithGenericGray:0.3];
+    style.lineWidth                 = 0.5f;
+    x.majorGridLineStyle            = style;
+    NSDateFormatter *dateFormatter  = [[[NSDateFormatter alloc] init] autorelease];
+    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    dateFormatter.dateFormat = @"HH:mm:ss";
+    CPTTimeFormatter *timeFormatter = [[[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter] autorelease];
+    //timeFormatter.referenceDate = [NSDate date];
     //x.axisLineCapMin              = CPTLineCapTypeDiamond;
-    [((NSNumberFormatter*)x.labelFormatter) setMaximumFractionDigits:2];
+    x.labelFormatter                = timeFormatter;
+    CPTMutableTextStyle *textStyle  = [CPTMutableTextStyle textStyle];
+    textStyle.color                 = [CPTColor greenColor];
+    textStyle.fontSize              = 12.0f;
+    x.labelTextStyle                = textStyle;
     
     CPTXYAxis *y = axisSet.yAxis;
     y.majorIntervalLength         = CPTDecimalFromFloat(0.5f);
@@ -308,13 +316,13 @@ RTPulseWaveViewDatasource>
     y.minorTicksPerInterval       = 9;
     y.labelingPolicy              = CPTAxisLabelingPolicyAutomatic;
     y.title                       = @"振动强度（G）";
-    style                         = [CPTMutableLineStyle lineStyle];
-    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
-    style.lineWidth               = 1.0f;
+    y.titleOffset                 = 32.0;
+    
     y.majorGridLineStyle          = style;
+    
     style                         = [CPTMutableLineStyle lineStyle];
     style.lineColor               = [CPTColor colorWithGenericGray:0.3];
-    style.lineWidth               = 0.5f;
+    style.lineWidth               = 0.25f;
     y.minorGridLineStyle          = style;
     //y.delegate             = self;
     y.axisConstraints = [CPTConstraints constraintWithLowerOffset:64.0];
@@ -329,6 +337,7 @@ RTPulseWaveViewDatasource>
     boundLinePlot.dataLineStyle    = lineStyle;
     boundLinePlot.identifier       = @"Blue Plot";
     boundLinePlot.dataSource       = self;
+    //boundLinePlot.interpolation    = CPTScatterPlotInterpolationCurved;
     boundLinePlot.delegate         = self;
     [graph addPlot:boundLinePlot];
     [boundLinePlot release];
@@ -358,17 +367,17 @@ RTPulseWaveViewDatasource>
         case CPTCoordinateX:
         {
             /*
-            if (newRange.locationDouble > 0.0F) {
-                CPTMutablePlotRange *mutableRange = [[newRange mutableCopy] autorelease];
-                mutableRange.location = CPTDecimalFromFloat(0.0);
-                updatedRange = mutableRange;
-            }
-            else {
-                updatedRange = newRange;
-            }*/
-            if (newRange.lengthDouble < 3.0) {
+             if (newRange.locationDouble > 0.0F) {
+             CPTMutablePlotRange *mutableRange = [[newRange mutableCopy] autorelease];
+             mutableRange.location = CPTDecimalFromFloat(0.0);
+             updatedRange = mutableRange;
+             }
+             else {
+             updatedRange = newRange;
+             }*/
+            if (newRange.lengthDouble < 3.5) {
                 CPTMutablePlotRange *rang = [[newRange mutableCopy] autorelease];
-                rang.length = CPTDecimalFromDouble(3.0);
+                rang.length = CPTDecimalFromDouble(3.5);
                 updatedRange = rang;
             }
             else
@@ -643,7 +652,7 @@ shouldUpdateAxisLabelsAtLocations:(NSSet *)locations
 					printf("Basebank connection closed\n");
 					break;
 				case L2CAP_EVENT_CHANNEL_OPENED:
-                    // data: event (8), len(8), status (8), address(48), handle (16), psm (16), local_cid(16), remote_cid (16), local_mtu(16), remote_mtu(16) 
+                    // data: event (8), len(8), status (8), address(48), handle (16), psm (16), local_cid(16), remote_cid (16), local_mtu(16), remote_mtu(16)
 					if (packet[2] == 0) {
 						// inform about new l2cap connection
 						bt_flip_addr(event_addr, &packet[3]);

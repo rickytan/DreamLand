@@ -102,8 +102,6 @@
         _cachedData.data = nil;
         _dataToSave.data = nil;
         
-        
-        
         NSFileHandle *fh = [NSFileHandle fileHandleForWritingAtPath:_tmpPath];
         [fh truncateFileAtOffset:0lu];
         [fh closeFile];

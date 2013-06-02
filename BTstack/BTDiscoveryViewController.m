@@ -58,12 +58,12 @@
 - (void)dealloc
 {
     [macAddressFont release];
+    [deviceNameFont release];
     [deviceActivity release];
     [bluetoothActivity release];
-    [deviceActivity release];
     
-    [bt stopDiscovery];
-    [bt removeListener:self];
+    self.customActivityText = nil;
+
     bt = nil;
     
     [super dealloc];
@@ -96,10 +96,14 @@
 	[[self tableView] reloadData];
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     [bt addListener:self];
     [bt startDiscovery];
@@ -108,12 +112,13 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidUnload];
+    [super viewDidDisappear:animated];
     
     [bt stopDiscovery];
     [bt removeListener:self];
+    
 }
 
 

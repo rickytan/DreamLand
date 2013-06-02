@@ -13,16 +13,16 @@
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
 		9C5C79AF175619210066D960 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79AD175619210066D960 /* S7GraphView.m */; };
 		9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79B217561B9A0066D960 /* Storyboard.storyboard */; };
-		9C5C79B6175621B00066D960 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79B8175621B00066D960 /* Localization.strings */; };
+		9C5C79B6175621B00066D960 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79B8175621B00066D960 /* Localizable.strings */; };
 		9C5C79BC175625CF0066D960 /* DLData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79BB175625CF0066D960 /* DLData.m */; };
 		9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */; };
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C5C7A1417586AC70066D960 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5C7A1317586AC70066D960 /* libCorePlot-CocoaTouch.a */; };
-		9CB2C7271759CB7C00E10072 /* libBTstack.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2C7261759CB7C00E10072 /* libBTstack.dylib */; };
 		9CB2C7281759CBB000E10072 /* BTDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF88731751032B00B1D838 /* BTDevice.m */; };
 		9CB2C7291759CBB200E10072 /* BTDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */; };
 		9CB2C72A1759CBB400E10072 /* BTInquiryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF885B175101E700B1D838 /* BTInquiryViewController.m */; };
 		9CB2C72B1759CBB600E10072 /* BTStackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF885D175101E700B1D838 /* BTStackManager.m */; };
+		9CB2CCCC175B4B5500E10072 /* libBTstack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2CCCB175B4B5500E10072 /* libBTstack.a */; };
 		9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAC173F4464001FFAE0 /* UIKit.framework */; };
 		9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAE173F4464001FFAE0 /* Foundation.framework */; };
 		9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */; };
@@ -49,8 +49,8 @@
 		9C5C79AD175619210066D960 /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
 		9C5C79AE175619210066D960 /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
 		9C5C79B217561B9A0066D960 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		9C5C79B7175621B00066D960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
-		9C5C79B9175621BC0066D960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localization.strings"; sourceTree = "<group>"; };
+		9C5C79B7175621B00066D960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9C5C79B9175621BC0066D960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9C5C79BA175625CF0066D960 /* DLData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLData.h; sourceTree = "<group>"; };
 		9C5C79BB175625CF0066D960 /* DLData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLData.m; sourceTree = "<group>"; };
 		9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		9C5C7A1117586AC70066D960 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		9C5C7A1217586AC70066D960 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		9C5C7A1317586AC70066D960 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
-		9CB2C7261759CB7C00E10072 /* libBTstack.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libBTstack.dylib; sourceTree = "<group>"; };
+		9CB2CCCB175B4B5500E10072 /* libBTstack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTstack.a; sourceTree = "<group>"; };
 		9CBD2CA9173F4464001FFAE0 /* DreamLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBD2CAC173F4464001FFAE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9CBD2CAE173F4464001FFAE0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,7 +189,7 @@
 				9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */,
 				9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */,
 				9C5C7A1417586AC70066D960 /* libCorePlot-CocoaTouch.a in Frameworks */,
-				9CB2C7271759CB7C00E10072 /* libBTstack.dylib in Frameworks */,
+				9CB2CCCC175B4B5500E10072 /* libBTstack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,13 +350,13 @@
 			children = (
 				9CBD2CBB173F4464001FFAE0 /* DLAppDelegate.h */,
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
-				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
-				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
-				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
-				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
-				9C5C79B8175621B00066D960 /* Localization.strings */,
 				9C5C79BA175625CF0066D960 /* DLData.h */,
 				9C5C79BB175625CF0066D960 /* DLData.m */,
+				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
+				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
+				9C5C79B8175621B00066D960 /* Localizable.strings */,
+				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
+				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 		9CCF886C175101E700B1D838 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				9CB2C7261759CB7C00E10072 /* libBTstack.dylib */,
+				9CB2CCCB175B4B5500E10072 /* libBTstack.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 				9CCF887B1751053800B1D838 /* keyboard.png in Resources */,
 				9CCF887C1751053800B1D838 /* smartphone.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
-				9C5C79B6175621B00066D960 /* Localization.strings in Resources */,
+				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -522,13 +522,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		9C5C79B8175621B00066D960 /* Localization.strings */ = {
+		9C5C79B8175621B00066D960 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9C5C79B7175621B00066D960 /* en */,
 				9C5C79B9175621BC0066D960 /* zh-Hans */,
 			);
-			name = Localization.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		9CBD2CB5173F4464001FFAE0 /* InfoPlist.strings */ = {
