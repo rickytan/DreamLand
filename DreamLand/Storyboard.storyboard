@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Af-wA-AGI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="sDj-VY-n6j">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="FQq-MK-aF8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="x8R-ZH-Arx" kind="relationship" relationship="rootViewController" id="M8e-bW-G01"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y6l-zE-9jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151" y="-103"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="PIr-e2-k90">
+            <objects>
+                <viewController id="x8R-ZH-Arx" customClass="DLViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zvy-6u-maQ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="cWs-Op-h4p" customClass="RTPulseWaveView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="x8R-ZH-Arx" id="4ar-IB-jJM"/>
+                                </connections>
+                            </view>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tf5-sh-MGd">
+                                <rect key="frame" x="0.0" y="150" width="320" height="266"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0hf-Ba-lmD">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Start" id="iBZ-CG-9s3">
+                            <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="onStart:" destination="x8R-ZH-Arx" id="lDh-sK-sKG"/>
+                            </connections>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Cx8-DQ-8ti">
+                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" title="Bluetooth Scan">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onScan:" destination="x8R-ZH-Arx" eventType="touchUpInside" id="mwg-ee-XC4"/>
+                            </connections>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" style="done" id="RFV-67-7dw">
+                            <connections>
+                                <action selector="onDone:" destination="x8R-ZH-Arx" id="GPi-7I-jAb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="tf5-sh-MGd" id="FAL-Ds-BtI"/>
+                        <outlet property="doneItem" destination="RFV-67-7dw" id="qb7-ah-07V"/>
+                        <outlet property="pulseView" destination="cWs-Op-h4p" id="lsI-qQ-Cz9"/>
+                        <outlet property="startItem" destination="iBZ-CG-9s3" id="vdF-rn-TBt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Gh-vf-h6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="293" y="-103"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="CPTGraphHostingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
+        </class>
+        <class className="DLViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DLViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onDone:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="onScan:"/>
+                <relationship kind="action" name="onStart:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="doneItem" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="graphHostingView" candidateClass="CPTGraphHostingView"/>
+                <relationship kind="outlet" name="pulseView" candidateClass="RTPulseWaveView"/>
+                <relationship kind="outlet" name="startItem" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="RTPulseWaveView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RTPulseWaveView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dataSource"/>
+            </relationships>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
