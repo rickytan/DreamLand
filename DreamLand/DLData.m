@@ -141,7 +141,7 @@
     _dataToSave = [[NSMutableData alloc] initWithCapacity:1024*1024];
 }
 
-- (void)flushToFile
+- (NSString*)flushToFile
 {
     @synchronized(self) {
         NSMutableData *tmp = _dataToSave;
@@ -169,7 +169,7 @@
             NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *doc = [arr lastObject];
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"YYYYMMDDHHmmss";
+            formatter.dateFormat = @"YYYYMMddHHmmss";
             NSString *file = [NSString stringWithFormat:@"%@.dat",[formatter stringFromDate:[NSDate date]]];
             
             fileSavePath = [doc stringByAppendingPathComponent:file];
@@ -180,6 +180,8 @@
                      error:NULL];
         
         [self clear];
+        
+        return fileSavePath;
     }
 }
 

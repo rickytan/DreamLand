@@ -62,6 +62,7 @@
     [bluetoothActivity release];
     [deviceActivity release];
     
+    [bt stopDiscovery];
     [bt removeListener:self];
     bt = nil;
     
@@ -111,6 +112,7 @@
 {
     [super viewDidUnload];
     
+    [bt stopDiscovery];
     [bt removeListener:self];
 }
 

@@ -32,5 +32,5 @@ typedef struct Unit {
 @property (nonatomic, retain) NSString *dataFilePath;   // Default /Documents/YYYYMMDDHHmmss.dat
 - (void)addData:(DLData*)data;
 - (void)clear;
-- (void)flushToFile;
+- (NSString*)flushToFile;
 @end

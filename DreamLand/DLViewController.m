@@ -186,9 +186,9 @@ RTPulseWaveViewDatasource>
         
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [dataBuffer flushToFile];
+            NSString *filePath = [dataBuffer flushToFile];
             
-            FILE *file = fopen(dataBuffer.dataFilePath.UTF8String, "r");
+            FILE *file = fopen(filePath.UTF8String, "r");
             if (file) {
                 fseek(file, 0, SEEK_END);
                 long size = ftell(file);
@@ -237,6 +237,11 @@ RTPulseWaveViewDatasource>
     BTDiscoveryViewController *discoveryController = [[BTDiscoveryViewController alloc] init];
     discoveryController.delegate = self;
     discoveryController.showIcons = YES;
+    UIBarButtonItem *dismissItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                 target:self
+                                                                                 action:@selector(onDismiss:)];
+    discoveryController.navigationItem.leftBarButtonItem = dismissItem;
+    [dismissItem release];
     
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:discoveryController];
     [self presentModalViewController:nav
@@ -244,8 +249,12 @@ RTPulseWaveViewDatasource>
     [discoveryController release];
     [nav release];
     
-    [[BTStackManager sharedInstance] startDiscovery];
 #endif
+}
+
+- (void)onDismiss:(id)sender
+{
+    [self.presentedViewController dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Methods
@@ -273,7 +282,8 @@ RTPulseWaveViewDatasource>
                                                     length:CPTDecimalFromFloat(4.0)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.5)
                                                     length:CPTDecimalFromFloat(3.0)];
-    
+
+    CPTMutableLineStyle *style = nil;
     // Axes
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     CPTXYAxis *x          = axisSet.xAxis;
@@ -284,15 +294,28 @@ RTPulseWaveViewDatasource>
     x.delegate                    = self;
     x.labelRotation               = M_PI / 3;
     x.title                       = @"时间";
+    
+    style                         = [CPTMutableLineStyle lineStyle];
+    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
+    style.lineWidth               = 1.0f;
+    x.majorGridLineStyle          = style;
     //x.axisLineCapMin              = CPTLineCapTypeDiamond;
     [((NSNumberFormatter*)x.labelFormatter) setMaximumFractionDigits:2];
     
     CPTXYAxis *y = axisSet.yAxis;
     y.majorIntervalLength         = CPTDecimalFromFloat(0.5f);
     y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0f);
-    y.minorTicksPerInterval       = 4;
+    y.minorTicksPerInterval       = 9;
     y.labelingPolicy              = CPTAxisLabelingPolicyAutomatic;
     y.title                       = @"振动强度（G）";
+    style                         = [CPTMutableLineStyle lineStyle];
+    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
+    style.lineWidth               = 1.0f;
+    y.majorGridLineStyle          = style;
+    style                         = [CPTMutableLineStyle lineStyle];
+    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
+    style.lineWidth               = 0.5f;
+    y.minorGridLineStyle          = style;
     //y.delegate             = self;
     y.axisConstraints = [CPTConstraints constraintWithLowerOffset:64.0];
     [((NSNumberFormatter*)y.labelFormatter) setMaximumFractionDigits:2];
