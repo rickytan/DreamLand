@@ -67,7 +67,7 @@
                                 <action selector="onScan:" destination="x8R-ZH-Arx" eventType="touchUpInside" id="mwg-ee-XC4"/>
                             </connections>
                         </button>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Done" style="done" id="RFV-67-7dw">
+                        <barButtonItem key="rightBarButtonItem" title="View" style="done" id="RFV-67-7dw">
                             <connections>
                                 <action selector="onDone:" destination="x8R-ZH-Arx" id="GPi-7I-jAb"/>
                             </connections>
@@ -78,16 +78,86 @@
                         <outlet property="doneItem" destination="RFV-67-7dw" id="qb7-ah-07V"/>
                         <outlet property="pulseView" destination="cWs-Op-h4p" id="lsI-qQ-Cz9"/>
                         <outlet property="startItem" destination="iBZ-CG-9s3" id="vdF-rn-TBt"/>
+                        <segue destination="fw4-j8-MB3" kind="modal" identifier="ViewHistory" id="3NS-eJ-EG3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Gh-vf-h6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="293" y="-103"/>
         </scene>
+        <!--History List View Controller - History Record-->
+        <scene sceneID="Sct-8n-FWJ">
+            <objects>
+                <tableViewController id="8dg-2x-tPf" customClass="DLHistoryListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z7O-tN-1VP">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XKp-AC-qAM">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="History Record" id="Vm8-rs-nYk">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ol0-NU-htq">
+                            <connections>
+                                <action selector="onCancel:" destination="8dg-2x-tPf" id="03t-sx-CDg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="HfE-hu-mUG">
+                            <view key="customView" opaque="NO" contentMode="scaleToFill" id="g7w-Kk-rh8">
+                                <rect key="frame" x="295" y="12" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" id="N5f-4D-WcZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="spinnerView" destination="N5f-4D-WcZ" id="a9T-Uf-5DJ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zr2-4P-ovN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="593" y="696"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OEs-67-iMJ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="fw4-j8-MB3" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="96x-Zh-n8v">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8dg-2x-tPf" kind="relationship" relationship="rootViewController" id="azJ-kq-VmZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWt-qS-gFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27" y="696"/>
+        </scene>
     </scenes>
     <classes>
-        <class className="CPTGraphHostingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
+        <class className="DLHistoryListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DLHistoryListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="onCancel:"/>
+                <relationship kind="outlet" name="delegate"/>
+                <relationship kind="outlet" name="spinnerView" candidateClass="UIActivityIndicatorView"/>
+            </relationships>
         </class>
         <class className="DLViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DLViewController.h"/>
@@ -97,7 +167,6 @@
                 <relationship kind="action" name="onStart:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="doneItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="graphHostingView" candidateClass="CPTGraphHostingView"/>
                 <relationship kind="outlet" name="pulseView" candidateClass="RTPulseWaveView"/>
                 <relationship kind="outlet" name="startItem" candidateClass="UIBarButtonItem"/>
             </relationships>

@@ -167,7 +167,7 @@
             NSArray *arr = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
             NSString *doc = [arr lastObject];
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            formatter.dateFormat = @"YYYYMMddHHmmss";
+            formatter.dateFormat = @"yyyyMMddHHmmss";
             NSString *file = [NSString stringWithFormat:@"%@.dat",[formatter stringFromDate:[NSDate date]]];
             
             fileSavePath = [doc stringByAppendingPathComponent:file];

@@ -16,6 +16,7 @@
 #import <BTstack/BTDiscoveryViewController.h>
 #endif
 #import "RTPulseWaveView.h"
+#import "DLHistoryListViewController.h"
 #import "CorePlot-CocoaTouch.h"
 #import "S7GraphView.h"
 #import "DLData.h"
@@ -34,6 +35,7 @@ CPTAxisDelegate,
 CPTPlotDataSource,
 CPTPlotDelegate,
 CPTPlotSpaceDelegate,
+UIActionSheetDelegate,
 RTPulseWaveViewDatasource>
 {
     double                      xValue,yValue,zValue;
@@ -45,19 +47,21 @@ RTPulseWaveViewDatasource>
 }
 @property (nonatomic, retain) CMMotionManager *motionManager;
 @property (nonatomic, assign, getter = isRecording) BOOL recording;
-@property (nonatomic, assign, getter = isViewing) BOOL viewing;
 @property (nonatomic, retain) NSMutableArray *xValue;
 @property (nonatomic, retain) NSMutableArray *yValue;
+@property (nonatomic, assign) CPTGraphHostingView *graphHostingView;
 #if !TARGET_IPHONE_SIMULATOR
 @property (nonatomic, retain) BTDevice *selectedDevice;
 @property (nonatomic, assign, getter = isBluetoothConnected) BOOL bluetoothConnected;
 #endif
 - (void)initGraph;
+- (BOOL)viewDataOfFile:(NSString*)filePath;
 @end
 
 @implementation DLViewController
 @synthesize xValue = _xValue;
 @synthesize yValue = _yValue;
+@synthesize graphHostingView = _graphHostingView;
 
 
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -120,6 +124,7 @@ RTPulseWaveViewDatasource>
     }
 #endif
     [self initGraph];
+    self.state = DLViewStateNormal;
 }
 
 - (void)didReceiveMemoryWarning
@@ -140,93 +145,61 @@ RTPulseWaveViewDatasource>
 {
     if (!self.motionManager)
         return;
-    
-    if (self.isRecording) {
-        [self.motionManager stopDeviceMotionUpdates];
-        self.pulseView.paused = YES;
-        self.recording = NO;
-        self.doneItem.enabled = YES;
-        sender.title = @"Start";
-        sender.tintColor = [UIColor blueColor];
-    }
-    else {
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-                                                withHandler:^(CMDeviceMotion *d, NSError *e) {
-                                                    if (!e) {
-                                                        CMAcceleration acce = d.userAcceleration;
-                                                        xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
-                                                        yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
-                                                        zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
-                                                        
-                                                        //[dataBuffer addData:[DLData dataWithValue:zValue]];
-                                                    }
-                                                }];
-        [self.pulseView clear];
-        self.pulseView.paused = NO;
-        self.recording = YES;
-        self.doneItem.enabled = NO;
-        sender.title = @"Stop";
-        sender.tintColor = [UIColor redColor];
+    switch (self.state) {
+        case DLViewStateRecording:
+            [self.motionManager stopDeviceMotionUpdates];
+            self.pulseView.paused = YES;
+            self.state = DLViewStatePaused;
+            break;
+        case DLViewStateNormal:
+        case DLViewStatePaused:
+            [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
+                                                    withHandler:^(CMDeviceMotion *d, NSError *e) {
+                                                        if (!e) {
+                                                            CMAcceleration acce = d.userAcceleration;
+                                                            xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
+                                                            yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
+                                                            zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
+                                                            
+                                                            //[dataBuffer addData:[DLData dataWithValue:zValue]];
+                                                        }
+                                                    }];
+            [self.pulseView clear];
+            self.pulseView.paused = NO;
+            self.state = DLViewStateRecording;
+            break;
+        default:
+            break;
     }
 }
 
 - (IBAction)onDone:(UIBarButtonItem *)sender
 {
-    if (self.isViewing) {
-        self.viewing = NO;
-        self.startItem.enabled = YES;
-        self.xValue = nil;
-        self.yValue = nil;
-        self.doneItem.title = @"Done";
-    }
-    else {
-        self.viewing = YES;
-        self.startItem.enabled = NO;
-        self.doneItem.title = @"Reset";
-        
-        
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
-        dispatch_async(dispatch_get_main_queue(), ^{
-
-            NSString *filePath = [dataBuffer flushToFile];
-            
-            FILE *file = fopen(filePath.UTF8String, "r");
-
-            if (file) {
-                fseek(file, 0, SEEK_END);
-                long size = ftell(file);
+    switch (self.state) {
+        case DLViewStateViewing:    // Reset
+            self.xValue = nil;
+            self.yValue = nil;
+            self.state = DLViewStateNormal;
+            break;
+        case DLViewStateNormal:     // View History
+            [self performSegueWithIdentifier:@"ViewHistory"
+                                      sender:sender];
+            break;
+        case DLViewStatePaused:     // View Current
+            self.state = DLViewStateViewing;
+            [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                self.xValue = [NSMutableArray arrayWithCapacity:size / sizeof(Unit)];
-                self.yValue = [NSMutableArray arrayWithCapacity:size / sizeof(Unit)];
+                NSString *filePath = [dataBuffer flushToFile];
                 
-                fseek(file, 0, SEEK_SET);
-                
-                Unit unit;
-                while (!feof(file)) {
-                    fread(&unit, sizeof(Unit), 1, file);
-                    [self.xValue addObject:[NSNumber numberWithDouble:unit.timestamp]];
-                    [self.yValue addObject:[NSNumber numberWithDouble:unit.value]];
-                }
-                fclose(file);
-
-                double min = [[self.xValue objectAtIndex:0] doubleValue];
-                double max = [[self.xValue lastObject] doubleValue];
-                
-                double len = MIN(max - min, 600);
-                
-                
-                CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-                plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
-                                                                length:CPTDecimalFromDouble(len)];
-                [graph reloadData];
-                [SVProgressHUD dismiss];
-                
-            }
-            else {
-                [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
-                
-            }
-        });
+                if ([self viewDataOfFile:filePath])
+                    [SVProgressHUD dismiss];
+                else
+                    [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
+            });
+            break;
+        default:
+            break;
     }
 }
 
@@ -257,6 +230,44 @@ RTPulseWaveViewDatasource>
 }
 
 #pragma mark - Methods
+
+- (BOOL)viewDataOfFile:(NSString *)filePath
+{
+    FILE *file = fopen(filePath.UTF8String, "r");
+    
+    if (file) {
+        fseek(file, 0, SEEK_END);
+        long size = ftell(file);
+        
+        self.xValue = [NSMutableArray arrayWithCapacity:size / sizeof(Unit)];
+        self.yValue = [NSMutableArray arrayWithCapacity:size / sizeof(Unit)];
+        
+        fseek(file, 0, SEEK_SET);
+        
+        Unit unit;
+        while (!feof(file)) {
+            fread(&unit, sizeof(Unit), 1, file);
+            [self.xValue addObject:[NSNumber numberWithDouble:unit.timestamp]];
+            [self.yValue addObject:[NSNumber numberWithDouble:unit.value]];
+        }
+        fclose(file);
+        
+        double min = [[self.xValue objectAtIndex:0] doubleValue];
+        double max = [[self.xValue lastObject] doubleValue];
+        
+        double len = MIN(max - min, 600);
+        
+        
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
+                                                        length:CPTDecimalFromDouble(len)];
+        [graph reloadData];
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
 
 - (void)initGraph
 {
@@ -341,6 +352,60 @@ RTPulseWaveViewDatasource>
     boundLinePlot.delegate         = self;
     [graph addPlot:boundLinePlot];
     [boundLinePlot release];
+}
+
+- (void)setState:(DLViewState)state
+{
+    if (_state == state)
+        return;
+    
+    _state = state;
+    switch (_state) {
+        case DLViewStateNormal:
+            self.startItem.enabled = YES;
+            self.startItem.title = @"Start";
+            self.startItem.tintColor = [UIColor blueColor];
+            self.doneItem.enabled = YES;
+            self.doneItem.title = @"View";
+            break;
+        case DLViewStateRecording:
+            self.startItem.enabled = YES;
+            self.startItem.title = @"Stop";
+            self.startItem.tintColor = [UIColor redColor];
+            self.doneItem.enabled = NO;
+            break;
+        case DLViewStatePaused:
+            self.startItem.enabled = YES;
+            self.startItem.title = @"Start";
+            self.startItem.tintColor = [UIColor blueColor];
+            self.doneItem.enabled = YES;
+            self.doneItem.title = @"Done";
+            break;
+        case DLViewStateViewing:
+            self.startItem.enabled = NO;
+            self.doneItem.enabled = YES;
+            self.doneItem.title = @"Reset";
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - UIActionSheet Delegate
+
+
+#pragma mark - DLHistory Delegate
+
+- (void)historyList:(DLHistoryListViewController *)controller
+      didSelectFile:(NSString *)filePath
+{
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self viewDataOfFile:filePath])
+            [SVProgressHUD dismiss];
+        else
+            [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
+    });
 }
 
 #pragma mark - RTPulseWave Datasource

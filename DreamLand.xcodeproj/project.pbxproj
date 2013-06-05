@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
-		9C4825071746A464002D06E8 /* RTPulseWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4825061746A463002D06E8 /* RTPulseWaveView.m */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
 		9C5C79AF175619210066D960 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79AD175619210066D960 /* S7GraphView.m */; };
@@ -18,6 +17,7 @@
 		9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */; };
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C5C7A1417586AC70066D960 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5C7A1317586AC70066D960 /* libCorePlot-CocoaTouch.a */; };
+		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
 		9CB2C7281759CBB000E10072 /* BTDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF88731751032B00B1D838 /* BTDevice.m */; };
 		9CB2C7291759CBB200E10072 /* BTDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */; };
 		9CB2C72A1759CBB400E10072 /* BTInquiryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF885B175101E700B1D838 /* BTInquiryViewController.m */; };
@@ -33,16 +33,15 @@
 		9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC0173F4464001FFAE0 /* Default@2x.png */; };
 		9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC2173F4464001FFAE0 /* Default-568h@2x.png */; };
 		9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC8173F4464001FFAE0 /* DLViewController.m */; };
-		9CCF88791751053800B1D838 /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF88751751053700B1D838 /* bluetooth.png */; };
-		9CCF887A1751053800B1D838 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF88761751053700B1D838 /* computer.png */; };
-		9CCF887B1751053800B1D838 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF88771751053800B1D838 /* keyboard.png */; };
-		9CCF887C1751053800B1D838 /* smartphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CCF88781751053800B1D838 /* smartphone.png */; };
+		9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D437175EE6E0009AB5CA /* bluetooth.png */; };
+		9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D44F175EE6E0009AB5CA /* keyboard.png */; };
+		9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D454175EE6E0009AB5CA /* smartphone.png */; };
+		9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */; };
+		9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		9C4825051746A463002D06E8 /* RTPulseWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTPulseWaveView.h; sourceTree = "<group>"; };
-		9C4825061746A463002D06E8 /* RTPulseWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTPulseWaveView.m; sourceTree = "<group>"; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9C5C79AC175619210066D960 /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		9C5C7A1117586AC70066D960 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		9C5C7A1217586AC70066D960 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		9C5C7A1317586AC70066D960 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
 		9CB2CCCB175B4B5500E10072 /* libBTstack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTstack.a; sourceTree = "<group>"; };
 		9CBD2CA9173F4464001FFAE0 /* DreamLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBD2CAC173F4464001FFAE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -150,12 +150,19 @@
 		9CBD2CC2173F4464001FFAE0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9CBD2CC7173F4464001FFAE0 /* DLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLViewController.h; sourceTree = "<group>"; };
 		9CBD2CC8173F4464001FFAE0 /* DLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLViewController.m; sourceTree = "<group>"; };
-		9CCF8857175101E700B1D838 /* BTDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDevice.h; sourceTree = "<group>"; };
-		9CCF8858175101E700B1D838 /* BTDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscoveryViewController.h; sourceTree = "<group>"; };
+		9CC3D437175EE6E0009AB5CA /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
+		9CC3D44F175EE6E0009AB5CA /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
+		9CC3D454175EE6E0009AB5CA /* smartphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartphone.png; sourceTree = "<group>"; };
+		9CC3D460175EE732009AB5CA /* RTPulseWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTPulseWaveView.h; sourceTree = "<group>"; };
+		9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTPulseWaveView.m; sourceTree = "<group>"; };
+		9CC3D463175EE7BA009AB5CA /* BTDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDevice.h; sourceTree = "<group>"; };
+		9CC3D464175EE7BA009AB5CA /* BTDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDiscoveryViewController.h; sourceTree = "<group>"; };
+		9CC3D465175EE7BA009AB5CA /* BTInquiryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTInquiryViewController.h; sourceTree = "<group>"; };
+		9CC3D466175EE7BA009AB5CA /* BTStackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTStackManager.h; sourceTree = "<group>"; };
+		9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLHistoryListViewController.h; sourceTree = "<group>"; };
+		9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLHistoryListViewController.m; sourceTree = "<group>"; };
 		9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDiscoveryViewController.m; sourceTree = "<group>"; };
-		9CCF885A175101E700B1D838 /* BTInquiryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTInquiryViewController.h; sourceTree = "<group>"; };
 		9CCF885B175101E700B1D838 /* BTInquiryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTInquiryViewController.m; sourceTree = "<group>"; };
-		9CCF885C175101E700B1D838 /* BTStackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTStackManager.h; sourceTree = "<group>"; };
 		9CCF885D175101E700B1D838 /* BTStackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTStackManager.m; sourceTree = "<group>"; };
 		9CCF8860175101E700B1D838 /* ant_cmds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ant_cmds.h; sourceTree = "<group>"; };
 		9CCF8861175101E700B1D838 /* btstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btstack.h; sourceTree = "<group>"; };
@@ -170,10 +177,6 @@
 		9CCF886A175101E700B1D838 /* sdp_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdp_util.h; sourceTree = "<group>"; };
 		9CCF886B175101E700B1D838 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		9CCF88731751032B00B1D838 /* BTDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDevice.m; sourceTree = "<group>"; };
-		9CCF88751751053700B1D838 /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
-		9CCF88761751053700B1D838 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
-		9CCF88771751053800B1D838 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
-		9CCF88781751053800B1D838 /* smartphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartphone.png; sourceTree = "<group>"; };
 		9CCF888217510E5600B1D838 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -312,15 +315,15 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
-				9C5C79C417586AC60066D960 /* CorePlotiOS */,
-				9C5C79BD175788CA0066D960 /* SVProgressHUD */,
-				9C5C79AB175619210066D960 /* s7graphview */,
 				9CCF8856175101E700B1D838 /* BTstack */,
-				9C4825051746A463002D06E8 /* RTPulseWaveView.h */,
-				9C4825061746A463002D06E8 /* RTPulseWaveView.m */,
+				9C5C79C417586AC60066D960 /* CorePlotiOS */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
 				9CBD2CAA173F4464001FFAE0 /* Products */,
+				9CC3D460175EE732009AB5CA /* RTPulseWaveView.h */,
+				9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */,
+				9C5C79AB175619210066D960 /* s7graphview */,
+				9C5C79BD175788CA0066D960 /* SVProgressHUD */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,6 +360,8 @@
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
+				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
+				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -378,20 +383,20 @@
 		9CCF8856175101E700B1D838 /* BTstack */ = {
 			isa = PBXGroup;
 			children = (
-				9CCF88751751053700B1D838 /* bluetooth.png */,
-				9CCF88761751053700B1D838 /* computer.png */,
-				9CCF88771751053800B1D838 /* keyboard.png */,
-				9CCF88781751053800B1D838 /* smartphone.png */,
-				9CCF8857175101E700B1D838 /* BTDevice.h */,
+				9CC3D437175EE6E0009AB5CA /* bluetooth.png */,
+				9CC3D463175EE7BA009AB5CA /* BTDevice.h */,
 				9CCF88731751032B00B1D838 /* BTDevice.m */,
-				9CCF8858175101E700B1D838 /* BTDiscoveryViewController.h */,
+				9CC3D464175EE7BA009AB5CA /* BTDiscoveryViewController.h */,
 				9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */,
-				9CCF885A175101E700B1D838 /* BTInquiryViewController.h */,
+				9CC3D465175EE7BA009AB5CA /* BTInquiryViewController.h */,
 				9CCF885B175101E700B1D838 /* BTInquiryViewController.m */,
-				9CCF885C175101E700B1D838 /* BTStackManager.h */,
+				9CC3D466175EE7BA009AB5CA /* BTStackManager.h */,
 				9CCF885D175101E700B1D838 /* BTStackManager.m */,
+				9C63737E175FA3E50012C9B5 /* computer.png */,
 				9CCF885E175101E700B1D838 /* include */,
+				9CC3D44F175EE6E0009AB5CA /* keyboard.png */,
 				9CCF886C175101E700B1D838 /* lib */,
+				9CC3D454175EE6E0009AB5CA /* smartphone.png */,
 			);
 			path = BTstack;
 			sourceTree = "<group>";
@@ -488,13 +493,13 @@
 				9CBD2CBF173F4464001FFAE0 /* Default.png in Resources */,
 				9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */,
 				9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */,
-				9CCF88791751053800B1D838 /* bluetooth.png in Resources */,
-				9CCF887A1751053800B1D838 /* computer.png in Resources */,
-				9CCF887B1751053800B1D838 /* keyboard.png in Resources */,
-				9CCF887C1751053800B1D838 /* smartphone.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
+				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
+				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
+				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
+				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,7 +513,6 @@
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
-				9C4825071746A464002D06E8 /* RTPulseWaveView.m in Sources */,
 				9C5C79AF175619210066D960 /* S7GraphView.m in Sources */,
 				9CB2C72B1759CBB600E10072 /* BTStackManager.m in Sources */,
 				9CB2C72A1759CBB400E10072 /* BTInquiryViewController.m in Sources */,
@@ -516,6 +520,8 @@
 				9CB2C7281759CBB000E10072 /* BTDevice.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
+				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
+				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
