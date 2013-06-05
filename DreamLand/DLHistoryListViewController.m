@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 ricky. All rights reserved.
 //
 
-#import "DLHistoryLIstViewController.h"
+#import "DLHistoryListViewController.h"
 
 static NSString *searchPath = nil;
 

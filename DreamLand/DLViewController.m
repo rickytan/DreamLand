@@ -136,7 +136,7 @@ RTPulseWaveViewDatasource>
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
-    
+    ((DLHistoryListViewController*)segue.destinationViewController).delegate = self;
 }
 
 #pragma mark - Actions
