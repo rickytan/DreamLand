@@ -9,7 +9,7 @@
 #import "DLViewController.h"
 #import <CoreMotion/CoreMotion.h>
 #import <CFNetwork/CFNetwork.h>
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 #import <btstack/hci_cmds.h>
 #import <BTstack/BTDevice.h>
 #import <BTstack/BTStackManager.h>
@@ -26,7 +26,7 @@
 
 @interface DLViewController ()
 <
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 BTDiscoveryDelegate,
 BTstackManagerDelegate,
 BTstackManagerListener,
@@ -50,7 +50,7 @@ RTPulseWaveViewDatasource>
 @property (nonatomic, retain) NSMutableArray *xValue;
 @property (nonatomic, retain) NSMutableArray *yValue;
 @property (nonatomic, assign) CPTGraphHostingView *graphHostingView;
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 @property (nonatomic, retain) BTDevice *selectedDevice;
 @property (nonatomic, assign, getter = isBluetoothConnected) BOOL bluetoothConnected;
 #endif
@@ -100,7 +100,7 @@ RTPulseWaveViewDatasource>
     smoothRatio = 0.6;
     self.pulseView.paused = YES;
     
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
     [[BTStackManager sharedInstance] setDelegate:self];
     [[BTStackManager sharedInstance] addListener:self];
     
@@ -136,7 +136,7 @@ RTPulseWaveViewDatasource>
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender
 {
-    ((DLHistoryListViewController*)segue.destinationViewController).delegate = self;
+    ((DLHistoryListViewController*)((UINavigationController*)segue.destinationViewController).topViewController).delegate = self;
 }
 
 #pragma mark - Actions
@@ -180,6 +180,7 @@ RTPulseWaveViewDatasource>
             self.xValue = nil;
             self.yValue = nil;
             self.state = DLViewStateNormal;
+            [self.pulseView clear];
             break;
         case DLViewStateNormal:     // View History
             [self performSegueWithIdentifier:@"ViewHistory"
@@ -205,7 +206,7 @@ RTPulseWaveViewDatasource>
 
 - (IBAction)onScan:(id)sender
 {
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
     BTDiscoveryViewController *discoveryController = [[BTDiscoveryViewController alloc] init];
     discoveryController.delegate = self;
     discoveryController.showIcons = YES;
@@ -406,6 +407,8 @@ RTPulseWaveViewDatasource>
         else
             [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
     });
+    
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - RTPulseWave Datasource
@@ -587,7 +590,7 @@ shouldUpdateAxisLabelsAtLocations:(NSSet *)locations
     return YES;
 }
 
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 #pragma mark - BTDiscoveryDelegate
 
 - (void)discoveryView:(BTDiscoveryViewController *)discoveryView

@@ -18,11 +18,6 @@
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C5C7A1417586AC70066D960 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5C7A1317586AC70066D960 /* libCorePlot-CocoaTouch.a */; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
-		9CB2C7281759CBB000E10072 /* BTDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF88731751032B00B1D838 /* BTDevice.m */; };
-		9CB2C7291759CBB200E10072 /* BTDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */; };
-		9CB2C72A1759CBB400E10072 /* BTInquiryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF885B175101E700B1D838 /* BTInquiryViewController.m */; };
-		9CB2C72B1759CBB600E10072 /* BTStackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF885D175101E700B1D838 /* BTStackManager.m */; };
-		9CB2CCCC175B4B5500E10072 /* libBTstack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB2CCCB175B4B5500E10072 /* libBTstack.a */; };
 		9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAC173F4464001FFAE0 /* UIKit.framework */; };
 		9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAE173F4464001FFAE0 /* Foundation.framework */; };
 		9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */; };
@@ -161,9 +156,6 @@
 		9CC3D466175EE7BA009AB5CA /* BTStackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTStackManager.h; sourceTree = "<group>"; };
 		9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLHistoryListViewController.h; sourceTree = "<group>"; };
 		9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLHistoryListViewController.m; sourceTree = "<group>"; };
-		9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDiscoveryViewController.m; sourceTree = "<group>"; };
-		9CCF885B175101E700B1D838 /* BTInquiryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTInquiryViewController.m; sourceTree = "<group>"; };
-		9CCF885D175101E700B1D838 /* BTStackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTStackManager.m; sourceTree = "<group>"; };
 		9CCF8860175101E700B1D838 /* ant_cmds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ant_cmds.h; sourceTree = "<group>"; };
 		9CCF8861175101E700B1D838 /* btstack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = btstack.h; sourceTree = "<group>"; };
 		9CCF8862175101E700B1D838 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
@@ -176,7 +168,6 @@
 		9CCF8869175101E700B1D838 /* run_loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop.h; sourceTree = "<group>"; };
 		9CCF886A175101E700B1D838 /* sdp_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdp_util.h; sourceTree = "<group>"; };
 		9CCF886B175101E700B1D838 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		9CCF88731751032B00B1D838 /* BTDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTDevice.m; sourceTree = "<group>"; };
 		9CCF888217510E5600B1D838 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +183,6 @@
 				9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */,
 				9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */,
 				9C5C7A1417586AC70066D960 /* libCorePlot-CocoaTouch.a in Frameworks */,
-				9CB2CCCC175B4B5500E10072 /* libBTstack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,13 +375,9 @@
 			children = (
 				9CC3D437175EE6E0009AB5CA /* bluetooth.png */,
 				9CC3D463175EE7BA009AB5CA /* BTDevice.h */,
-				9CCF88731751032B00B1D838 /* BTDevice.m */,
 				9CC3D464175EE7BA009AB5CA /* BTDiscoveryViewController.h */,
-				9CCF8859175101E700B1D838 /* BTDiscoveryViewController.m */,
 				9CC3D465175EE7BA009AB5CA /* BTInquiryViewController.h */,
-				9CCF885B175101E700B1D838 /* BTInquiryViewController.m */,
 				9CC3D466175EE7BA009AB5CA /* BTStackManager.h */,
-				9CCF885D175101E700B1D838 /* BTStackManager.m */,
 				9C63737E175FA3E50012C9B5 /* computer.png */,
 				9CCF885E175101E700B1D838 /* include */,
 				9CC3D44F175EE6E0009AB5CA /* keyboard.png */,
@@ -514,10 +500,6 @@
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
 				9C5C79AF175619210066D960 /* S7GraphView.m in Sources */,
-				9CB2C72B1759CBB600E10072 /* BTStackManager.m in Sources */,
-				9CB2C72A1759CBB400E10072 /* BTInquiryViewController.m in Sources */,
-				9CB2C7291759CBB200E10072 /* BTDiscoveryViewController.m in Sources */,
-				9CB2C7281759CBB000E10072 /* BTDevice.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
@@ -614,6 +596,10 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DreamLand/DreamLand-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"USE_BLUETOOTH=0",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/BTstack/include",
 					"$(SRCROOT)/",
@@ -626,8 +612,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D6F9BDBF-40D8-4D67-A1D4-E47238556D90";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6F9BDBF-40D8-4D67-A1D4-E47238556D90";
+				PROVISIONING_PROFILE = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -655,7 +641,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "D6F9BDBF-40D8-4D67-A1D4-E47238556D90";
+				PROVISIONING_PROFILE = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9AFA57A1-76E9-4712-9361-AA83FEC5A33B";
 				WRAPPER_EXTENSION = app;
 			};
