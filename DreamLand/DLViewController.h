@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CPTGraphHostingView.h"
+#import <CorePlot/CorePlot.h>
 #import "DLHistoryListViewController.h"
 
 @class RTPulseWaveView;
