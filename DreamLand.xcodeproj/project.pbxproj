@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9C194AE61760E13E00478662 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C194AE51760E13E00478662 /* CorePlot.framework */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
@@ -18,6 +17,7 @@
 		9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */; };
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
+		9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */; };
 		9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAC173F4464001FFAE0 /* UIKit.framework */; };
 		9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAE173F4464001FFAE0 /* Foundation.framework */; };
 		9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */; };
@@ -36,7 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9C194AE51760E13E00478662 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -52,6 +51,7 @@
 		9C5C79BF175788CA0066D960 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9C5C79C0175788CA0066D960 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
+		9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
 		9CB2CCCB175B4B5500E10072 /* libBTstack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTstack.a; sourceTree = "<group>"; };
 		9CBD2CA9173F4464001FFAE0 /* DreamLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBD2CAC173F4464001FFAE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -99,13 +99,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */,
 				9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */,
 				9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */,
 				9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */,
 				9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */,
 				9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */,
 				9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */,
-				9C194AE61760E13E00478662 /* CorePlot.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +135,7 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
+				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
@@ -157,7 +158,6 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9C194AE51760E13E00478662 /* CorePlot.framework */,
 				9C48250A174A594F002D06E8 /* QuartzCore.framework */,
 				9C482508174A5935002D06E8 /* OpenGLES.framework */,
 				9C4824BE17462FF6002D06E8 /* CoreMotion.framework */,
@@ -443,8 +443,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
+				PROVISIONING_PROFILE = "0C270AD4-D8F2-4042-B900-456730806FE2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C270AD4-D8F2-4042-B900-456730806FE2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -472,8 +472,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "AA65D1BD-B90C-487E-B281-4AFDC0268AC4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9AFA57A1-76E9-4712-9361-AA83FEC5A33B";
+				PROVISIONING_PROFILE = "0C270AD4-D8F2-4042-B900-456730806FE2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C270AD4-D8F2-4042-B900-456730806FE2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
