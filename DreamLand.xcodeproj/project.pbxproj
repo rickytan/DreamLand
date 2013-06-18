@@ -135,7 +135,6 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
-				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
@@ -158,6 +157,7 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
 				9C48250A174A594F002D06E8 /* QuartzCore.framework */,
 				9C482508174A5935002D06E8 /* OpenGLES.framework */,
 				9C4824BE17462FF6002D06E8 /* CoreMotion.framework */,
