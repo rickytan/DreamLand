@@ -23,7 +23,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //    [[CBCentralManager alloc] initWithDelegate:self
 //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
-    
     return YES;
 }
 

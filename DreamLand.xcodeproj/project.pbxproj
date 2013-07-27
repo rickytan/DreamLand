@@ -18,6 +18,9 @@
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
 		9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */; };
+		9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8817A2AA4E00037063 /* LEDDevice.m */; };
+		9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */; };
+		9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8E17A2AAA700037063 /* LEDController.m */; };
 		9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAC173F4464001FFAE0 /* UIKit.framework */; };
 		9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAE173F4464001FFAE0 /* Foundation.framework */; };
 		9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */; };
@@ -52,6 +55,13 @@
 		9C5C79C0175788CA0066D960 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
 		9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
+		9CA0DF8717A2AA4E00037063 /* LEDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDevice.h; sourceTree = "<group>"; };
+		9CA0DF8817A2AA4E00037063 /* LEDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDDevice.m; sourceTree = "<group>"; };
+		9CA0DF8A17A2AA7B00037063 /* LEDFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDFinder.h; sourceTree = "<group>"; };
+		9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDFinder.m; sourceTree = "<group>"; };
+		9CA0DF8D17A2AAA700037063 /* LEDController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDController.h; sourceTree = "<group>"; };
+		9CA0DF8E17A2AAA700037063 /* LEDController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDController.m; sourceTree = "<group>"; };
+		9CA0DF9017A2AABC00037063 /* LEDKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDKit.h; sourceTree = "<group>"; };
 		9CB2CCCB175B4B5500E10072 /* libBTstack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTstack.a; sourceTree = "<group>"; };
 		9CBD2CA9173F4464001FFAE0 /* DreamLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBD2CAC173F4464001FFAE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -132,9 +142,24 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		9CA0DF8617A2AA1D00037063 /* LEDKit */ = {
+			isa = PBXGroup;
+			children = (
+				9CA0DF8717A2AA4E00037063 /* LEDDevice.h */,
+				9CA0DF8817A2AA4E00037063 /* LEDDevice.m */,
+				9CA0DF8A17A2AA7B00037063 /* LEDFinder.h */,
+				9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */,
+				9CA0DF8D17A2AAA700037063 /* LEDController.h */,
+				9CA0DF8E17A2AAA700037063 /* LEDController.m */,
+				9CA0DF9017A2AABC00037063 /* LEDKit.h */,
+			);
+			path = LEDKit;
+			sourceTree = "<group>";
+		};
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
+				9CA0DF8617A2AA1D00037063 /* LEDKit */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
@@ -334,6 +359,9 @@
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
+				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,
+				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
+				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
