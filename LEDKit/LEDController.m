@@ -74,6 +74,7 @@
      }
      */
     if (connect(_socketfd, _address, sizeof(_address))) {
+        [self disconnect];
         return NO;
     }
     
