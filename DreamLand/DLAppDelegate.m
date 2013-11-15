@@ -7,8 +7,13 @@
 //
 
 #import "DLAppDelegate.h"
+#import "LEDDevice.h"
+#import "LEDController.h"
 
 @implementation DLAppDelegate
+{
+    LEDController               * _controller;
+}
 
 - (void)dealloc
 {
@@ -23,6 +28,21 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 //    [[CBCentralManager alloc] initWithDelegate:self
 //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
+    
+    /*
+    _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
+    if ([_controller connect]) {
+        if ([_controller updateDeviceInfo]) {
+            BOOL isOn = _controller.isOn;
+            BOOL isPuased = _controller.isPaused;
+            UIColor *color = _controller.color;
+            BOOL isConnected = _controller.isConnected;
+        }
+        _controller.on = NO;
+        _controller.color = [UIColor yellowColor];
+    }
+     */
+    
     return YES;
 }
 

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LEDDevice.h"
 
-@class LEDDevice;
+#define DEVICE_CONNECTION_TIMEOUT   5
 
 typedef void (^LEDControllerCallback)(BOOL success);
 

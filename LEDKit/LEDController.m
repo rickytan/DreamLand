@@ -13,7 +13,7 @@
 
 @interface LEDController ()
 {
-    struct sockaddr         * _address;
+    struct sockaddr           _address;
     int                       _socketfd;
     
     struct {
@@ -59,7 +59,7 @@
 
 - (BOOL)connect
 {
-    _socketfd = socket(AF_INET, SOCK_DGRAM, 0);
+    _socketfd = socket(AF_INET, SOCK_STREAM, 0);
     if (_socketfd == -1)
         return NO;
     
@@ -73,9 +73,57 @@
      return NO;
      }
      */
-    if (connect(_socketfd, _address, sizeof(_address))) {
-        [self disconnect];
-        return NO;
+    
+    int flags = fcntl(_socketfd, F_GETFL,0);
+    fcntl(_socketfd,F_SETFL, flags | O_NONBLOCK);
+    
+    if (connect(_socketfd, &(_address), sizeof(_address)) == -1) {
+        
+        fd_set          fdwrite;
+        struct timeval  timeout;
+        
+        FD_ZERO(&fdwrite);
+        FD_SET(_socketfd, &fdwrite);
+        timeout.tv_sec = DEVICE_CONNECTION_TIMEOUT;
+        timeout.tv_usec = 0;
+        
+        if (select(_socketfd + 1,NULL, &fdwrite, NULL, &timeout) < 0) {
+            
+            switch (errno) {
+                case EBADF:
+                    NSLog(@"参数sockfd 非合法socket处理代码");
+                    break;
+                case EFAULT:
+                    NSLog(@"参数serv_addr指针指向无法存取的内存空间");
+                    break;
+                case ENOTSOCK:
+                    NSLog(@"参数sockfd为一文件描述词，非socket。");
+                    break;
+                case EISCONN:
+                    NSLog(@"参数sockfd的socket已是连线状态");
+                    break;
+                case ECONNREFUSED:
+                    NSLog(@"连线要求被server端拒绝。");
+                    break;
+                case ETIMEDOUT:
+                    NSLog(@"企图连线的操作超过限定时间仍未有响应。");
+                    break;
+                case ENETUNREACH:
+                    NSLog(@"无法传送数据包至指定的主机。");
+                    break;
+                case EAFNOSUPPORT:
+                    NSLog(@"sockaddr结构的sa_family不正确。");
+                    break;
+                case EALREADY:
+                    NSLog(@"socket为不可阻塞且先前的连线操作还未完成。");
+                    break;
+                default:
+                    NSLog(@"未知错误。");
+                    break;
+            }
+            [self disconnect];
+            return NO;
+        }
     }
     
     return YES;
@@ -95,7 +143,8 @@
 - (BOOL)sendCommand:(unsigned char *)data
              length:(NSUInteger)length
 {
-    return send(_socketfd, data, length, 0) == length;
+    ssize_t size = send(_socketfd, data, length, 0);
+    return size == length;
 }
 
 - (NSData *)fetchDataWithCommand:(unsigned char *)data length:(NSUInteger)lenght
@@ -106,8 +155,9 @@
         NSMutableData *fetchedData = [NSMutableData data];
         while (YES) {
             int count = recv(_socketfd, buffer, sizeof(buffer), 0);
-            [fetchedData appendBytes:buffer
-                              length:count];
+            if (count >= 0)
+                [fetchedData appendBytes:buffer
+                                  length:count];
             if (count < sizeof(buffer))
                 break;
         }
@@ -119,14 +169,14 @@
 
 - (BOOL)updateDeviceInfo
 {
-    static unsigned char command[] = {-17,1,119};
+    unsigned char command[] = {-17,1,119};
     NSData *data = [self fetchDataWithCommand:command
                                        length:sizeof(command)];
     
     const unsigned char *result = data.bytes;
-    
+    NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
     if ((result[0] == 102) &&
-        (result[10] == -103))
+        (result[10] == (unsigned char)-103))
     {
         _on = result[2] == 35;
         _mode = (-36 + result[3]);
@@ -229,7 +279,7 @@
 {
     _mode = mode;
     
-    unsigned char data[4] = {-69, 36 + _mode, _speed, 68};
+    unsigned char data[] = {-69, 36 + _mode, _speed, 68};
     [self sendCommand:data
                length:sizeof(data)];
     
@@ -256,7 +306,7 @@
 {
     _speed = speed;
     
-    unsigned char data[4] = {-69, 36 + _mode, _speed, 68};
+    unsigned char data[] = {-69, 36 + _mode, _speed, 68};
     [self sendCommand:data
                length:sizeof(data)];
 }
@@ -282,7 +332,7 @@
 {
     _on = on;
     
-    unsigned char data[4] = {-52, _on ? 35 : 36, 51};
+    unsigned char data[] = {-52, _on ? 35 : 36, 51};
     [self sendCommand:data
                length:sizeof(data)];
 }
@@ -301,7 +351,7 @@
 {
     _pause = pause;
     
-    unsigned char data[4] = {-52, _pause ? 32 : 33, 51};
+    unsigned char data[] = {-52, _pause ? 32 : 33, 51};
     [self sendCommand:data
                length:sizeof(data)];
 }

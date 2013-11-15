@@ -10,7 +10,14 @@
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
-		9C5C79AF175619210066D960 /* S7GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79AD175619210066D960 /* S7GraphView.m */; };
+		9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75F918366E5B00943394 /* DLDataRecorder.m */; };
+		9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75FC18366E6B00943394 /* DLDataProvider.m */; };
+		9C5B760918366F0600943394 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760018366F0600943394 /* FMDatabase.m */; };
+		9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760218366F0600943394 /* FMDatabaseAdditions.m */; };
+		9C5B760B18366F0600943394 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760418366F0600943394 /* FMDatabasePool.m */; };
+		9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760618366F0600943394 /* FMDatabaseQueue.m */; };
+		9C5B760D18366F0600943394 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760818366F0600943394 /* FMResultSet.m */; };
+		9C5B760F18366F1C00943394 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */; };
 		9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79B217561B9A0066D960 /* Storyboard.storyboard */; };
 		9C5C79B6175621B00066D960 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79B8175621B00066D960 /* Localizable.strings */; };
 		9C5C79BC175625CF0066D960 /* DLData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79BB175625CF0066D960 /* DLData.m */; };
@@ -42,9 +49,21 @@
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9C5C79AC175619210066D960 /* S7GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7GraphView.h; sourceTree = "<group>"; };
-		9C5C79AD175619210066D960 /* S7GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S7GraphView.m; sourceTree = "<group>"; };
-		9C5C79AE175619210066D960 /* S7Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S7Macros.h; sourceTree = "<group>"; };
+		9C5B75F818366E5B00943394 /* DLDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataRecorder.h; sourceTree = "<group>"; };
+		9C5B75F918366E5B00943394 /* DLDataRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataRecorder.m; sourceTree = "<group>"; };
+		9C5B75FB18366E6B00943394 /* DLDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataProvider.h; sourceTree = "<group>"; };
+		9C5B75FC18366E6B00943394 /* DLDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataProvider.m; sourceTree = "<group>"; };
+		9C5B75FF18366F0600943394 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		9C5B760018366F0600943394 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		9C5B760118366F0600943394 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		9C5B760218366F0600943394 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		9C5B760318366F0600943394 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		9C5B760418366F0600943394 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		9C5B760518366F0600943394 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		9C5B760618366F0600943394 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		9C5B760718366F0600943394 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		9C5B760818366F0600943394 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		9C5C79B217561B9A0066D960 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		9C5C79B7175621B00066D960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C5C79B9175621BC0066D960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -109,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5B760F18366F1C00943394 /* libsqlite3.0.dylib in Frameworks */,
 				9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */,
 				9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */,
 				9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */,
@@ -122,14 +142,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9C5C79AB175619210066D960 /* s7graphview */ = {
+		9C5B75FE18366F0600943394 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
-				9C5C79AC175619210066D960 /* S7GraphView.h */,
-				9C5C79AD175619210066D960 /* S7GraphView.m */,
-				9C5C79AE175619210066D960 /* S7Macros.h */,
+				9C5B75FF18366F0600943394 /* FMDatabase.h */,
+				9C5B760018366F0600943394 /* FMDatabase.m */,
+				9C5B760118366F0600943394 /* FMDatabaseAdditions.h */,
+				9C5B760218366F0600943394 /* FMDatabaseAdditions.m */,
+				9C5B760318366F0600943394 /* FMDatabasePool.h */,
+				9C5B760418366F0600943394 /* FMDatabasePool.m */,
+				9C5B760518366F0600943394 /* FMDatabaseQueue.h */,
+				9C5B760618366F0600943394 /* FMDatabaseQueue.m */,
+				9C5B760718366F0600943394 /* FMResultSet.h */,
+				9C5B760818366F0600943394 /* FMResultSet.m */,
 			);
-			path = s7graphview;
+			path = FMDB;
 			sourceTree = "<group>";
 		};
 		9C5C79BD175788CA0066D960 /* SVProgressHUD */ = {
@@ -159,14 +186,14 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
-				9CA0DF8617A2AA1D00037063 /* LEDKit */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
+				9C5B75FE18366F0600943394 /* FMDB */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
+				9CA0DF8617A2AA1D00037063 /* LEDKit */,
 				9CBD2CAA173F4464001FFAE0 /* Products */,
 				9CC3D460175EE732009AB5CA /* RTPulseWaveView.h */,
 				9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */,
-				9C5C79AB175619210066D960 /* s7graphview */,
 				9C5C79BD175788CA0066D960 /* SVProgressHUD */,
 			);
 			sourceTree = "<group>";
@@ -182,6 +209,7 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */,
 				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
 				9C48250A174A594F002D06E8 /* QuartzCore.framework */,
 				9C482508174A5935002D06E8 /* OpenGLES.framework */,
@@ -207,6 +235,10 @@
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
 				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
 				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
+				9C5B75F818366E5B00943394 /* DLDataRecorder.h */,
+				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
+				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
+				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -353,12 +385,18 @@
 			files = (
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
+				9C5B760918366F0600943394 /* FMDatabase.m in Sources */,
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
-				9C5C79AF175619210066D960 /* S7GraphView.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
+				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
+				9C5B760B18366F0600943394 /* FMDatabasePool.m in Sources */,
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
+				9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */,
+				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
+				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
+				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
 				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,
 				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
@@ -446,8 +484,8 @@
 		9CBD2CCD173F4464001FFAE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: w Song (LAFGX7LKMX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: w Song (LAFGX7LKMX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -471,8 +509,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0C270AD4-D8F2-4042-B900-456730806FE2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C270AD4-D8F2-4042-B900-456730806FE2";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -480,8 +518,8 @@
 		9CBD2CCE173F4464001FFAE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: w Song (LAFGX7LKMX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: w Song (LAFGX7LKMX)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -500,8 +538,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0C270AD4-D8F2-4042-B900-456730806FE2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0C270AD4-D8F2-4042-B900-456730806FE2";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

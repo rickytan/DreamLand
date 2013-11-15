@@ -10,6 +10,26 @@
 
 @implementation LEDDevice
 
++ (id)deviceWithIP:(NSString *)IP
+{
+    return [self deviceWithIP:IP
+                         port:DEFAULT_DEVICE_PORT];
+}
+
++ (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port
+{
+    return [self deviceWithIP:IP
+                         port:port
+                         name:nil];
+}
+
++ (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port name:(NSString *)name
+{
+    return [[[LEDDevice alloc] initWithIP:IP
+                                     port:port
+                                     name:name] autorelease];
+}
+
 - (id)initWithIP:(NSString *)IP
 {
     return [self initWithIP:IP

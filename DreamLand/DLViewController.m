@@ -17,7 +17,6 @@
 #endif
 #import "RTPulseWaveView.h"
 #import "DLHistoryListViewController.h"
-#import "S7GraphView.h"
 #import "DLData.h"
 #import "SVProgressHUD.h"
 

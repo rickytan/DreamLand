@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Af-wA-AGI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Af-wA-AGI">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="sDj-VY-n6j">
             <objects>
                 <navigationController definesPresentationContext="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="FQq-MK-aF8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="FQq-MK-aF8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -18,18 +18,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6l-zE-9jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-151" y="-103"/>
+            <point key="canvasLocation" x="-849" y="696"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PIr-e2-k90">
             <objects>
                 <viewController id="x8R-ZH-Arx" customClass="DLViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zvy-6u-maQ">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="cWs-Op-h4p" customClass="RTPulseWaveView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -37,7 +37,7 @@
                                 </connections>
                             </view>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tf5-sh-MGd">
-                                <rect key="frame" x="0.0" y="150" width="320" height="266"/>
+                                <rect key="frame" x="0.0" y="150" width="320" height="418"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -83,25 +83,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Gh-vf-h6M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="293" y="-103"/>
+            <point key="canvasLocation" x="-405" y="696"/>
         </scene>
         <!--History List View Controller - History Record-->
         <scene sceneID="Sct-8n-FWJ">
             <objects>
                 <tableViewController id="8dg-2x-tPf" customClass="DLHistoryListViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z7O-tN-1VP">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z7O-tN-1VP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="XKp-AC-qAM">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XKp-AC-qAM" id="VnB-ff-Snb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -113,7 +112,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="HfE-hu-mUG">
                             <view key="customView" opaque="NO" contentMode="scaleToFill" id="g7w-Kk-rh8">
-                                <rect key="frame" x="295" y="12" width="20" height="20"/>
+                                <rect key="frame" x="284" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="white" id="N5f-4D-WcZ">
@@ -137,8 +136,7 @@
         <scene sceneID="OEs-67-iMJ">
             <objects>
                 <navigationController definesPresentationContext="YES" id="fw4-j8-MB3" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="96x-Zh-n8v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="96x-Zh-n8v">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -150,34 +148,6 @@
             <point key="canvasLocation" x="27" y="696"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DLHistoryListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DLHistoryListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onCancel:"/>
-                <relationship kind="outlet" name="delegate"/>
-                <relationship kind="outlet" name="spinnerView" candidateClass="UIActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="DLViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DLViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="onDone:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="onScan:"/>
-                <relationship kind="action" name="onStart:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="doneItem" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="pulseView" candidateClass="RTPulseWaveView"/>
-                <relationship kind="outlet" name="startItem" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="RTPulseWaveView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RTPulseWaveView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dataSource"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

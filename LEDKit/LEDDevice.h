@@ -27,4 +27,8 @@ typedef enum {
 @property (nonatomic, assign) NSUInteger port;
 @property (nonatomic, assign) LEDDeviceType type;
 
++ (id)deviceWithIP:(NSString*)IP;
++ (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port;
++ (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port name:(NSString*)name;
+
 @end
