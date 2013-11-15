@@ -110,7 +110,7 @@
                                 <action selector="onCancel:" destination="8dg-2x-tPf" id="03t-sx-CDg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="HfE-hu-mUG">
+                        <barButtonItem key="rightBarButtonItem" id="HfE-hu-mUG">
                             <view key="customView" opaque="NO" contentMode="scaleToFill" id="g7w-Kk-rh8">
                                 <rect key="frame" x="284" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
