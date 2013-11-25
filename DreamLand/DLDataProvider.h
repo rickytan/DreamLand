@@ -10,4 +10,10 @@
 
 @interface DLDataProvider : NSObject
 
++ (instancetype)sharedProvider;
+
+- (float)valueForTime:(NSDate*)time ofRecord:(NSUInteger)recordID;
+- (NSDate*)startTimeOfRecord:(NSUInteger)recordID;
+- (NSDate*)endTimeOfRecord:(NSUInteger)recordID;
+
 @end

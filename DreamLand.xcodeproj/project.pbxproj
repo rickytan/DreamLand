@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B009118425A3A00F90ED8 /* DLDatabase.m */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C2B009018425A3A00F90ED8 /* DLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDatabase.h; sourceTree = "<group>"; };
+		9C2B009118425A3A00F90ED8 /* DLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDatabase.m; sourceTree = "<group>"; };
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -209,14 +212,14 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */,
-				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
-				9C48250A174A594F002D06E8 /* QuartzCore.framework */,
-				9C482508174A5935002D06E8 /* OpenGLES.framework */,
-				9C4824BE17462FF6002D06E8 /* CoreMotion.framework */,
-				9CBD2CAC173F4464001FFAE0 /* UIKit.framework */,
-				9CBD2CAE173F4464001FFAE0 /* Foundation.framework */,
 				9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */,
+				9C4824BE17462FF6002D06E8 /* CoreMotion.framework */,
+				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
+				9CBD2CAE173F4464001FFAE0 /* Foundation.framework */,
+				9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */,
+				9C482508174A5935002D06E8 /* OpenGLES.framework */,
+				9C48250A174A594F002D06E8 /* QuartzCore.framework */,
+				9CBD2CAC173F4464001FFAE0 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +242,8 @@
 				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
 				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
 				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
+				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
+				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */,
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
 				9C5B760918366F0600943394 /* FMDatabase.m in Sources */,

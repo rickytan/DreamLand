@@ -13,8 +13,11 @@
 @property (nonatomic, readonly, getter = isRecording) BOOL recording;
 
 + (instancetype)sharedRecorder;
+
 - (void)reset;
 - (void)start;
 - (void)stop;
+
+- (NSUInteger)lastestRecordID;
 
 @end

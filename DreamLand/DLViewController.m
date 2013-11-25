@@ -7,7 +7,6 @@
 //
 
 #import "DLViewController.h"
-#import <CoreMotion/CoreMotion.h>
 #import <CFNetwork/CFNetwork.h>
 #if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 #import <btstack/hci_cmds.h>
@@ -15,6 +14,8 @@
 #import <BTstack/BTStackManager.h>
 #import <BTstack/BTDiscoveryViewController.h>
 #endif
+#import "DLDataRecorder.h"
+#import "DLDataProvider.h"
 #import "RTPulseWaveView.h"
 #import "DLHistoryListViewController.h"
 #import "DLData.h"
@@ -43,10 +44,10 @@ RTPulseWaveViewDatasource>
     
     CPTXYGraph                 *graph;
 }
-@property (nonatomic, retain) CMMotionManager *motionManager;
 @property (nonatomic, assign, getter = isRecording) BOOL recording;
 @property (nonatomic, retain) NSMutableArray *xValue;
 @property (nonatomic, retain) NSMutableArray *yValue;
+@property (nonatomic, assign) NSUInteger recordID;
 @property (nonatomic, assign) CPTGraphHostingView *graphHostingView;
 #if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
 @property (nonatomic, retain) BTDevice *selectedDevice;
@@ -54,6 +55,7 @@ RTPulseWaveViewDatasource>
 #endif
 - (void)initGraph;
 - (BOOL)viewDataOfFile:(NSString*)filePath;
+- (BOOL)viewDataOfRecordID:(NSUInteger)record;
 @end
 
 @implementation DLViewController
@@ -109,18 +111,6 @@ RTPulseWaveViewDatasource>
     //                                           context:<#(CIContext *)#> options:<#(NSDictionary *)#>]]
     
     
-    self.motionManager = [[[CMMotionManager alloc] init] autorelease];
-#if !TARGET_IPHONE_SIMULATOR
-    if (!self.motionManager.isAccelerometerAvailable) {
-        [[[[UIAlertView alloc] initWithTitle:@"错误"
-                                     message:@"您的设备不支持加速度传感器！"
-                                    delegate:nil
-                           cancelButtonTitle:@"好"
-                           otherButtonTitles:nil] autorelease] show];
-        self.motionManager = nil;
-        self.startItem.enabled = NO;
-    }
-#endif
     [self initGraph];
     self.state = DLViewStateNormal;
 }
@@ -141,27 +131,15 @@ RTPulseWaveViewDatasource>
 
 - (IBAction)onStart:(UIBarButtonItem*)sender
 {
-    if (!self.motionManager)
-        return;
     switch (self.state) {
         case DLViewStateRecording:
-            [self.motionManager stopDeviceMotionUpdates];
+            [[DLDataRecorder sharedRecorder] stop];
             self.pulseView.paused = YES;
             self.state = DLViewStatePaused;
             break;
         case DLViewStateNormal:
         case DLViewStatePaused:
-            [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-                                                    withHandler:^(CMDeviceMotion *d, NSError *e) {
-                                                        if (!e) {
-                                                            CMAcceleration acce = d.userAcceleration;
-                                                            xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
-                                                            yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
-                                                            zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
-                                                            
-                                                            //[dataBuffer addData:[DLData dataWithValue:zValue]];
-                                                        }
-                                                    }];
+            [[DLDataRecorder sharedRecorder] start];
             [self.pulseView clear];
             self.pulseView.paused = NO;
             self.state = DLViewStateRecording;
@@ -256,7 +234,6 @@ RTPulseWaveViewDatasource>
         
         double len = MIN(max - min, 600);
         
-        
         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
                                                         length:CPTDecimalFromDouble(len)];
@@ -266,6 +243,21 @@ RTPulseWaveViewDatasource>
     else {
         return NO;
     }
+}
+
+- (BOOL)viewDataOfRecordID:(NSUInteger)record
+{
+    self.recordID = record;
+    double min = [[DLDataProvider sharedProvider] startTimeOfRecord:record].timeIntervalSince1970;
+    double max = [[DLDataProvider sharedProvider] endTimeOfRecord:record].timeIntervalSince1970;
+    
+    double len = MIN(max - min, 600);
+    
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
+                                                    length:CPTDecimalFromDouble(len)];
+    [graph reloadData];
+    return YES;
 }
 
 - (void)initGraph
@@ -414,11 +406,7 @@ RTPulseWaveViewDatasource>
 - (double)pulseWaveView:(RTPulseWaveView *)waveview
             valueOfTime:(NSTimeInterval)time
 {
-#if TARGET_IPHONE_SIMULATOR
-    zValue = 0.6 * sin(8 * time) + 0.4 * cos(10 * time) + 0.2 * cos(24 * time + M_PI_2);
-#endif
-    [dataBuffer addData:[DLData dataWithValue:zValue]];
-    return zValue;
+    return [DLDataRecorder sharedRecorder].currentZ;
 }
 
 #pragma mark - Space Delegate
@@ -432,15 +420,6 @@ RTPulseWaveViewDatasource>
     switch ( coordinate ) {
         case CPTCoordinateX:
         {
-            /*
-             if (newRange.locationDouble > 0.0F) {
-             CPTMutablePlotRange *mutableRange = [[newRange mutableCopy] autorelease];
-             mutableRange.location = CPTDecimalFromFloat(0.0);
-             updatedRange = mutableRange;
-             }
-             else {
-             updatedRange = newRange;
-             }*/
             if (newRange.lengthDouble < 3.5) {
                 CPTMutablePlotRange *rang = [[newRange mutableCopy] autorelease];
                 rang.length = CPTDecimalFromDouble(3.5);
@@ -463,17 +442,20 @@ RTPulseWaveViewDatasource>
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    return [self.xValue count];
+    return 64;// [self.xValue count];
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot
                      field:(NSUInteger)fieldEnum
                recordIndex:(NSUInteger)index
 {
+    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)plot.plotSpace;
+    double time = plotSpace.xRange.locationDouble + plotSpace.xRange.lengthDouble * index / 64;
     if (fieldEnum == CPTScatterPlotFieldX)
-        return [self.xValue objectAtIndex:index];
+        return [NSNumber numberWithDouble:time];
     else
-        return [self.yValue objectAtIndex:index];
+        return [NSNumber numberWithFloat:[[DLDataProvider sharedProvider] valueForTime:[NSDate dateWithTimeIntervalSince1970:time]
+                                                                              ofRecord:self.recordID]];
 }
 
 #pragma mark - Axis Delegate
