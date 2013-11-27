@@ -45,7 +45,7 @@ static DLDatabase *theDatabase = nil;
         if (![db executeUpdate:
               @"CREATE TABLE IF NOT EXISTS Data ("
               @"    value float NOT NULL DEFAULT 0,"
-              @"    time timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,"
+              @"    time float NOT NULL,"
               @"    rid int"
               @")"
               ]) {
@@ -54,8 +54,8 @@ static DLDatabase *theDatabase = nil;
         if (![db executeUpdate:
               @"CREATE TABLE IF NOT EXISTS Record ("
               @"    id int NOT NULL DEFAULT 0,"
-              @"    starttime timestamp NULL,"
-              @"    endtime timestamp NULL,"
+              @"    starttime timestamp NOT NULL DEFAULT (datetime('now','localtime')),"
+              @"    endtime timestamp NOT NULL,"
               @"    rate int NULL,"
               @"    desc text NULL"
               @")"

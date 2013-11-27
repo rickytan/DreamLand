@@ -47,6 +47,7 @@ RTPulseWaveViewDatasource>
 @property (nonatomic, assign, getter = isRecording) BOOL recording;
 @property (nonatomic, retain) NSMutableArray *xValue;
 @property (nonatomic, retain) NSMutableArray *yValue;
+@property (nonatomic, retain) NSArray *dataArray;
 @property (nonatomic, assign) NSUInteger recordID;
 @property (nonatomic, assign) CPTGraphHostingView *graphHostingView;
 #if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
@@ -113,6 +114,24 @@ RTPulseWaveViewDatasource>
     
     [self initGraph];
     self.state = DLViewStateNormal;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSUInteger lastRecord = [DLDataRecorder sharedRecorder].lastestRecordID;
+        NSDate *start = [[DLDataProvider sharedProvider] startTimeOfRecord:lastRecord];
+        NSDate *end = [[DLDataProvider sharedProvider] endTimeOfRecord:lastRecord];
+        
+        double min = start.timeIntervalSince1970;
+        double max = end.timeIntervalSince1970;
+        
+        double len = MIN(max - min, 1200);
+        
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
+                                                        length:CPTDecimalFromDouble(len)];
+        //[graph reloadData];
+        self.recordID = [DLDataRecorder sharedRecorder].lastestRecordID;
+        [self viewDataOfRecordID:self.recordID];
+    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,9 +186,11 @@ RTPulseWaveViewDatasource>
             [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                NSString *filePath = [dataBuffer flushToFile];
+                //NSString *filePath = [dataBuffer flushToFile];
                 
-                if ([self viewDataOfFile:filePath])
+                //if ([self viewDataOfFile:filePath])
+                //    [SVProgressHUD dismiss];
+                if ([self viewDataOfRecordID:[DLDataRecorder sharedRecorder].lastestRecordID])
                     [SVProgressHUD dismiss];
                 else
                     [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
@@ -247,16 +268,28 @@ RTPulseWaveViewDatasource>
 
 - (BOOL)viewDataOfRecordID:(NSUInteger)record
 {
+    if (record == 0)
+        return NO;
+    
     self.recordID = record;
+#if DEBUG
+    NSDate *start = [[DLDataProvider sharedProvider] startTimeOfRecord:record];
+    NSDate *end = [[DLDataProvider sharedProvider] endTimeOfRecord:record];
+    NSLog(@"Start: %@, End: %@", start, end);
+    
+    double min = start.timeIntervalSince1970;
+    double max = end.timeIntervalSince1970;
+#else
     double min = [[DLDataProvider sharedProvider] startTimeOfRecord:record].timeIntervalSince1970;
     double max = [[DLDataProvider sharedProvider] endTimeOfRecord:record].timeIntervalSince1970;
+#endif
     
-    double len = MIN(max - min, 600);
+    double len = MIN(max - min, 60*60*8);
     
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
     plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
                                                     length:CPTDecimalFromDouble(len)];
-    [graph reloadData];
+    [self reloadPlot];
     return YES;
 }
 
@@ -301,8 +334,8 @@ RTPulseWaveViewDatasource>
     style.lineWidth                 = 0.5f;
     x.majorGridLineStyle            = style;
     NSDateFormatter *dateFormatter  = [[[NSDateFormatter alloc] init] autorelease];
-    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
-    dateFormatter.dateFormat = @"HH:mm:ss";
+    dateFormatter.dateStyle         = kCFDateFormatterShortStyle;
+    dateFormatter.dateFormat        = @"HH:mm:ss";
     CPTTimeFormatter *timeFormatter = [[[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter] autorelease];
     //timeFormatter.referenceDate = [NSDate date];
     //x.axisLineCapMin              = CPTLineCapTypeDiamond;
@@ -313,34 +346,34 @@ RTPulseWaveViewDatasource>
     x.labelTextStyle                = textStyle;
     
     CPTXYAxis *y = axisSet.yAxis;
-    y.majorIntervalLength         = CPTDecimalFromFloat(0.5f);
-    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(0.0f);
-    y.minorTicksPerInterval       = 9;
-    y.labelingPolicy              = CPTAxisLabelingPolicyAutomatic;
-    y.title                       = @"振动强度（G）";
-    y.titleOffset                 = 32.0;
+    y.majorIntervalLength           = CPTDecimalFromFloat(0.5f);
+    y.orthogonalCoordinateDecimal   = CPTDecimalFromFloat(0.0f);
+    y.minorTicksPerInterval         = 9;
+    y.labelingPolicy                = CPTAxisLabelingPolicyAutomatic;
+    y.title                         = @"振动强度（G）";
+    y.titleOffset                   = 32.0;
     
-    y.majorGridLineStyle          = style;
+    y.majorGridLineStyle            = style;
     
-    style                         = [CPTMutableLineStyle lineStyle];
-    style.lineColor               = [CPTColor colorWithGenericGray:0.3];
-    style.lineWidth               = 0.25f;
-    y.minorGridLineStyle          = style;
+    style                           = [CPTMutableLineStyle lineStyle];
+    style.lineColor                 = [CPTColor colorWithGenericGray:0.3];
+    style.lineWidth                 = 0.25f;
+    y.minorGridLineStyle            = style;
     //y.delegate             = self;
-    y.axisConstraints = [CPTConstraints constraintWithLowerOffset:64.0];
+    y.axisConstraints               = [CPTConstraints constraintWithLowerOffset:64.0];
     [((NSNumberFormatter*)y.labelFormatter) setMaximumFractionDigits:2];
     
     // Create a blue plot area
-    CPTScatterPlot *boundLinePlot  = [[CPTScatterPlot alloc] init];
-    CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-    lineStyle.miterLimit           = 1.0f;
-    lineStyle.lineWidth            = 1.0f;
-    lineStyle.lineColor            = [CPTColor blueColor];
-    boundLinePlot.dataLineStyle    = lineStyle;
-    boundLinePlot.identifier       = @"Blue Plot";
-    boundLinePlot.dataSource       = self;
+    CPTScatterPlot *boundLinePlot   = [[CPTScatterPlot alloc] init];
+    CPTMutableLineStyle *lineStyle  = [CPTMutableLineStyle lineStyle];
+    lineStyle.miterLimit            = 1.0f;
+    lineStyle.lineWidth             = 1.0f;
+    lineStyle.lineColor             = [CPTColor blueColor];
+    boundLinePlot.dataLineStyle     = lineStyle;
+    boundLinePlot.identifier        = @"Blue Plot";
+    boundLinePlot.dataSource        = self;
     //boundLinePlot.interpolation    = CPTScatterPlotInterpolationCurved;
-    boundLinePlot.delegate         = self;
+    boundLinePlot.delegate          = self;
     [graph addPlot:boundLinePlot];
     [boundLinePlot release];
 }
@@ -388,17 +421,31 @@ RTPulseWaveViewDatasource>
 #pragma mark - DLHistory Delegate
 
 - (void)historyList:(DLHistoryListViewController *)controller
-      didSelectFile:(NSString *)filePath
+    didSelectRecord:(NSUInteger)recordId
 {
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
     dispatch_async(dispatch_get_main_queue(), ^{
-        if ([self viewDataOfFile:filePath])
+        if ([self viewDataOfRecordID:recordId])
             [SVProgressHUD dismiss];
         else
             [SVProgressHUD showErrorWithStatus:@"文件打开错误！"];
     });
     
     [controller dismissModalViewControllerAnimated:YES];
+}
+
+- (void)reloadPlot
+{
+    [SVProgressHUD show];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CPTPlotRange *range = ((CPTXYPlotSpace*)graph.defaultPlotSpace).xRange;
+        self.dataArray = [[DLDataProvider sharedProvider] dataOfRangeStartDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble]
+                                                                       endDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble + range.lengthDouble]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [graph reloadData];
+            [SVProgressHUD dismiss];
+        });
+    });
 }
 
 #pragma mark - RTPulseWave Datasource
@@ -420,13 +467,20 @@ RTPulseWaveViewDatasource>
     switch ( coordinate ) {
         case CPTCoordinateX:
         {
-            if (newRange.lengthDouble < 3.5) {
+            if (newRange.lengthDouble < 3.) {
                 CPTMutablePlotRange *rang = [[newRange mutableCopy] autorelease];
-                rang.length = CPTDecimalFromDouble(3.5);
+                rang.length = CPTDecimalFromDouble(3.);
                 updatedRange = rang;
             }
             else
                 updatedRange = newRange;
+            
+            [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                     selector:@selector(reloadPlot)
+                                                       object:nil];
+            [self performSelector:@selector(reloadPlot)
+                       withObject:nil
+                       afterDelay:1.0];
         }
             break;
         case CPTCoordinateY:
@@ -440,22 +494,34 @@ RTPulseWaveViewDatasource>
 
 #pragma mark - Plot Datasource
 
+#define DATA_SAMPLES        100
+
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
-    return 64;// [self.xValue count];
+    return self.dataArray.count;// DATA_SAMPLES;// [self.xValue count];
 }
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot
                      field:(NSUInteger)fieldEnum
                recordIndex:(NSUInteger)index
 {
+    //NSLog(@"Start Date:%@", [NSDate dateWithTimeIntervalSince1970:((CPTXYPlotSpace*)plot.plotSpace).xRange.locationDouble]);
+    if (fieldEnum == CPTScatterPlotFieldX)
+        return [NSNumber numberWithDouble:((DLData*)self.dataArray[index]).date.timeIntervalSince1970];
+    else
+        return ((DLData*)self.dataArray[index]).value;
+    /*
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)plot.plotSpace;
-    double time = plotSpace.xRange.locationDouble + plotSpace.xRange.lengthDouble * index / 64;
+    double time = plotSpace.xRange.locationDouble + plotSpace.xRange.lengthDouble * index / DATA_SAMPLES;
     if (fieldEnum == CPTScatterPlotFieldX)
         return [NSNumber numberWithDouble:time];
-    else
+    else {
+        if (self.recordID == 0)
+            return [NSNumber numberWithDouble:0.0];
         return [NSNumber numberWithFloat:[[DLDataProvider sharedProvider] valueForTime:[NSDate dateWithTimeIntervalSince1970:time]
                                                                               ofRecord:self.recordID]];
+    }
+     */
 }
 
 #pragma mark - Axis Delegate

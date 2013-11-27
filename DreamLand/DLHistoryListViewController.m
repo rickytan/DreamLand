@@ -7,6 +7,8 @@
 //
 
 #import "DLHistoryListViewController.h"
+#import "DLRecord.h"
+#import "DLDataProvider.h"
 
 static NSString *searchPath = nil;
 
@@ -57,7 +59,7 @@ static NSString *searchPath = nil;
 
 - (void)doLoadItems
 {
-    self.fileArray = [self loadDatFiles];
+    self.fileArray = [[DLDataProvider sharedProvider] allRecords];
     [self.tableView reloadData];
     [self.spinnerView stopAnimating];
 }
@@ -118,14 +120,14 @@ static NSString *searchPath = nil;
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                        reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
-    NSDictionary *item = [self.fileArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = [[item valueForKey:@"path"] lastPathComponent];
-    cell.detailTextLabel.text = [[item objectForKey:@"size"] stringValue];
+    DLRecord *item = [self.fileArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"id: %u", item.recordId];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"开始:%@,结束:%@", item.startTime, item.endTime];
     
     return cell;
 }
@@ -134,9 +136,9 @@ static NSString *searchPath = nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(historyList:didSelectFile:)])
+    if ([self.delegate respondsToSelector:@selector(historyList:didSelectRecord:)])
         [self.delegate historyList:self
-                     didSelectFile:[[self.fileArray objectAtIndex:indexPath.row] valueForKey:@"path"]];
+                     didSelectRecord:((DLRecord*)[self.fileArray objectAtIndex:indexPath.row]).recordId];
 }
 
 @end

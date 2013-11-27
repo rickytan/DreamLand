@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B009118425A3A00F90ED8 /* DLDatabase.m */; };
+		9C357E79184673B5004A927D /* DLRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C357E78184673B5004A927D /* DLRecord.m */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
@@ -49,6 +50,8 @@
 /* Begin PBXFileReference section */
 		9C2B009018425A3A00F90ED8 /* DLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDatabase.h; sourceTree = "<group>"; };
 		9C2B009118425A3A00F90ED8 /* DLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDatabase.m; sourceTree = "<group>"; };
+		9C357E77184673B5004A927D /* DLRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRecord.h; sourceTree = "<group>"; };
+		9C357E78184673B5004A927D /* DLRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRecord.m; sourceTree = "<group>"; };
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -244,6 +247,8 @@
 				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
 				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
 				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
+				9C357E77184673B5004A927D /* DLRecord.h */,
+				9C357E78184673B5004A927D /* DLRecord.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
 				9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */,
 				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
+				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,

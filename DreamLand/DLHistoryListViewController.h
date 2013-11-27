@@ -12,7 +12,7 @@
 
 @protocol DLHistoryListDelegate <NSObject>
 @optional
-- (void)historyList:(DLHistoryListViewController*)controller didSelectFile:(NSString*)filePath;
+- (void)historyList:(DLHistoryListViewController*)controller didSelectRecord:(NSUInteger)recordID;
 
 @end
 

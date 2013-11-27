@@ -16,4 +16,7 @@
 - (NSDate*)startTimeOfRecord:(NSUInteger)recordID;
 - (NSDate*)endTimeOfRecord:(NSUInteger)recordID;
 
+- (NSArray*)dataOfRangeStartDate:(NSDate*)start endDate:(NSDate*)end;
+- (NSArray*)allRecords;
+
 @end

@@ -9,8 +9,9 @@
         <scene sceneID="sDj-VY-n6j">
             <objects>
                 <navigationController definesPresentationContext="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="FQq-MK-aF8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="FQq-MK-aF8">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.25098039220000001" green="0.64313725489999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="x8R-ZH-Arx" kind="relationship" relationship="rootViewController" id="M8e-bW-G01"/>
@@ -25,11 +26,11 @@
             <objects>
                 <viewController id="x8R-ZH-Arx" customClass="DLViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zvy-6u-maQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" id="cWs-Op-h4p" customClass="RTPulseWaveView">
-                                <rect key="frame" x="0.0" y="64" width="320" height="116"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -37,7 +38,7 @@
                                 </connections>
                             </view>
                             <view multipleTouchEnabled="YES" contentMode="scaleToFill" id="tf5-sh-MGd">
-                                <rect key="frame" x="0.0" y="180" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="116" width="320" height="300"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>

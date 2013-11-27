@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern const CGFloat recordingStartThreshold;
+
+
 @interface DLDataRecorder : NSObject
 @property (nonatomic, readonly) CGFloat currentX, currentY, currentZ;
 @property (nonatomic, readonly, getter = isRecording) BOOL recording;

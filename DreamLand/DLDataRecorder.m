@@ -7,47 +7,11 @@
 //
 
 #import "DLDataRecorder.h"
+#import "DLRecord.h"
 #import "DLDatabase.h"
 #import <CoreMotion/CoreMotion.h>
 
 static DLDataRecorder * theRecorder = nil;
-
-@interface DLRecord : NSObject
-@property (nonatomic, assign) NSUInteger recordId;
-@property (nonatomic, retain) NSDate *startTime;
-@property (nonatomic, retain) NSDate *endTime;
-+ (id)recordWithId:(NSUInteger)record;
-- (void)start;
-- (void)end;
-@end
-
-@implementation DLRecord
-
-+ (id)recordWithId:(NSUInteger)record
-{
-    DLRecord *r = [[self alloc] init];
-    r.recordId = record;
-    return [r autorelease];
-}
-
-- (void)dealloc
-{
-    self.startTime = nil;
-    self.endTime = nil;
-    [super dealloc];
-}
-
-- (void)start
-{
-    self.startTime = [NSDate date];
-}
-
-- (void)end
-{
-    self.endTime = [NSDate date];
-}
-
-@end
 
 @interface DLDataRecorder ()
 @property (nonatomic, retain) CMMotionManager *motionManager;
@@ -56,7 +20,6 @@ static DLDataRecorder * theRecorder = nil;
 @property (nonatomic, assign) BOOL shouldWrite;
 @property (nonatomic, retain) DLRecord *record;
 
-- (void)initDatabase;
 - (void)writeRecord:(CGFloat)value;
 
 - (void)doRecord;
@@ -64,8 +27,8 @@ static DLDataRecorder * theRecorder = nil;
 
 @end
 
-static const CGFloat smoothRatio                = 0.6f;
-static const CGFloat recordingStartThreshold    = 0.22f;
+const CGFloat smoothRatio                = 0.6f;
+const CGFloat recordingStartThreshold    = 0.12f;
 
 @implementation DLDataRecorder
 @synthesize currentX = xValue, currentY = yValue, currentZ = zValue;
@@ -119,6 +82,7 @@ static const CGFloat recordingStartThreshold    = 0.22f;
         FMResultSet *result = [db executeQuery:@"SELECT MAX(id) FROM Record"];
         if ([result next])
             rtnval = [result intForColumnIndex:0];
+        [result close];
     }];
     return rtnval;
 }
@@ -131,20 +95,28 @@ static const CGFloat recordingStartThreshold    = 0.22f;
 
 - (void)writeRecord:(CGFloat)value
 {
-    /*
-     static dispatch_queue_t _queue = NULL;
-     @synchronized(self) {
-     if (!_queue)
-     _queue = dispatch_queue_create("SQLite Write Queue", NULL);
-     }
-     dispatch_async(_queue, ^{
-     [self.database executeUpdate:@"INSERT INTO Data (`value`,`rid`) VALUES (?, ?)", [NSNumber numberWithFloat:value], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
-     });
-     */
+    
+    static dispatch_queue_t _queue = NULL;
+    @synchronized(self) {
+        if (!_queue)
+            _queue = dispatch_queue_create("SQLite Write Queue", DISPATCH_QUEUE_SERIAL);
+    }
+    
     __block CGFloat v = value;
-    [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
-        [db executeUpdate:@"INSERT INTO Data (`value`,`rid`) VALUES (?, ?)", [NSNumber numberWithFloat:v], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
-    }];
+    
+    @synchronized(self) {
+        dispatch_async(_queue, ^{
+            [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
+                [db executeUpdate:@"INSERT INTO Data (`value`,`time`,`rid`) VALUES (?, ?, ?)", [NSNumber numberWithFloat:v], [NSNumber numberWithDouble:[NSDate date].timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
+            }];
+        });
+    }
+    
+    /*
+     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
+     [db executeUpdate:@"INSERT INTO Data (`value`,`time`,`rid`) VALUES (?, ?, ?)", [NSNumber numberWithFloat:v], [NSNumber numberWithDouble:[NSDate date].timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
+     }];
+     */
 }
 
 - (void)setShouldWrite:(BOOL)shouldWrite
@@ -175,7 +147,7 @@ static const CGFloat recordingStartThreshold    = 0.22f;
     }
     else if (self.shouldWrite && absZ <= recordingStartThreshold) {
         if (!self.timer) {
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.5
                                                           target:self
                                                         selector:@selector(setShouldntWrite)
                                                         userInfo:nil
@@ -208,7 +180,7 @@ static const CGFloat recordingStartThreshold    = 0.22f;
     [self.record start];
     
     [self.motionManager startDeviceMotionUpdates];
-    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 30
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60
                                                         target:self
                                                       selector:@selector(update:)
                                                       userInfo:nil
@@ -259,12 +231,17 @@ static const CGFloat recordingStartThreshold    = 0.22f;
     self.updateTimer = nil;
     [self.motionManager stopDeviceMotionUpdates];
     [self.record end];
+    [self.timer invalidate];
+    self.timer = nil;
+    self.shouldWrite = NO;
     
-    [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
-        if (![db executeUpdate:@"INSERT INTO Record (`id`, `starttime`, `endtime`) VALUES (?,?,?)", [NSNumber numberWithUnsignedInteger:self.record.recordId], self.record.startTime, self.record.endTime])
-            NSLog(@"%@", db.lastError);
-        self.record = nil;
-    }];
+    @synchronized(self) {
+        [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
+            if (![db executeUpdate:@"INSERT INTO Record (`id`, `starttime`, `endtime`) VALUES (?,?,?)", [NSNumber numberWithUnsignedInteger:self.record.recordId], self.record.startTime, self.record.endTime])
+                NSLog(@"%@, Thread: %@", db.lastError, [NSThread currentThread]);
+            self.record = nil;
+        }];
+    }
 }
 
 @end

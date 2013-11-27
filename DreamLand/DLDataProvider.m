@@ -8,6 +8,9 @@
 
 #import "DLDataProvider.h"
 #import "DLDatabase.h"
+#import "DLRecord.h"
+#import "DLData.h"
+#import "DLDataRecorder.h"
 
 static DLDataProvider *theProvider = nil;
 
@@ -51,14 +54,28 @@ static DLDataProvider *theProvider = nil;
 {
     __block float value = 0.f;
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time <= ? AND rid = ? ORDER BY time DESC LIMIT 0,1", time, recordID];
+//        FMResultSet *r = [db executeQuery:@"select * from Data where rid = ?", [NSNumber numberWithUnsignedInteger:recordID]];
+//        while ([r next]) {
+//            NSLog(@"%f %@", [r doubleForColumn:@"value"], [NSDate dateWithTimeIntervalSince1970:[r doubleForColumn:@"time"]]);
+//        }
+        
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time <= ? AND rid = ? ORDER BY time DESC LIMIT 0,1", [NSNumber numberWithDouble:time.timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:recordID]];
         float lvalue = 0.f, rvalue = 0.f;
-        if ([result next])
+        BOOL hasLeft = NO, hasRight = NO;
+        if ([result next]) {
+            hasLeft = YES;
             lvalue = [result doubleForColumn:@"value"];
-        result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND rid = ? ORDER BY time ASC LIMIT 0,1", time, recordID];
-        if ([result next])
+            [result close];
+        }
+        result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND rid = ? ORDER BY time ASC LIMIT 0,1", [NSNumber numberWithDouble:time.timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:recordID]];
+        if ([result next]) {
+            hasRight = YES;
             rvalue = [result doubleForColumn:@"value"];
-        value = (lvalue + rvalue) / 2.0;
+            [result close];
+        }
+        if (hasRight && hasLeft)
+            value = (lvalue + rvalue) / 2.0;
+
     }];
     return value;
 }
@@ -68,9 +85,10 @@ static DLDataProvider *theProvider = nil;
     __block NSDate *date = nil;
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE id = ?", recordID];
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE id = ?", [NSNumber numberWithUnsignedInteger:recordID]];
         if ([result next])
             date = [result dateForColumn:@"starttime"];
+        [result close];
     }];
     return date;
 }
@@ -80,11 +98,43 @@ static DLDataProvider *theProvider = nil;
     __block NSDate *date = nil;
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE id = ?", recordID];
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE id = ?", [NSNumber numberWithUnsignedInteger:recordID]];
         if ([result next])
             date = [result dateForColumn:@"endtime"];
+        [result close];
     }];
     return date;
+}
+
+- (NSArray*)dataOfRangeStartDate:(NSDate *)start endDate:(NSDate *)end
+{
+    __block NSMutableArray *arr = [NSMutableArray array];
+    [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
+        db.shouldCacheStatements = YES;
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND (value > ? OR value < ?)", start, end, [NSNumber numberWithFloat:recordingStartThreshold], [NSNumber numberWithFloat:-recordingStartThreshold]];
+        while ([result next]) {
+            DLData *data = [DLData dataWithValue:[result doubleForColumn:@"value"]];
+            data.date = [result dateForColumn:@"time"];
+            [arr addObject:data];
+        }
+    }];
+    return [NSArray arrayWithArray:arr];
+}
+
+- (NSArray*)allRecords
+{
+    __block NSMutableArray *arr = [NSMutableArray array];
+    [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
+        db.shouldCacheStatements = YES;
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE 1"];
+        while ([result next]) {
+            DLRecord *record = [DLRecord recordWithId:[result intForColumn:@"id"]];
+            record.startTime = [result dateForColumn:@"starttime"];
+            record.endTime = [result dateForColumn:@"endtime"];
+            [arr addObject:record];
+        }
+    }];
+    return [NSArray arrayWithArray:arr];
 }
 
 @end
