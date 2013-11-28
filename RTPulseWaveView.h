@@ -32,11 +32,11 @@
     /* OpenGL names for the renderbuffer and framebuffers used to render to this view */
     GLuint viewRenderbuffer, viewFramebuffer;
     
-    GLuint msaaRenderbuffer, msaaDepthbuffer, msaaFramebuffer;
+    //GLuint msaaRenderbuffer, msaaDepthbuffer, msaaFramebuffer;
     
     /* OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist) */
     GLuint depthRenderbuffer;
-	GLuint texture;
+	//GLuint texture;
     
     CGPoint lineVertices[MAX_CURVE_POINT_NO];
     

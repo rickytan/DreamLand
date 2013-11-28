@@ -169,7 +169,7 @@
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
             formatter.dateFormat = @"yyyyMMddHHmmss";
             NSString *file = [NSString stringWithFormat:@"%@.dat",[formatter stringFromDate:[NSDate date]]];
-            
+            [formatter release];
             fileSavePath = [doc stringByAppendingPathComponent:file];
         }
         

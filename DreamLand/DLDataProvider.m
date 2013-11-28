@@ -126,7 +126,7 @@ static DLDataProvider *theProvider = nil;
     __block NSMutableArray *arr = [NSMutableArray array];
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE 1"];
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Record WHERE 1 ORDER BY id DESC"];
         while ([result next]) {
             DLRecord *record = [DLRecord recordWithId:[result intForColumn:@"id"]];
             record.startTime = [result dateForColumn:@"starttime"];

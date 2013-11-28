@@ -52,8 +52,10 @@
 
 - (id)initWithDevice:(LEDDevice *)device
 {
-    [self init];
+    self = [self init];
+    if (self) {
     self.device = device;
+    }
     return self;
 }
 
@@ -174,6 +176,7 @@
                                        length:sizeof(command)];
     
     const unsigned char *result = data.bytes;
+    if (result) {
     NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
     if ((result[0] == 102) &&
         (result[10] == (unsigned char)-103))
@@ -203,6 +206,7 @@
         _flags.isPowerUpdated = 1;
         
         return YES;
+    }
     }
     return NO;
 }

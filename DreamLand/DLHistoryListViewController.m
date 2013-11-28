@@ -118,6 +118,12 @@ static NSString *searchPath = nil;
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    static NSDateFormatter *formatter = nil;
+    if (!formatter) {
+        formatter = [[NSDateFormatter alloc] init];
+        formatter.dateStyle = NSDateFormatterMediumStyle;
+        formatter.dateFormat = @"MM-dd HH:mm:ss";
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
@@ -127,7 +133,7 @@ static NSString *searchPath = nil;
     // Configure the cell...
     DLRecord *item = [self.fileArray objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"id: %u", item.recordId];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"开始:%@,结束:%@", item.startTime, item.endTime];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"开始:%@,结束:%@",[formatter stringFromDate:item.startTime], [formatter stringFromDate:item.endTime]];
     
     return cell;
 }

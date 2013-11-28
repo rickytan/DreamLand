@@ -105,9 +105,10 @@ const CGFloat recordingStartThreshold    = 0.12f;
     __block CGFloat v = value;
     
     @synchronized(self) {
+        __block NSDate *date = [[NSDate alloc] init];
         dispatch_async(_queue, ^{
             [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
-                [db executeUpdate:@"INSERT INTO Data (`value`,`time`,`rid`) VALUES (?, ?, ?)", [NSNumber numberWithFloat:v], [NSNumber numberWithDouble:[NSDate date].timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
+                [db executeUpdate:@"INSERT INTO Data (`value`,`time`,`rid`) VALUES (?, ?, ?)", [NSNumber numberWithFloat:v], [NSNumber numberWithDouble:[date autorelease].timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:self.record.recordId]];
             }];
         });
     }
@@ -141,6 +142,7 @@ const CGFloat recordingStartThreshold    = 0.12f;
     
     CGFloat absZ = fabsf(zValue);
     if (!self.shouldWrite && absZ > recordingStartThreshold) {
+        [self writeRecord:0.0];
         self.shouldWrite = YES;
         [self.timer invalidate];
         self.timer = nil;

@@ -574,6 +574,8 @@ shouldUpdateMinorAxisLabelsAtLocations:(NSSet *)locations
         newLabel.offset       = labelOffset;
         
         [newLabels addObject:newLabel];
+        [newLabel release];
+        [newLabelLayer release];
     }
     
     
@@ -629,6 +631,8 @@ shouldUpdateAxisLabelsAtLocations:(NSSet *)locations
         newLabel.rotation     = M_PI / 3;
         
         [newLabels addObject:newLabel];
+        [newLabel release];
+        [newLabelLayer release];
     }
     
     axis.axisLabels = newLabels;
