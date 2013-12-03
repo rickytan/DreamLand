@@ -150,20 +150,12 @@ const CGFloat recordingStartThreshold    = 0.05f;
     
     CGFloat absZ = fabsf(zValue);
     if (!self.shouldWrite && absZ > recordingStartThreshold) {
-        if (zValue > 0.0)
-            [self writeRecord:recordingStartThreshold + FLT_EPSILON];
-        else
-            [self writeRecord:-(recordingStartThreshold + FLT_EPSILON)];
+        [self writeRecord:0.0f];
         self.shouldWrite = YES;
         [self.timer invalidate];
         self.timer = nil;
     }
     else if (self.shouldWrite && absZ <= recordingStartThreshold) {
-        if (zValue > 0.0)
-            [self writeRecord:recordingStartThreshold + FLT_EPSILON];
-        else
-            [self writeRecord:-(recordingStartThreshold + FLT_EPSILON)];
-        
         if (!self.timer) {
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.8
                                                           target:self

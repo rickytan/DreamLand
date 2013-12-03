@@ -25,22 +25,22 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-//    [[CBCentralManager alloc] initWithDelegate:self
-//                                         queue:dispatch_get_main_queue()];
+    //    [[CBCentralManager alloc] initWithDelegate:self
+    //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
     
     /*
-    _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
-    if ([_controller connect]) {
-        if ([_controller updateDeviceInfo]) {
-            BOOL isOn = _controller.isOn;
-            BOOL isPuased = _controller.isPaused;
-            UIColor *color = _controller.color;
-            BOOL isConnected = _controller.isConnected;
-        }
-        _controller.on = NO;
-        _controller.color = [UIColor yellowColor];
-    }
+     _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
+     if ([_controller connect]) {
+     if ([_controller updateDeviceInfo]) {
+     BOOL isOn = _controller.isOn;
+     BOOL isPuased = _controller.isPaused;
+     UIColor *color = _controller.color;
+     BOOL isConnected = _controller.isConnected;
+     }
+     _controller.on = NO;
+     _controller.color = [UIColor yellowColor];
+     }
      */
     
     return YES;
@@ -54,13 +54,23 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    if ([UIDevice currentDevice].isMultitaskingSupported) {
+        __block UIApplication *weakApp = application;
+        self.taskIdentifier = [application beginBackgroundTaskWithExpirationHandler:^{
+            if (self.taskIdentifier != UIBackgroundTaskInvalid)
+                [weakApp endBackgroundTask:self.taskIdentifier];
+        }];
+        NSLog(@"Time remaining: %f", application.backgroundTimeRemaining);
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    if (self.taskIdentifier != UIBackgroundTaskInvalid)
+        [application endBackgroundTask:self.taskIdentifier];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

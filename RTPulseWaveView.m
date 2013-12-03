@@ -85,10 +85,20 @@
     self.displayLink.frameInterval = 1.0;
     [self.displayLink addToRunLoop:self.updateLoop
                            forMode:NSDefaultRunLoopMode];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [self.displayLink invalidate];
     [self.displayLink removeFromRunLoop:self.updateLoop
                                 forMode:NSDefaultRunLoopMode];
@@ -117,6 +127,15 @@
     return self;
 }
 
+- (void)applicationDidEnterBackground:(NSNotification*)notification
+{
+    self.displayLink.paused = YES;
+}
+
+- (void)applicationWillEnterForeground:(NSNotification*)notification
+{
+    self.displayLink.paused = NO;
+}
 
 - (void)render
 {

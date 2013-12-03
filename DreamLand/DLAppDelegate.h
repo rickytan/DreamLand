@@ -11,6 +11,6 @@
 
 @interface DLAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) UIWindow                   * window;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier   taskIdentifier;
 @end
