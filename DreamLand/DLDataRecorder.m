@@ -28,7 +28,7 @@ static DLDataRecorder * theRecorder = nil;
 @end
 
 const CGFloat smoothRatio                = 0.6f;
-const CGFloat recordingStartThreshold    = 0.12f;
+const CGFloat recordingStartThreshold    = 0.05f;
 
 @implementation DLDataRecorder
 @synthesize currentX = xValue, currentY = yValue, currentZ = zValue;
@@ -135,21 +135,37 @@ const CGFloat recordingStartThreshold    = 0.12f;
 
 - (void)update:(NSTimer*)timer
 {
+#if !TARGET_IPHONE_SIMULATOR
     CMAcceleration acce = self.motionManager.deviceMotion.userAcceleration;
     xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
     yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
     zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
+#else
+    static NSTimeInterval t = 0.0;
+    xValue = 0.0f;
+    yValue = 0.0f;
+    zValue = (0.8 * sin(20 * t) + 0.2 * cos(40 * t) + 0.1 * sin(50 * t)) * exp(cos(5 * t)) / M_E;
+    t += timer.timeInterval;
+#endif
     
     CGFloat absZ = fabsf(zValue);
     if (!self.shouldWrite && absZ > recordingStartThreshold) {
-        [self writeRecord:0.0];
+        if (zValue > 0.0)
+            [self writeRecord:recordingStartThreshold + FLT_EPSILON];
+        else
+            [self writeRecord:-(recordingStartThreshold + FLT_EPSILON)];
         self.shouldWrite = YES;
         [self.timer invalidate];
         self.timer = nil;
     }
     else if (self.shouldWrite && absZ <= recordingStartThreshold) {
+        if (zValue > 0.0)
+            [self writeRecord:recordingStartThreshold + FLT_EPSILON];
+        else
+            [self writeRecord:-(recordingStartThreshold + FLT_EPSILON)];
+        
         if (!self.timer) {
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:1.5
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.8
                                                           target:self
                                                         selector:@selector(setShouldntWrite)
                                                         userInfo:nil

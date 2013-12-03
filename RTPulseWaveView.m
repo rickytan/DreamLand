@@ -50,8 +50,6 @@
     
     // Enable use of the texture
     glEnable(GL_TEXTURE_2D);
-    // Set a blending function to use
-    glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     // Enable blending
     glEnable(GL_BLEND);
     
@@ -173,7 +171,6 @@
 	glDrawArrays(GL_POINTS, MAX_CURVE_POINT_NO-1, 1);
     
 	glTranslatef(0, 0, .01);
-     
 	
 	glLineWidth(5.0 * self.contentScaleFactor);
 	glPointSize(5.0 * self.contentScaleFactor);

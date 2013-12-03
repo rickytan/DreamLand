@@ -115,7 +115,8 @@ RTPulseWaveViewDatasource>
     [self initGraph];
     self.state = DLViewStateNormal;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        /*
         NSUInteger lastRecord = [DLDataRecorder sharedRecorder].lastestRecordID;
         NSDate *start = [[DLDataProvider sharedProvider] startTimeOfRecord:lastRecord];
         NSDate *end = [[DLDataProvider sharedProvider] endTimeOfRecord:lastRecord];
@@ -129,6 +130,7 @@ RTPulseWaveViewDatasource>
         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
                                                         length:CPTDecimalFromDouble(len)];
         //[graph reloadData];
+         */
         self.recordID = [DLDataRecorder sharedRecorder].lastestRecordID;
         [self viewDataOfRecordID:self.recordID];
     });

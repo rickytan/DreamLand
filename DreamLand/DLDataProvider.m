@@ -54,10 +54,10 @@ static DLDataProvider *theProvider = nil;
 {
     __block float value = 0.f;
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
-//        FMResultSet *r = [db executeQuery:@"select * from Data where rid = ?", [NSNumber numberWithUnsignedInteger:recordID]];
-//        while ([r next]) {
-//            NSLog(@"%f %@", [r doubleForColumn:@"value"], [NSDate dateWithTimeIntervalSince1970:[r doubleForColumn:@"time"]]);
-//        }
+        //        FMResultSet *r = [db executeQuery:@"select * from Data where rid = ?", [NSNumber numberWithUnsignedInteger:recordID]];
+        //        while ([r next]) {
+        //            NSLog(@"%f %@", [r doubleForColumn:@"value"], [NSDate dateWithTimeIntervalSince1970:[r doubleForColumn:@"time"]]);
+        //        }
         
         FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time <= ? AND rid = ? ORDER BY time DESC LIMIT 0,1", [NSNumber numberWithDouble:time.timeIntervalSince1970], [NSNumber numberWithUnsignedInteger:recordID]];
         float lvalue = 0.f, rvalue = 0.f;
@@ -75,7 +75,7 @@ static DLDataProvider *theProvider = nil;
         }
         if (hasRight && hasLeft)
             value = (lvalue + rvalue) / 2.0;
-
+        
     }];
     return value;
 }
@@ -108,16 +108,23 @@ static DLDataProvider *theProvider = nil;
 
 - (NSArray*)dataOfRangeStartDate:(NSDate *)start endDate:(NSDate *)end
 {
-    __block NSMutableArray *arr = [NSMutableArray array];
+    DLData *data = [DLData dataWithValue:0.0];
+    data.date = start;
+    __block NSMutableArray *arr = [NSMutableArray arrayWithObject:data];
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND (value > ? OR value < ?)", start, end, [NSNumber numberWithFloat:recordingStartThreshold], [NSNumber numberWithFloat:-recordingStartThreshold]];
+        //FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND (value > ? OR value < ?)", start, end, [NSNumber numberWithFloat:recordingStartThreshold], [NSNumber numberWithFloat:-recordingStartThreshold]];
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ?", start, end];
         while ([result next]) {
             DLData *data = [DLData dataWithValue:[result doubleForColumn:@"value"]];
             data.date = [result dateForColumn:@"time"];
             [arr addObject:data];
         }
     }];
+    data = [DLData dataWithValue:0.0];
+    data.date = end;
+    [arr addObject:data];
+    
     return [NSArray arrayWithArray:arr];
 }
 

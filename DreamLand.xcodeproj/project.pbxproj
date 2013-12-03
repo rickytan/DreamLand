@@ -348,6 +348,11 @@
 				CLASSPREFIX = DL;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = ricky;
+				TargetAttributes = {
+					9CBD2CA8173F4464001FFAE0 = {
+						DevelopmentTeam = JM9WSY7Q38;
+					};
+				};
 			};
 			buildConfigurationList = 9CBD2CA4173F4464001FFAE0 /* Build configuration list for PBXProject "DreamLand" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -496,8 +501,8 @@
 		9CBD2CCD173F4464001FFAE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -521,8 +526,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "DD2453B0-ECAD-4CE4-B0E2-63075E45940C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD2453B0-ECAD-4CE4-B0E2-63075E45940C";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
