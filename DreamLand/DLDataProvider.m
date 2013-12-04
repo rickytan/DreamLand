@@ -106,7 +106,7 @@ static DLDataProvider *theProvider = nil;
     return date;
 }
 
-- (NSArray*)dataOfRangeStartDate:(NSDate *)start endDate:(NSDate *)end
+- (NSArray*)dataOfRecord:(NSUInteger)recordID inRangeStartDate:(NSDate *)start endDate:(NSDate *)end
 {
     DLData *data = [DLData dataWithValue:0.0];
     data.date = start;
@@ -114,7 +114,7 @@ static DLDataProvider *theProvider = nil;
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
         //FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND (value > ? OR value < ?)", start, end, [NSNumber numberWithFloat:recordingStartThreshold], [NSNumber numberWithFloat:-recordingStartThreshold]];
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ?", start, end];
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND rid = ?", start, end, [NSNumber numberWithUnsignedInteger:recordID]];
         while ([result next]) {
             DLData *data = [DLData dataWithValue:[result doubleForColumn:@"value"]];
             data.date = [result dateForColumn:@"time"];

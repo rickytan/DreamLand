@@ -27,6 +27,7 @@
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
 		9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */; };
+		9C9D5F05184F4396006D01BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9D5F04184F4396006D01BC /* AVFoundation.framework */; };
 		9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8817A2AA4E00037063 /* LEDDevice.m */; };
 		9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */; };
 		9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8E17A2AAA700037063 /* LEDController.m */; };
@@ -80,6 +81,7 @@
 		9C5C79C0175788CA0066D960 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
 		9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
+		9C9D5F04184F4396006D01BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9CA0DF8717A2AA4E00037063 /* LEDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDevice.h; sourceTree = "<group>"; };
 		9CA0DF8817A2AA4E00037063 /* LEDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDDevice.m; sourceTree = "<group>"; };
 		9CA0DF8A17A2AA7B00037063 /* LEDFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDFinder.h; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9D5F05184F4396006D01BC /* AVFoundation.framework in Frameworks */,
 				9C5B760F18366F1C00943394 /* libsqlite3.0.dylib in Frameworks */,
 				9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */,
 				9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */,
@@ -215,6 +218,7 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C9D5F04184F4396006D01BC /* AVFoundation.framework */,
 				9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */,
 				9C4824BE17462FF6002D06E8 /* CoreMotion.framework */,
 				9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */,
@@ -531,8 +535,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DD2453B0-ECAD-4CE4-B0E2-63075E45940C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "DD2453B0-ECAD-4CE4-B0E2-63075E45940C";
+				PROVISIONING_PROFILE = "979CFD42-3C46-40D7-821A-8DCEEF1B5BB0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "979CFD42-3C46-40D7-821A-8DCEEF1B5BB0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

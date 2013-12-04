@@ -8,6 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class LEDDevice;
+@class LEDFinder;
+
+@protocol LEDFinderDelegate <NSObject>
+@optional
+- (void)finderDidFindDevice:(LEDDevice *)device;
+- (void)finderDidUpdateDeviceInfo:(LEDDevice *)device;
+
+@end
+
 @interface LEDFinder : NSObject
+@property (nonatomic, assign) id<LEDFinderDelegate> delegate;
+@property (nonatomic, readonly, getter = isScanning) BOOL scanning;
+@property (nonatomic, readonly) NSUInteger numberOfCurrentFoundDevices;
+
+- (void)startScanWithDelegate:(id<LEDFinderDelegate>)delegate;
+- (void)stopScan;
 
 @end

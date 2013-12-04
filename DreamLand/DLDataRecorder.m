@@ -10,15 +10,19 @@
 #import "DLRecord.h"
 #import "DLDatabase.h"
 #import <CoreMotion/CoreMotion.h>
+#import <AVFoundation/AVFoundation.h>
 
 static DLDataRecorder * theRecorder = nil;
 
 @interface DLDataRecorder ()
-@property (nonatomic, retain) CMMotionManager *motionManager;
-@property (nonatomic, retain) NSTimer *timer;
-@property (nonatomic, retain) NSTimer *updateTimer;
-@property (nonatomic, assign) BOOL shouldWrite;
-@property (nonatomic, retain) DLRecord *record;
+{
+    AVAudioRecorder             * _recorder;
+}
+@property (nonatomic, retain) CMMotionManager * motionManager;
+@property (nonatomic, retain) NSTimer         * timer;
+@property (nonatomic, retain) NSTimer         * updateTimer;
+@property (nonatomic, assign) BOOL              shouldWrite;
+@property (nonatomic, retain) DLRecord        * record;
 
 - (void)writeRecord:(CGFloat)value;
 
@@ -47,7 +51,13 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
     [_motionManager release];
+    if (_recorder.isRecording)
+        [_recorder stop];
+    [_recorder deleteRecording];
+    [_recorder release];
     
     [super dealloc];
 }
@@ -71,6 +81,21 @@ const CGFloat recordingStartThreshold    = 0.05f;
             self.motionManager = nil;
         }
 #endif
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryRecord
+                                               error: nil];
+        
+        NSURL *url = [NSURL URLWithString:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+        _recorder = [[AVAudioRecorder alloc] initWithURL:url
+                                                settings:@{AVSampleRateKey: [NSNumber numberWithFloat:22050.0],
+                                                           AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatAppleLossless],
+                                                           AVNumberOfChannelsKey: [NSNumber numberWithInt:1]}
+                                                   error:nil];
+        [_recorder prepareToRecord];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onEnterBackground:)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -87,8 +112,18 @@ const CGFloat recordingStartThreshold    = 0.05f;
     return rtnval;
 }
 
+- (void)onEnterBackground:(NSNotification*)notification
+{
+    if (self.isRecording) {
+
+        [_recorder record];
+    }
+}
+
 - (void)doRecord
 {
+    //NSLog(@"Time remaining: %lf", [UIApplication sharedApplication].backgroundTimeRemaining);
+    
     if (self.shouldWrite)
         [self writeRecord:zValue];
 }
@@ -135,7 +170,6 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)update:(NSTimer*)timer
 {
-    NSLog(@"Interval: %lf", timer.timeInterval);
     
 #if !TARGET_IPHONE_SIMULATOR
     CMAcceleration acce = self.motionManager.deviceMotion.userAcceleration;
@@ -190,7 +224,7 @@ const CGFloat recordingStartThreshold    = 0.05f;
 {
     self.record = [DLRecord recordWithId:[self lastestRecordID] + 1];
     [self.record start];
-
+    
     [self.motionManager startDeviceMotionUpdates];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60
                                                         target:self
@@ -239,6 +273,10 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)stop
 {
+    if (_recorder.isRecording) {
+        [_recorder stop];
+    }
+    
     [self.updateTimer invalidate];
     self.updateTimer = nil;
     [self.motionManager stopDeviceMotionUpdates];

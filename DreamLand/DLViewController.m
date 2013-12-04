@@ -117,19 +117,19 @@ RTPulseWaveViewDatasource>
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         /*
-        NSUInteger lastRecord = [DLDataRecorder sharedRecorder].lastestRecordID;
-        NSDate *start = [[DLDataProvider sharedProvider] startTimeOfRecord:lastRecord];
-        NSDate *end = [[DLDataProvider sharedProvider] endTimeOfRecord:lastRecord];
-        
-        double min = start.timeIntervalSince1970;
-        double max = end.timeIntervalSince1970;
-        
-        double len = MIN(max - min, 1200);
-        
-        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
-                                                        length:CPTDecimalFromDouble(len)];
-        //[graph reloadData];
+         NSUInteger lastRecord = [DLDataRecorder sharedRecorder].lastestRecordID;
+         NSDate *start = [[DLDataProvider sharedProvider] startTimeOfRecord:lastRecord];
+         NSDate *end = [[DLDataProvider sharedProvider] endTimeOfRecord:lastRecord];
+         
+         double min = start.timeIntervalSince1970;
+         double max = end.timeIntervalSince1970;
+         
+         double len = MIN(max - min, 1200);
+         
+         CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+         plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(min)
+         length:CPTDecimalFromDouble(len)];
+         //[graph reloadData];
          */
         self.recordID = [DLDataRecorder sharedRecorder].lastestRecordID;
         [self viewDataOfRecordID:self.recordID];
@@ -441,8 +441,8 @@ RTPulseWaveViewDatasource>
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         CPTPlotRange *range = ((CPTXYPlotSpace*)graph.defaultPlotSpace).xRange;
-        self.dataArray = [[DLDataProvider sharedProvider] dataOfRangeStartDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble]
-                                                                       endDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble + range.lengthDouble]];
+        self.dataArray = [[DLDataProvider sharedProvider] dataOfRecord:self.recordID inRangeStartDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble]
+                                                               endDate:[NSDate dateWithTimeIntervalSince1970:range.locationDouble + range.lengthDouble]];
         dispatch_async(dispatch_get_main_queue(), ^{
             [graph reloadData];
             [SVProgressHUD dismiss];
@@ -513,16 +513,16 @@ RTPulseWaveViewDatasource>
     else
         return ((DLData*)self.dataArray[index]).value;
     /*
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)plot.plotSpace;
-    double time = plotSpace.xRange.locationDouble + plotSpace.xRange.lengthDouble * index / DATA_SAMPLES;
-    if (fieldEnum == CPTScatterPlotFieldX)
-        return [NSNumber numberWithDouble:time];
-    else {
-        if (self.recordID == 0)
-            return [NSNumber numberWithDouble:0.0];
-        return [NSNumber numberWithFloat:[[DLDataProvider sharedProvider] valueForTime:[NSDate dateWithTimeIntervalSince1970:time]
-                                                                              ofRecord:self.recordID]];
-    }
+     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)plot.plotSpace;
+     double time = plotSpace.xRange.locationDouble + plotSpace.xRange.lengthDouble * index / DATA_SAMPLES;
+     if (fieldEnum == CPTScatterPlotFieldX)
+     return [NSNumber numberWithDouble:time];
+     else {
+     if (self.recordID == 0)
+     return [NSNumber numberWithDouble:0.0];
+     return [NSNumber numberWithFloat:[[DLDataProvider sharedProvider] valueForTime:[NSDate dateWithTimeIntervalSince1970:time]
+     ofRecord:self.recordID]];
+     }
      */
 }
 

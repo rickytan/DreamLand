@@ -9,6 +9,7 @@
 #import "DLAppDelegate.h"
 #import "LEDDevice.h"
 #import "LEDController.h"
+#import "DLDataRecorder.h"
 
 @implementation DLAppDelegate
 {
@@ -63,7 +64,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
                 [weakApp endBackgroundTask:self.taskIdentifier];
         }];
         NSLog(@"Time remaining: %f", application.backgroundTimeRemaining);
+
     }
+/*
+    [application setKeepAliveTimeout:10*60
+                             handler:^{
+                                 NSLog(@"handler");
+                                 self.taskIdentifier = UIBackgroundTaskInvalid;
+                             }];
+ */
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -71,6 +80,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     if (self.taskIdentifier != UIBackgroundTaskInvalid)
         [application endBackgroundTask:self.taskIdentifier];
+    [application clearKeepAliveTimeout];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

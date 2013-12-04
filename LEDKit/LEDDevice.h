@@ -10,18 +10,13 @@
 
 #define DEFAULT_DEVICE_PORT        5577
 
-typedef enum {
+typedef NS_ENUM(NSInteger, LEDDeviceType)
+{
     LEDDeviceTypeRGB,
     LEDDeviceTypeLuminance,
-} LEDDeviceType;
+};
 
 @interface LEDDevice : NSObject
-
-- (id)initWithIP:(NSString*)IP;
-- (id)initWithIP:(NSString *)IP
-            port:(NSUInteger)port;
-- (id)initWithIP:(NSString *)IP port:(NSUInteger)port name:(NSString*)name;
-
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSString *address;
 @property (nonatomic, assign) NSUInteger port;
@@ -30,5 +25,12 @@ typedef enum {
 + (id)deviceWithIP:(NSString*)IP;
 + (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port;
 + (id)deviceWithIP:(NSString *)IP port:(NSUInteger)port name:(NSString*)name;
+
+- (id)initWithIP:(NSString*)IP;
+- (id)initWithIP:(NSString *)IP
+            port:(NSUInteger)port;
+- (id)initWithIP:(NSString *)IP
+            port:(NSUInteger)port
+            name:(NSString*)name;
 
 @end

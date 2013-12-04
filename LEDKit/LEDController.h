@@ -15,6 +15,15 @@ typedef void (^LEDControllerCallback)(BOOL success);
 
 @interface LEDController : NSObject
 
+@property (nonatomic, retain)                    LEDDevice * device;
+@property (nonatomic, assign, readonly)          BOOL        isConnected;
+@property (nonatomic, retain, readwrite)         UIColor   * color;
+@property (nonatomic, assign)                    NSInteger   mode;
+@property (nonatomic, assign)                    NSInteger   speed;
+@property (nonatomic, assign)                    NSInteger   luminance;
+@property (nonatomic, assign, getter = isOn)     BOOL        on;
+@property (nonatomic, assign, getter = isPaused) BOOL        pause;
+
 - (id)initWithDevice:(LEDDevice*)device;
 
 - (BOOL)connect;
@@ -30,12 +39,4 @@ typedef void (^LEDControllerCallback)(BOOL success);
 - (void)setPause:(BOOL)pause withBlock:(LEDControllerCallback)callback;
 - (void)setLuminance:(NSInteger)luminance withBlock:(LEDControllerCallback)callback;
 
-@property (nonatomic, retain) LEDDevice *device;
-@property (nonatomic, assign, readonly) BOOL isConnected;
-@property (nonatomic, retain, readwrite) UIColor *color;
-@property (nonatomic, assign) NSInteger mode;
-@property (nonatomic, assign) NSInteger speed;
-@property (nonatomic, assign) NSInteger luminance;
-@property (nonatomic, assign, getter = isOn) BOOL on;
-@property (nonatomic, assign, getter = isPaused) BOOL pause;
 @end

@@ -54,7 +54,7 @@
 {
     self = [self init];
     if (self) {
-    self.device = device;
+        self.device = device;
     }
     return self;
 }
@@ -66,8 +66,8 @@
         return NO;
     
     struct sockaddr_in *address = (struct sockaddr_in*)&_address;
-    address->sin_family = AF_INET;
-    address->sin_port = htons(self.device.port);
+    address->sin_family      = AF_INET;
+    address->sin_port        = htons(self.device.port);
     address->sin_addr.s_addr = inet_addr([self.device.address UTF8String]);
     
     /*
@@ -177,36 +177,36 @@
     
     const unsigned char *result = data.bytes;
     if (result) {
-    NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
-    if ((result[0] == 102) &&
-        (result[10] == (unsigned char)-103))
-    {
-        _on = result[2] == 35;
-        _mode = (-36 + result[3]);
-        _pause = result[4] == 32;
-        _speed = result[5];
-        
-        CGFloat comp[4] = {
-            1.0 * result[6] / 255,
-            1.0 * result[7] / 255,
-            1.0 * result[8] / 255,
-            1.0
-        };
-        
-        [_color release];
-        _color = [[UIColor colorWithRed:comp[0]
-                                  green:comp[1]
-                                   blue:comp[2]
-                                  alpha:comp[3]] retain];
-        _flags.isColorUpdated = 1;
-        _flags.isLuminanceUpdated = 1;
-        _flags.isModeUpdated = 1;
-        _flags.isSpeedUpdated = 1;
-        _flags.isPauseUpdated = 1;
-        _flags.isPowerUpdated = 1;
-        
-        return YES;
-    }
+        NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
+        if ((result[0] == 102) &&
+            (result[10] == (unsigned char)-103))
+        {
+            _on    = result[2] == 35;
+            _mode  = (-36 + result[3]);
+            _pause = result[4] == 32;
+            _speed = result[5];
+            
+            CGFloat comp[4] = {
+                1.0 * result[6] / 255,
+                1.0 * result[7] / 255,
+                1.0 * result[8] / 255,
+                1.0
+            };
+            
+            [_color release];
+            _color = [[UIColor colorWithRed:comp[0]
+                                      green:comp[1]
+                                       blue:comp[2]
+                                      alpha:comp[3]] retain];
+            _flags.isColorUpdated = 1;
+            _flags.isLuminanceUpdated = 1;
+            _flags.isModeUpdated = 1;
+            _flags.isSpeedUpdated = 1;
+            _flags.isPauseUpdated = 1;
+            _flags.isPowerUpdated = 1;
+            
+            return YES;
+        }
     }
     return NO;
 }
@@ -216,7 +216,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         __block BOOL success = [self updateDeviceInfo];
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(success);
+            if (callback)
+                callback(success);
         });
     });
 }
@@ -227,16 +228,16 @@
 {
     if (_color != color) {
         [_color release];
-        _color = [color retain];
+        _color                = [color retain];
         _flags.isColorUpdated = 1;
         
-        const CGFloat * comp = CGColorGetComponents(_color.CGColor);
+        const CGFloat * comp  = CGColorGetComponents(_color.CGColor);
         unsigned char data[5] = {0};
-        data[0] = 86;
-        data[1] = (char)(comp[0] * 255);
-        data[2] = (char)(comp[1] * 255);
-        data[3] = (char)(comp[2] * 255);
-        data[4] = -86;
+        data[0]               = 86;
+        data[1]               = (char)(comp[0] * 255);
+        data[2]               = (char)(comp[1] * 255);
+        data[3]               = (char)(comp[2] * 255);
+        data[4]               = -86;
         
         [self sendCommand:data
                    length:sizeof(data)];
@@ -248,7 +249,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.color = color;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback)
+                callback(YES);
         });
     });
 }
@@ -274,7 +276,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.luminance = luminance;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback)
+                callback(YES);
         });
     });
 }
@@ -294,7 +297,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.mode = mode;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback)
+                callback(YES);
         });
     });
 }
@@ -320,7 +324,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.speed = speed;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback)
+                callback(YES);
         });
     });
 }
@@ -346,7 +351,8 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.on = on;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback)
+                callback(YES);
         });
     });
 }
@@ -365,7 +371,9 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         self.pause = pause;
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback(YES);
+            if (callback) {
+                callback(YES);
+            }
         });
     });
 }

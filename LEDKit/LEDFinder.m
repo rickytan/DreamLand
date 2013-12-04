@@ -7,7 +7,22 @@
 //
 
 #import "LEDFinder.h"
+#import "LEDDevice.h"
+
+@interface LEDFinder ()
+
+@end
 
 @implementation LEDFinder
+
+- (void)startScanWithDelegate:(id<LEDFinderDelegate>)delegate
+{
+    
+}
+
+- (void)stopScan
+{
+    
+}
 
 @end
