@@ -27,7 +27,7 @@ static DLDataRecorder * theRecorder = nil;
 
 @end
 
-const CGFloat smoothRatio                = 0.6f;
+static const CGFloat smoothRatio                = 0.6f;
 const CGFloat recordingStartThreshold    = 0.05f;
 
 @implementation DLDataRecorder
@@ -135,6 +135,8 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)update:(NSTimer*)timer
 {
+    NSLog(@"Interval: %lf", timer.timeInterval);
+    
 #if !TARGET_IPHONE_SIMULATOR
     CMAcceleration acce = self.motionManager.deviceMotion.userAcceleration;
     xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
@@ -188,7 +190,7 @@ const CGFloat recordingStartThreshold    = 0.05f;
 {
     self.record = [DLRecord recordWithId:[self lastestRecordID] + 1];
     [self.record start];
-    
+
     [self.motionManager startDeviceMotionUpdates];
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 / 60
                                                         target:self

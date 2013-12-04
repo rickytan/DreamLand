@@ -12,7 +12,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-#define MAX_CURVE_POINT_NO 120
+#define MAX_CURVE_POINT_NO 160
 
 @class RTPulseWaveView;
 
