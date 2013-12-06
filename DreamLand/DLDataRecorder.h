@@ -12,7 +12,7 @@ extern const CGFloat recordingStartThreshold;
 
 
 @interface DLDataRecorder : NSObject
-@property (nonatomic, readonly) CGFloat currentX, currentY, currentZ;
+@property (nonatomic, readonly) CGFloat currentZ, deltaZ;
 @property (nonatomic, readonly, getter = isRecording) BOOL recording;
 
 + (instancetype)sharedRecorder;

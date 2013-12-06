@@ -210,14 +210,11 @@
     glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
     [self.context presentRenderbuffer:GL_RENDERBUFFER_OES];
 	
-    static double lastValue = 0.0;
     if (self.dataSource && !self.displayLink.isPaused) {
-        double value = [self.dataSource pulseWaveView:self
+        self.value = [self.dataSource pulseWaveView:self
                                         valueOfTime:self.displayLink.timestamp];
-        self.value = (value - lastValue) / self.displayLink.duration;
-        self.value = MIN(MAX(self.value, -1), 1);
-        lastValue = value;
     }
+
 	curve[curveStart] = self.value;
 	curveStart = (curveStart + 1) % MAX_CURVE_POINT_NO;
     curve[curveStart] = 0.0;

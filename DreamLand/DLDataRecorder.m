@@ -31,11 +31,11 @@ static DLDataRecorder * theRecorder = nil;
 
 @end
 
-static const CGFloat smoothRatio                = 0.6f;
-const CGFloat recordingStartThreshold    = 0.05f;
+static const CGFloat smoothRatio      = 0.56f;
+const CGFloat recordingStartThreshold = 0.28f;
 
 @implementation DLDataRecorder
-@synthesize currentX = xValue, currentY = yValue, currentZ = zValue;
+@synthesize currentZ = zValue, deltaZ = deltaZ;
 @synthesize shouldWrite = _shouldWrite;
 
 + (instancetype)sharedRecorder
@@ -122,10 +122,8 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)doRecord
 {
-    //NSLog(@"Time remaining: %lf", [UIApplication sharedApplication].backgroundTimeRemaining);
-    
     if (self.shouldWrite)
-        [self writeRecord:zValue];
+        [self writeRecord:deltaZ];
 }
 
 - (void)writeRecord:(CGFloat)value
@@ -165,26 +163,27 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)setShouldntWrite
 {
+    [self writeRecord:0.0];
     self.shouldWrite = NO;
 }
 
 - (void)update:(NSTimer*)timer
 {
-    
 #if !TARGET_IPHONE_SIMULATOR
     CMAcceleration acce = self.motionManager.deviceMotion.userAcceleration;
-    xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
-    yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
     zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
 #else
     static NSTimeInterval t = 0.0;
-    xValue = 0.0f;
-    yValue = 0.0f;
     zValue = (0.8 * sin(20 * t) + 0.2 * cos(40 * t) + 0.1 * sin(50 * t)) * exp(cos(5 * t)) / M_E;
     t += timer.timeInterval;
 #endif
+    static CGFloat lastValue = 0.0;
     
-    CGFloat absZ = fabsf(zValue);
+    deltaZ        = (zValue - lastValue) / timer.timeInterval;
+    deltaZ        = MIN(MAX(deltaZ, -1.5), 1.5);
+    lastValue     = zValue;
+    
+    CGFloat absZ = fabsf(deltaZ);
     if (!self.shouldWrite && absZ > recordingStartThreshold) {
         [self writeRecord:0.0f];
         self.shouldWrite = YES;
@@ -193,7 +192,7 @@ const CGFloat recordingStartThreshold    = 0.05f;
     }
     else if (self.shouldWrite && absZ <= recordingStartThreshold) {
         if (!self.timer) {
-            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.8
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                           target:self
                                                         selector:@selector(setShouldntWrite)
                                                         userInfo:nil
@@ -210,7 +209,7 @@ const CGFloat recordingStartThreshold    = 0.05f;
 
 - (void)reset
 {
-    xValue = yValue = zValue = 0.0f;
+    deltaZ = zValue = 0.0f;
     self.shouldWrite = NO;
     [self.timer invalidate];
     self.timer = nil;
@@ -231,39 +230,6 @@ const CGFloat recordingStartThreshold    = 0.05f;
                                                       selector:@selector(update:)
                                                       userInfo:nil
                                                        repeats:YES];
-    /*
-     [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
-     withHandler:^(CMDeviceMotion *d, NSError *e) {
-     if (!e) {
-     CMAcceleration acce = d.userAcceleration;
-     xValue = smoothRatio * acce.x + (1.0 - smoothRatio) * xValue;
-     yValue = smoothRatio * acce.y + (1.0 - smoothRatio) * yValue;
-     zValue = smoothRatio * acce.z + (1.0 - smoothRatio) * zValue;
-     
-     CGFloat absZ = fabsf(zValue);
-     if (!self.shouldWrite && absZ > recordingStartThreshold) {
-     self.shouldWrite = YES;
-     [self.timer invalidate];
-     self.timer = nil;
-     }
-     else if (self.shouldWrite && absZ <= recordingStartThreshold) {
-     if (!self.timer) {
-     self.timer = [NSTimer scheduledTimerWithTimeInterval:3.0
-     target:self
-     selector:@selector(setShouldntWrite)
-     userInfo:nil
-     repeats:NO];
-     }
-     }
-     else if (absZ > recordingStartThreshold) {
-     [self.timer invalidate];
-     self.timer = nil;
-     }
-     
-     [self doRecord];
-     }
-     }];
-     */
 }
 
 - (BOOL)isRecording
@@ -280,6 +246,10 @@ const CGFloat recordingStartThreshold    = 0.05f;
     [self.updateTimer invalidate];
     self.updateTimer = nil;
     [self.motionManager stopDeviceMotionUpdates];
+    
+    // 补一个 0
+    [self writeRecord:0.0];
+    
     [self.record end];
     [self.timer invalidate];
     self.timer = nil;

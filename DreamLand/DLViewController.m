@@ -455,7 +455,8 @@ RTPulseWaveViewDatasource>
 - (double)pulseWaveView:(RTPulseWaveView *)waveview
             valueOfTime:(NSTimeInterval)time
 {
-    return [DLDataRecorder sharedRecorder].currentZ;
+    CGFloat value = [DLDataRecorder sharedRecorder].deltaZ;
+    return value;
 }
 
 #pragma mark - Space Delegate
