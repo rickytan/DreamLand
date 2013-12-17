@@ -24,14 +24,17 @@
 {
     self = [super init];
     if (self) {
-        AudioServicesCreateSystemSoundID((CFURLRef)fileURL, &soundID);
+        OSStatus status = AudioServicesCreateSystemSoundID((CFURLRef)fileURL, &soundID);
+        if (status != kAudioServicesNoError) {
+            NSLog(@"Create Error! %ld", status);
+        }
     }
     return self;
 }
 
 - (void)play
 {
-    AudioServicesPlaySystemSound(soundID);
+    AudioServicesPlayAlertSound(soundID);
 }
 
 @end

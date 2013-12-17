@@ -100,7 +100,7 @@ RTPulseWaveViewDatasource>
     
     smoothRatio = 0.6;
     self.pulseView.paused = YES;
-    self.slider.value = recordingStartThreshold;
+    self.slider.value = recordingStartDeltaThreshold;
     
 #if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
     [[BTStackManager sharedInstance] setDelegate:self];
@@ -232,7 +232,7 @@ RTPulseWaveViewDatasource>
 
 - (IBAction)onThreshold:(id)sender
 {
-    recordingStartThreshold = self.slider.value;
+    recordingStartDeltaThreshold = self.slider.value;
 }
 
 #pragma mark - Methods
@@ -380,7 +380,7 @@ RTPulseWaveViewDatasource>
     boundLinePlot.dataLineStyle     = lineStyle;
     boundLinePlot.identifier        = @"Blue Plot";
     boundLinePlot.dataSource        = self;
-    boundLinePlot.interpolation     = CPTScatterPlotInterpolationCurved;
+    //boundLinePlot.interpolation     = CPTScatterPlotInterpolationCurved;
     boundLinePlot.delegate          = self;
     [graph addPlot:boundLinePlot];
     [boundLinePlot release];
@@ -556,7 +556,7 @@ RTPulseWaveViewDatasource>
         if (fieldEnum == CPTScatterPlotFieldX)
             return @[[NSNumber numberWithDouble:-DBL_MAX], [NSNumber numberWithDouble:DBL_MAX]][index];
         else
-            return @(recordingStartThreshold);
+            return @(recordingStartDeltaThreshold);
     }
     //NSLog(@"Start Date:%@", [NSDate dateWithTimeIntervalSince1970:((CPTXYPlotSpace*)plot.plotSpace).xRange.locationDouble]);
     if (fieldEnum == CPTScatterPlotFieldX)

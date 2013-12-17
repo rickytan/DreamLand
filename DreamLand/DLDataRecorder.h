@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-extern CGFloat recordingStartThreshold;
-
+extern CGFloat recordingStartDeltaThreshold;
+extern CGFloat recordingStartValueThreshold;
 
 @interface DLDataRecorder : NSObject
 @property (nonatomic, readonly) CGFloat currentZ, deltaZ;

@@ -113,8 +113,33 @@ static DLDataProvider *theProvider = nil;
     __block NSMutableArray *arr = [NSMutableArray arrayWithObject:data];
     [[DLDatabase sharedDatabase] inDatabase:^(FMDatabase *db) {
         db.shouldCacheStatements = YES;
-        //FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND (value > ? OR value < ?)", start, end, [NSNumber numberWithFloat:recordingStartThreshold], [NSNumber numberWithFloat:-recordingStartThreshold]];
-        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND rid = ?", start, end, [NSNumber numberWithUnsignedInteger:recordID]];
+
+        static const NSInteger MAX_ITER_COUNT = 6;
+        
+        CGFloat threshold = 0.0;
+        NSInteger numberOfIter = 0;
+        NSInteger numberOfData = 0;
+        while (YES) {
+            FMResultSet *count = [db executeQuery:@"SELECT COUNT(1), MAX(value), MIN(value) FROM Data WHERE time >= ? AND time <= ? AND rid = ? AND (value >= ? OR value <= ?)", start, end, @(recordID), @(threshold), @(-threshold)];
+            if ([count next]) {
+                double max = [count doubleForColumnIndex:1];
+                double min = [count doubleForColumnIndex:2];
+                double v = MAX(fabs(max), fabs(min));
+                
+                numberOfData = [count intForColumnIndex:0];
+                [count close];
+                
+                if (numberOfData > 320)
+                    threshold = 0.6 * threshold + 0.4 * v;
+                else
+                    break;
+            }
+            
+            if (++numberOfIter > MAX_ITER_COUNT)
+                break;
+        }
+        
+        FMResultSet *result = [db executeQuery:@"SELECT * FROM Data WHERE time >= ? AND time <= ? AND rid = ? AND (value >= ? OR value <= ?)", start, end, @(recordID), @(threshold), @(-threshold)];
         while ([result next]) {
             DLData *data = [DLData dataWithValue:[result doubleForColumn:@"value"]];
             data.date = [result dateForColumn:@"time"];

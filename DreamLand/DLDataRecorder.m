@@ -33,8 +33,9 @@ static DLDataRecorder * theRecorder = nil;
 
 @end
 
-static const CGFloat smoothRatio      = 0.56f;
-CGFloat recordingStartThreshold = 0.30f;
+static const CGFloat smoothRatio     = 0.56f;
+CGFloat recordingStartDeltaThreshold = 0.30f;
+CGFloat recordingStartValueThreshold = 0.051f;
 
 @implementation DLDataRecorder
 @synthesize currentZ = zValue, deltaZ = deltaZ;
@@ -84,10 +85,10 @@ CGFloat recordingStartThreshold = 0.30f;
             self.motionManager = nil;
         }
 #endif
-        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryRecord
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord
                                                error: nil];
         
-        NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+        NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];// [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
         _recorder = [[AVAudioRecorder alloc] initWithURL:url
                                                 settings:@{AVSampleRateKey: [NSNumber numberWithFloat:22050.0],
                                                            AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatAppleLossless],
@@ -97,7 +98,11 @@ CGFloat recordingStartThreshold = 0.30f;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(onEnterBackground:)
-                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                     name:UIApplicationWillResignActiveNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onEnterForeground:)
+                                                     name:UIApplicationDidBecomeActiveNotification
                                                    object:nil];
     }
     return self;
@@ -121,6 +126,12 @@ CGFloat recordingStartThreshold = 0.30f;
 
         [_recorder record];
     }
+}
+
+- (void)onEnterForeground:(NSNotification*)notification
+{
+    if (_recorder.isRecording)
+        [_recorder pause];
 }
 
 - (void)doRecord
@@ -187,7 +198,7 @@ CGFloat recordingStartThreshold = 0.30f;
     lastValue     = zValue;
     NSLog(@"%lf", zValue);
     CGFloat absZ = fabsf(deltaZ);
-    if (!self.shouldWrite && absZ > recordingStartThreshold && fabs(zValue) > 0.08) {
+    if (!self.shouldWrite && absZ > recordingStartDeltaThreshold && fabs(zValue) > recordingStartValueThreshold) {
         [_player play];
         
         [self writeRecord:0.0f];
@@ -195,7 +206,7 @@ CGFloat recordingStartThreshold = 0.30f;
         [self.timer invalidate];
         self.timer = nil;
     }
-    else if (self.shouldWrite && absZ <= recordingStartThreshold) {
+    else if (self.shouldWrite && absZ <= recordingStartDeltaThreshold) {
         if (!self.timer) {
             self.timer = [NSTimer scheduledTimerWithTimeInterval:0.2
                                                           target:self
@@ -204,7 +215,7 @@ CGFloat recordingStartThreshold = 0.30f;
                                                          repeats:NO];
         }
     }
-    else if (absZ > recordingStartThreshold) {
+    else if (absZ > recordingStartDeltaThreshold) {
         [self.timer invalidate];
         self.timer = nil;
     }
