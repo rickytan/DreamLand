@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-extern const CGFloat recordingStartThreshold;
+extern CGFloat recordingStartThreshold;
 
 
 @interface DLDataRecorder : NSObject

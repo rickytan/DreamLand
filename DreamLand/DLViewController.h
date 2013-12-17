@@ -26,7 +26,9 @@ typedef enum {
 @property (nonatomic, assign) IBOutlet UIView *contentView;
 @property (nonatomic, assign) IBOutlet UIBarButtonItem *startItem;
 @property (nonatomic, assign) IBOutlet UIBarButtonItem *doneItem;
+@property (nonatomic, assign) IBOutlet UISlider *slider;
 @property (nonatomic, assign) DLViewState state;
 - (IBAction)onStart:(UIBarButtonItem*)sender;
 - (IBAction)onDone:(UIBarButtonItem*)sender;
+- (IBAction)onThreshold:(id)sender;
 @end

@@ -53,21 +53,13 @@
                                 <action selector="onStart:" destination="x8R-ZH-Arx" id="lDh-sK-sKG"/>
                             </connections>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="Cx8-DQ-8ti">
-                            <rect key="frame" x="96" y="6" width="128" height="33"/>
+                        <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.10000000000000001" maxValue="1" id="Erc-rj-nSS">
+                            <rect key="frame" x="51" y="8" width="217" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" title="Bluetooth Scan">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
                             <connections>
-                                <action selector="onScan:" destination="x8R-ZH-Arx" eventType="touchUpInside" id="mwg-ee-XC4"/>
+                                <action selector="onThreshold:" destination="x8R-ZH-Arx" eventType="valueChanged" id="WgI-uM-cfY"/>
                             </connections>
-                        </button>
+                        </slider>
                         <barButtonItem key="rightBarButtonItem" title="View" style="done" id="RFV-67-7dw">
                             <connections>
                                 <action selector="onDone:" destination="x8R-ZH-Arx" id="GPi-7I-jAb"/>
@@ -78,6 +70,7 @@
                         <outlet property="contentView" destination="tf5-sh-MGd" id="FAL-Ds-BtI"/>
                         <outlet property="doneItem" destination="RFV-67-7dw" id="qb7-ah-07V"/>
                         <outlet property="pulseView" destination="cWs-Op-h4p" id="lsI-qQ-Cz9"/>
+                        <outlet property="slider" destination="Erc-rj-nSS" id="MZx-2O-RQh"/>
                         <outlet property="startItem" destination="iBZ-CG-9s3" id="vdF-rn-TBt"/>
                         <segue destination="fw4-j8-MB3" kind="modal" identifier="ViewHistory" id="3NS-eJ-EG3"/>
                     </connections>

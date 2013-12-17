@@ -9,6 +9,7 @@
 #import "DLDataRecorder.h"
 #import "DLRecord.h"
 #import "DLDatabase.h"
+#import "DLSoundPlayer.h"
 #import <CoreMotion/CoreMotion.h>
 #import <AVFoundation/AVFoundation.h>
 
@@ -17,6 +18,7 @@ static DLDataRecorder * theRecorder = nil;
 @interface DLDataRecorder ()
 {
     AVAudioRecorder             * _recorder;
+    DLSoundPlayer               * _player;
 }
 @property (nonatomic, retain) CMMotionManager * motionManager;
 @property (nonatomic, retain) NSTimer         * timer;
@@ -32,7 +34,7 @@ static DLDataRecorder * theRecorder = nil;
 @end
 
 static const CGFloat smoothRatio      = 0.56f;
-const CGFloat recordingStartThreshold = 0.28f;
+CGFloat recordingStartThreshold = 0.30f;
 
 @implementation DLDataRecorder
 @synthesize currentZ = zValue, deltaZ = deltaZ;
@@ -66,6 +68,7 @@ const CGFloat recordingStartThreshold = 0.28f;
 {
     self = [super init];
     if (self) {
+        _player = [[DLSoundPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"start" withExtension:@"caf"]];
         
         _motionManager = [[CMMotionManager alloc] init];
         _motionManager.deviceMotionUpdateInterval = 1.0 / 30;
@@ -84,7 +87,7 @@ const CGFloat recordingStartThreshold = 0.28f;
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryRecord
                                                error: nil];
         
-        NSURL *url = [NSURL URLWithString:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
+        NSURL *url = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"]];
         _recorder = [[AVAudioRecorder alloc] initWithURL:url
                                                 settings:@{AVSampleRateKey: [NSNumber numberWithFloat:22050.0],
                                                            AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatAppleLossless],
@@ -182,9 +185,11 @@ const CGFloat recordingStartThreshold = 0.28f;
     deltaZ        = (zValue - lastValue) / timer.timeInterval;
     deltaZ        = MIN(MAX(deltaZ, -1.5), 1.5);
     lastValue     = zValue;
-    
+    NSLog(@"%lf", zValue);
     CGFloat absZ = fabsf(deltaZ);
-    if (!self.shouldWrite && absZ > recordingStartThreshold) {
+    if (!self.shouldWrite && absZ > recordingStartThreshold && fabs(zValue) > 0.08) {
+        [_player play];
+        
         [self writeRecord:0.0f];
         self.shouldWrite = YES;
         [self.timer invalidate];

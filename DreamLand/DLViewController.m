@@ -100,6 +100,7 @@ RTPulseWaveViewDatasource>
     
     smoothRatio = 0.6;
     self.pulseView.paused = YES;
+    self.slider.value = recordingStartThreshold;
     
 #if !TARGET_IPHONE_SIMULATOR && USE_BLUETOOTH
     [[BTStackManager sharedInstance] setDelegate:self];
@@ -132,7 +133,7 @@ RTPulseWaveViewDatasource>
          //[graph reloadData];
          */
         self.recordID = [DLDataRecorder sharedRecorder].lastestRecordID;
-        [self viewDataOfRecordID:self.recordID];
+        //[self viewDataOfRecordID:self.recordID];
     });
 }
 
@@ -229,6 +230,11 @@ RTPulseWaveViewDatasource>
     [self.presentedViewController dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)onThreshold:(id)sender
+{
+    recordingStartThreshold = self.slider.value;
+}
+
 #pragma mark - Methods
 
 - (BOOL)viewDataOfFile:(NSString *)filePath
@@ -301,7 +307,7 @@ RTPulseWaveViewDatasource>
     graph = [[CPTXYGraph alloc] init];
     CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
     [graph applyTheme:theme];
-    CPTGraphHostingView *hostingView =self.graphHostingView;
+    CPTGraphHostingView *hostingView = self.graphHostingView;
     hostingView.collapsesLayers = NO; // Setting to YES reduces GPU memory usage, but can slow drawing/scrolling
     hostingView.hostedGraph     = graph;
     
@@ -311,15 +317,15 @@ RTPulseWaveViewDatasource>
     graph.paddingBottom = 4.0;
     
     // Setup plot space
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
+    CPTXYPlotSpace *plotSpace       = (CPTXYPlotSpace *)graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = YES;
-    plotSpace.delegate = self;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-2.0)
+    plotSpace.delegate              = self;
+    plotSpace.xRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-2.0)
                                                     length:CPTDecimalFromFloat(4.0)];
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.5)
+    plotSpace.yRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.5)
                                                     length:CPTDecimalFromFloat(3.0)];
     
-    CPTMutableLineStyle *style = nil;
+    CPTMutableLineStyle *style      = nil;
     // Axes
     CPTXYAxisSet *axisSet           = (CPTXYAxisSet *)graph.axisSet;
     CPTXYAxis *x                    = axisSet.xAxis;
@@ -344,7 +350,7 @@ RTPulseWaveViewDatasource>
     x.labelFormatter                = timeFormatter;
     CPTMutableTextStyle *textStyle  = [CPTMutableTextStyle textStyle];
     textStyle.color                 = [CPTColor greenColor];
-    textStyle.fontSize              = 12.0f;
+    textStyle.fontSize              = 10.0f;
     x.labelTextStyle                = textStyle;
     
     CPTXYAxis *y = axisSet.yAxis;
@@ -374,10 +380,34 @@ RTPulseWaveViewDatasource>
     boundLinePlot.dataLineStyle     = lineStyle;
     boundLinePlot.identifier        = @"Blue Plot";
     boundLinePlot.dataSource        = self;
-    //boundLinePlot.interpolation    = CPTScatterPlotInterpolationCurved;
+    boundLinePlot.interpolation     = CPTScatterPlotInterpolationCurved;
     boundLinePlot.delegate          = self;
     [graph addPlot:boundLinePlot];
     [boundLinePlot release];
+    
+    CPTXYPlotSpace *boundrySpace       = [[CPTXYPlotSpace alloc] init];
+    boundrySpace.identifier            = @"Boundry Space";
+    boundrySpace.xRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0)
+                                                                      length:CPTDecimalFromFloat(1)];
+    boundrySpace.yRange                = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-1.5)
+                                                                      length:CPTDecimalFromFloat(3)];
+    boundrySpace.allowsUserInteraction = YES;
+    boundrySpace.delegate              = self;
+    [graph addPlotSpace:boundrySpace];
+    [boundrySpace release];
+    
+    CPTScatterPlot *boundryPlot = [[CPTScatterPlot alloc] init];
+    boundryPlot.plotSpace       = boundrySpace;
+    lineStyle                   = [CPTMutableLineStyle lineStyle];
+    lineStyle.miterLimit        = 1.0f;
+    lineStyle.lineWidth         = 0.5f;
+    lineStyle.lineColor         = [CPTColor redColor];
+    boundryPlot.dataLineStyle   = lineStyle;
+    boundryPlot.identifier      = @"Bound Plot";
+    boundryPlot.dataSource      = self;
+    boundryPlot.delegate        = self;
+    [graph addPlot:boundryPlot];
+    [boundryPlot release];
 }
 
 - (void)setState:(DLViewState)state
@@ -466,31 +496,43 @@ RTPulseWaveViewDatasource>
              forCoordinate:(CPTCoordinate)coordinate
 {
     CPTPlotRange *updatedRange = nil;
-    
-    switch ( coordinate ) {
-        case CPTCoordinateX:
-        {
-            if (newRange.lengthDouble < 3.) {
-                CPTMutablePlotRange *rang = [[newRange mutableCopy] autorelease];
-                rang.length = CPTDecimalFromDouble(3.);
-                updatedRange = rang;
-            }
-            else
-                updatedRange = newRange;
-            
-            [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                                     selector:@selector(reloadPlot)
-                                                       object:nil];
-            [self performSelector:@selector(reloadPlot)
-                       withObject:nil
-                       afterDelay:1.0];
+    if ([space.identifier isEqual:@"Boundry Space"]) {
+        switch (coordinate) {
+            case CPTCoordinateX:
+                updatedRange = ((CPTXYPlotSpace *)space).xRange;
+                break;
+            case CPTCoordinateY:
+                updatedRange = ((CPTXYPlotSpace *)space).yRange;
+            default:
+                break;
         }
-            break;
-        case CPTCoordinateY:
-            updatedRange = ((CPTXYPlotSpace *)space).yRange;
-            break;
-        default:
-            break;
+    }
+    else {
+        switch ( coordinate ) {
+            case CPTCoordinateX:
+            {
+                if (newRange.lengthDouble < 3.) {
+                    CPTMutablePlotRange *rang = [[newRange mutableCopy] autorelease];
+                    rang.length = CPTDecimalFromDouble(3.);
+                    updatedRange = rang;
+                }
+                else
+                    updatedRange = newRange;
+                
+                [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                         selector:@selector(reloadPlot)
+                                                           object:nil];
+                [self performSelector:@selector(reloadPlot)
+                           withObject:nil
+                           afterDelay:1.0];
+            }
+                break;
+            case CPTCoordinateY:
+                updatedRange = ((CPTXYPlotSpace *)space).yRange;
+                break;
+            default:
+                break;
+        }
     }
     return updatedRange;
 }
@@ -501,6 +543,8 @@ RTPulseWaveViewDatasource>
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
 {
+    if ([plot.identifier isEqual:@"Bound Plot"])
+        return 2;
     return self.dataArray.count;// DATA_SAMPLES;// [self.xValue count];
 }
 
@@ -508,6 +552,12 @@ RTPulseWaveViewDatasource>
                      field:(NSUInteger)fieldEnum
                recordIndex:(NSUInteger)index
 {
+    if ([plot.identifier isEqual:@"Bound Plot"]) {
+        if (fieldEnum == CPTScatterPlotFieldX)
+            return @[[NSNumber numberWithDouble:-DBL_MAX], [NSNumber numberWithDouble:DBL_MAX]][index];
+        else
+            return @(recordingStartThreshold);
+    }
     //NSLog(@"Start Date:%@", [NSDate dateWithTimeIntervalSince1970:((CPTXYPlotSpace*)plot.plotSpace).xRange.locationDouble]);
     if (fieldEnum == CPTScatterPlotFieldX)
         return [NSNumber numberWithDouble:((DLData*)self.dataArray[index]).date.timeIntervalSince1970];
