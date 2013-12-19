@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C23FAED1862B7CD00FCE524 /* Icon-120@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */; };
+		9C23FAEE1862B7CD00FCE524 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C23FAEB1862B7CD00FCE524 /* Icon.png */; };
+		9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */; };
 		9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B009118425A3A00F90ED8 /* DLDatabase.m */; };
 		9C357E79184673B5004A927D /* DLRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C357E78184673B5004A927D /* DLRecord.m */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
@@ -15,6 +18,7 @@
 		9C532F2B1860A4B100E391CE /* start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C532F2A1860A4B100E391CE /* start.caf */; };
 		9C532F2E1860A4FE00E391CE /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
+		9C5A96151862B85B00C673DB /* iTunesArtworks in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtworks */; };
 		9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75F918366E5B00943394 /* DLDataRecorder.m */; };
 		9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75FC18366E6B00943394 /* DLDataProvider.m */; };
 		9C5B760918366F0600943394 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760018366F0600943394 /* FMDatabase.m */; };
@@ -52,6 +56,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120@2x.png"; sourceTree = "<group>"; };
+		9C23FAEB1862B7CD00FCE524 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		9C2B009018425A3A00F90ED8 /* DLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDatabase.h; sourceTree = "<group>"; };
 		9C2B009118425A3A00F90ED8 /* DLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDatabase.m; sourceTree = "<group>"; };
 		9C357E77184673B5004A927D /* DLRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRecord.h; sourceTree = "<group>"; };
@@ -63,6 +70,7 @@
 		9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9C5A96141862B85B00C673DB /* iTunesArtworks */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtworks; path = ../iTunesArtworks; sourceTree = "<group>"; };
 		9C5B75F818366E5B00943394 /* DLDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataRecorder.h; sourceTree = "<group>"; };
 		9C5B75F918366E5B00943394 /* DLDataRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataRecorder.m; sourceTree = "<group>"; };
 		9C5B75FB18366E6B00943394 /* DLDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataProvider.h; sourceTree = "<group>"; };
@@ -163,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				9C532F2A1860A4B100E391CE /* start.caf */,
+				9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */,
+				9C23FAEB1862B7CD00FCE524 /* Icon.png */,
+				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -280,6 +291,7 @@
 		9CBD2CB3173F4464001FFAE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C5A96141862B85B00C673DB /* iTunesArtworks */,
 				9CBD2CB4173F4464001FFAE0 /* DreamLand-Info.plist */,
 				9CBD2CB5173F4464001FFAE0 /* InfoPlist.strings */,
 				9CBD2CB8173F4464001FFAE0 /* main.m */,
@@ -408,7 +420,10 @@
 			files = (
 				9CBD2CB7173F4464001FFAE0 /* InfoPlist.strings in Resources */,
 				9CBD2CBF173F4464001FFAE0 /* Default.png in Resources */,
+				9C23FAED1862B7CD00FCE524 /* Icon-120@2x.png in Resources */,
+				9C5A96151862B85B00C673DB /* iTunesArtworks in Resources */,
 				9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */,
+				9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */,
 				9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
@@ -417,6 +432,7 @@
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
+				9C23FAEE1862B7CD00FCE524 /* Icon.png in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
