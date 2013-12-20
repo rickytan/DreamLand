@@ -19,6 +19,11 @@
 		9C532F2E1860A4FE00E391CE /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
 		9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtwork */; };
+		9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962D186426D300C673DB /* DreamColor logo@2x.png */; };
+		9C5A9632186426D300C673DB /* WT Background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962E186426D300C673DB /* WT Background1@2x.png */; };
+		9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962F186426D300C673DB /* WT Background2@2x.png */; };
+		9C5A9634186426D300C673DB /* WT Background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A9630186426D300C673DB /* WT Background3@2x.png */; };
+		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
 		9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75F918366E5B00943394 /* DLDataRecorder.m */; };
 		9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75FC18366E6B00943394 /* DLDataProvider.m */; };
 		9C5B760918366F0600943394 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760018366F0600943394 /* FMDatabase.m */; };
@@ -71,6 +76,12 @@
 		9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C5A96141862B85B00C673DB /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
+		9C5A962D186426D300C673DB /* DreamColor logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DreamColor logo@2x.png"; sourceTree = "<group>"; };
+		9C5A962E186426D300C673DB /* WT Background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background1@2x.png"; sourceTree = "<group>"; };
+		9C5A962F186426D300C673DB /* WT Background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background2@2x.png"; sourceTree = "<group>"; };
+		9C5A9630186426D300C673DB /* WT Background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background3@2x.png"; sourceTree = "<group>"; };
+		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
+		9C5A963618642BB700C673DB /* DLGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGuideViewController.m; sourceTree = "<group>"; };
 		9C5B75F818366E5B00943394 /* DLDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataRecorder.h; sourceTree = "<group>"; };
 		9C5B75F918366E5B00943394 /* DLDataRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataRecorder.m; sourceTree = "<group>"; };
 		9C5B75FB18366E6B00943394 /* DLDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataProvider.h; sourceTree = "<group>"; };
@@ -173,6 +184,10 @@
 				9C532F2A1860A4B100E391CE /* start.caf */,
 				9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */,
 				9C23FAEB1862B7CD00FCE524 /* Icon.png */,
+				9C5A962D186426D300C673DB /* DreamColor logo@2x.png */,
+				9C5A962E186426D300C673DB /* WT Background1@2x.png */,
+				9C5A962F186426D300C673DB /* WT Background2@2x.png */,
+				9C5A9630186426D300C673DB /* WT Background3@2x.png */,
 				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
 			);
 			path = Resources;
@@ -284,6 +299,8 @@
 				9C357E78184673B5004A927D /* DLRecord.m */,
 				9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */,
 				9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */,
+				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
+				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -422,8 +439,10 @@
 				9CBD2CBF173F4464001FFAE0 /* Default.png in Resources */,
 				9C23FAED1862B7CD00FCE524 /* Icon-120@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
+				9C5A9634186426D300C673DB /* WT Background3@2x.png in Resources */,
 				9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */,
 				9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */,
+				9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */,
 				9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
@@ -431,8 +450,10 @@
 				9C532F2B1860A4B100E391CE /* start.caf in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
+				9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
 				9C23FAEE1862B7CD00FCE524 /* Icon.png in Resources */,
+				9C5A9632186426D300C673DB /* WT Background1@2x.png in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +482,7 @@
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
+				9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */,
 				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,
 				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
