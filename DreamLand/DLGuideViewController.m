@@ -38,6 +38,7 @@
     CABasicAnimation *move = [CABasicAnimation animationWithKeyPath:@"transform.translation.y"];
     move.fromValue = [NSNumber numberWithFloat:-30];
     move.duration = 2.5;
+    move.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [self.logoImage.layer addAnimation:move
                                 forKey:@"Move"];
 }
@@ -48,11 +49,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return self.pageControl.currentPage != 2 ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation
+{
+    return UIStatusBarAnimationFade;
+}
+
 #pragma mark - UIScroll Delegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     self.pageControl.currentPage = scrollView.contentOffset.x / scrollView.bounds.size.width;
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 

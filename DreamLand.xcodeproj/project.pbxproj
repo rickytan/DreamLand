@@ -24,6 +24,7 @@
 		9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962F186426D300C673DB /* WT Background2@2x.png */; };
 		9C5A9634186426D300C673DB /* WT Background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A9630186426D300C673DB /* WT Background3@2x.png */; };
 		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
+		9C5A96391864315100C673DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96381864315000C673DB /* Default-568h@2x.png */; };
 		9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75F918366E5B00943394 /* DLDataRecorder.m */; };
 		9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75FC18366E6B00943394 /* DLDataProvider.m */; };
 		9C5B760918366F0600943394 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B760018366F0600943394 /* FMDatabase.m */; };
@@ -51,7 +52,6 @@
 		9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */; };
 		9CBD2CBF173F4464001FFAE0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBD2CBE173F4464001FFAE0 /* Default.png */; };
 		9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC0173F4464001FFAE0 /* Default@2x.png */; };
-		9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC2173F4464001FFAE0 /* Default-568h@2x.png */; };
 		9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD2CC8173F4464001FFAE0 /* DLViewController.m */; };
 		9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D437175EE6E0009AB5CA /* bluetooth.png */; };
 		9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D44F175EE6E0009AB5CA /* keyboard.png */; };
@@ -82,6 +82,7 @@
 		9C5A9630186426D300C673DB /* WT Background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background3@2x.png"; sourceTree = "<group>"; };
 		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
 		9C5A963618642BB700C673DB /* DLGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGuideViewController.m; sourceTree = "<group>"; };
+		9C5A96381864315000C673DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9C5B75F818366E5B00943394 /* DLDataRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataRecorder.h; sourceTree = "<group>"; };
 		9C5B75F918366E5B00943394 /* DLDataRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataRecorder.m; sourceTree = "<group>"; };
 		9C5B75FB18366E6B00943394 /* DLDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataProvider.h; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLAppDelegate.m; sourceTree = "<group>"; };
 		9CBD2CBE173F4464001FFAE0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9CBD2CC0173F4464001FFAE0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		9CBD2CC2173F4464001FFAE0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9CBD2CC7173F4464001FFAE0 /* DLViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLViewController.h; sourceTree = "<group>"; };
 		9CBD2CC8173F4464001FFAE0 /* DLViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLViewController.m; sourceTree = "<group>"; };
 		9CC3D437175EE6E0009AB5CA /* bluetooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bluetooth.png; sourceTree = "<group>"; };
@@ -181,14 +181,15 @@
 		9C532F291860A4B100E391CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9C532F2A1860A4B100E391CE /* start.caf */,
+				9C5A96381864315000C673DB /* Default-568h@2x.png */,
+				9C5A962D186426D300C673DB /* DreamColor logo@2x.png */,
 				9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */,
 				9C23FAEB1862B7CD00FCE524 /* Icon.png */,
-				9C5A962D186426D300C673DB /* DreamColor logo@2x.png */,
+				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
+				9C532F2A1860A4B100E391CE /* start.caf */,
 				9C5A962E186426D300C673DB /* WT Background1@2x.png */,
 				9C5A962F186426D300C673DB /* WT Background2@2x.png */,
 				9C5A9630186426D300C673DB /* WT Background3@2x.png */,
-				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -282,25 +283,25 @@
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
 				9C5C79BA175625CF0066D960 /* DLData.h */,
 				9C5C79BB175625CF0066D960 /* DLData.m */,
+				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
+				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
+				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
+				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
+				9C5B75F818366E5B00943394 /* DLDataRecorder.h */,
+				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
+				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
+				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
+				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
+				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
+				9C357E77184673B5004A927D /* DLRecord.h */,
+				9C357E78184673B5004A927D /* DLRecord.m */,
+				9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */,
+				9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */,
 				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
 				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
-				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
-				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
-				9C5B75F818366E5B00943394 /* DLDataRecorder.h */,
-				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
-				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
-				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
-				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
-				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
-				9C357E77184673B5004A927D /* DLRecord.h */,
-				9C357E78184673B5004A927D /* DLRecord.m */,
-				9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */,
-				9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */,
-				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
-				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -315,7 +316,6 @@
 				9CBD2CBA173F4464001FFAE0 /* DreamLand-Prefix.pch */,
 				9CBD2CBE173F4464001FFAE0 /* Default.png */,
 				9CBD2CC0173F4464001FFAE0 /* Default@2x.png */,
-				9CBD2CC2173F4464001FFAE0 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -443,12 +443,12 @@
 				9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */,
 				9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */,
 				9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */,
-				9CBD2CC3173F4464001FFAE0 /* Default-568h@2x.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9C532F2B1860A4B100E391CE /* start.caf in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
+				9C5A96391864315100C673DB /* Default-568h@2x.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
 				9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
