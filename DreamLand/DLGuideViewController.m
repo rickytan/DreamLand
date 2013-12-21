@@ -41,6 +41,8 @@
     move.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [self.logoImage.layer addAnimation:move
                                 forKey:@"Move"];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES
+                                            withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +66,8 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     self.pageControl.currentPage = scrollView.contentOffset.x / scrollView.bounds.size.width;
-    [self setNeedsStatusBarAppearanceUpdate];
+    if (IS_IOS_7)
+        [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
@@ -72,6 +75,7 @@
 {
     if (decelerate) {
         if (scrollView.contentOffset.x > (640 + 30)) {
+            [[UIApplication sharedApplication] setStatusBarHidden:NO];
             [self.navigationController setNavigationBarHidden:NO
                                                      animated:YES];
             [self performSegueWithIdentifier:@"ShowHome"
