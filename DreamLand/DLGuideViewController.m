@@ -67,5 +67,17 @@
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (decelerate) {
+        if (scrollView.contentOffset.x > (640 + 30)) {
+            [self.navigationController setNavigationBarHidden:NO
+                                                     animated:YES];
+            [self performSegueWithIdentifier:@"ShowHome"
+                                      sender:self];
+        }
+    }
+}
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Q9w-3n-RQj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Af-wA-AGI">
     <dependencies>
         <deployment defaultVersion="1280" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -8,18 +8,19 @@
         <!--Navigation Controller-->
         <scene sceneID="sDj-VY-n6j">
             <objects>
-                <navigationController definesPresentationContext="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="FQq-MK-aF8">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.25098039220000001" green="0.64313725489999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="x8R-ZH-Arx" kind="relationship" relationship="rootViewController" id="M8e-bW-G01"/>
+                        <segue destination="Q9w-3n-RQj" kind="relationship" relationship="rootViewController" id="27h-dw-gws"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6l-zE-9jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="696"/>
+            <point key="canvasLocation" x="-1417" y="696"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="PIr-e2-k90">
@@ -66,6 +67,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="contentView" destination="tf5-sh-MGd" id="FAL-Ds-BtI"/>
                         <outlet property="doneItem" destination="RFV-67-7dw" id="qb7-ah-07V"/>
@@ -129,7 +131,7 @@
         <!--Guide View Controller-->
         <scene sceneID="NlU-qQ-NXX">
             <objects>
-                <viewController id="Q9w-3n-RQj" customClass="DLGuideViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Q9w-3n-RQj" customClass="DLGuideViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NuE-PB-4Ok">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,15 +140,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background1.png" id="lAC-rh-zdR">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background1.jpg" id="lAC-rh-zdR">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background2.png" id="oec-Ca-7dr">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background2.jpg" id="oec-Ca-7dr">
                                         <rect key="frame" x="320" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background3.png" id="qcO-E9-zoo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WT Background3.jpg" id="qcO-E9-zoo">
                                         <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -180,9 +182,11 @@ natural and feel less stressed in the morings.</string>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fO0-Df-5tn"/>
                     <connections>
                         <outlet property="logoImage" destination="NQJ-IJ-R7u" id="4c1-h7-KPl"/>
                         <outlet property="pageControl" destination="fKk-0F-JeX" id="HAa-gp-EHx"/>
+                        <segue destination="x8R-ZH-Arx" kind="push" identifier="ShowHome" id="tMm-0Y-Lgz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jN2-6E-3YU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,9 +211,9 @@ natural and feel less stressed in the morings.</string>
     </scenes>
     <resources>
         <image name="DreamColor logo.png" width="159" height="22"/>
-        <image name="WT Background1.png" width="320" height="568"/>
-        <image name="WT Background2.png" width="320" height="568"/>
-        <image name="WT Background3.png" width="320" height="568"/>
+        <image name="WT Background1.jpg" width="320" height="568"/>
+        <image name="WT Background2.jpg" width="320" height="568"/>
+        <image name="WT Background3.jpg" width="320" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

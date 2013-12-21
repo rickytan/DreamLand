@@ -15,14 +15,14 @@
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
+		9C4D1ED5186558A300EFE020 /* WT Background1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D1ED2186558A300EFE020 /* WT Background1@2x.jpg */; };
+		9C4D1ED6186558A300EFE020 /* WT Background2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D1ED3186558A300EFE020 /* WT Background2@2x.jpg */; };
+		9C4D1ED7186558A300EFE020 /* WT Background3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C4D1ED4186558A300EFE020 /* WT Background3@2x.jpg */; };
 		9C532F2B1860A4B100E391CE /* start.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9C532F2A1860A4B100E391CE /* start.caf */; };
 		9C532F2E1860A4FE00E391CE /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
 		9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtwork */; };
 		9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962D186426D300C673DB /* DreamColor logo@2x.png */; };
-		9C5A9632186426D300C673DB /* WT Background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962E186426D300C673DB /* WT Background1@2x.png */; };
-		9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A962F186426D300C673DB /* WT Background2@2x.png */; };
-		9C5A9634186426D300C673DB /* WT Background3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A9630186426D300C673DB /* WT Background3@2x.png */; };
 		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
 		9C5A96391864315100C673DB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96381864315000C673DB /* Default-568h@2x.png */; };
 		9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5B75F918366E5B00943394 /* DLDataRecorder.m */; };
@@ -71,15 +71,15 @@
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9C4D1ED2186558A300EFE020 /* WT Background1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background1@2x.jpg"; sourceTree = "<group>"; };
+		9C4D1ED3186558A300EFE020 /* WT Background2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background2@2x.jpg"; sourceTree = "<group>"; };
+		9C4D1ED4186558A300EFE020 /* WT Background3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background3@2x.jpg"; sourceTree = "<group>"; };
 		9C532F2A1860A4B100E391CE /* start.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = start.caf; sourceTree = "<group>"; };
 		9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C5A96141862B85B00C673DB /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		9C5A962D186426D300C673DB /* DreamColor logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DreamColor logo@2x.png"; sourceTree = "<group>"; };
-		9C5A962E186426D300C673DB /* WT Background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background1@2x.png"; sourceTree = "<group>"; };
-		9C5A962F186426D300C673DB /* WT Background2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background2@2x.png"; sourceTree = "<group>"; };
-		9C5A9630186426D300C673DB /* WT Background3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WT Background3@2x.png"; sourceTree = "<group>"; };
 		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
 		9C5A963618642BB700C673DB /* DLGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLGuideViewController.m; sourceTree = "<group>"; };
 		9C5A96381864315000C673DB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -181,15 +181,15 @@
 		9C532F291860A4B100E391CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C4D1ED2186558A300EFE020 /* WT Background1@2x.jpg */,
+				9C4D1ED3186558A300EFE020 /* WT Background2@2x.jpg */,
+				9C4D1ED4186558A300EFE020 /* WT Background3@2x.jpg */,
 				9C5A96381864315000C673DB /* Default-568h@2x.png */,
 				9C5A962D186426D300C673DB /* DreamColor logo@2x.png */,
 				9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */,
 				9C23FAEB1862B7CD00FCE524 /* Icon.png */,
 				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
 				9C532F2A1860A4B100E391CE /* start.caf */,
-				9C5A962E186426D300C673DB /* WT Background1@2x.png */,
-				9C5A962F186426D300C673DB /* WT Background2@2x.png */,
-				9C5A9630186426D300C673DB /* WT Background3@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -439,21 +439,21 @@
 				9CBD2CBF173F4464001FFAE0 /* Default.png in Resources */,
 				9C23FAED1862B7CD00FCE524 /* Icon-120@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
-				9C5A9634186426D300C673DB /* WT Background3@2x.png in Resources */,
+				9C4D1ED7186558A300EFE020 /* WT Background3@2x.jpg in Resources */,
 				9CBD2CC1173F4464001FFAE0 /* Default@2x.png in Resources */,
 				9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */,
-				9C5A9633186426D300C673DB /* WT Background2@2x.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9C532F2B1860A4B100E391CE /* start.caf in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
+				9C4D1ED6186558A300EFE020 /* WT Background2@2x.jpg in Resources */,
 				9C5A96391864315100C673DB /* Default-568h@2x.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
 				9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
 				9C23FAEE1862B7CD00FCE524 /* Icon.png in Resources */,
-				9C5A9632186426D300C673DB /* WT Background1@2x.png in Resources */,
+				9C4D1ED5186558A300EFE020 /* WT Background1@2x.jpg in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
