@@ -8,7 +8,7 @@
 
 #import "DLSignUpViewController.h"
 
-@interface DLSignUpViewController ()
+@interface DLSignUpViewController () <UIActionSheetDelegate>
 @property (nonatomic, assign) IBOutlet UIButton *photoButton;
 - (IBAction)onDismiss:(id)sender;
 - (IBAction)onJoin:(id)sender;
@@ -58,6 +58,15 @@
 - (IBAction)onJoin:(id)sender
 {
     
+}
+
+- (IBAction)onPhoto:(id)sender
+{
+    [[[UIActionSheet alloc] initWithTitle:@"How would you like to set your photo? "
+                                 delegate:self
+                        cancelButtonTitle:@"Cancel"
+                   destructiveButtonTitle:nil
+                        otherButtonTitles:@"Take Photo", @"Choose From Library", nil] showInView:self.view];
 }
 
 @end
