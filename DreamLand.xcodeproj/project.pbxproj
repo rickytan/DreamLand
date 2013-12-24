@@ -41,6 +41,16 @@
 		9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */; };
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
+		9C7C21001869AB2A00F2B2EA /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C20FF1869AB2A00F2B2EA /* background@2x.png */; };
+		9C7C21031869AD6B00F2B2EA /* wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C21011869AD6B00F2B2EA /* wechat@2x.png */; };
+		9C7C21041869AD6B00F2B2EA /* weibo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C21021869AD6B00F2B2EA /* weibo@2x.png */; };
+		9C7C21071869B3CA00F2B2EA /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C21051869B3CA00F2B2EA /* email@2x.png */; };
+		9C7C21081869B3CA00F2B2EA /* password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C21061869B3CA00F2B2EA /* password@2x.png */; };
+		9C7C210A1869BA9700F2B2EA /* photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C7C21091869BA9700F2B2EA /* photo@2x.png */; };
+		9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */; };
+		9C7C21101869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */; };
+		9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C21121869C82600F2B2EA /* DLDateField.m */; };
+		9C7C21161869CA9A00F2B2EA /* DLOptionField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C21151869CA9A00F2B2EA /* DLOptionField.m */; };
 		9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */; };
 		9C9D5F05184F4396006D01BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9D5F04184F4396006D01BC /* AVFoundation.framework */; };
 		9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8817A2AA4E00037063 /* LEDDevice.m */; };
@@ -109,6 +119,20 @@
 		9C5C79BF175788CA0066D960 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9C5C79C0175788CA0066D960 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
+		9C7C20FF1869AB2A00F2B2EA /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		9C7C21011869AD6B00F2B2EA /* wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wechat@2x.png"; sourceTree = "<group>"; };
+		9C7C21021869AD6B00F2B2EA /* weibo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo@2x.png"; sourceTree = "<group>"; };
+		9C7C21051869B3CA00F2B2EA /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
+		9C7C21061869B3CA00F2B2EA /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
+		9C7C21091869BA9700F2B2EA /* photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photo@2x.png"; sourceTree = "<group>"; };
+		9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSignUpViewController.h; sourceTree = "<group>"; };
+		9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSignUpViewController.m; sourceTree = "<group>"; };
+		9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCustomPlaceholderColorTextField.h; sourceTree = "<group>"; };
+		9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCustomPlaceholderColorTextField.m; sourceTree = "<group>"; };
+		9C7C21111869C82600F2B2EA /* DLDateField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDateField.h; sourceTree = "<group>"; };
+		9C7C21121869C82600F2B2EA /* DLDateField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDateField.m; sourceTree = "<group>"; };
+		9C7C21141869CA9A00F2B2EA /* DLOptionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLOptionField.h; sourceTree = "<group>"; };
+		9C7C21151869CA9A00F2B2EA /* DLOptionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLOptionField.m; sourceTree = "<group>"; };
 		9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
 		9C9D5F04184F4396006D01BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9CA0DF8717A2AA4E00037063 /* LEDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDevice.h; sourceTree = "<group>"; };
@@ -181,14 +205,20 @@
 		9C532F291860A4B100E391CE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C7C20FF1869AB2A00F2B2EA /* background@2x.png */,
 				9C5A96381864315000C673DB /* Default-568h@2x.png */,
+				9C7C21091869BA9700F2B2EA /* photo@2x.png */,
 				9C4D1ED818655A5100EFE020 /* Default.png */,
 				9C4D1ED918655A5100EFE020 /* Default@2x.png */,
 				9C5A962D186426D300C673DB /* DreamColor logo@2x.png */,
+				9C7C21051869B3CA00F2B2EA /* email@2x.png */,
 				9C23FAEA1862B7CD00FCE524 /* Icon-120@2x.png */,
 				9C23FAEB1862B7CD00FCE524 /* Icon.png */,
 				9C23FAEC1862B7CD00FCE524 /* Icon@2x.png */,
+				9C7C21061869B3CA00F2B2EA /* password@2x.png */,
 				9C532F2A1860A4B100E391CE /* start.caf */,
+				9C7C21011869AD6B00F2B2EA /* wechat@2x.png */,
+				9C7C21021869AD6B00F2B2EA /* weibo@2x.png */,
 				9C4D1ED2186558A300EFE020 /* WT Background1@2x.jpg */,
 				9C4D1ED3186558A300EFE020 /* WT Background2@2x.jpg */,
 				9C4D1ED4186558A300EFE020 /* WT Background3@2x.jpg */,
@@ -240,13 +270,13 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
-				9C532F291860A4B100E391CE /* Resources */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9C5B75FE18366F0600943394 /* FMDB */,
 				9CBD2CAB173F4464001FFAE0 /* Frameworks */,
 				9CA0DF8617A2AA1D00037063 /* LEDKit */,
 				9CBD2CAA173F4464001FFAE0 /* Products */,
+				9C532F291860A4B100E391CE /* Resources */,
 				9CC3D460175EE732009AB5CA /* RTPulseWaveView.h */,
 				9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */,
 				9C5C79BD175788CA0066D960 /* SVProgressHUD */,
@@ -304,6 +334,14 @@
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
+				9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */,
+				9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */,
+				9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */,
+				9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */,
+				9C7C21111869C82600F2B2EA /* DLDateField.h */,
+				9C7C21121869C82600F2B2EA /* DLDateField.m */,
+				9C7C21141869CA9A00F2B2EA /* DLOptionField.h */,
+				9C7C21151869CA9A00F2B2EA /* DLOptionField.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -439,22 +477,28 @@
 				9C23FAED1862B7CD00FCE524 /* Icon-120@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
 				9C4D1EDA18655A5100EFE020 /* Default.png in Resources */,
+				9C7C21081869B3CA00F2B2EA /* password@2x.png in Resources */,
+				9C7C21041869AD6B00F2B2EA /* weibo@2x.png in Resources */,
 				9C4D1ED7186558A300EFE020 /* WT Background3@2x.jpg in Resources */,
 				9C23FAEF1862B7CD00FCE524 /* Icon@2x.png in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9C532F2B1860A4B100E391CE /* start.caf in Resources */,
+				9C7C21031869AD6B00F2B2EA /* wechat@2x.png in Resources */,
+				9C7C21001869AB2A00F2B2EA /* background@2x.png in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9C4D1ED6186558A300EFE020 /* WT Background2@2x.jpg in Resources */,
 				9C5A96391864315100C673DB /* Default-568h@2x.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
+				9C7C21071869B3CA00F2B2EA /* email@2x.png in Resources */,
 				9C4D1EDB18655A5100EFE020 /* Default@2x.png in Resources */,
 				9C5A9631186426D300C673DB /* DreamColor logo@2x.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
 				9C23FAEE1862B7CD00FCE524 /* Icon.png in Resources */,
 				9C4D1ED5186558A300EFE020 /* WT Background1@2x.jpg in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
+				9C7C210A1869BA9700F2B2EA /* photo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +511,9 @@
 			files = (
 				9C532F2E1860A4FE00E391CE /* DLSoundPlayer.m in Sources */,
 				9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */,
+				9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */,
+				9C7C21161869CA9A00F2B2EA /* DLOptionField.m in Sources */,
+				9C7C21101869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m in Sources */,
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
 				9C5B760918366F0600943394 /* FMDatabase.m in Sources */,
@@ -479,6 +526,7 @@
 				9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */,
 				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
+				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
@@ -537,7 +585,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -560,7 +608,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -570,6 +618,7 @@
 		9CBD2CCD173F4464001FFAE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -604,6 +653,7 @@
 		9CBD2CCE173F4464001FFAE0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

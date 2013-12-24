@@ -24,7 +24,7 @@
 {
     self = [super init];
     if (self) {
-        OSStatus status = AudioServicesCreateSystemSoundID((CFURLRef)fileURL, &soundID);
+        OSStatus status = AudioServicesCreateSystemSoundID((__bridge CFURLRef)fileURL, &soundID);
         if (status != kAudioServicesNoError) {
             NSLog(@"Create Error! %ld", status);
         }
