@@ -57,6 +57,7 @@
 		9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAAF1D41869EFB700C666D2 /* WT Background1@2x.jpg */; };
 		9CAAF1E71869EFB700C666D2 /* WT Background2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAAF1D51869EFB700C666D2 /* WT Background2@2x.jpg */; };
 		9CAAF1E81869EFB700C666D2 /* WT Background3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CAAF1D61869EFB700C666D2 /* WT Background3@2x.jpg */; };
+		9CAAF1EB1869F32900C666D2 /* DLSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */; };
 		9CBD2CAD173F4464001FFAE0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAC173F4464001FFAE0 /* UIKit.framework */; };
 		9CBD2CAF173F4464001FFAE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CAE173F4464001FFAE0 /* Foundation.framework */; };
 		9CBD2CB1173F4464001FFAE0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CBD2CB0173F4464001FFAE0 /* CoreGraphics.framework */; };
@@ -144,6 +145,8 @@
 		9CAAF1D41869EFB700C666D2 /* WT Background1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background1@2x.jpg"; sourceTree = "<group>"; };
 		9CAAF1D51869EFB700C666D2 /* WT Background2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background2@2x.jpg"; sourceTree = "<group>"; };
 		9CAAF1D61869EFB700C666D2 /* WT Background3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "WT Background3@2x.jpg"; sourceTree = "<group>"; };
+		9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSignInViewController.h; sourceTree = "<group>"; };
+		9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSignInViewController.m; sourceTree = "<group>"; };
 		9CB2CCCB175B4B5500E10072 /* libBTstack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBTstack.a; sourceTree = "<group>"; };
 		9CBD2CA9173F4464001FFAE0 /* DreamLand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CBD2CAC173F4464001FFAE0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -345,6 +348,8 @@
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
+				9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */,
+				9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 				9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */,
 				9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */,
 				9C7C21161869CA9A00F2B2EA /* DLOptionField.m in Sources */,
+				9CAAF1EB1869F32900C666D2 /* DLSignInViewController.m in Sources */,
 				9C7C21101869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m in Sources */,
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,

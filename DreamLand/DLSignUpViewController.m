@@ -8,10 +8,8 @@
 
 #import "DLSignUpViewController.h"
 
-@interface DLSignUpViewController () <UIActionSheetDelegate>
+@interface DLSignUpViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic, assign) IBOutlet UIButton *photoButton;
-- (IBAction)onDismiss:(id)sender;
-- (IBAction)onJoin:(id)sender;
 @end
 
 @implementation DLSignUpViewController
@@ -62,11 +60,89 @@
 
 - (IBAction)onPhoto:(id)sender
 {
-    [[[UIActionSheet alloc] initWithTitle:@"How would you like to set your photo? "
+    [[[[UIActionSheet alloc] initWithTitle:@"How would you like to set your photo? "
                                  delegate:self
                         cancelButtonTitle:@"Cancel"
                    destructiveButtonTitle:nil
-                        otherButtonTitles:@"Take Photo", @"Choose From Library", nil] showInView:self.view];
+                        otherButtonTitles:@"Take Photo", @"Choose From Library", nil] autorelease] showInView:self.view];
+}
+
+#pragma mark - UIAction Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    switch (buttonIndex) {
+        case 0:
+        {
+            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                imagePicker.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                imagePicker.allowsEditing = YES;
+                imagePicker.delegate = self;
+                [self presentViewController:imagePicker
+                                   animated:YES
+                                 completion:^{
+                                     
+                                 }];
+                [imagePicker release];
+            }
+            else {
+                [[[UIAlertView alloc] initWithTitle:@"Error"
+                                            message:@"Your device doesn't have a Front camera!"
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+            }
+        }
+            break;
+        case 1:
+        {
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+                UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+                imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                imagePicker.allowsEditing = YES;
+                imagePicker.delegate = self;
+                [self presentViewController:imagePicker
+                                   animated:YES
+                                 completion:^{
+                                     
+                                 }];
+                [imagePicker release];
+            }
+            else {
+                [[[UIAlertView alloc] initWithTitle:@"Error"
+                                            message:@"Your device doesn't support Photo Library!"
+                                           delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark - UIImage Picker Delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    [self.photoButton setImage:image
+                      forState:UIControlStateNormal];
+    [picker dismissViewControllerAnimated:YES
+                               completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES
+                               completion:NULL];
 }
 
 @end
