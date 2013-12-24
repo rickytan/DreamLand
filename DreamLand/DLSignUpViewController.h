@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DLSignUpViewController : UIViewController
+@interface DLSignUpViewController : UITableViewController
 
 @end

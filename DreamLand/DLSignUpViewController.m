@@ -33,6 +33,10 @@
                                                          green:56.0/255
                                                           blue:67.0/255
                                                          alpha:1.0].CGColor;
+    [self.photoButton setImage:[UIImage imageNamed:@"photo.png"]
+                      forState:UIControlStateNormal];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav.png"]
+                                                  forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +49,10 @@
 
 - (IBAction)onDismiss:(id)sender
 {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
+                                 
+                             }];
 }
 
 - (IBAction)onJoin:(id)sender

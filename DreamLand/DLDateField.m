@@ -24,8 +24,8 @@
     if (![super inputView]) {
         UIDatePicker *picker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 320, 160)];
         picker.datePickerMode = UIDatePickerModeDate;
-        picker.tintColor = [UIColor blackColor];
         self.inputView = picker;
+        [picker release];
     }
     return [super inputView];
 }
@@ -33,7 +33,7 @@
 - (BOOL)resignFirstResponder
 {
     UIDatePicker *picker = (UIDatePicker*)self.inputView;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     formatter.dateFormat = @"yyyy-MM-dd";
     self.text = [formatter stringFromDate:picker.date];
     return [super resignFirstResponder];
