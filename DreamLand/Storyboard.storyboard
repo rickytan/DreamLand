@@ -54,7 +54,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0yF-Tu-hLm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0yF-Tu-hLm" userLabel="Weibo">
                                         <rect key="frame" x="180" y="215" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.74509803921568629" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,7 +67,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jca-e6-DPj">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jca-e6-DPj" userLabel="Wechat">
                                         <rect key="frame" x="205" y="215" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.43529411764705883" green="0.58823529411764708" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,7 +80,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EVI-Wf-5FJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EVI-Wf-5FJ" userLabel="SignUp">
                                         <rect key="frame" x="215" y="530" width="68" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -147,13 +147,13 @@
                                                 <rect key="frame" x="100" y="1" width="126" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" minimumFontSize="17" id="zgV-Qi-giv">
                                                 <rect key="frame" x="100" y="29" width="126" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CHa-Ji-pZP">
                                                 <rect key="frame" x="223" y="26" width="47" height="29"/>
@@ -167,7 +167,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="0.16" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mIO-Ao-bRc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mIO-Ao-bRc" userLabel="SignIn">
                                         <rect key="frame" x="76" y="378" width="169" height="36"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.44313725490196076" green="0.36470588235294116" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
@@ -379,7 +379,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" secureTextEntry="YES"/>
                                                 </textField>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dc1-EK-77A">
                                                     <rect key="frame" x="7" y="5" width="125" height="21"/>
@@ -615,20 +615,6 @@ natural and feel less stressed in the morings.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWt-qS-gFk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="27" y="696"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PV4-0c-q5o">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="IUA-5p-ndc" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="b3X-Hz-Aj1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Kw-XE-Gd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>
