@@ -27,6 +27,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:YES
+                                             animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+
 }
 
 - (void)didReceiveMemoryWarning

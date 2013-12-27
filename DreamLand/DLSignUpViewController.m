@@ -35,6 +35,7 @@
                       forState:UIControlStateNormal];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
+    
 }
 
 - (void)didReceiveMemoryWarning

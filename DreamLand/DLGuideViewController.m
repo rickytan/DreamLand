@@ -75,9 +75,6 @@
 {
     if (decelerate) {
         if (scrollView.contentOffset.x > (640 + 30)) {
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
-            [self.navigationController setNavigationBarHidden:NO
-                                                     animated:YES];
             [self performSegueWithIdentifier:@"ShowHome"
                                       sender:self];
         }
