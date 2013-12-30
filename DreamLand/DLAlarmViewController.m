@@ -9,7 +9,7 @@
 #import "DLAlarmViewController.h"
 
 @interface DLAlarmViewController ()
-
+- (IBAction)onMusic:(UIButton *)button;
 @end
 
 @implementation DLAlarmViewController
@@ -35,12 +35,21 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Actions
+
+- (IBAction)onMusic:(UIButton *)button
+{
+    button.selected = !button.selected;
 }
 
 @end

@@ -88,6 +88,7 @@
 		9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A31871898100612DD8 /* DLAlarmViewController.m */; };
 		9CD121A618718CCE00612DD8 /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121A518718CCE00612DD8 /* none@2x.png */; };
 		9CD121A9187191F500612DD8 /* DLLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */; };
+		9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -227,6 +228,8 @@
 		9CD121A518718CCE00612DD8 /* none@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "none@2x.png"; sourceTree = "<group>"; };
 		9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftPanelViewController.h; sourceTree = "<group>"; };
 		9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftPanelViewController.m; sourceTree = "<group>"; };
+		9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDialPlate.h; sourceTree = "<group>"; };
+		9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDialPlate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +426,8 @@
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
+				9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */,
+				9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
+				9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
 				9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */,
 				9C189561186D55950013263D /* DLForgotViewController.m in Sources */,
