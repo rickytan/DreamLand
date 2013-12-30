@@ -12,7 +12,9 @@
 @property (nonatomic, assign) CGFloat strokeWidth;      // Default 4.0
 @property (nonatomic, retain) UIColor *strokeColor;     // Defalut Black
 @property (nonatomic, retain) UIColor *strokeBackgroundColor;   // Defalut White
-@property (nonatomic, retain) NSDate *time;
+@property (nonatomic, assign) CGFloat startAngle;
+@property (nonatomic, assign) CGFloat endAngle;
+@property (nonatomic, assign) BOOL clockWise;           // Default YES
 
 - (void)setThumbImage:(UIImage *)image;
 @end

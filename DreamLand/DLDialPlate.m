@@ -8,13 +8,33 @@
 
 #import "DLDialPlate.h"
 
+#define kImageThumbTag      113
+
 @implementation DLDialPlate
+
+- (void)commonInit
+{
+    self.strokeWidth = 4.0;
+    self.strokeColor = [UIColor blackColor];
+    self.strokeBackgroundColor = [UIColor whiteColor];
+    self.startAngle = self.endAngle = 0;
+    self.clockWise = YES;
+    
+    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"big dot.png"]];
+    //image.userInteractionEnabled = YES;
+    image.tag = kImageThumbTag;
+    [self addSubview:image];
+    [image release];
+    
+    [self putThumb];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self commonInit];
     }
     return self;
 }
@@ -23,14 +43,49 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.strokeWidth = 18.0;
+        [self commonInit];
     }
     return self;
 }
 
 - (void)setThumbImage:(UIImage *)image
 {
-    
+    UIImageView *imageView = (UIImageView *)[self viewWithTag:kImageThumbTag];
+    imageView.image = image;
+    [imageView sizeToFit];
+    [self putThumb];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size
+{
+    CGFloat radius = MIN(self.bounds.size.width, self.bounds.size.height);
+    return CGSizeMake(radius, radius);
+}
+
+- (void)setStartAngle:(CGFloat)startAngle
+{
+    _startAngle = startAngle;
+    [self setNeedsDisplay];
+}
+
+- (void)setEndAngle:(CGFloat)endAngle
+{
+    _endAngle = endAngle;
+    [self putThumb];
+    [self setNeedsDisplay];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self putThumb];
+}
+
+- (void)putThumb
+{
+    CGFloat radius = (MIN(self.bounds.size.width, self.bounds.size.height) - self.strokeWidth) / 2;
+    CGPoint center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
+    [self viewWithTag:kImageThumbTag].center = CGPointMake(center.x + radius * cosf(self.endAngle), center.y + radius * sinf(self.endAngle));
 }
 
 - (void)drawBackgroundCircle:(CGRect)rect
@@ -51,7 +106,7 @@
     CGFloat shadow2BlurRadius = 4.;
     
     //// Oval Drawing
-    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(10, 10, 10, 10))];
+    UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectInset(rect, self.strokeWidth / 2, self.strokeWidth / 2)];
 
     
     CGContextSaveGState(context);
@@ -106,17 +161,64 @@
     UIColor* color = [UIColor colorWithRed: 0.227 green: 0.749 blue: 0.816 alpha: 1];
     
     //// Oval Drawing
-    CGRect ovalRect = UIEdgeInsetsInsetRect(rect, UIEdgeInsetsMake(10, 10, 10, 10));
+    CGRect ovalRect = CGRectInset(rect, self.strokeWidth / 2, self.strokeWidth / 2);
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
     [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect))
                         radius: CGRectGetWidth(ovalRect) / 2
-                    startAngle: -120 * M_PI/180
-                      endAngle: 90 * M_PI/180
-                     clockwise: YES];
+                    startAngle: self.startAngle
+                      endAngle: self.endAngle
+                     clockwise: self.clockWise];
     [color setStroke];
     ovalPath.lineWidth = self.strokeWidth;
     ovalPath.lineCapStyle = kCGLineCapRound;
     [ovalPath stroke];
+}
+
+- (BOOL)beginTrackingWithTouch:(UITouch *)touch
+                     withEvent:(UIEvent *)event
+{
+    CGPoint p = [touch locationInView:self];
+    if (CGRectContainsPoint([self viewWithTag:kImageThumbTag].frame, p)) {
+        
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch
+                        withEvent:(UIEvent *)event
+{
+    CGPoint p = [touch locationInView:self];
+    p.x -= self.bounds.size.width / 2;
+    p.y -= self.bounds.size.height / 2;
+    CGFloat v = atan2f(p.y, p.x);
+    self.endAngle = v;
+    return YES;
+}
+
+- (void)endTrackingWithTouch:(UITouch *)touch
+                   withEvent:(UIEvent *)event
+{
+    CGPoint p = [touch locationInView:self];
+    p.x -= self.bounds.size.width / 2;
+    p.y -= self.bounds.size.height / 2;
+    CGFloat v = atan2f(p.y, p.x);
+    self.endAngle = v;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesMoved:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];
 }
 
 
