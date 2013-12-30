@@ -72,6 +72,22 @@
 		9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CC3D454175EE6E0009AB5CA /* smartphone.png */; };
 		9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */; };
 		9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */; };
+		9CD121871871826900612DD8 /* alam@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121821871826900612DD8 /* alam@2x.png */; };
+		9CD121881871826900612DD8 /* data@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121831871826900612DD8 /* data@2x.png */; };
+		9CD121891871826900612DD8 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121841871826900612DD8 /* location@2x.png */; };
+		9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121851871826900612DD8 /* nev bg@2x.png */; };
+		9CD1218B1871826900612DD8 /* setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121861871826900612DD8 /* setting@2x.png */; };
+		9CD121911871844E00612DD8 /* big dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD1218C1871844E00612DD8 /* big dot@2x.png */; };
+		9CD121921871844E00612DD8 /* music off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD1218D1871844E00612DD8 /* music off@2x.png */; };
+		9CD121931871844E00612DD8 /* music on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD1218E1871844E00612DD8 /* music on@2x.png */; };
+		9CD121941871844E00612DD8 /* small dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD1218F1871844E00612DD8 /* small dot@2x.png */; };
+		9CD121951871844E00612DD8 /* start bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121901871844E00612DD8 /* start bg@2x.png */; };
+		9CD1219B1871848700612DD8 /* RTNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121981871848700612DD8 /* RTNavigationController.m */; };
+		9CD1219C1871848700612DD8 /* RTSiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1219A1871848700612DD8 /* RTSiderViewController.m */; };
+		9CD1219F187184CC00612DD8 /* DLSiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD1219E187184CC00612DD8 /* DLSiderViewController.m */; };
+		9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A31871898100612DD8 /* DLAlarmViewController.m */; };
+		9CD121A618718CCE00612DD8 /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121A518718CCE00612DD8 /* none@2x.png */; };
+		9CD121A9187191F500612DD8 /* DLLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -190,6 +206,27 @@
 		9CCF886A175101E700B1D838 /* sdp_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdp_util.h; sourceTree = "<group>"; };
 		9CCF886B175101E700B1D838 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		9CCF888217510E5600B1D838 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		9CD121821871826900612DD8 /* alam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alam@2x.png"; sourceTree = "<group>"; };
+		9CD121831871826900612DD8 /* data@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data@2x.png"; sourceTree = "<group>"; };
+		9CD121841871826900612DD8 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		9CD121851871826900612DD8 /* nev bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nev bg@2x.png"; sourceTree = "<group>"; };
+		9CD121861871826900612DD8 /* setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting@2x.png"; sourceTree = "<group>"; };
+		9CD1218C1871844E00612DD8 /* big dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "big dot@2x.png"; sourceTree = "<group>"; };
+		9CD1218D1871844E00612DD8 /* music off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music off@2x.png"; sourceTree = "<group>"; };
+		9CD1218E1871844E00612DD8 /* music on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music on@2x.png"; sourceTree = "<group>"; };
+		9CD1218F1871844E00612DD8 /* small dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small dot@2x.png"; sourceTree = "<group>"; };
+		9CD121901871844E00612DD8 /* start bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "start bg@2x.png"; sourceTree = "<group>"; };
+		9CD121971871848700612DD8 /* RTNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTNavigationController.h; sourceTree = "<group>"; };
+		9CD121981871848700612DD8 /* RTNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTNavigationController.m; sourceTree = "<group>"; };
+		9CD121991871848700612DD8 /* RTSiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTSiderViewController.h; sourceTree = "<group>"; };
+		9CD1219A1871848700612DD8 /* RTSiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTSiderViewController.m; sourceTree = "<group>"; };
+		9CD1219D187184CC00612DD8 /* DLSiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSiderViewController.h; sourceTree = "<group>"; };
+		9CD1219E187184CC00612DD8 /* DLSiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSiderViewController.m; sourceTree = "<group>"; };
+		9CD121A21871898100612DD8 /* DLAlarmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlarmViewController.h; sourceTree = "<group>"; };
+		9CD121A31871898100612DD8 /* DLAlarmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlarmViewController.m; sourceTree = "<group>"; };
+		9CD121A518718CCE00612DD8 /* none@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "none@2x.png"; sourceTree = "<group>"; };
+		9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftPanelViewController.h; sourceTree = "<group>"; };
+		9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftPanelViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +303,11 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CD121821871826900612DD8 /* alam@2x.png */,
 				9CAAF1C51869EFB700C666D2 /* background@2x.png */,
+				9CD1218C1871844E00612DD8 /* big dot@2x.png */,
+				9CD121831871826900612DD8 /* data@2x.png */,
+				9CD121A518718CCE00612DD8 /* none@2x.png */,
 				9CAAF1C61869EFB700C666D2 /* Default-568h@2x.png */,
 				9CAAF1C71869EFB700C666D2 /* Default.png */,
 				9CAAF1C81869EFB700C666D2 /* Default@2x.png */,
@@ -275,9 +316,16 @@
 				9CAAF1CB1869EFB700C666D2 /* Icon-120@2x.png */,
 				9CAAF1CC1869EFB700C666D2 /* Icon.png */,
 				9CAAF1CD1869EFB700C666D2 /* Icon@2x.png */,
+				9CD121841871826900612DD8 /* location@2x.png */,
+				9CD1218D1871844E00612DD8 /* music off@2x.png */,
+				9CD1218E1871844E00612DD8 /* music on@2x.png */,
 				9CAAF1CE1869EFB700C666D2 /* nav@2x.png */,
+				9CD121851871826900612DD8 /* nev bg@2x.png */,
 				9CAAF1CF1869EFB700C666D2 /* password@2x.png */,
 				9CAAF1D01869EFB700C666D2 /* photo@2x.png */,
+				9CD121861871826900612DD8 /* setting@2x.png */,
+				9CD1218F1871844E00612DD8 /* small dot@2x.png */,
+				9CD121901871844E00612DD8 /* start bg@2x.png */,
 				9CAAF1D11869EFB700C666D2 /* start.caf */,
 				9CAAF1D21869EFB700C666D2 /* wechat@2x.png */,
 				9CAAF1D31869EFB700C666D2 /* weibo@2x.png */,
@@ -291,6 +339,7 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
+				9CD121961871848700612DD8 /* RTNavigationController */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9C5B75FE18366F0600943394 /* FMDB */,
@@ -333,6 +382,8 @@
 		9CBD2CB2173F4464001FFAE0 /* DreamLand */ = {
 			isa = PBXGroup;
 			children = (
+				9CD121A21871898100612DD8 /* DLAlarmViewController.h */,
+				9CD121A31871898100612DD8 /* DLAlarmViewController.m */,
 				9CBD2CBB173F4464001FFAE0 /* DLAppDelegate.h */,
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
 				9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */,
@@ -353,10 +404,14 @@
 				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
 				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
 				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
+				9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */,
+				9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */,
 				9C7C21141869CA9A00F2B2EA /* DLOptionField.h */,
 				9C7C21151869CA9A00F2B2EA /* DLOptionField.m */,
 				9C357E77184673B5004A927D /* DLRecord.h */,
 				9C357E78184673B5004A927D /* DLRecord.m */,
+				9CD1219D187184CC00612DD8 /* DLSiderViewController.h */,
+				9CD1219E187184CC00612DD8 /* DLSiderViewController.m */,
 				9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */,
 				9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */,
 				9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */,
@@ -436,6 +491,17 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		9CD121961871848700612DD8 /* RTNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				9CD121971871848700612DD8 /* RTNavigationController.h */,
+				9CD121981871848700612DD8 /* RTNavigationController.m */,
+				9CD121991871848700612DD8 /* RTSiderViewController.h */,
+				9CD1219A1871848700612DD8 /* RTSiderViewController.m */,
+			);
+			path = RTNavigationController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -507,10 +573,15 @@
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
 				9CAAF1E51869EFB700C666D2 /* weibo@2x.png in Resources */,
+				9CD121911871844E00612DD8 /* big dot@2x.png in Resources */,
 				9CAAF1DA1869EFB700C666D2 /* Default@2x.png in Resources */,
+				9CD1218B1871826900612DD8 /* setting@2x.png in Resources */,
+				9CD121921871844E00612DD8 /* music off@2x.png in Resources */,
 				9CAAF1E71869EFB700C666D2 /* WT Background2@2x.jpg in Resources */,
+				9CD121941871844E00612DD8 /* small dot@2x.png in Resources */,
 				9CAAF1DD1869EFB700C666D2 /* Icon-120@2x.png in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
+				9CD121A618718CCE00612DD8 /* none@2x.png in Resources */,
 				9CAAF1E41869EFB700C666D2 /* wechat@2x.png in Resources */,
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
@@ -520,12 +591,18 @@
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
 				9CC3D45B175EE6E0009AB5CA /* keyboard.png in Resources */,
 				9CAAF1D71869EFB700C666D2 /* background@2x.png in Resources */,
+				9CD121931871844E00612DD8 /* music on@2x.png in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
 				9CAAF1DC1869EFB700C666D2 /* email@2x.png in Resources */,
 				9CAAF1E81869EFB700C666D2 /* WT Background3@2x.jpg in Resources */,
 				9CAAF1E11869EFB700C666D2 /* password@2x.png in Resources */,
 				9CAAF1E21869EFB700C666D2 /* photo@2x.png in Resources */,
+				9CD121881871826900612DD8 /* data@2x.png in Resources */,
+				9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */,
+				9CD121891871826900612DD8 /* location@2x.png in Resources */,
 				9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */,
+				9CD121871871826900612DD8 /* alam@2x.png in Resources */,
+				9CD121951871844E00612DD8 /* start bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,16 +619,20 @@
 				9C7C21161869CA9A00F2B2EA /* DLOptionField.m in Sources */,
 				9CAAF1EB1869F32900C666D2 /* DLSignInViewController.m in Sources */,
 				9C7C21101869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m in Sources */,
+				9CD121A9187191F500612DD8 /* DLLeftPanelViewController.m in Sources */,
 				9CBD2CB9173F4464001FFAE0 /* main.m in Sources */,
 				9CBD2CBD173F4464001FFAE0 /* DLAppDelegate.m in Sources */,
+				9CD1219F187184CC00612DD8 /* DLSiderViewController.m in Sources */,
 				9C5B760918366F0600943394 /* FMDatabase.m in Sources */,
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
+				9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */,
 				9C189561186D55950013263D /* DLForgotViewController.m in Sources */,
 				9C5B760B18366F0600943394 /* FMDatabasePool.m in Sources */,
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
+				9CD1219C1871848700612DD8 /* RTSiderViewController.m in Sources */,
 				9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */,
 				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
@@ -564,6 +645,7 @@
 				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,
 				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
+				9CD1219B1871848700612DD8 /* RTNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Af-wA-AGI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="EjE-sw-lUQ">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -15,7 +15,7 @@
                         <color key="barTintColor" red="0.25098039220000001" green="0.64313725489999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Q9w-3n-RQj" kind="relationship" relationship="rootViewController" id="27h-dw-gws"/>
+                        <segue destination="x8R-ZH-Arx" kind="relationship" relationship="rootViewController" id="kId-O0-1Xc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6l-zE-9jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,7 +131,7 @@
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.36470588240000001" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="st5-HZ-aXR" userLabel="Line">
-                                                <rect key="frame" x="0.0" y="79.000000047683713" width="320" height="1"/>
+                                                <rect key="frame" x="0.0" y="78.999999976859272" width="320" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.36470588240000001" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
@@ -150,7 +150,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" minimumFontSize="17" id="zgV-Qi-giv" customClass="RAutoTextField">
-                                                <rect key="frame" x="100" y="42.5" width="126" height="35.500000029802329"/>
+                                                <rect key="frame" x="100" y="43" width="126" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -605,6 +605,125 @@ natural and feel less stressed in the morings.</string>
             </objects>
             <point key="canvasLocation" x="-849" y="-16"/>
         </scene>
+        <!--Left Panel View Controller-->
+        <scene sceneID="jrH-VU-n9h">
+            <objects>
+                <tableViewController storyboardIdentifier="Settings" id="4pP-ft-2T7" customClass="DLLeftPanelViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="50" sectionHeaderHeight="10" sectionFooterHeight="10" id="4lt-rd-sHK">
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.13725490870000001" green="0.1411764771" blue="0.14901961389999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.15686275059999999" green="0.16078431900000001" blue="0.1647058874" alpha="1" colorSpace="deviceRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="gsj-CF-dGI">
+                            <rect key="frame" x="0.0" y="0.0" width="164" height="170"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n3p-rj-3NW">
+                                    <rect key="frame" x="54.5" y="38.5" width="55" height="55"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" image="photo.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="27"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="onPhoto:" destination="KRf-8z-Rb0" eventType="touchUpInside" id="tPe-9h-hxC"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master Lee" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gAE-7J-50L">
+                                    <rect key="frame" x="20" y="93" width="124" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <color key="textColor" red="0.180392161" green="0.76470595600000002" blue="0.84313732389999996" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.png" id="Imm-je-VHt">
+                                    <rect key="frame" x="43" y="122" width="6" height="10"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hang Zhou" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PSE-Fz-tom">
+                                    <rect key="frame" x="54.5" y="119.5" width="104" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                    <color key="textColor" red="0.45490199327468872" green="0.45098042488098145" blue="0.45098042488098145" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night, 2˚C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QPE-PH-b1U">
+                                    <rect key="frame" x="54.5" y="136" width="104" height="16"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                    <color key="textColor" red="0.45490199327468872" green="0.45098042488098145" blue="0.45098042488098145" alpha="1" colorSpace="deviceRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="6eY-pV-kCW" imageView="F7S-8d-5mY" style="IBUITableViewCellStyleDefault" id="PnY-Mc-2Fz" customClass="DLLeftPanelCell">
+                                <rect key="frame" x="0.0" y="225" width="164" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PnY-Mc-2Fz" id="Wgh-57-gGF">
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="ALARM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6eY-pV-kCW">
+                                            <rect key="frame" x="62" y="0.0" width="87" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="0.180392161" green="0.76470595600000002" blue="0.84313732389999996" alpha="1" colorSpace="deviceRGB"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="alam.png" id="F7S-8d-5mY">
+                                            <rect key="frame" x="15" y="8" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="4pP-ft-2T7" id="fBc-8s-er9"/>
+                            <outlet property="delegate" destination="4pP-ft-2T7" id="aWz-ng-c55"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="headerButton" destination="n3p-rj-3NW" id="x0P-m8-W9C"/>
+                        <outlet property="infoLabel" destination="QPE-PH-b1U" id="Enr-b5-Umb"/>
+                        <outlet property="locationLabel" destination="PSE-Fz-tom" id="YfK-LR-RYQ"/>
+                        <outlet property="nameLabel" destination="gAE-7J-50L" id="tIv-vQ-kCT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CPe-N9-ESO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2912" y="2159"/>
+        </scene>
+        <!--Sider View Controller-->
+        <scene sceneID="W6n-1r-ufB">
+            <objects>
+                <viewController id="EjE-sw-lUQ" customClass="DLSiderViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D5v-EU-DaD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxa-QP-ANt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2606" y="2159"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEs-67-iMJ">
             <objects>
@@ -643,7 +762,7 @@ natural and feel less stressed in the morings.</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2mq-3C-zpw">
-                                                    <rect key="frame" x="140" y="6.5" width="160" height="30"/>
+                                                    <rect key="frame" x="140" y="7" width="160" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -689,6 +808,40 @@ natural and feel less stressed in the morings.</string>
             <point key="canvasLocation" x="-309" y="2159"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="nrU-wC-OzE">
+            <objects>
+                <navigationController storyboardIdentifier="AlarmNav" definesPresentationContext="YES" id="4Yf-DE-qcO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZsO-aF-o6x">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.15294118230000001" green="0.16078431900000001" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.180392161" green="0.76470595600000002" blue="0.84313732389999996" alpha="1" colorSpace="deviceRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Yzh-5G-cjJ" kind="relationship" relationship="rootViewController" id="56L-id-4SL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xab-Eg-ZiS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2170" y="2159"/>
+        </scene>
+        <!--Alarm View Controller - Alarm-->
+        <scene sceneID="2P8-gg-RRE">
+            <objects>
+                <viewController id="Yzh-5G-cjJ" customClass="DLAlarmViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u6z-WG-w5k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.15294118225574493" green="0.16078431904315948" blue="0.20392158627510071" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Alarm" id="d6O-v0-yJB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pg9-3g-rGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1727" y="2159"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="Por-uG-GhS">
             <objects>
                 <navigationController definesPresentationContext="YES" id="cQu-eJ-tq0" sceneMemberID="viewController">
@@ -710,8 +863,10 @@ natural and feel less stressed in the morings.</string>
         <image name="WT Background1.jpg" width="320" height="568"/>
         <image name="WT Background2.jpg" width="320" height="568"/>
         <image name="WT Background3.jpg" width="320" height="568"/>
+        <image name="alam.png" width="32" height="32"/>
         <image name="background.png" width="320" height="568"/>
         <image name="email.png" width="19" height="15"/>
+        <image name="location.png" width="6" height="10"/>
         <image name="password.png" width="16" height="17"/>
         <image name="photo.png" width="37" height="28"/>
         <image name="wechat.png" width="16" height="13"/>

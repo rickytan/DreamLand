@@ -97,6 +97,10 @@ RTPulseWaveViewDatasource>
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self.navigationController setNavigationBarHidden:NO
+                                             animated:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO
+                                            withAnimation:UIStatusBarAnimationNone];
     
     smoothRatio = 0.6;
     self.pulseView.paused = YES;
@@ -227,7 +231,8 @@ RTPulseWaveViewDatasource>
 
 - (void)onDismiss:(id)sender
 {
-    [self.presentedViewController dismissModalViewControllerAnimated:YES];
+    [self.presentedViewController dismissViewControllerAnimated:YES
+                                                     completion:NULL];
 }
 
 - (IBAction)onThreshold:(id)sender

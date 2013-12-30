@@ -10,6 +10,11 @@
 
 #define IS_IOS_7        ([UIDevice currentDevice].systemVersion.floatValue >= 7.0)
 
+#define THEME_COLOR     [UIColor colorWithRed:46.0/255\
+                                        green:195.0/255\
+                                         blue:215.0/255\
+                                        alpha:1.0]
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>

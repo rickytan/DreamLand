@@ -35,7 +35,7 @@ static DLDataRecorder * theRecorder = nil;
 
 static const CGFloat smoothRatio     = 0.56f;
 CGFloat recordingStartDeltaThreshold = 0.30f;
-CGFloat recordingStartValueThreshold = 0.022f;
+CGFloat recordingStartValueThreshold = 0.0208f;
 
 @implementation DLDataRecorder
 @synthesize currentZ = zValue, deltaZ = deltaZ;
