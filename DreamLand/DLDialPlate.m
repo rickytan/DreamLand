@@ -19,6 +19,7 @@
     self.strokeBackgroundColor = [UIColor whiteColor];
     self.startAngle = self.endAngle = 0;
     self.clockWise = YES;
+    self.exclusiveTouch = YES;
     
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"big dot.png"]];
     //image.userInteractionEnabled = YES;
@@ -156,7 +157,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    [self drawBackgroundCircle:rect];
+    //[self drawBackgroundCircle:rect];
 
     UIColor* color = [UIColor colorWithRed: 0.227 green: 0.749 blue: 0.816 alpha: 1];
     
@@ -167,7 +168,7 @@
                         radius: CGRectGetWidth(ovalRect) / 2
                     startAngle: self.startAngle
                       endAngle: self.endAngle
-                     clockwise: self.clockWise];
+                     clockwise: (self.endAngle > self.startAngle) ? self.endAngle : (self.endAngle + 2*M_PI) - self.startAngle < M_PI];
     [color setStroke];
     ovalPath.lineWidth = self.strokeWidth;
     ovalPath.lineCapStyle = kCGLineCapRound;
@@ -178,7 +179,7 @@
                      withEvent:(UIEvent *)event
 {
     CGPoint p = [touch locationInView:self];
-    if (CGRectContainsPoint([self viewWithTag:kImageThumbTag].frame, p)) {
+    if (CGRectContainsPoint(CGRectInset([self viewWithTag:kImageThumbTag].frame, -self.strokeWidth, -self.strokeWidth), p)) {
         
         return YES;
     }

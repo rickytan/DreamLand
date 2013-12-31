@@ -33,6 +33,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.dataSource = self;
+    self.allowOverDrag = NO;
+    self.translationStyle = SlideTranslationStyleDeeper;
     [self setMiddleViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AlarmNav"]];
     [self setLeftViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Settings"]];
 }

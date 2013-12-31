@@ -7,9 +7,11 @@
 //
 
 #import "DLAlarmViewController.h"
+#import "RTSiderViewController.h"
 
 @interface DLAlarmViewController ()
 - (IBAction)onMusic:(UIButton *)button;
+- (IBAction)onLeft:(id)sender;
 @end
 
 @implementation DLAlarmViewController
@@ -44,6 +46,11 @@
 }
 
 #pragma mark - Actions
+
+- (IBAction)onLeft:(id)sender
+{
+    [self.siderViewController slideToRightAnimated:YES];
+}
 
 - (IBAction)onMusic:(UIButton *)button
 {

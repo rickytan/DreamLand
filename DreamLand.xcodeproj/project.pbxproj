@@ -89,6 +89,11 @@
 		9CD121A618718CCE00612DD8 /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121A518718CCE00612DD8 /* none@2x.png */; };
 		9CD121A9187191F500612DD8 /* DLLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */; };
 		9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */; };
+		9CF9DE12187294BE002D45C9 /* DLTimePlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9DE11187294BE002D45C9 /* DLTimePlate.m */; };
+		9CF9DE1418729D73002D45C9 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9DE1318729D73002D45C9 /* circle@2x.png */; };
+		9CF9DE161872A12A002D45C9 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9DE151872A12A002D45C9 /* menu@2x.png */; };
+		9CF9DE191872A23E002D45C9 /* NSDate+RExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9DE181872A23E002D45C9 /* NSDate+RExtension.m */; };
+		9CF9DE1B1872ACAE002D45C9 /* circle-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,7 +131,6 @@
 		9C5B760E18366F1C00943394 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		9C5C79B217561B9A0066D960 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		9C5C79B7175621B00066D960 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9C5C79B9175621BC0066D960 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		9C5C79BA175625CF0066D960 /* DLData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLData.h; sourceTree = "<group>"; };
 		9C5C79BB175625CF0066D960 /* DLData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLData.m; sourceTree = "<group>"; };
 		9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
@@ -206,7 +210,6 @@
 		9CCF8869175101E700B1D838 /* run_loop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = run_loop.h; sourceTree = "<group>"; };
 		9CCF886A175101E700B1D838 /* sdp_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdp_util.h; sourceTree = "<group>"; };
 		9CCF886B175101E700B1D838 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		9CCF888217510E5600B1D838 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		9CD121821871826900612DD8 /* alam@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alam@2x.png"; sourceTree = "<group>"; };
 		9CD121831871826900612DD8 /* data@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data@2x.png"; sourceTree = "<group>"; };
 		9CD121841871826900612DD8 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
@@ -230,6 +233,13 @@
 		9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftPanelViewController.m; sourceTree = "<group>"; };
 		9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDialPlate.h; sourceTree = "<group>"; };
 		9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDialPlate.m; sourceTree = "<group>"; };
+		9CF9DE10187294BE002D45C9 /* DLTimePlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTimePlate.h; sourceTree = "<group>"; };
+		9CF9DE11187294BE002D45C9 /* DLTimePlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTimePlate.m; sourceTree = "<group>"; };
+		9CF9DE1318729D73002D45C9 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
+		9CF9DE151872A12A002D45C9 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		9CF9DE171872A23E002D45C9 /* NSDate+RExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RExtension.h"; sourceTree = "<group>"; };
+		9CF9DE181872A23E002D45C9 /* NSDate+RExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RExtension.m"; sourceTree = "<group>"; };
+		9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-shadow@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,7 +316,10 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */,
 				9CD121821871826900612DD8 /* alam@2x.png */,
+				9CF9DE151872A12A002D45C9 /* menu@2x.png */,
+				9CF9DE1318729D73002D45C9 /* circle@2x.png */,
 				9CAAF1C51869EFB700C666D2 /* background@2x.png */,
 				9CD1218C1871844E00612DD8 /* big dot@2x.png */,
 				9CD121831871826900612DD8 /* data@2x.png */,
@@ -385,49 +398,18 @@
 		9CBD2CB2173F4464001FFAE0 /* DreamLand */ = {
 			isa = PBXGroup;
 			children = (
-				9CD121A21871898100612DD8 /* DLAlarmViewController.h */,
-				9CD121A31871898100612DD8 /* DLAlarmViewController.m */,
 				9CBD2CBB173F4464001FFAE0 /* DLAppDelegate.h */,
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
-				9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */,
-				9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */,
-				9C5C79BA175625CF0066D960 /* DLData.h */,
-				9C5C79BB175625CF0066D960 /* DLData.m */,
-				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
-				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
-				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
-				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
-				9C5B75F818366E5B00943394 /* DLDataRecorder.h */,
-				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
-				9C7C21111869C82600F2B2EA /* DLDateField.h */,
-				9C7C21121869C82600F2B2EA /* DLDateField.m */,
-				9C18955F186D55950013263D /* DLForgotViewController.h */,
-				9C189560186D55950013263D /* DLForgotViewController.m */,
-				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
-				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
-				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
-				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
-				9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */,
-				9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */,
-				9C7C21141869CA9A00F2B2EA /* DLOptionField.h */,
-				9C7C21151869CA9A00F2B2EA /* DLOptionField.m */,
-				9C357E77184673B5004A927D /* DLRecord.h */,
-				9C357E78184673B5004A927D /* DLRecord.m */,
-				9CD1219D187184CC00612DD8 /* DLSiderViewController.h */,
-				9CD1219E187184CC00612DD8 /* DLSiderViewController.m */,
-				9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */,
-				9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */,
-				9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */,
-				9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */,
+				9CF9DE171872A23E002D45C9 /* NSDate+RExtension.h */,
+				9CF9DE181872A23E002D45C9 /* NSDate+RExtension.m */,
+				9CF9DE0F18729435002D45C9 /* Data */,
+				9CF9DE0E187293FB002D45C9 /* View */,
+				9CF9DE0D187293EF002D45C9 /* Controller */,
 				9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */,
 				9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */,
-				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
-				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
-				9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */,
-				9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -505,6 +487,65 @@
 				9CD1219A1871848700612DD8 /* RTSiderViewController.m */,
 			);
 			path = RTNavigationController;
+			sourceTree = "<group>";
+		};
+		9CF9DE0D187293EF002D45C9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9CD121A21871898100612DD8 /* DLAlarmViewController.h */,
+				9CD121A31871898100612DD8 /* DLAlarmViewController.m */,
+				9C18955F186D55950013263D /* DLForgotViewController.h */,
+				9C189560186D55950013263D /* DLForgotViewController.m */,
+				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
+				9C5A963618642BB700C673DB /* DLGuideViewController.m */,
+				9CC3D469175EEBDD009AB5CA /* DLHistoryListViewController.h */,
+				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
+				9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */,
+				9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */,
+				9CD1219D187184CC00612DD8 /* DLSiderViewController.h */,
+				9CD1219E187184CC00612DD8 /* DLSiderViewController.m */,
+				9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */,
+				9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */,
+				9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */,
+				9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */,
+				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
+				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9CF9DE0E187293FB002D45C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */,
+				9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */,
+				9C7C21111869C82600F2B2EA /* DLDateField.h */,
+				9C7C21121869C82600F2B2EA /* DLDateField.m */,
+				9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */,
+				9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */,
+				9C7C21141869CA9A00F2B2EA /* DLOptionField.h */,
+				9C7C21151869CA9A00F2B2EA /* DLOptionField.m */,
+				9CF9DE10187294BE002D45C9 /* DLTimePlate.h */,
+				9CF9DE11187294BE002D45C9 /* DLTimePlate.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9CF9DE0F18729435002D45C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9C5C79BA175625CF0066D960 /* DLData.h */,
+				9C5C79BB175625CF0066D960 /* DLData.m */,
+				9C2B009018425A3A00F90ED8 /* DLDatabase.h */,
+				9C2B009118425A3A00F90ED8 /* DLDatabase.m */,
+				9C5B75FB18366E6B00943394 /* DLDataProvider.h */,
+				9C5B75FC18366E6B00943394 /* DLDataProvider.m */,
+				9C5B75F818366E5B00943394 /* DLDataRecorder.h */,
+				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
+				9C357E77184673B5004A927D /* DLRecord.h */,
+				9C357E78184673B5004A927D /* DLRecord.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -591,6 +632,7 @@
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9CAAF1DB1869EFB700C666D2 /* DreamColor logo@2x.png in Resources */,
+				9CF9DE1B1872ACAE002D45C9 /* circle-shadow@2x.png in Resources */,
 				9CAAF1E31869EFB700C666D2 /* start.caf in Resources */,
 				9CAAF1D91869EFB700C666D2 /* Default.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
@@ -607,6 +649,8 @@
 				9CD121891871826900612DD8 /* location@2x.png in Resources */,
 				9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */,
 				9CD121871871826900612DD8 /* alam@2x.png in Resources */,
+				9CF9DE161872A12A002D45C9 /* menu@2x.png in Resources */,
+				9CF9DE1418729D73002D45C9 /* circle@2x.png in Resources */,
 				9CD121951871844E00612DD8 /* start bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,10 +681,12 @@
 				9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */,
 				9C189561186D55950013263D /* DLForgotViewController.m in Sources */,
 				9C5B760B18366F0600943394 /* FMDatabasePool.m in Sources */,
+				9CF9DE191872A23E002D45C9 /* NSDate+RExtension.m in Sources */,
 				9CC3D462175EE732009AB5CA /* RTPulseWaveView.m in Sources */,
 				9CD1219C1871848700612DD8 /* RTSiderViewController.m in Sources */,
 				9C5B760C18366F0600943394 /* FMDatabaseQueue.m in Sources */,
 				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
+				9CF9DE12187294BE002D45C9 /* DLTimePlate.m in Sources */,
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
 				9C189565186D5C730013263D /* RAutoTextField.m in Sources */,
 				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
@@ -662,7 +708,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C5C79B7175621B00066D960 /* en */,
-				9C5C79B9175621BC0066D960 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -671,7 +716,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9CBD2CB6173F4464001FFAE0 /* en */,
-				9CCF888217510E5600B1D838 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -703,7 +747,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -726,7 +770,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
