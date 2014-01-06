@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DLAlarmViewController : UIViewController
-
+@property (nonatomic, assign) NSInteger alarmPeriod;    // Default 30
 @end

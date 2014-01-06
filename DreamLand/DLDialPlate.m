@@ -19,7 +19,9 @@
     self.strokeBackgroundColor = [UIColor whiteColor];
     self.startAngle = self.endAngle = 0;
     self.clockWise = YES;
+    self.radius = (MIN(self.bounds.size.width, self.bounds.size.height) - self.strokeWidth) / 2;
     self.exclusiveTouch = YES;
+    self.clipsToBounds = NO;
     
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"big dot.png"]];
     //image.userInteractionEnabled = YES;
@@ -74,6 +76,7 @@
     _endAngle = endAngle;
     [self putThumb];
     [self setNeedsDisplay];
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 - (void)layoutSubviews
@@ -84,9 +87,8 @@
 
 - (void)putThumb
 {
-    CGFloat radius = (MIN(self.bounds.size.width, self.bounds.size.height) - self.strokeWidth) / 2;
     CGPoint center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
-    [self viewWithTag:kImageThumbTag].center = CGPointMake(center.x + radius * cosf(self.endAngle), center.y + radius * sinf(self.endAngle));
+    [self viewWithTag:kImageThumbTag].center = CGPointMake(center.x + self.radius * cosf(self.endAngle), center.y + self.radius * sinf(self.endAngle));
 }
 
 - (void)drawBackgroundCircle:(CGRect)rect
@@ -158,21 +160,22 @@
 - (void)drawRect:(CGRect)rect
 {
     //[self drawBackgroundCircle:rect];
-
-    UIColor* color = [UIColor colorWithRed: 0.227 green: 0.749 blue: 0.816 alpha: 1];
+    
     
     //// Oval Drawing
-    CGRect ovalRect = CGRectInset(rect, self.strokeWidth / 2, self.strokeWidth / 2);
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
-    [ovalPath addArcWithCenter: CGPointMake(CGRectGetMidX(ovalRect), CGRectGetMidY(ovalRect))
-                        radius: CGRectGetWidth(ovalRect) / 2
+    [ovalPath addArcWithCenter: CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
+                        radius: self.radius
                     startAngle: self.startAngle
                       endAngle: self.endAngle
-                     clockwise: (self.endAngle > self.startAngle) ? self.endAngle : (self.endAngle + 2*M_PI) - self.startAngle < M_PI];
-    [color setStroke];
+                     clockwise: self.endAngle > self.startAngle];
     ovalPath.lineWidth = self.strokeWidth;
     ovalPath.lineCapStyle = kCGLineCapRound;
+
+    [self.backgroundImage drawInRect:UIEdgeInsetsInsetRect(rect, self.contentInsets)];
+    [self.strokeColor setStroke];
     [ovalPath stroke];
+    [self.shadowImage drawInRect:UIEdgeInsetsInsetRect(rect, self.contentInsets)];
 }
 
 - (BOOL)beginTrackingWithTouch:(UITouch *)touch
@@ -205,21 +208,6 @@
     p.y -= self.bounds.size.height / 2;
     CGFloat v = atan2f(p.y, p.x);
     self.endAngle = v;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesBegan:touches withEvent:event];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesMoved:touches withEvent:event];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesEnded:touches withEvent:event];
 }
 
 

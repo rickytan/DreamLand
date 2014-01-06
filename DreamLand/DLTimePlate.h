@@ -11,7 +11,10 @@
 @class DLDialPlate;
 
 @interface DLTimePlate : UIControl
-@property (nonatomic, assign) IBOutlet DLDialPlate *hourPlate;
-@property (nonatomic, assign) IBOutlet DLDialPlate *minutePlate;
-@property (nonatomic, retain) NSDate *time;
+@property (nonatomic, assign) IBOutlet DLDialPlate * hourPlate;
+@property (nonatomic, assign) IBOutlet DLDialPlate * minutePlate;
+
+@property (nonatomic, assign) NSInteger              hour;
+@property (nonatomic, assign) NSInteger              minute;
+@property (nonatomic, assign) BOOL                   isAM;
 @end

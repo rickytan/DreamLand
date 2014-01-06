@@ -7,6 +7,7 @@
 //
 
 #import "DLLeftPanelViewController.h"
+#import "DLSiderViewController.h"
 
 @interface DLLeftPanelCell : UITableViewCell
 @end
@@ -53,8 +54,11 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
+    self.clearsSelectionOnViewWillAppear = NO;
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                            inSection:0]
+                                animated:NO
+                          scrollPosition:UITableViewScrollPositionNone];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -133,6 +137,38 @@ viewForFooterInSection:(NSInteger)section
                action:@selector(onSignOut:)
      forControlEvents:UIControlEventTouchUpInside];
     return button;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"AlarmNav"];
+            [self.siderViewController setMiddleViewController:vc
+                                                     animated:YES];
+        }
+            break;
+        case 1:
+        {
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DataNav"];
+            [self.siderViewController setMiddleViewController:vc
+                                                     animated:YES];
+        }
+
+            break;
+        case 2:
+        {
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DataNav"];
+            [self.siderViewController setMiddleViewController:vc
+                                                     animated:YES];
+        }
+
+            break;
+        default:
+            break;
+    }
 }
 
 @end

@@ -25,7 +25,7 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return [self->_currentMiddleViewController preferredStatusBarStyle];
 }
 
 - (void)viewDidLoad

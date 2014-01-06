@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		9C189561186D55950013263D /* DLForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C189560186D55950013263D /* DLForgotViewController.m */; };
 		9C189565186D5C730013263D /* RAutoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C189564186D5C730013263D /* RAutoTextField.m */; };
+		9C287C71187B0F7E00934786 /* circle-big-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */; };
+		9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6E187B0F7E00934786 /* circle-big@2x.png */; };
+		9C287C73187B0F7E00934786 /* circle-small-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */; };
+		9C287C74187B0F7E00934786 /* circle-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C70187B0F7E00934786 /* circle-small@2x.png */; };
+		9C287C77187B2E0E00934786 /* DLDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C287C76187B2E0E00934786 /* DLDataViewController.m */; };
+		9C287C79187B2E5100934786 /* data-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C78187B2E5100934786 /* data-bg@2x.png */; };
+		9C287C7B187B2F6E00934786 /* more-data@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C7A187B2F6E00934786 /* more-data@2x.png */; };
+		9C287C81187B303600934786 /* delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C7C187B303600934786 /* delete@2x.png */; };
+		9C287C82187B303600934786 /* emotion-bad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C7D187B303600934786 /* emotion-bad@2x.png */; };
+		9C287C83187B303600934786 /* emotion-good@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C7E187B303600934786 /* emotion-good@2x.png */; };
+		9C287C84187B303600934786 /* emotion-normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C7F187B303600934786 /* emotion-normal@2x.png */; };
+		9C287C85187B303600934786 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C80187B303600934786 /* share@2x.png */; };
 		9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B009118425A3A00F90ED8 /* DLDatabase.m */; };
 		9C357E79184673B5004A927D /* DLRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C357E78184673B5004A927D /* DLRecord.m */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
@@ -101,6 +113,19 @@
 		9C189560186D55950013263D /* DLForgotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLForgotViewController.m; sourceTree = "<group>"; };
 		9C189563186D5C730013263D /* RAutoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAutoTextField.h; sourceTree = "<group>"; };
 		9C189564186D5C730013263D /* RAutoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAutoTextField.m; sourceTree = "<group>"; };
+		9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-big-shadow@2x.png"; sourceTree = "<group>"; };
+		9C287C6E187B0F7E00934786 /* circle-big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-big@2x.png"; sourceTree = "<group>"; };
+		9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-small-shadow@2x.png"; sourceTree = "<group>"; };
+		9C287C70187B0F7E00934786 /* circle-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-small@2x.png"; sourceTree = "<group>"; };
+		9C287C75187B2E0E00934786 /* DLDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataViewController.h; sourceTree = "<group>"; };
+		9C287C76187B2E0E00934786 /* DLDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataViewController.m; sourceTree = "<group>"; };
+		9C287C78187B2E5100934786 /* data-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data-bg@2x.png"; sourceTree = "<group>"; };
+		9C287C7A187B2F6E00934786 /* more-data@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more-data@2x.png"; sourceTree = "<group>"; };
+		9C287C7C187B303600934786 /* delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete@2x.png"; sourceTree = "<group>"; };
+		9C287C7D187B303600934786 /* emotion-bad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emotion-bad@2x.png"; sourceTree = "<group>"; };
+		9C287C7E187B303600934786 /* emotion-good@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emotion-good@2x.png"; sourceTree = "<group>"; };
+		9C287C7F187B303600934786 /* emotion-normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "emotion-normal@2x.png"; sourceTree = "<group>"; };
+		9C287C80187B303600934786 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		9C2B009018425A3A00F90ED8 /* DLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDatabase.h; sourceTree = "<group>"; };
 		9C2B009118425A3A00F90ED8 /* DLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDatabase.m; sourceTree = "<group>"; };
 		9C357E77184673B5004A927D /* DLRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRecord.h; sourceTree = "<group>"; };
@@ -316,30 +341,41 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */,
 				9CD121821871826900612DD8 /* alam@2x.png */,
-				9CF9DE151872A12A002D45C9 /* menu@2x.png */,
-				9CF9DE1318729D73002D45C9 /* circle@2x.png */,
 				9CAAF1C51869EFB700C666D2 /* background@2x.png */,
 				9CD1218C1871844E00612DD8 /* big dot@2x.png */,
+				9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */,
+				9C287C6E187B0F7E00934786 /* circle-big@2x.png */,
+				9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */,
+				9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */,
+				9C287C70187B0F7E00934786 /* circle-small@2x.png */,
+				9CF9DE1318729D73002D45C9 /* circle@2x.png */,
+				9C287C78187B2E5100934786 /* data-bg@2x.png */,
 				9CD121831871826900612DD8 /* data@2x.png */,
-				9CD121A518718CCE00612DD8 /* none@2x.png */,
 				9CAAF1C61869EFB700C666D2 /* Default-568h@2x.png */,
 				9CAAF1C71869EFB700C666D2 /* Default.png */,
 				9CAAF1C81869EFB700C666D2 /* Default@2x.png */,
+				9C287C7C187B303600934786 /* delete@2x.png */,
 				9CAAF1C91869EFB700C666D2 /* DreamColor logo@2x.png */,
 				9CAAF1CA1869EFB700C666D2 /* email@2x.png */,
+				9C287C7D187B303600934786 /* emotion-bad@2x.png */,
+				9C287C7E187B303600934786 /* emotion-good@2x.png */,
+				9C287C7F187B303600934786 /* emotion-normal@2x.png */,
 				9CAAF1CB1869EFB700C666D2 /* Icon-120@2x.png */,
 				9CAAF1CC1869EFB700C666D2 /* Icon.png */,
 				9CAAF1CD1869EFB700C666D2 /* Icon@2x.png */,
 				9CD121841871826900612DD8 /* location@2x.png */,
+				9CF9DE151872A12A002D45C9 /* menu@2x.png */,
+				9C287C7A187B2F6E00934786 /* more-data@2x.png */,
 				9CD1218D1871844E00612DD8 /* music off@2x.png */,
 				9CD1218E1871844E00612DD8 /* music on@2x.png */,
 				9CAAF1CE1869EFB700C666D2 /* nav@2x.png */,
 				9CD121851871826900612DD8 /* nev bg@2x.png */,
+				9CD121A518718CCE00612DD8 /* none@2x.png */,
 				9CAAF1CF1869EFB700C666D2 /* password@2x.png */,
 				9CAAF1D01869EFB700C666D2 /* photo@2x.png */,
 				9CD121861871826900612DD8 /* setting@2x.png */,
+				9C287C80187B303600934786 /* share@2x.png */,
 				9CD1218F1871844E00612DD8 /* small dot@2x.png */,
 				9CD121901871844E00612DD8 /* start bg@2x.png */,
 				9CAAF1D11869EFB700C666D2 /* start.caf */,
@@ -510,6 +546,8 @@
 				9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */,
 				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
 				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
+				9C287C75187B2E0E00934786 /* DLDataViewController.h */,
+				9C287C76187B2E0E00934786 /* DLDataViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -614,6 +652,7 @@
 				9CAAF1DE1869EFB700C666D2 /* Icon.png in Resources */,
 				9CAAF1E01869EFB700C666D2 /* nav@2x.png in Resources */,
 				9CAAF1DF1869EFB700C666D2 /* Icon@2x.png in Resources */,
+				9C287C79187B2E5100934786 /* data-bg@2x.png in Resources */,
 				9CBD2CB7173F4464001FFAE0 /* InfoPlist.strings in Resources */,
 				9CAAF1D81869EFB700C666D2 /* Default-568h@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
@@ -621,8 +660,11 @@
 				9CAAF1E51869EFB700C666D2 /* weibo@2x.png in Resources */,
 				9CD121911871844E00612DD8 /* big dot@2x.png in Resources */,
 				9CAAF1DA1869EFB700C666D2 /* Default@2x.png in Resources */,
+				9C287C82187B303600934786 /* emotion-bad@2x.png in Resources */,
 				9CD1218B1871826900612DD8 /* setting@2x.png in Resources */,
 				9CD121921871844E00612DD8 /* music off@2x.png in Resources */,
+				9C287C81187B303600934786 /* delete@2x.png in Resources */,
+				9C287C83187B303600934786 /* emotion-good@2x.png in Resources */,
 				9CAAF1E71869EFB700C666D2 /* WT Background2@2x.jpg in Resources */,
 				9CD121941871844E00612DD8 /* small dot@2x.png in Resources */,
 				9CAAF1DD1869EFB700C666D2 /* Icon-120@2x.png in Resources */,
@@ -633,6 +675,7 @@
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9CAAF1DB1869EFB700C666D2 /* DreamColor logo@2x.png in Resources */,
 				9CF9DE1B1872ACAE002D45C9 /* circle-shadow@2x.png in Resources */,
+				9C287C7B187B2F6E00934786 /* more-data@2x.png in Resources */,
 				9CAAF1E31869EFB700C666D2 /* start.caf in Resources */,
 				9CAAF1D91869EFB700C666D2 /* Default.png in Resources */,
 				9C63737F175FA3E50012C9B5 /* computer.png in Resources */,
@@ -640,14 +683,20 @@
 				9CAAF1D71869EFB700C666D2 /* background@2x.png in Resources */,
 				9CD121931871844E00612DD8 /* music on@2x.png in Resources */,
 				9CC3D45F175EE6E1009AB5CA /* smartphone.png in Resources */,
+				9C287C84187B303600934786 /* emotion-normal@2x.png in Resources */,
 				9CAAF1DC1869EFB700C666D2 /* email@2x.png in Resources */,
+				9C287C85187B303600934786 /* share@2x.png in Resources */,
 				9CAAF1E81869EFB700C666D2 /* WT Background3@2x.jpg in Resources */,
 				9CAAF1E11869EFB700C666D2 /* password@2x.png in Resources */,
 				9CAAF1E21869EFB700C666D2 /* photo@2x.png in Resources */,
 				9CD121881871826900612DD8 /* data@2x.png in Resources */,
+				9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */,
 				9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */,
 				9CD121891871826900612DD8 /* location@2x.png in Resources */,
+				9C287C74187B0F7E00934786 /* circle-small@2x.png in Resources */,
 				9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */,
+				9C287C73187B0F7E00934786 /* circle-small-shadow@2x.png in Resources */,
+				9C287C71187B0F7E00934786 /* circle-big-shadow@2x.png in Resources */,
 				9CD121871871826900612DD8 /* alam@2x.png in Resources */,
 				9CF9DE161872A12A002D45C9 /* menu@2x.png in Resources */,
 				9CF9DE1418729D73002D45C9 /* circle@2x.png in Resources */,
@@ -690,6 +739,7 @@
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
 				9C189565186D5C730013263D /* RAutoTextField.m in Sources */,
 				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
+				9C287C77187B2E0E00934786 /* DLDataViewController.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
