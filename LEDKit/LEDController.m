@@ -9,12 +9,25 @@
 #import "LEDController.h"
 #import "LEDDevice.h"
 #import <netinet/in.h>
+#import <sys/socket.h>
+#import <arpa/inet.h>
 #import <CFNetwork/CFNetwork.h>
 
-@interface LEDController ()
+@interface LEDController () <NSStreamDelegate>
 {
     struct sockaddr           _address;
     int                       _socketfd;
+    
+    CFSocketRef                 _socket;
+    
+    CFReadStreamRef             _readStream;
+    CFWriteStreamRef            _writeStream;
+    NSInputStream             * _inputStream;
+    NSOutputStream            * _outputStream;
+    
+    NSMutableData             * _writeData;
+    NSMutableData             * _readData;
+    
     
     struct {
         unsigned int isColorUpdated:1;
@@ -25,7 +38,8 @@
         unsigned int isPauseUpdated:1;
     } _flags;
 }
-
+- (void)_writeData;
+- (void)_readData;
 - (BOOL)sendCommand:(unsigned char *)data
              length:(NSUInteger)length;
 - (NSData*)fetchDataWithCommand:(unsigned char *)data
@@ -57,6 +71,37 @@
         self.device = device;
     }
     return self;
+}
+
+- (void)_readData
+{
+    while (_inputStream.hasBytesAvailable) {
+        uint8_t buffer[512] = {0};
+        NSInteger bytesRead = [_inputStream read:buffer
+                                       maxLength:512];
+        [_readData appendBytes:buffer
+                        length:bytesRead];
+    }
+}
+
+- (void)_writeData
+{
+    while (_outputStream.hasSpaceAvailable && _writeData.length > 0) {
+        NSInteger bytesWrite = [_outputStream write:_writeData.bytes
+                                          maxLength:_writeData.length];
+        [_writeData replaceBytesInRange:NSMakeRange(0, bytesWrite)
+                              withBytes:NULL
+                                 length:0];
+    }
+}
+
+
+- (void)_tryConnect
+{
+    CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, (CFStringRef)self.device.address, self.device.port, &_readStream, &_writeStream);
+    _inputStream = (NSInputStream *)_readStream;
+    _outputStream = (NSOutputStream *)_outputStream;
+    
 }
 
 - (BOOL)connect
@@ -378,5 +423,23 @@
     });
 }
 
+#pragma mark - NSStream Delegate
+
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode
+{
+    switch (eventCode) {
+        case NSStreamEventOpenCompleted:
+            
+            break;
+        case NSStreamEventHasBytesAvailable:
+            
+            break;
+        case NSStreamEventHasSpaceAvailable:
+            
+            break;
+        default:
+            break;
+    }
+}
 
 @end
