@@ -13,10 +13,32 @@
 
 typedef void (^LEDControllerCallback)(BOOL success);
 
+typedef NS_ENUM(NSInteger, LEDControllerState) {
+    LEDControllerStateNotConnected      = 0,
+    LEDControllerStateConnecting,
+    LEDControllerStateConnected,
+    LEDControllerStateError
+};
+
+@class LEDController;
+
+extern NSString *const LEDControllerStateDidChangedNotification;
+extern NSString *const LEDControllerDeviceInfoDidUpdatedNotification;
+
+@protocol LEDControllerDelegate <NSObject>
+
+- (void)LEDControllerStateDidChanged:(LEDController *)controller;
+- (void)LEDControllerDeviceInfoDidUpdated:(LEDController *)controller;
+
+@end
+
 @interface LEDController : NSObject
 
 @property (nonatomic, retain)                    LEDDevice * device;
 @property (nonatomic, assign, readonly)          BOOL        isConnected;
+@property (nonatomic, assign) LEDControllerState             state;
+@property (nonatomic, readonly) NSError                    * error;
+@property (nonatomic, assign) id<LEDControllerDelegate>      delegate;
 @property (nonatomic, retain, readwrite)         UIColor   * color;
 @property (nonatomic, assign)                    NSInteger   mode;
 @property (nonatomic, assign)                    NSInteger   speed;
@@ -26,7 +48,7 @@ typedef void (^LEDControllerCallback)(BOOL success);
 
 - (id)initWithDevice:(LEDDevice*)device;
 
-- (BOOL)connect;
+- (void)connect;
 - (void)disconnect;
 
 - (BOOL)updateDeviceInfo;
