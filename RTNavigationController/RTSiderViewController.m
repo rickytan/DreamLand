@@ -137,6 +137,16 @@
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return [_currentMiddleViewController preferredStatusBarStyle];
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return [_currentMiddleViewController prefersStatusBarHidden];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -243,6 +253,8 @@
                 _currentMiddleViewController.view.frame = self.view.bounds;
                 [self.view addSubview:_currentMiddleViewController.view];
                 [self.view bringSubviewToFront:_currentMiddleViewController.view];
+                if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+                    [self setNeedsStatusBarAppearanceUpdate];
             }
             return;
         }
@@ -266,6 +278,8 @@
                                                                             forKeyPath:@"transform"
                                                                                options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                                                                context:NULL];
+                                        if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+                                            [self setNeedsStatusBarAppearanceUpdate];
                                     }];
             return;
         }
@@ -290,7 +304,8 @@
                                                 forKeyPath:@"transform"
                                                    options:NSKeyValueObservingOptionNew
                                                    context:NULL];
-            
+            if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)])
+                [self setNeedsStatusBarAppearanceUpdate];
             [self slideToMiddleAnimated:animated];
         };
         
