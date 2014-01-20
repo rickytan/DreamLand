@@ -7,9 +7,10 @@
 //
 
 #import "DLSignInViewController.h"
+#import "DLUser.h"
 #import <ShareSDK/ShareSDK.h>
 
-@interface DLSignInViewController ()
+@interface DLSignInViewController () <ISSViewDelegate>
 - (IBAction)onWeibo:(id)sender;
 - (IBAction)onWeChat:(id)sender;
 @end
@@ -32,14 +33,17 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.navigationController setNavigationBarHidden:YES
                                              animated:YES];
-    [self performSegueWithIdentifier:@"ShowGuide"
-                              sender:self];
+    double delayInSeconds = .1;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController performSegueWithIdentifier:@"ShowGuide"
+                                                       sender:self];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
 
 }
 
@@ -58,30 +62,75 @@
 
 - (IBAction)onWeChat:(id)sender
 {
-    [ShareSDK authWithType:ShareTypeWeixiSession
-                   options:nil
-                    result:^(SSAuthState state, id<ICMErrorInfo> error) {
-                        if (state == SSAuthStateSuccess) {
+    id<ISSAuthOptions> options = [ShareSDK authOptionsWithAutoAuth:YES
+                                                     allowCallback:YES
+                                                            scopes:nil
+                                                     powerByHidden:YES
+                                                    followAccounts:nil
+                                                     authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                      viewDelegate:self
+                                           authManagerViewDelegate:self];
+    [ShareSDK getUserInfoWithType:ShareTypeWeixiSession
+                      authOptions:options
+                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               if (result) {
 
-                        }
-                        else if (state == SSAuthStateFail) {
-
-                        }
-                    }];
+                               }
+                               else {
+                                   NSLog(@"%d %@", [error errorCode], [error errorDescription]);
+                               }
+                           }];
 }
 
 - (IBAction)onWeibo:(id)sender
 {
-    [ShareSDK authWithType:ShareTypeSinaWeibo
-                   options:nil
-                    result:^(SSAuthState state, id<ICMErrorInfo> error) {
-                        if (state == SSAuthStateSuccess) {
+    id<ISSAuthOptions> options = [ShareSDK authOptionsWithAutoAuth:YES
+                                                     allowCallback:YES
+                                                            scopes:nil
+                                                     powerByHidden:YES
+                                                    followAccounts:nil
+                                                     authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                      viewDelegate:self
+                                           authManagerViewDelegate:self];
+    [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo
+                      authOptions:options
+                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
+                               if (result) {
+                                   DLUser *user = [[[DLUser alloc] init] autorelease];
+                                   user.displayName = [userInfo nickname];
+                                   user.headerURL = [userInfo icon];
+                                   [DLUser setCurrentUser:user];
+                                   
+                                   [self performSegueWithIdentifier:@"ShowMain"
+                                                             sender:self];
+                               }
+                               else {
+                                   NSLog(@"%@", error);
+                               }
+                           }];
 
-                        }
-                        else if (state == SSAuthStateFail) {
-
-                        }
-                    }];
 }
+
+#pragma mark - ISSView Delegate
+
+- (void)viewOnWillDisplay:(UIViewController *)viewController
+                shareType:(ShareType)shareType
+{
+
+}
+
+- (void)viewOnWillDismiss:(UIViewController *)viewController
+                shareType:(ShareType)shareType
+{
+    
+}
+
+- (void)view:(UIViewController *)viewController
+autorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+   shareType:(ShareType)shareType
+{
+    
+}
+
 
 @end

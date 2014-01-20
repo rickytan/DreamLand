@@ -52,6 +52,8 @@
 
 - (void)dealloc
 {
+    [_currentMiddleViewController.view removeObserver:self
+                                           forKeyPath:@"transform"];
     SAFE_RELEASE(_maskView);
     SAFE_RELEASE(_pan);
     SAFE_RELEASE(_swipe);

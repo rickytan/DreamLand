@@ -10,8 +10,12 @@
 #import "LEDDevice.h"
 #import "LEDController.h"
 #import "DLDataRecorder.h"
-#import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
+#import <ShareSDK/ShareSDK.h>
+
+@interface DLAppDelegate () <WXApiDelegate>
+
+@end
 
 @implementation DLAppDelegate
 {
@@ -28,7 +32,8 @@
 {
     [ShareSDK registerApp:@"105a42595525"];
 
-    [ShareSDK connectSinaWeiboWithAppKey:@"1710935034" appSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"
+    [ShareSDK connectSinaWeiboWithAppKey:@"1710935034"
+                               appSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"
                              redirectUri:@"https://api.weibo.com/oauth2/default.html"];
     [ShareSDK connectWeChatWithAppId:@"wx4f3955d788a03f92"
                            wechatCls:[WXApi class]];
@@ -65,7 +70,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {
-    return [ShareSDK handleOpenURL:url wxDelegate:self];
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -73,8 +79,10 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-
-    return YES;
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -123,5 +131,22 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+#pragma - mark WX Delegate
+
+-(void) onReq:(BaseReq*)req
+{
+
+}
+
+/*! @brief 发送一个sendReq后，收到微信的回应
+ *
+ * 收到一个来自微信的处理结果。调用一次sendReq后会收到onResp。
+ * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。
+ * @param resp具体的回应内容，是自动释放的
+ */
+-(void) onResp:(BaseResp*)resp
+{
+    
+}
 
 @end

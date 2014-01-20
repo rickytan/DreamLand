@@ -8,6 +8,8 @@
 
 #import "DLLeftPanelViewController.h"
 #import "DLSiderViewController.h"
+#import "DLUser.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface DLLeftPanelCell : UITableViewCell
 @end
@@ -65,6 +67,29 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([DLUser currentUser].headerImage) {
+        [self.headerButton setImage:[DLUser currentUser].headerImage
+                           forState:UIControlStateNormal];
+    }
+    else {
+        [self.headerButton setImageWithURL:[NSURL URLWithString:[DLUser currentUser].headerURL]
+                                  forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"photo.png"]
+                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                     [DLUser currentUser].headerImage = image;
+                                 }];
+    }
+
+    if ([DLUser currentUser].displayName) {
+        self.nameLabel.text = [DLUser currentUser].displayName;
+    }
+    else {
+        self.nameLabel.text = @"Not Login";
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,7 +100,8 @@
 
 - (void)onSignOut:(id)sender
 {
-    
+    [DLUser setCurrentUser:nil];
+    [self.siderViewController.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

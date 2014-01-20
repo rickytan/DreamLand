@@ -79,6 +79,10 @@
 		9C7A964D188D1BB1006643D8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A964C188D1BB1006643D8 /* MessageUI.framework */; };
 		9C7A964F188D1BFB006643D8 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A964E188D1BFB006643D8 /* libz.1.2.5.dylib */; };
 		9C7A9651188D1C3A006643D8 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A9650188D1C3A006643D8 /* libicucore.dylib */; };
+		9C7A9654188D21BA006643D8 /* DLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7A9653188D21BA006643D8 /* DLUser.m */; };
+		9C7A9656188D3544006643D8 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A9655188D3544006643D8 /* SDWebImage.framework */; };
+		9C7A9658188D3619006643D8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A9657188D3619006643D8 /* ImageIO.framework */; };
+		9C7A965B188D3777006643D8 /* NSUserDefaults+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7A965A188D3777006643D8 /* NSUserDefaults+Settings.m */; };
 		9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */; };
 		9C7C21101869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C210F1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.m */; };
 		9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C21121869C82600F2B2EA /* DLDateField.m */; };
@@ -234,6 +238,12 @@
 		9C7A964C188D1BB1006643D8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		9C7A964E188D1BFB006643D8 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		9C7A9650188D1C3A006643D8 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		9C7A9652188D21BA006643D8 /* DLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLUser.h; sourceTree = "<group>"; };
+		9C7A9653188D21BA006643D8 /* DLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLUser.m; sourceTree = "<group>"; };
+		9C7A9655188D3544006643D8 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		9C7A9657188D3619006643D8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9C7A9659188D3777006643D8 /* NSUserDefaults+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Settings.h"; sourceTree = "<group>"; };
+		9C7A965A188D3777006643D8 /* NSUserDefaults+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Settings.m"; sourceTree = "<group>"; };
 		9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSignUpViewController.h; sourceTree = "<group>"; };
 		9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSignUpViewController.m; sourceTree = "<group>"; };
 		9C7C210E1869C58F00F2B2EA /* DLCustomPlaceholderColorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCustomPlaceholderColorTextField.h; sourceTree = "<group>"; };
@@ -344,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C7A9658188D3619006643D8 /* ImageIO.framework in Frameworks */,
 				9C7A9651188D1C3A006643D8 /* libicucore.dylib in Frameworks */,
 				9C7A964F188D1BFB006643D8 /* libz.1.2.5.dylib in Frameworks */,
 				9C7A964D188D1BB1006643D8 /* MessageUI.framework in Frameworks */,
@@ -366,6 +377,7 @@
 				9C7A963D188D18EB006643D8 /* RennSDK.framework in Frameworks */,
 				9C7A9647188D18EC006643D8 /* ShareSDKiPhoneAppRecommendShareViewUI.framework in Frameworks */,
 				9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */,
+				9C7A9656188D3544006643D8 /* SDWebImage.framework in Frameworks */,
 				9C7A9635188D18EB006643D8 /* TwitterConnection.framework in Frameworks */,
 				9C7A9644188D18EB006643D8 /* ShareSDKiPadDefaultShareViewUI.framework in Frameworks */,
 				9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */,
@@ -600,6 +612,8 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C7A9657188D3619006643D8 /* ImageIO.framework */,
+				9C7A9655188D3544006643D8 /* SDWebImage.framework */,
 				9C7A9650188D1C3A006643D8 /* libicucore.dylib */,
 				9C7A964E188D1BFB006643D8 /* libz.1.2.5.dylib */,
 				9C7A964C188D1BB1006643D8 /* MessageUI.framework */,
@@ -775,6 +789,10 @@
 				9C5B75F918366E5B00943394 /* DLDataRecorder.m */,
 				9C357E77184673B5004A927D /* DLRecord.h */,
 				9C357E78184673B5004A927D /* DLRecord.m */,
+				9C7A9652188D21BA006643D8 /* DLUser.h */,
+				9C7A9653188D21BA006643D8 /* DLUser.m */,
+				9C7A9659188D3777006643D8 /* NSUserDefaults+Settings.h */,
+				9C7A965A188D3777006643D8 /* NSUserDefaults+Settings.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -922,6 +940,7 @@
 				9CD1219F187184CC00612DD8 /* DLSiderViewController.m in Sources */,
 				9C5B760918366F0600943394 /* FMDatabase.m in Sources */,
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
+				9C7A965B188D3777006643D8 /* NSUserDefaults+Settings.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */,
@@ -938,6 +957,7 @@
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
 				9C189565186D5C730013263D /* RAutoTextField.m in Sources */,
 				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
+				9C7A9654188D21BA006643D8 /* DLUser.m in Sources */,
 				9C287C77187B2E0E00934786 /* DLDataViewController.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,

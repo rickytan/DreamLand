@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sDj-VY-n6j">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootNav" definesPresentationContext="YES" navigationBarHidden="YES" id="8Af-wA-AGI" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="FQq-MK-aF8">
                         <autoresizingMask key="autoresizingMask"/>
@@ -16,6 +16,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="YCT-fn-02D" kind="relationship" relationship="rootViewController" id="ors-hf-2rc"/>
+                        <segue destination="Q9w-3n-RQj" kind="modal" identifier="ShowGuide" modalTransitionStyle="crossDissolve" id="vMs-b3-pDF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6l-zE-9jE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -195,7 +196,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="onl-OB-v60"/>
                     <connections>
-                        <segue destination="Q9w-3n-RQj" kind="modal" identifier="ShowGuide" modalTransitionStyle="crossDissolve" id="xgk-NL-bsS"/>
+                        <segue destination="EjE-sw-lUQ" kind="push" identifier="ShowMain" id="vY2-Vj-4t5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="96o-UL-PHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -709,12 +710,13 @@ natural and feel less stressed in the morings.</string>
         <!--Sider View Controller-->
         <scene sceneID="W6n-1r-ufB">
             <objects>
-                <viewController id="EjE-sw-lUQ" customClass="DLSiderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainSider" id="EjE-sw-lUQ" customClass="DLSiderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D5v-EU-DaD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YLv-0u-y5w"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxa-QP-ANt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
