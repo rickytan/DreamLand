@@ -324,6 +324,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 
 - (void)disconnect
 {
+    [self _close];
     close(_socketfd);
     _socketfd = -1;
 }
@@ -355,7 +356,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     return nil;
 }
 
-- (void)updateDeviceInfoInBackground
+- (void)updateDeviceInfo
 {
     unsigned char command[] = {-17,1,119};
     [self sendData:command
@@ -364,6 +365,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
                            withObject:nil];
 }
 
+/*
 - (BOOL)updateDeviceInfo
 {
     unsigned char command[] = {-17,1,119};
@@ -405,7 +407,9 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     }
     return NO;
 }
+ */
 
+/*
 - (void)updateDeviceInfoWithBlock:(LEDControllerCallback)callback
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -416,6 +420,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
         });
     });
 }
+ */
 
 #pragma mark - getter & setter
 
@@ -434,8 +439,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
         data[3]               = (char)(comp[2] * 255);
         data[4]               = -86;
         
-        [self sendCommand:data
-                   length:sizeof(data)];
+        [self sendData:data
+                length:sizeof(data)];
+        
+//        [self sendCommand:data
+//                   length:sizeof(data)];
     }
 }
 
@@ -450,20 +458,23 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     });
 }
 
-- (UIColor*)color
-{
-    if (!_flags.isColorUpdated)
-        [self updateDeviceInfo];
-    return _color;
-}
+//- (UIColor*)color
+//{
+//    if (!_flags.isColorUpdated)
+//        [self updateDeviceInfo];
+//    return _color;
+//}
 
 - (void)setLuminance:(NSInteger)luminance
 {
     _luminance = luminance;
     
     unsigned char data[3] = {86, _luminance, -86};
-    [self sendCommand:data
-               length:sizeof(data)];
+    [self sendData:data
+            length:sizeof(data)];
+    
+//    [self sendCommand:data
+//               length:sizeof(data)];
 }
 
 - (void)setLuminance:(NSInteger)luminance withBlock:(LEDControllerCallback)callback
@@ -482,8 +493,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     _mode = mode;
     
     unsigned char data[] = {-69, 36 + _mode, _speed, 68};
-    [self sendCommand:data
-               length:sizeof(data)];
+    [self sendData:data
+            length:sizeof(data)];
+    
+//    [self sendCommand:data
+//               length:sizeof(data)];
     
 }
 
@@ -498,20 +512,23 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     });
 }
 
-- (NSInteger)mode
-{
-    if (!_flags.isModeUpdated)
-        [self updateDeviceInfo];
-    return _mode;
-}
+//- (NSInteger)mode
+//{
+//    if (!_flags.isModeUpdated)
+//        [self updateDeviceInfo];
+//    return _mode;
+//}
 
 - (void)setSpeed:(NSInteger)speed
 {
     _speed = speed;
     
     unsigned char data[] = {-69, 36 + _mode, _speed, 68};
-    [self sendCommand:data
-               length:sizeof(data)];
+    [self sendData:data
+            length:sizeof(data)];
+    
+//    [self sendCommand:data
+//               length:sizeof(data)];
 }
 
 - (void)setSpeed:(NSInteger)speed withBlock:(LEDControllerCallback)callback
@@ -525,20 +542,23 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     });
 }
 
-- (NSInteger)speed
-{
-    if (!_flags.isSpeedUpdated)
-        [self updateDeviceInfo];
-    return _speed;
-}
+//- (NSInteger)speed
+//{
+//    if (!_flags.isSpeedUpdated)
+//        [self updateDeviceInfo];
+//    return _speed;
+//}
 
 - (void)setOn:(BOOL)on
 {
     _on = on;
     
     unsigned char data[] = {-52, _on ? 35 : 36, 51};
-    [self sendCommand:data
-               length:sizeof(data)];
+    [self sendData:data
+            length:sizeof(data)];
+    
+//    [self sendCommand:data
+//               length:sizeof(data)];
 }
 
 - (void)setOn:(BOOL)on withBlock:(LEDControllerCallback)callback
@@ -557,8 +577,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     _pause = pause;
     
     unsigned char data[] = {-52, _pause ? 32 : 33, 51};
-    [self sendCommand:data
-               length:sizeof(data)];
+    [self sendData:data
+            length:sizeof(data)];
+    
+//    [self sendCommand:data
+//               length:sizeof(data)];
 }
 
 - (void)setPause:(BOOL)pause withBlock:(LEDControllerCallback)callback

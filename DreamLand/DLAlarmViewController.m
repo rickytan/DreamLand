@@ -52,6 +52,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +60,7 @@
     [super viewDidAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent
                                                 animated:YES];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,7 +92,7 @@
                                     fromDate:time];
     NSInteger hour = component.hour;
     NSInteger minute = component.minute;
-    self.wakeUpLabel.text = [NSString stringWithFormat:@"%d:%02d - - %d:%02d %s", hour, minute, timePlate.hour, timePlate.minute, timePlate.isAM ? "AM" : "PM"];
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"%d:%02d - %d:%02d %s", hour, minute, timePlate.hour, timePlate.minute, timePlate.isAM ? "AM" : "PM"];
 }
 
 @end

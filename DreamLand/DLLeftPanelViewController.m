@@ -31,10 +31,11 @@
 @end
 
 @interface DLLeftPanelViewController ()
-@property (nonatomic, assign) IBOutlet UIButton *headerButton;
-@property (nonatomic, assign) IBOutlet UILabel *nameLabel;
-@property (nonatomic, assign) IBOutlet UILabel *locationLabel;
-@property (nonatomic, assign) IBOutlet UILabel *infoLabel;
+@property (nonatomic, assign) IBOutlet UIButton  * headerButton;
+@property (nonatomic, assign) IBOutlet UILabel   * nameLabel;
+@property (nonatomic, assign) IBOutlet UILabel   * locationLabel;
+@property (nonatomic, assign) IBOutlet UILabel   * infoLabel;
+@property (nonatomic, retain) NSIndexPath        * currentSelected;
 - (void)onSignOut:(id)sender;
 @end
 
@@ -55,8 +56,9 @@
     
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                            inSection:0]
+    self.currentSelected = [NSIndexPath indexPathForRow:0
+                                              inSection:0];
+    [self.tableView selectRowAtIndexPath:self.currentSelected
                                 animated:NO
                           scrollPosition:UITableViewScrollPositionNone];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -118,7 +120,7 @@
         cell.imageView.image = nil;
         cell.textLabel.text = nil;
     }
-    
+
     return cell;
 }
 
@@ -142,6 +144,10 @@ viewForFooterInSection:(NSInteger)section
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.currentSelected isEqual:indexPath])
+        return;
+    
+    self.currentSelected = indexPath;
     switch (indexPath.row) {
         case 0:
         {

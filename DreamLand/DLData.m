@@ -19,6 +19,12 @@
     return [data autorelease];
 }
 
+- (void)dealloc
+{
+    self.date = nil;
+    [super dealloc];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder;
 {
     [aCoder encodeObject:self.value

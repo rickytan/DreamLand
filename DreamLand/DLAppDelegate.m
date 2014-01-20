@@ -10,6 +10,8 @@
 #import "LEDDevice.h"
 #import "LEDController.h"
 #import "DLDataRecorder.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 
 @implementation DLAppDelegate
 {
@@ -22,14 +24,27 @@
     [super dealloc];
 }
 
+- (void)setupAppkey
+{
+    [ShareSDK registerApp:@"105a42595525"];
+
+    [ShareSDK connectSinaWeiboWithAppKey:@"1710935034" appSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"
+                             redirectUri:@"https://api.weibo.com/oauth2/default.html"];
+    [ShareSDK connectWeChatWithAppId:@"wx4f3955d788a03f92"
+                           wechatCls:[WXApi class]];
+
+}
+
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self setupAppkey];
+
     //    [[CBCentralManager alloc] initWithDelegate:self
     //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
-    
+
     /*
      _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
      if ([_controller connect]) {
@@ -43,7 +58,22 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
      _controller.color = [UIColor yellowColor];
      }
      */
-    
+
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+
     return YES;
 }
 
@@ -66,13 +96,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         NSLog(@"Time remaining: %f", application.backgroundTimeRemaining);
 
     }
-/*
-    [application setKeepAliveTimeout:10*60
-                             handler:^{
-                                 NSLog(@"handler");
-                                 self.taskIdentifier = UIBackgroundTaskInvalid;
-                             }];
- */
+    /*
+     [application setKeepAliveTimeout:10*60
+     handler:^{
+     NSLog(@"handler");
+     self.taskIdentifier = UIBackgroundTaskInvalid;
+     }];
+     */
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application

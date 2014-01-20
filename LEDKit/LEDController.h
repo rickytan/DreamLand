@@ -51,8 +51,8 @@ extern NSString *const LEDControllerDeviceInfoDidUpdatedNotification;
 - (void)connect;
 - (void)disconnect;
 
-- (BOOL)updateDeviceInfo;
-- (void)updateDeviceInfoWithBlock:(LEDControllerCallback)callback;
+- (void)updateDeviceInfo;
+//- (void)updateDeviceInfoWithBlock:(LEDControllerCallback)callback;
 
 - (void)setMode:(NSInteger)mode withBlock:(LEDControllerCallback)callback;
 - (void)setColor:(UIColor*)color withBlock:(LEDControllerCallback)callback;

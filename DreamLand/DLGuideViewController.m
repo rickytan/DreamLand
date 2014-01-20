@@ -75,8 +75,10 @@
 {
     if (decelerate) {
         if (scrollView.contentOffset.x > (640 + 30)) {
-            [self performSegueWithIdentifier:@"ShowHome"
-                                      sender:self];
+            [self dismissViewControllerAnimated:YES
+                                     completion:^{
+
+                                     }];
         }
     }
 }

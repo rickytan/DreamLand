@@ -7,9 +7,11 @@
 //
 
 #import "DLSignInViewController.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface DLSignInViewController ()
-
+- (IBAction)onWeibo:(id)sender;
+- (IBAction)onWeChat:(id)sender;
 @end
 
 @implementation DLSignInViewController
@@ -30,6 +32,8 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.navigationController setNavigationBarHidden:YES
                                              animated:YES];
+    [self performSegueWithIdentifier:@"ShowGuide"
+                              sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,6 +54,34 @@
 - (IBAction)onHideKeyborad:(id)sender
 {
     [self.view endEditing:YES];
+}
+
+- (IBAction)onWeChat:(id)sender
+{
+    [ShareSDK authWithType:ShareTypeWeixiSession
+                   options:nil
+                    result:^(SSAuthState state, id<ICMErrorInfo> error) {
+                        if (state == SSAuthStateSuccess) {
+
+                        }
+                        else if (state == SSAuthStateFail) {
+
+                        }
+                    }];
+}
+
+- (IBAction)onWeibo:(id)sender
+{
+    [ShareSDK authWithType:ShareTypeSinaWeibo
+                   options:nil
+                    result:^(SSAuthState state, id<ICMErrorInfo> error) {
+                        if (state == SSAuthStateSuccess) {
+
+                        }
+                        else if (state == SSAuthStateFail) {
+
+                        }
+                    }];
 }
 
 @end
