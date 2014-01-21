@@ -15,6 +15,7 @@
 @property (nonatomic, retain) UIColor *strokeBackgroundColor;   // Defalut White
 @property (nonatomic, assign) CGFloat startAngle;
 @property (nonatomic, assign) CGFloat endAngle;
+@property (nonatomic, assign) CGFloat stepAngle;        // Default 0.0
 @property (nonatomic, assign) BOOL clockWise;           // Default YES
 @property (nonatomic, retain) UIImage *backgroundImage;
 @property (nonatomic, retain) UIImage *shadowImage;

@@ -30,7 +30,7 @@
     
     self.hourPlate.strokeColor = [UIColor colorWithRed: 0.227 green: 0.749 blue: 0.816 alpha: 1];
     self.hourPlate.strokeWidth = 12.0;
-    
+    self.hourPlate.stepAngle = M_PI / 6;
     self.hourPlate.backgroundImage = [UIImage imageNamed:@"circle-small.png"];
     self.hourPlate.shadowImage = [UIImage imageNamed:@"circle-small-shadow.png"];
     self.hourPlate.radius = 90.0;
@@ -38,6 +38,7 @@
     
     self.minutePlate.strokeColor = self.hourPlate.strokeColor;
     self.minutePlate.strokeWidth = 4.0;
+    self.minutePlate.stepAngle = M_PI / 6;
     [self.minutePlate setThumbImage:[UIImage imageNamed:@"small dot.png"]];
     self.minutePlate.backgroundImage = [UIImage imageNamed:@"circle-big.png"];
     self.minutePlate.shadowImage = [UIImage imageNamed:@"circle-big-shadow.png"];
@@ -45,7 +46,7 @@
     self.minutePlate.contentInsets = UIEdgeInsetsMake(2, -2, -3.5, 2);
     
     self.isAM = YES;
-    self.hour = 0;
+    self.hour = 8;
     self.minute = 0;
 }
 
@@ -63,7 +64,6 @@
     }
     return self;
 }
-
 
 #pragma mark - Actions
 

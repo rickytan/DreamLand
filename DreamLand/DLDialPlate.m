@@ -10,10 +10,15 @@
 
 #define kImageThumbTag      113
 
+@interface DLDialPlate ()
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+@end
+
 @implementation DLDialPlate
 
 - (void)commonInit
 {
+    self.shapeLayer = [CAShapeLayer layer];
     self.strokeWidth = 4.0;
     self.strokeColor = [UIColor blackColor];
     self.strokeBackgroundColor = [UIColor whiteColor];
@@ -22,13 +27,13 @@
     self.radius = (MIN(self.bounds.size.width, self.bounds.size.height) - self.strokeWidth) / 2;
     self.exclusiveTouch = YES;
     self.clipsToBounds = NO;
-    
+
     UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"big dot.png"]];
     //image.userInteractionEnabled = YES;
     image.tag = kImageThumbTag;
     [self addSubview:image];
     [image release];
-    
+
     [self putThumb];
 }
 
@@ -73,10 +78,13 @@
 
 - (void)setEndAngle:(CGFloat)endAngle
 {
-    _endAngle = endAngle;
-    [self putThumb];
-    [self setNeedsDisplay];
-    [self sendActionsForControlEvents:UIControlEventValueChanged];
+    if (_endAngle != endAngle) {
+        _endAngle = endAngle;
+        NSLog(@"%f", _endAngle);
+        [self putThumb];
+        [self setNeedsDisplay];
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 - (void)layoutSubviews
@@ -95,11 +103,11 @@
 {
     //// General Declarations
     CGContextRef context = UIGraphicsGetCurrentContext();
-    
+
     //// Color Declarations
     UIColor* fillColor = [UIColor colorWithRed: 0.114 green: 0.118 blue: 0.153 alpha: 1];
     UIColor* strokeColor = [UIColor colorWithRed: 0.129 green: 0.137 blue: 0.188 alpha: 1];
-    
+
     //// Shadow Declarations
     UIColor* shadow = [UIColor grayColor];
     CGSize shadowOffset = CGSizeMake(0.0, 2.0);
@@ -107,27 +115,27 @@
     UIColor* shadow2 = [UIColor blackColor];
     CGSize shadow2Offset = CGSizeMake(0.0, -2.0);
     CGFloat shadow2BlurRadius = 4.;
-    
+
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPathWithOvalInRect: CGRectInset(rect, self.strokeWidth / 2, self.strokeWidth / 2)];
 
-    
+
     CGContextSaveGState(context);
     {
         CGContextSetShadowWithColor(context, shadow2Offset, shadow2BlurRadius, shadow2.CGColor);
-        
-        
+
+
         ////// Oval Inner Shadow
         CGRect ovalBorderRect = CGRectInset([ovalPath bounds],
                                             -shadowBlurRadius,
                                             -shadowBlurRadius);
         ovalBorderRect = CGRectOffset(ovalBorderRect, -shadowOffset.width, -shadowOffset.height);
         ovalBorderRect = CGRectInset(CGRectUnion(ovalBorderRect, [ovalPath bounds]), -1, -1);
-        
+
         UIBezierPath* ovalNegativePath = [UIBezierPath bezierPathWithOvalInRect:ovalBorderRect];
         [ovalNegativePath appendPath: ovalPath];
         ovalNegativePath.usesEvenOddFillRule = YES;
-        
+
         CGContextSaveGState(context);
         {
             CGFloat xOffset = shadowOffset.width + round(ovalBorderRect.size.width);
@@ -136,7 +144,7 @@
                                         CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
                                         shadowBlurRadius,
                                         shadow.CGColor);
-            
+
             [ovalPath addClip];
             CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(ovalBorderRect.size.width), 0);
             [ovalNegativePath applyTransform: transform];
@@ -146,8 +154,8 @@
         CGContextRestoreGState(context);
     }
     CGContextRestoreGState(context);
-    
-    
+
+
     [fillColor setFill];
     [ovalPath fill];
     [strokeColor setStroke];
@@ -160,15 +168,15 @@
 - (void)drawRect:(CGRect)rect
 {
     //[self drawBackgroundCircle:rect];
-    
-    
+
+
     //// Oval Drawing
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
     [ovalPath addArcWithCenter: CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
                         radius: self.radius
                     startAngle: self.startAngle
                       endAngle: self.endAngle
-                     clockwise: self.endAngle > self.startAngle];
+                     clockwise: (self.endAngle - self.startAngle) < M_PI && (self.endAngle - self.startAngle) > 0];
     ovalPath.lineWidth = self.strokeWidth;
     ovalPath.lineCapStyle = kCGLineCapRound;
 
@@ -183,7 +191,7 @@
 {
     CGPoint p = [touch locationInView:self];
     if (CGRectContainsPoint(CGRectInset([self viewWithTag:kImageThumbTag].frame, -self.strokeWidth, -self.strokeWidth), p)) {
-        
+
         return YES;
     }
     return NO;
@@ -196,7 +204,12 @@
     p.x -= self.bounds.size.width / 2;
     p.y -= self.bounds.size.height / 2;
     CGFloat v = atan2f(p.y, p.x);
-    self.endAngle = v;
+    if (self.stepAngle > 0) {
+        CGFloat num = floorf(v / self.stepAngle + 0.5);
+        self.endAngle = self.stepAngle * num;
+    }
+    else
+        self.endAngle = v;
     return YES;
 }
 
@@ -207,7 +220,12 @@
     p.x -= self.bounds.size.width / 2;
     p.y -= self.bounds.size.height / 2;
     CGFloat v = atan2f(p.y, p.x);
-    self.endAngle = v;
+    if (self.stepAngle > 0) {
+        CGFloat num = floorf(v / self.stepAngle + 0.5);
+        self.endAngle = self.stepAngle * num;
+    }
+    else
+        self.endAngle = v;
 }
 
 
