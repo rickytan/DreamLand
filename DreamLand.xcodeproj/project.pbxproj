@@ -44,6 +44,7 @@
 		9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C5C79BE175788CA0066D960 /* SVProgressHUD.bundle */; };
 		9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5C79C0175788CA0066D960 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		9C63737F175FA3E50012C9B5 /* computer.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C63737E175FA3E50012C9B5 /* computer.png */; };
+		9C6DD69418B112A7005A7E1E /* DLWeeklyAlerm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6DD69318B112A7005A7E1E /* DLWeeklyAlerm.m */; };
 		9C7A95E1188D14F2006643D8 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A95E0188D14F2006643D8 /* AVOSCloud.framework */; };
 		9C7A95E3188D1541006643D8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A95E2188D1541006643D8 /* MobileCoreServices.framework */; };
 		9C7A95E5188D154C006643D8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C7A95E4188D154C006643D8 /* CFNetwork.framework */; };
@@ -201,6 +202,8 @@
 		9C5C79BF175788CA0066D960 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		9C5C79C0175788CA0066D960 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		9C63737E175FA3E50012C9B5 /* computer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = computer.png; sourceTree = "<group>"; };
+		9C6DD69218B112A7005A7E1E /* DLWeeklyAlerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWeeklyAlerm.h; sourceTree = "<group>"; };
+		9C6DD69318B112A7005A7E1E /* DLWeeklyAlerm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWeeklyAlerm.m; sourceTree = "<group>"; };
 		9C7A95E0188D14F2006643D8 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		9C7A95E2188D1541006643D8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		9C7A95E4188D154C006643D8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -772,6 +775,8 @@
 				9C7C21151869CA9A00F2B2EA /* DLOptionField.m */,
 				9CF9DE10187294BE002D45C9 /* DLTimePlate.h */,
 				9CF9DE11187294BE002D45C9 /* DLTimePlate.m */,
+				9C6DD69218B112A7005A7E1E /* DLWeeklyAlerm.h */,
+				9C6DD69318B112A7005A7E1E /* DLWeeklyAlerm.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
 				9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */,
 				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,
+				9C6DD69418B112A7005A7E1E /* DLWeeklyAlerm.m in Sources */,
 				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
 				9CD1219B1871848700612DD8 /* RTNavigationController.m in Sources */,
