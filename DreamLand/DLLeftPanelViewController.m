@@ -121,7 +121,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 3)
-        return 198;
+        return 188;
     return 50;
 }
 
@@ -192,7 +192,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             break;
         case 2:
         {
-            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"DataNav"];
+            UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingNav"];
             [self.siderViewController setMiddleViewController:vc
                                                      animated:YES];
         }
