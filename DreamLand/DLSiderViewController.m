@@ -35,6 +35,7 @@
     self.dataSource = self;
     self.allowOverDrag = NO;
     self.translationStyle = SlideTranslationStyleDeeper;
+    self.middleTranslationStyle = MiddleViewTranslationStyleStay;
     [self setMiddleViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"AlarmNav"]];
     [self setLeftViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"Settings"]];
 }

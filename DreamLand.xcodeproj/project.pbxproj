@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C189561186D55950013263D /* DLForgotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C189560186D55950013263D /* DLForgotViewController.m */; };
 		9C189565186D5C730013263D /* RAutoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C189564186D5C730013263D /* RAutoTextField.m */; };
+		9C1A0A4518B3AE9900A767FC /* DLWakeUpPhaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */; };
 		9C287C71187B0F7E00934786 /* circle-big-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */; };
 		9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6E187B0F7E00934786 /* circle-big@2x.png */; };
 		9C287C73187B0F7E00934786 /* circle-small-shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */; };
@@ -157,6 +158,8 @@
 		9C189560186D55950013263D /* DLForgotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLForgotViewController.m; sourceTree = "<group>"; };
 		9C189563186D5C730013263D /* RAutoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAutoTextField.h; sourceTree = "<group>"; };
 		9C189564186D5C730013263D /* RAutoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAutoTextField.m; sourceTree = "<group>"; };
+		9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLWakeUpPhaseViewController.h; sourceTree = "<group>"; };
+		9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLWakeUpPhaseViewController.m; sourceTree = "<group>"; };
 		9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-big-shadow@2x.png"; sourceTree = "<group>"; };
 		9C287C6E187B0F7E00934786 /* circle-big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-big@2x.png"; sourceTree = "<group>"; };
 		9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle-small-shadow@2x.png"; sourceTree = "<group>"; };
@@ -772,6 +775,8 @@
 				9C287C76187B2E0E00934786 /* DLDataViewController.m */,
 				9C6DD69518B11AC3005A7E1E /* DLSettingViewController.h */,
 				9C6DD69618B11AC3005A7E1E /* DLSettingViewController.m */,
+				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
+				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -847,6 +852,7 @@
 				ORGANIZATIONNAME = ricky;
 				TargetAttributes = {
 					9CBD2CA8173F4464001FFAE0 = {
+						DevelopmentTeam = JM9WSY7Q38;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -967,6 +973,7 @@
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */,
+				9C1A0A4518B3AE9900A767FC /* DLWakeUpPhaseViewController.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
 				9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */,
 				9C189561186D55950013263D /* DLForgotViewController.m in Sources */,
@@ -1074,8 +1081,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hang zhang (L824E9BN2D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hang zhang (L824E9BN2D)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1108,8 +1115,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1118,8 +1125,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: hang zhang (L824E9BN2D)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hang zhang (L824E9BN2D)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1147,8 +1154,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
