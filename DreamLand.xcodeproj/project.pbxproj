@@ -99,6 +99,8 @@
 		9C9B214218B8DE12009D233E /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B213F18B8DE12009D233E /* tick@2x.png */; };
 		9C9B214518B9057A009D233E /* UIView+DL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B214418B9057A009D233E /* UIView+DL.m */; };
 		9C9B214818B905EC009D233E /* DLStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B214718B905EC009D233E /* DLStartViewController.m */; };
+		9C9B214A18B90AA9009D233E /* slide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B214918B90AA9009D233E /* slide@2x.png */; };
+		9C9B214C18B9106B009D233E /* clock-tiny@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B214B18B9106B009D233E /* clock-tiny@2x.png */; };
 		9C9D5F05184F4396006D01BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9D5F04184F4396006D01BC /* AVFoundation.framework */; };
 		9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8817A2AA4E00037063 /* LEDDevice.m */; };
 		9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */; };
@@ -280,6 +282,8 @@
 		9C9B214418B9057A009D233E /* UIView+DL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DL.m"; sourceTree = "<group>"; };
 		9C9B214618B905EC009D233E /* DLStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStartViewController.h; sourceTree = "<group>"; };
 		9C9B214718B905EC009D233E /* DLStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStartViewController.m; sourceTree = "<group>"; };
+		9C9B214918B90AA9009D233E /* slide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slide@2x.png"; sourceTree = "<group>"; };
+		9C9B214B18B9106B009D233E /* clock-tiny@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-tiny@2x.png"; sourceTree = "<group>"; };
 		9C9D5F04184F4396006D01BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9CA0DF8717A2AA4E00037063 /* LEDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDevice.h; sourceTree = "<group>"; };
 		9CA0DF8817A2AA4E00037063 /* LEDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDDevice.m; sourceTree = "<group>"; };
@@ -562,6 +566,8 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C9B214B18B9106B009D233E /* clock-tiny@2x.png */,
+				9C9B214918B90AA9009D233E /* slide@2x.png */,
 				9C9B213D18B8DE12009D233E /* charger@2x.png */,
 				9C9B213E18B8DE12009D233E /* cross@2x.png */,
 				9C9B213F18B8DE12009D233E /* tick@2x.png */,
@@ -903,6 +909,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9B214A18B90AA9009D233E /* slide@2x.png in Resources */,
 				9C9B214218B8DE12009D233E /* tick@2x.png in Resources */,
 				9CAAF1DE1869EFB700C666D2 /* Icon.png in Resources */,
 				9CAAF1E01869EFB700C666D2 /* nav@2x.png in Resources */,
@@ -961,6 +968,7 @@
 				9CD121891871826900612DD8 /* location@2x.png in Resources */,
 				9C287C74187B0F7E00934786 /* circle-small@2x.png in Resources */,
 				9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */,
+				9C9B214C18B9106B009D233E /* clock-tiny@2x.png in Resources */,
 				9C287C73187B0F7E00934786 /* circle-small-shadow@2x.png in Resources */,
 				9C287C71187B0F7E00934786 /* circle-big-shadow@2x.png in Resources */,
 				9CD121871871826900612DD8 /* alam@2x.png in Resources */,

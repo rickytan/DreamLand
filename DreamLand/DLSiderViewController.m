@@ -8,7 +8,7 @@
 
 #import "DLSiderViewController.h"
 
-@interface DLSiderViewController () <RTSiderViewControllerDatasource>
+@interface DLSiderViewController () <RTSiderViewControllerDatasource, RTSiderViewControllerDelegate>
 
 @end
 
@@ -33,6 +33,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.dataSource = self;
+    self.delegate = self;
     self.allowOverDrag = NO;
     self.translationStyle = SlideTranslationStyleDeeper;
     self.middleTranslationStyle = MiddleViewTranslationStyleStay;
@@ -56,6 +57,14 @@
 - (CGFloat)siderViewControllerMarginForSlidingToRight:(RTSiderViewController *)controller
 {
     return 156;
+}
+
+- (BOOL)siderViewController:(RTSiderViewController *)controller
+        canSlideToDirection:(SlideState)state
+{
+    if (![controller.currentMiddleViewController isKindOfClass:[UINavigationController class]] || !(controller.currentMiddleViewController.childViewControllers.count == 1))
+        return NO;
+    return YES;
 }
 
 @end

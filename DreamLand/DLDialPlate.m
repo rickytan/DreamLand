@@ -174,9 +174,9 @@
     UIBezierPath* ovalPath = [UIBezierPath bezierPath];
     [ovalPath addArcWithCenter: CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2)
                         radius: self.radius
-                    startAngle: self.startAngle
+                    startAngle: -M_PI_2//self.startAngle
                       endAngle: self.endAngle
-                     clockwise: (self.endAngle - self.startAngle) < M_PI && (self.endAngle - self.startAngle) > 0];
+                     clockwise: YES];//(self.endAngle - self.startAngle) < M_PI && (self.endAngle - self.startAngle) > 0];
     ovalPath.lineWidth = self.strokeWidth;
     ovalPath.lineCapStyle = kCGLineCapRound;
 
