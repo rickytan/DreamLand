@@ -94,6 +94,11 @@
 		9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C21121869C82600F2B2EA /* DLDateField.m */; };
 		9C7C21161869CA9A00F2B2EA /* DLOptionField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C21151869CA9A00F2B2EA /* DLOptionField.m */; };
 		9C9AFF30176F6A5700C11C99 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */; };
+		9C9B214018B8DE12009D233E /* charger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B213D18B8DE12009D233E /* charger@2x.png */; };
+		9C9B214118B8DE12009D233E /* cross@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B213E18B8DE12009D233E /* cross@2x.png */; };
+		9C9B214218B8DE12009D233E /* tick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C9B213F18B8DE12009D233E /* tick@2x.png */; };
+		9C9B214518B9057A009D233E /* UIView+DL.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B214418B9057A009D233E /* UIView+DL.m */; };
+		9C9B214818B905EC009D233E /* DLStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9B214718B905EC009D233E /* DLStartViewController.m */; };
 		9C9D5F05184F4396006D01BC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9D5F04184F4396006D01BC /* AVFoundation.framework */; };
 		9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8817A2AA4E00037063 /* LEDDevice.m */; };
 		9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA0DF8B17A2AA7B00037063 /* LEDFinder.m */; };
@@ -268,6 +273,13 @@
 		9C7C21141869CA9A00F2B2EA /* DLOptionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLOptionField.h; sourceTree = "<group>"; };
 		9C7C21151869CA9A00F2B2EA /* DLOptionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLOptionField.m; sourceTree = "<group>"; };
 		9C9AFF2F176F6A5700C11C99 /* CorePlot.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CorePlot.framework; sourceTree = "<group>"; };
+		9C9B213D18B8DE12009D233E /* charger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "charger@2x.png"; sourceTree = "<group>"; };
+		9C9B213E18B8DE12009D233E /* cross@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cross@2x.png"; sourceTree = "<group>"; };
+		9C9B213F18B8DE12009D233E /* tick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick@2x.png"; sourceTree = "<group>"; };
+		9C9B214318B9057A009D233E /* UIView+DL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+DL.h"; sourceTree = "<group>"; };
+		9C9B214418B9057A009D233E /* UIView+DL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+DL.m"; sourceTree = "<group>"; };
+		9C9B214618B905EC009D233E /* DLStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLStartViewController.h; sourceTree = "<group>"; };
+		9C9B214718B905EC009D233E /* DLStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStartViewController.m; sourceTree = "<group>"; };
 		9C9D5F04184F4396006D01BC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9CA0DF8717A2AA4E00037063 /* LEDDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDevice.h; sourceTree = "<group>"; };
 		9CA0DF8817A2AA4E00037063 /* LEDDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEDDevice.m; sourceTree = "<group>"; };
@@ -550,6 +562,9 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9C9B213D18B8DE12009D233E /* charger@2x.png */,
+				9C9B213E18B8DE12009D233E /* cross@2x.png */,
+				9C9B213F18B8DE12009D233E /* tick@2x.png */,
 				9C6DD69818B11B25005A7E1E /* lighting@2x.png */,
 				9C6DD69918B11B25005A7E1E /* phase@2x.png */,
 				9C6DD69A18B11B25005A7E1E /* sound@2x.png */,
@@ -777,6 +792,8 @@
 				9C6DD69618B11AC3005A7E1E /* DLSettingViewController.m */,
 				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
 				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
+				9C9B214618B905EC009D233E /* DLStartViewController.h */,
+				9C9B214718B905EC009D233E /* DLStartViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -796,6 +813,8 @@
 				9CF9DE11187294BE002D45C9 /* DLTimePlate.m */,
 				9C6DD69218B112A7005A7E1E /* DLWeeklyAlerm.h */,
 				9C6DD69318B112A7005A7E1E /* DLWeeklyAlerm.m */,
+				9C9B214318B9057A009D233E /* UIView+DL.h */,
+				9C9B214418B9057A009D233E /* UIView+DL.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -884,6 +903,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9B214218B8DE12009D233E /* tick@2x.png in Resources */,
 				9CAAF1DE1869EFB700C666D2 /* Icon.png in Resources */,
 				9CAAF1E01869EFB700C666D2 /* nav@2x.png in Resources */,
 				9CAAF1DF1869EFB700C666D2 /* Icon@2x.png in Resources */,
@@ -903,6 +923,7 @@
 				9C7A9639188D18EB006643D8 /* Resource.bundle in Resources */,
 				9C287C83187B303600934786 /* emotion-good@2x.png in Resources */,
 				9C6DD69B18B11B25005A7E1E /* lighting@2x.png in Resources */,
+				9C9B214118B8DE12009D233E /* cross@2x.png in Resources */,
 				9CAAF1E71869EFB700C666D2 /* WT Background2@2x.jpg in Resources */,
 				9CD121941871844E00612DD8 /* small dot@2x.png in Resources */,
 				9CAAF1DD1869EFB700C666D2 /* Icon-120@2x.png in Resources */,
@@ -931,6 +952,7 @@
 				9C7A9643188D18EB006643D8 /* ShareSDKiPadDefaultShareViewUI.bundle in Resources */,
 				9CAAF1E81869EFB700C666D2 /* WT Background3@2x.jpg in Resources */,
 				9CAAF1E11869EFB700C666D2 /* password@2x.png in Resources */,
+				9C9B214018B8DE12009D233E /* charger@2x.png in Resources */,
 				9CAAF1E21869EFB700C666D2 /* photo@2x.png in Resources */,
 				9CD121881871826900612DD8 /* data@2x.png in Resources */,
 				9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */,
@@ -971,6 +993,7 @@
 				9CBD2CC9173F4464001FFAE0 /* DLViewController.m in Sources */,
 				9C7A965B188D3777006643D8 /* NSUserDefaults+Settings.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
+				9C9B214818B905EC009D233E /* DLStartViewController.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */,
 				9C1A0A4518B3AE9900A767FC /* DLWakeUpPhaseViewController.m in Sources */,
@@ -991,6 +1014,7 @@
 				9C287C77187B2E0E00934786 /* DLDataViewController.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
+				9C9B214518B9057A009D233E /* UIView+DL.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
 				9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */,
 				9CA0DF8917A2AA4E00037063 /* LEDDevice.m in Sources */,

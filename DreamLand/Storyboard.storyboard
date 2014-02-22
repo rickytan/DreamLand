@@ -145,7 +145,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" minimumFontSize="17" id="zgV-Qi-giv" customClass="RAutoTextField">
-                                                <rect key="frame" x="100" y="43.000000041130235" width="126" height="35"/>
+                                                <rect key="frame" x="100" y="43.000000055808776" width="126" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -818,6 +818,7 @@ natural and feel less stressed in the morings.</string>
                 <navigationController storyboardIdentifier="AlarmNav" definesPresentationContext="YES" id="4Yf-DE-qcO" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="ZsO-aF-o6x">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.180392161" green="0.76470595600000002" blue="0.84313732389999996" alpha="1" colorSpace="deviceRGB"/>
                         <color key="barTintColor" red="0.15294118230000001" green="0.16078431900000001" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="0.180392161" green="0.76470595600000002" blue="0.84313732389999996" alpha="1" colorSpace="deviceRGB"/>
@@ -843,13 +844,19 @@ natural and feel less stressed in the morings.</string>
                                 <rect key="frame" x="190" y="459" width="116" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ev4-uN-gYg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KJg-eW-e1k">
                                 <rect key="frame" x="199" y="465" width="74" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="START">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="dds-PZ-YaC" kind="push" id="1tg-SR-0Zq"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:25" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mLL-d7-VyD">
                                 <rect key="frame" x="68" y="89" width="122" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1017,6 +1024,70 @@ natural and feel less stressed in the morings.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg9-3g-rGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1727" y="2159"/>
+        </scene>
+        <!--Start View Controller-->
+        <scene sceneID="ef8-kH-40Y">
+            <objects>
+                <viewController id="dds-PZ-YaC" customClass="DLStartViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="coM-ac-DS4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="data-bg.png" id="1Ww-Kl-vrF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="> Slide to Stop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZt-hG-qD1">
+                                <rect key="frame" x="98" y="490" width="137" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" id="UFP-p9-5mP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick.png" id="o1f-ms-Mnu">
+                                        <rect key="frame" x="12" y="6" width="15" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross.png" id="vwC-pd-fXe">
+                                        <rect key="frame" x="12" y="26" width="15" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please in bed with the screen down DO NOT cover with thick meterials" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KXL-pE-UyR">
+                                        <rect key="frame" x="35" y="4" width="265" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.50196078431372548" green="0.49803921568627452" blue="0.49803921568627452" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="charger.png" id="KJ5-bv-6bw">
+                                <rect key="frame" x="127" y="296" width="66" height="138"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep the charger connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hZV-4k-78v">
+                                <rect key="frame" x="63" y="268" width="207" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q8n-uI-BwV"/>
+                    <connections>
+                        <outlet property="slideLabel" destination="hZt-hG-qD1" id="o3h-lb-77K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgj-Ag-yQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1300" y="2159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Por-uG-GhS">
@@ -1372,6 +1443,8 @@ natural and feel less stressed in the morings.</string>
         <image name="WT Background3.jpg" width="320" height="568"/>
         <image name="alam.png" width="32" height="32"/>
         <image name="background.png" width="320" height="568"/>
+        <image name="charger.png" width="66" height="138"/>
+        <image name="cross.png" width="15" height="14"/>
         <image name="data-bg.png" width="320" height="568"/>
         <image name="delete.png" width="19" height="25"/>
         <image name="email.png" width="19" height="15"/>
@@ -1387,6 +1460,7 @@ natural and feel less stressed in the morings.</string>
         <image name="share.png" width="19" height="26"/>
         <image name="sound.png" width="22" height="21"/>
         <image name="start bg.png" width="116" height="33"/>
+        <image name="tick.png" width="15" height="15"/>
         <image name="wechat.png" width="36" height="36"/>
         <image name="weibo.png" width="36" height="36"/>
     </resources>
