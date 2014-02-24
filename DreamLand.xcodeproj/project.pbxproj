@@ -1113,8 +1113,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hang zhang (L824E9BN2D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hang zhang (L824E9BN2D)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1147,8 +1147,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
+				PROVISIONING_PROFILE = "50592118-ECD8-42CD-ACCD-29257B4A0637";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "50592118-ECD8-42CD-ACCD-29257B4A0637";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1157,8 +1157,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: hang zhang (L824E9BN2D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hang zhang (L824E9BN2D)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1186,8 +1186,8 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B0138D89-46FD-41B4-982E-43D9DA29BE6D";
+				PROVISIONING_PROFILE = "50592118-ECD8-42CD-ACCD-29257B4A0637";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "50592118-ECD8-42CD-ACCD-29257B4A0637";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
