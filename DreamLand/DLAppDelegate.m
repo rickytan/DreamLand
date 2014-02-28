@@ -12,14 +12,18 @@
 #import "DLDataRecorder.h"
 #import "WXApi.h"
 #import <ShareSDK/ShareSDK.h>
+#import "LEDKit.h"
+#import "YHWeather.h"
 
-@interface DLAppDelegate () <WXApiDelegate>
+@interface DLAppDelegate () <WXApiDelegate, LEDFinderDelegate, LEDControllerDelegate>
 
 @end
 
 @implementation DLAppDelegate
 {
     LEDController               * _controller;
+    LEDDevice                   * _device;
+    LEDFinder                   * _finder;
 }
 
 - (void)dealloc
@@ -40,6 +44,15 @@
 
 }
 
+- (void)findLEDLight
+{
+    if (_finder.isScanning)
+        return;
+
+    _finder = [[LEDFinder alloc] init];
+    [_finder startScanWithDelegate:self];
+}
+
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -50,19 +63,14 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
 
-    /*
-     _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
-     if ([_controller connect]) {
-     if ([_controller updateDeviceInfo]) {
-     BOOL isOn = _controller.isOn;
-     BOOL isPuased = _controller.isPaused;
-     UIColor *color = _controller.color;
-     BOOL isConnected = _controller.isConnected;
-     }
-     _controller.on = NO;
-     _controller.color = [UIColor yellowColor];
-     }
-     */
+    _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
+    _controller.delegate = self;
+    [_controller connect];
+
+    YHWeather *w = [[YHWeather alloc] init];
+    [w weatherForCurrentLocationWithCompleteBlock:^(id data, NSError *error) {
+
+    }];
 
     return YES;
 }
@@ -121,32 +129,26 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     [application clearKeepAliveTimeout];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+#pragma mark - LEDFinder
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma - mark WX Delegate
-
--(void) onReq:(BaseReq*)req
+- (void)LEDControllerDeviceInfoDidUpdated:(LEDController *)controller
 {
 
 }
 
-/*! @brief 发送一个sendReq后，收到微信的回应
- *
- * 收到一个来自微信的处理结果。调用一次sendReq后会收到onResp。
- * 可能收到的处理结果有SendMessageToWXResp、SendAuthResp等。
- * @param resp具体的回应内容，是自动释放的
- */
--(void) onResp:(BaseResp*)resp
+- (void)LEDControllerStateDidChanged:(LEDController *)controller
 {
-    
+    switch (controller.state) {
+        case LEDControllerStateConnected:
+            _lightConnected = YES;
+            break;
+        case LEDControllerStateError:
+        case LEDControllerStateNotConnected:
+            //[_controller connect];
+            break;
+        default:
+            break;
+    }
 }
 
 @end

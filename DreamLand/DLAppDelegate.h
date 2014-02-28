@@ -13,4 +13,10 @@
 
 @property (strong, nonatomic) UIWindow                   * window;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier   taskIdentifier;
+
+@property (nonatomic, readonly, getter = isLightConnected) BOOL lightConnected;
+- (void)searchAndConnectLight;
+- (void)setLightColor:(UIColor *)color;
+
+- (void)playMusic;
 @end

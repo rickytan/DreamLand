@@ -213,7 +213,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     
     CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, (CFStringRef)self.device.address, self.device.port, &_readStream, &_writeStream);
     _inputStream = (NSInputStream *)_readStream;
-    _outputStream = (NSOutputStream *)_outputStream;
+    _outputStream = (NSOutputStream *)_writeStream;
     
     if (_inputStream && _outputStream) {
         _inputStream.delegate = self;
