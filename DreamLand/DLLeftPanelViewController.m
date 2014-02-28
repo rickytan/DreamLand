@@ -10,6 +10,7 @@
 #import "DLSiderViewController.h"
 #import "DLUser.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "YHWeather.h"
 
 @interface DLLeftPanelCell : UITableViewCell
 @end
@@ -38,6 +39,9 @@
 @property (nonatomic, assign) IBOutlet UILabel   * locationLabel;
 @property (nonatomic, assign) IBOutlet UILabel   * infoLabel;
 @property (nonatomic, retain) NSIndexPath        * currentSelected;
+
+@property (nonatomic, retain) YHWeather          * weather;
+@property (nonatomic, retain) Weather            * weatherData;
 - (void)onSignOut:(id)sender;
 @end
 
@@ -63,8 +67,14 @@
     [self.tableView selectRowAtIndexPath:self.currentSelected
                                 animated:NO
                           scrollPosition:UITableViewScrollPositionNone];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    if (!self.weather) {
+        self.weather = [[[YHWeather alloc] init] autorelease];
+        [self updateWeather];
+    }
+
+    if (self.weatherData)
+        [self showWeatherInfo:self.weatherData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,6 +112,37 @@
 {
     [DLUser setCurrentUser:nil];
     [self.siderViewController.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Methods
+
+- (void)showWeatherInfo:(Weather *)info
+{
+    self.locationLabel.text = info.city;
+    NSInteger temp = [info.currentCondition[@"temp"] integerValue];
+    temp = (temp - 32) / 1.8;
+    self.infoLabel.text = [NSString stringWithFormat:@"%@ %d˚C", info.currentCondition[@"text"], temp];
+}
+
+- (void)updateWeather
+{
+    self.locationLabel.text = @"updating...";
+    self.infoLabel.text = nil;
+    [self.weather weatherForCurrentLocationWithCompleteBlock:^(Weather *data, NSError *error) {
+        if (error) {
+            [self performSelector:@selector(updateWeather)
+                       withObject:nil
+                       afterDelay:5.0];
+            self.locationLabel.text = @"Error!";
+        }
+        else {
+            self.weatherData = data;
+            [self showWeatherInfo:self.weatherData];
+            [self performSelector:@selector(updateWeather)
+                       withObject:nil
+                       afterDelay:30 * 60];
+        }
+    }];
 }
 
 #pragma mark - Table view data source

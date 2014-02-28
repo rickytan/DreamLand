@@ -10,10 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface Weather : NSObject
-@property (nonatomic, retain) NSString *city;
-@property (nonatomic, retain) NSString *country;
-@property (nonatomic, retain) NSArray  *forecasts;
-@property (nonatomic, retain) NSDate   *timeStamp;
+@property (nonatomic, retain) NSString     *city;
+@property (nonatomic, retain) NSString     *country;
+@property (nonatomic, retain) NSArray      *forecasts;
+@property (nonatomic, retain) NSDictionary *currentCondition;
+@property (nonatomic, retain) NSDate       *timeStamp;
 @end
 
 typedef void(^CompleteBlock)(id data, NSError *error);

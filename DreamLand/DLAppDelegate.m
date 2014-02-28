@@ -10,12 +10,11 @@
 #import "LEDDevice.h"
 #import "LEDController.h"
 #import "DLDataRecorder.h"
-#import "WXApi.h"
-#import <ShareSDK/ShareSDK.h>
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
 #import "LEDKit.h"
 #import "YHWeather.h"
 
-@interface DLAppDelegate () <WXApiDelegate, LEDFinderDelegate, LEDControllerDelegate>
+@interface DLAppDelegate () <LEDFinderDelegate, LEDControllerDelegate>
 
 @end
 
@@ -34,13 +33,14 @@
 
 - (void)setupAppkey
 {
-    [ShareSDK registerApp:@"105a42595525"];
-
-    [ShareSDK connectSinaWeiboWithAppKey:@"1710935034"
-                               appSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"
-                             redirectUri:@"https://api.weibo.com/oauth2/default.html"];
-    [ShareSDK connectWeChatWithAppId:@"wx4f3955d788a03f92"
-                           wechatCls:[WXApi class]];
+    [AVOSCloudSNS setupPlatform:AVOSCloudSNSSinaWeibo
+                     withAppKey:@"1710935034"
+                   andAppSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"
+                 andRedirectURI:@"https://api.weibo.com/oauth2/default.html"];
+    [AVOSCloudSNS setupPlatform:AVOSCloudSNSQQ
+                     withAppKey:@"101028817"
+                   andAppSecret:@"cccc95c3ba0cc6b5f589c937a2b3241a"
+                 andRedirectURI:nil];
 
 }
 
@@ -67,19 +67,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     _controller.delegate = self;
     [_controller connect];
 
-    YHWeather *w = [[YHWeather alloc] init];
-    [w weatherForCurrentLocationWithCompleteBlock:^(id data, NSError *error) {
-
-    }];
-
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
       handleOpenURL:(NSURL *)url
 {
-    return [ShareSDK handleOpenURL:url
-                        wxDelegate:self];
+    return [AVOSCloudSNS handleOpenURL:url];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -87,10 +81,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    return [ShareSDK handleOpenURL:url
-                 sourceApplication:sourceApplication
-                        annotation:annotation
-                        wxDelegate:self];
+    return [AVOSCloudSNS handleOpenURL:url];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

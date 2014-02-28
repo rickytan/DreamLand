@@ -7,7 +7,6 @@
 //
 
 #import "DLUser.h"
-#import <ShareSDK/ShareSDK.h>
 
 static DLUser *theUser = nil;
 

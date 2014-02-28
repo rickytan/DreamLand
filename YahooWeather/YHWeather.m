@@ -15,7 +15,19 @@
 #error "This is Non-ARC file!"
 #endif
 
-@implementation Weather@end
+@implementation Weather
+
+- (void)dealloc
+{
+    self.city = nil;
+    self.country = nil;
+    self.forecasts = nil;
+    self.currentCondition = nil;
+    self.timeStamp = nil;
+    [super dealloc];
+}
+
+@end
 
 @interface YHWeather () <CLLocationManagerDelegate, NSXMLParserDelegate>
 @property (nonatomic, copy) CompleteBlock callback;
@@ -232,6 +244,9 @@ didStartElement:(NSString *)elementName
     }
     else if ([elementName isEqualToString:@"pubDate"]) {
         self.shouldStore = YES;
+    }
+    else if ([elementName isEqualToString:@"yweather:condition"]) {
+        self.weather.currentCondition = attributeDict;
     }
     else if ([elementName isEqualToString:@"yweather:forecast"]) {
         [self.forecasts addObject:attributeDict];

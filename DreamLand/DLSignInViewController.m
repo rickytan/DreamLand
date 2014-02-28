@@ -8,9 +8,9 @@
 
 #import "DLSignInViewController.h"
 #import "DLUser.h"
-#import <ShareSDK/ShareSDK.h>
+#import <AVOSCloudSNS/AVOSCloudSNS.h>
 
-@interface DLSignInViewController () <ISSViewDelegate>
+@interface DLSignInViewController ()
 - (IBAction)onWeibo:(id)sender;
 - (IBAction)onWeChat:(id)sender;
 @end
@@ -62,73 +62,42 @@
 
 - (IBAction)onWeChat:(id)sender
 {
-    id<ISSAuthOptions> options = [ShareSDK authOptionsWithAutoAuth:YES
-                                                     allowCallback:YES
-                                                            scopes:nil
-                                                     powerByHidden:YES
-                                                    followAccounts:nil
-                                                     authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                      viewDelegate:self
-                                           authManagerViewDelegate:self];
-    [ShareSDK getUserInfoWithType:ShareTypeWeixiSession
-                      authOptions:options
-                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                               if (result) {
+    [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
+        if (object) {
+            DLUser *user = [[[DLUser alloc] init] autorelease];
+            //user.displayName = [userInfo nickname];
+            //user.headerURL = [userInfo icon];
+            [DLUser setCurrentUser:user];
 
-                               }
-                               else {
-                                   NSLog(@"%d %@", [error errorCode], [error errorDescription]);
-                               }
-                           }];
+            [self performSegueWithIdentifier:@"ShowMain"
+                                      sender:self];
+        }
+        else {
+            NSLog(@"%@", error);
+        }
+
+    }
+                         toPlatform:AVOSCloudSNSSinaWeibo];
 }
 
 - (IBAction)onWeibo:(id)sender
 {
-    id<ISSAuthOptions> options = [ShareSDK authOptionsWithAutoAuth:YES
-                                                     allowCallback:YES
-                                                            scopes:nil
-                                                     powerByHidden:YES
-                                                    followAccounts:nil
-                                                     authViewStyle:SSAuthViewStyleFullScreenPopup
-                                                      viewDelegate:self
-                                           authManagerViewDelegate:self];
-    [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo
-                      authOptions:options
-                           result:^(BOOL result, id<ISSUserInfo> userInfo, id<ICMErrorInfo> error) {
-                               if (result) {
-                                   DLUser *user = [[[DLUser alloc] init] autorelease];
-                                   user.displayName = [userInfo nickname];
-                                   user.headerURL = [userInfo icon];
-                                   [DLUser setCurrentUser:user];
-                                   
-                                   [self performSegueWithIdentifier:@"ShowMain"
-                                                             sender:self];
-                               }
-                               else {
-                                   NSLog(@"%@", error);
-                               }
-                           }];
+    [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
+        if (object) {
+            DLUser *user = [[[DLUser alloc] init] autorelease];
+            //user.displayName = [userInfo nickname];
+            //user.headerURL = [userInfo icon];
+            [DLUser setCurrentUser:user];
 
-}
+            [self performSegueWithIdentifier:@"ShowMain"
+                                      sender:self];
+        }
+        else {
+            NSLog(@"%@", error);
+        }
 
-#pragma mark - ISSView Delegate
-
-- (void)viewOnWillDisplay:(UIViewController *)viewController
-                shareType:(ShareType)shareType
-{
-
-}
-
-- (void)viewOnWillDismiss:(UIViewController *)viewController
-                shareType:(ShareType)shareType
-{
-    
-}
-
-- (void)view:(UIViewController *)viewController
-autorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-   shareType:(ShareType)shareType
-{
+    }
+                         toPlatform:AVOSCloudSNSSinaWeibo];
     
 }
 
