@@ -171,7 +171,7 @@
         if ([self.delegate respondsToSelector:@selector(weatherStateDidChanged:)])
             [self.delegate performSelector:@selector(weatherStateDidChanged:)
                                 withObject:self];
-        if (_state == YHWeatherStateError &&
+        if (_state == YHWeatherStateError ||
             _state == YHWeatherStateFinished) {
             self.callback(self.weather, self.error);
             self.callback = nil;

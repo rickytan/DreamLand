@@ -65,10 +65,9 @@
     [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
         if (object) {
             DLUser *user = [[[DLUser alloc] init] autorelease];
-            //user.displayName = [userInfo nickname];
-            //user.headerURL = [userInfo icon];
+            user.displayName = object[@"username"];
+            user.headerURL = object[@"avatar"];
             [DLUser setCurrentUser:user];
-
             [self performSegueWithIdentifier:@"ShowMain"
                                       sender:self];
         }
@@ -77,7 +76,7 @@
         }
 
     }
-                         toPlatform:AVOSCloudSNSSinaWeibo];
+                         toPlatform:AVOSCloudSNSQQ];
 }
 
 - (IBAction)onWeibo:(id)sender
@@ -85,8 +84,10 @@
     [AVOSCloudSNS loginWithCallback:^(id object, NSError *error) {
         if (object) {
             DLUser *user = [[[DLUser alloc] init] autorelease];
-            //user.displayName = [userInfo nickname];
-            //user.headerURL = [userInfo icon];
+            //if ([object integerForKey:@"platform"] == AVOSCloudSNSSinaWeibo) {
+            user.displayName = object[@"username"];
+            user.headerURL = object[@"avatar"];
+            //}
             [DLUser setCurrentUser:user];
 
             [self performSegueWithIdentifier:@"ShowMain"
