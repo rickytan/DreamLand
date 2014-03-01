@@ -10,6 +10,8 @@
 #import "DLSiderViewController.h"
 #import "DLUser.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "DLAppDelegate.h"
+#import "LEDKit.h"
 #import "YHWeather.h"
 
 @interface DLLeftPanelCell : UITableViewCell
@@ -38,8 +40,11 @@
 @property (nonatomic, assign) IBOutlet UILabel   * nameLabel;
 @property (nonatomic, assign) IBOutlet UILabel   * locationLabel;
 @property (nonatomic, assign) IBOutlet UILabel   * infoLabel;
-@property (nonatomic, retain) NSIndexPath        * currentSelected;
+@property (nonatomic, assign) IBOutlet UILabel   * lightStateLabel;
 
+@property (nonatomic, assign) BOOL                 connectionTriggled;
+@property (nonatomic, retain) NSString           * lightState;
+@property (nonatomic, retain) NSIndexPath        * currentSelected;
 @property (nonatomic, retain) YHWeather          * weather;
 @property (nonatomic, retain) Weather            * weatherData;
 - (void)onSignOut:(id)sender;
@@ -47,11 +52,30 @@
 
 @implementation DLLeftPanelViewController
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.weather = nil;
+    self.weatherData = nil;
+    self.currentSelected = nil;
+
+    [super dealloc];
+}
+
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(lightConnectionStateChanged:)
+                                                 name:LEDControllerStateDidChangedNotification
+                                               object:nil];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        [self awakeFromNib];
     }
     return self;
 }
@@ -59,7 +83,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     self.clearsSelectionOnViewWillAppear = NO;
     self.currentSelected = [NSIndexPath indexPathForRow:0
@@ -71,6 +95,10 @@
     if (!self.weather) {
         self.weather = [[[YHWeather alloc] init] autorelease];
         [self updateWeather];
+    }
+
+    if (!self.lightState) {
+        self.lightState = ((DLAppDelegate *)[UIApplication sharedApplication].delegate).isLightConnected ? @"Light Connected!" : @"Light Not Connected";
     }
 
     if (self.weatherData)
@@ -116,6 +144,50 @@
 
 #pragma mark - Methods
 
+- (void)setLightState:(NSString *)lightState
+{
+    if (_lightState != lightState) {
+        [_lightState release];
+        _lightState = [lightState retain];
+        self.lightStateLabel.text = _lightState;
+    }
+}
+
+- (void)setConnectionTriggled:(BOOL)connectionTriggled
+{
+    if (_connectionTriggled != connectionTriggled) {
+        _connectionTriggled = connectionTriggled;
+        CGFloat inset = _connectionTriggled ? -32 : 0;
+        [UIView animateWithDuration:0.35
+                              delay:0
+                            options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             self.tableView.contentInset = UIEdgeInsetsMake(inset, 0, 0, 0);
+                         }
+                         completion:NULL];
+    }
+}
+
+- (void)lightConnectionStateChanged:(NSNotification *)notification
+{
+    LEDController *controller = (LEDController *)notification.object;
+    self.connectionTriggled = NO;
+    switch (controller.state) {
+        case LEDControllerStateConnected:
+            self.lightState = @"Light Connected!";
+            break;
+        case LEDControllerStateConnecting:
+            self.lightState = @"Connecting...";
+            break;
+        case LEDControllerStateError:
+        case LEDControllerStateNotConnected:
+            self.lightState = @"Light Not Connected";
+            break;
+        default:
+            break;
+    }
+}
+
 - (void)showWeatherInfo:(Weather *)info
 {
     self.locationLabel.text = info.city;
@@ -143,6 +215,34 @@
                        afterDelay:30 * 60];
         }
     }];
+}
+
+#pragma mark - Scroll Delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!((DLAppDelegate *)[UIApplication sharedApplication].delegate).isLightConnected &&
+        !self.connectionTriggled) {
+        if (scrollView.contentOffset.y < -32.0) {
+            self.lightStateLabel.text = @"Release to connect";
+        }
+        else if (scrollView.contentOffset.y < 0.0) {
+            self.lightStateLabel.text = @"Pull to connect";
+        }
+        else {
+            self.lightStateLabel.text = self.lightState;
+        }
+    }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (!self.connectionTriggled && scrollView.contentOffset.y < -32) {
+        self.connectionTriggled = YES;
+
+        [((DLAppDelegate *)[UIApplication sharedApplication]) searchAndConnectLight];
+    }
 }
 
 #pragma mark - Table view data source
@@ -175,7 +275,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell...
     if (indexPath.row < 3) {
         NSArray *images = @[[UIImage imageNamed:@"alam.png"], [UIImage imageNamed:@"data"], [UIImage imageNamed:@"setting"]];
@@ -213,7 +313,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.currentSelected isEqual:indexPath])
         return;
-    
+
     self.currentSelected = indexPath;
     switch (indexPath.row) {
         case 0:
@@ -237,7 +337,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [self.siderViewController setMiddleViewController:vc
                                                      animated:YES];
         }
-
+            
             break;
         default:
             break;

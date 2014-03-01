@@ -14,6 +14,17 @@ static DLUser *theUser = nil;
 
 + (instancetype)currentUser
 {
+    if (!theUser) {
+        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.db"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+            @try {
+                theUser = [[NSKeyedUnarchiver unarchiveObjectWithFile:path] retain];
+            }
+            @catch (NSException *exception) {
+
+            }
+        }
+    }
     return theUser;
 }
 
@@ -24,6 +35,54 @@ static DLUser *theUser = nil;
     
     [theUser release];
     theUser = [user retain];
+    if (theUser)
+        [theUser _saveToDisk];
+    else {
+        NSString *path = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.db"];
+        [[NSFileManager defaultManager] removeItemAtPath:path
+                                                   error:NULL];
+    }
+}
+
+- (void)_saveToDisk
+{
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"user.db"];
+    if ([NSKeyedArchiver archiveRootObject:self
+                                toFile:path])
+        NSLog(@"User saved!");
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        self.displayName = [aDecoder decodeObjectForKey:@"DisplayName"];
+        self.userID = [aDecoder decodeObjectForKey:@"UserID"];
+        self.headerImage = [aDecoder decodeObjectForKey:@"HeaderImage"];
+        self.headerURL = [aDecoder decodeObjectForKey:@"HeaderURL"];
+        self.email = [aDecoder decodeObjectForKey:@"Email"];
+        self.login = YES;
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    if (self.displayName)
+        [aCoder encodeObject:self.displayName
+                      forKey:@"DisplayName"];
+    if (self.userID)
+        [aCoder encodeObject:self.userID
+                      forKey:@"UserID"];
+    if (self.headerURL)
+        [aCoder encodeObject:self.headerURL
+                      forKey:@"HeaderURL"];
+    if (self.headerImage)
+        [aCoder encodeObject:self.headerImage
+                      forKey:@"HeaderImage"];
+    if (self.email)
+        [aCoder encodeObject:self.email
+                      forKey:@"Email"];
 }
 
 @end

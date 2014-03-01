@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DLUser : NSObject
+@interface DLUser : NSObject <NSCoding>
 @property (nonatomic, retain) NSString *userID;
 @property (nonatomic, retain) NSString *displayName;
 @property (nonatomic, retain) NSString *email;

@@ -9,6 +9,7 @@
 #import "DLSignInViewController.h"
 #import "DLUser.h"
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
+#import "UIApplication+RExtension.h"
 
 @interface DLSignInViewController ()
 - (IBAction)onWeibo:(id)sender;
@@ -33,12 +34,20 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [self.navigationController setNavigationBarHidden:YES
                                              animated:YES];
-    double delayInSeconds = .1;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self.navigationController performSegueWithIdentifier:@"ShowGuide"
-                                                       sender:self];
-    });
+
+    if ([UIApplication sharedApplication].isFirstLaunch) {
+        double delayInSeconds = .1;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.navigationController performSegueWithIdentifier:@"ShowGuide"
+                                                           sender:self];
+        });
+    }
+
+    if ([DLUser currentUser].isLogin) {
+        [self performSegueWithIdentifier:@"ShowMain"
+                                  sender:self];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
