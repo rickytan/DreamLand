@@ -229,7 +229,8 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 
 - (void)connect
 {
-    [self _tryConnect];
+    if (self.state != LEDControllerStateConnected)
+        [self _tryConnect];
 }
 
 /*

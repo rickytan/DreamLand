@@ -26,6 +26,7 @@
 		9C357E79184673B5004A927D /* DLRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C357E78184673B5004A927D /* DLRecord.m */; };
 		9C37678518C06629009CFE12 /* YHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37678418C06629009CFE12 /* YHWeather.m */; };
 		9C3767A018C1BE03009CFE12 /* UIApplication+RExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C37679F18C1BE03009CFE12 /* UIApplication+RExtension.m */; };
+		9C3767A318C1CF6D009CFE12 /* DLApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C3767A218C1CF6D009CFE12 /* DLApplication.m */; };
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
@@ -165,6 +166,8 @@
 		9C37678418C06629009CFE12 /* YHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHWeather.m; sourceTree = "<group>"; };
 		9C37679E18C1BE03009CFE12 /* UIApplication+RExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+RExtension.h"; sourceTree = "<group>"; };
 		9C37679F18C1BE03009CFE12 /* UIApplication+RExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+RExtension.m"; sourceTree = "<group>"; };
+		9C3767A118C1CF6D009CFE12 /* DLApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLApplication.h; sourceTree = "<group>"; };
+		9C3767A218C1CF6D009CFE12 /* DLApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLApplication.m; sourceTree = "<group>"; };
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -543,20 +546,22 @@
 		9CBD2CB2173F4464001FFAE0 /* DreamLand */ = {
 			isa = PBXGroup;
 			children = (
+				9CF9DE0D187293EF002D45C9 /* Controller */,
+				9CF9DE0F18729435002D45C9 /* Data */,
 				9CBD2CBB173F4464001FFAE0 /* DLAppDelegate.h */,
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
-				9C37679E18C1BE03009CFE12 /* UIApplication+RExtension.h */,
-				9C37679F18C1BE03009CFE12 /* UIApplication+RExtension.m */,
-				9CF9DE171872A23E002D45C9 /* NSDate+RExtension.h */,
-				9CF9DE181872A23E002D45C9 /* NSDate+RExtension.m */,
-				9CF9DE0F18729435002D45C9 /* Data */,
-				9CF9DE0E187293FB002D45C9 /* View */,
-				9CF9DE0D187293EF002D45C9 /* Controller */,
+				9C3767A118C1CF6D009CFE12 /* DLApplication.h */,
+				9C3767A218C1CF6D009CFE12 /* DLApplication.m */,
 				9C532F2C1860A4FE00E391CE /* DLSoundPlayer.h */,
 				9C532F2D1860A4FE00E391CE /* DLSoundPlayer.m */,
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
+				9CF9DE171872A23E002D45C9 /* NSDate+RExtension.h */,
+				9CF9DE181872A23E002D45C9 /* NSDate+RExtension.m */,
 				9C5C79B217561B9A0066D960 /* Storyboard.storyboard */,
 				9CBD2CB3173F4464001FFAE0 /* Supporting Files */,
+				9C37679E18C1BE03009CFE12 /* UIApplication+RExtension.h */,
+				9C37679F18C1BE03009CFE12 /* UIApplication+RExtension.m */,
+				9CF9DE0E187293FB002D45C9 /* View */,
 			);
 			path = DreamLand;
 			sourceTree = "<group>";
@@ -844,6 +849,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3767A318C1CF6D009CFE12 /* DLApplication.m in Sources */,
 				9C532F2E1860A4FE00E391CE /* DLSoundPlayer.m in Sources */,
 				9C2B009218425A3A00F90ED8 /* DLDatabase.m in Sources */,
 				9C7C21131869C82600F2B2EA /* DLDateField.m in Sources */,

@@ -10,7 +10,7 @@
 #import "DLSiderViewController.h"
 #import "DLUser.h"
 #import <SDWebImage/UIButton+WebCache.h>
-#import "DLAppDelegate.h"
+#import "DLApplication.h"
 #import "LEDKit.h"
 #import "YHWeather.h"
 
@@ -98,7 +98,7 @@
     }
 
     if (!self.lightState) {
-        self.lightState = ((DLAppDelegate *)[UIApplication sharedApplication].delegate).isLightConnected ? @"Light Connected!" : @"Light Not Connected";
+        self.lightState = ((DLApplication *)[UIApplication sharedApplication]).isLightConnected ? @"Light Connected!" : @"Light Not Connected";
     }
 
     if (self.weatherData)
@@ -221,7 +221,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    if (!((DLAppDelegate *)[UIApplication sharedApplication].delegate).isLightConnected &&
+    if (!((DLApplication *)[UIApplication sharedApplication]).isLightConnected &&
         !self.connectionTriggled) {
         if (scrollView.contentOffset.y < -32.0) {
             self.lightStateLabel.text = @"Release to connect";
@@ -241,7 +241,7 @@
     if (!self.connectionTriggled && scrollView.contentOffset.y < -32) {
         self.connectionTriggled = YES;
 
-        [((DLAppDelegate *)[UIApplication sharedApplication]) searchAndConnectLight];
+        [((DLApplication *)[UIApplication sharedApplication]) searchAndConnectLight];
     }
 }
 

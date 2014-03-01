@@ -7,23 +7,10 @@
 //
 
 #import "DLAppDelegate.h"
-#import "LEDDevice.h"
-#import "LEDController.h"
 #import "DLDataRecorder.h"
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
-#import "LEDKit.h"
-#import "YHWeather.h"
-
-@interface DLAppDelegate () <LEDFinderDelegate, LEDControllerDelegate>
-
-@end
 
 @implementation DLAppDelegate
-{
-    LEDController               * _controller;
-    LEDDevice                   * _device;
-    LEDFinder                   * _finder;
-}
 
 - (void)dealloc
 {
@@ -44,20 +31,6 @@
 
 }
 
-- (void)searchAndConnectLight
-{
-    
-}
-
-- (void)findLEDLight
-{
-    if (_finder.isScanning)
-        return;
-
-    _finder = [[LEDFinder alloc] init];
-    [_finder startScanWithDelegate:self];
-}
-
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -67,10 +40,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     //    [[CBCentralManager alloc] initWithDelegate:self
     //                                         queue:dispatch_get_main_queue()];
     [application setIdleTimerDisabled:YES];
-
-    _controller = [[LEDController alloc] initWithDevice:[LEDDevice deviceWithIP:@"192.168.10.1"]];
-    _controller.delegate = self;
-    [_controller connect];
 
     return YES;
 }
@@ -115,28 +84,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     if (self.taskIdentifier != UIBackgroundTaskInvalid)
         [application endBackgroundTask:self.taskIdentifier];
     [application clearKeepAliveTimeout];
-}
-
-#pragma mark - LEDFinder
-
-- (void)LEDControllerDeviceInfoDidUpdated:(LEDController *)controller
-{
-
-}
-
-- (void)LEDControllerStateDidChanged:(LEDController *)controller
-{
-    switch (controller.state) {
-        case LEDControllerStateConnected:
-            _lightConnected = YES;
-            break;
-        case LEDControllerStateError:
-        case LEDControllerStateNotConnected:
-            //[_controller connect];
-            break;
-        default:
-            break;
-    }
 }
 
 @end
