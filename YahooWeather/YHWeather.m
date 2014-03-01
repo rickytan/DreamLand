@@ -139,6 +139,7 @@
 {
     static NSInteger retriedTimes = 0;
 
+    __block typeof(self) weakSelf = self;
     NSString *urlStr = [NSString stringWithFormat:@"%@?w=%@", YAHOO_WEATHER_API, woeid];
     NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url]
@@ -146,18 +147,18 @@
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                if (!data) {
                                    if (retriedTimes++ < 3) {
-                                       [self performSelector:@selector(getWeather:)
+                                       [weakSelf performSelector:@selector(getWeather:)
                                                   withObject:woeid
                                                   afterDelay:5.0];
                                    }
                                    else {
-                                       self.error = connectionError;
-                                       self.state = YHWeatherStateError;
+                                       weakSelf.error = connectionError;
+                                       weakSelf.state = YHWeatherStateError;
                                    }
                                }
                                else {
                                    retriedTimes = 0;
-                                   [self parseWeatherData:data];
+                                   [weakSelf parseWeatherData:data];
                                }
                            }];
 

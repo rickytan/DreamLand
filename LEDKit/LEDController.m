@@ -222,6 +222,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
                                 forMode:NSDefaultRunLoopMode];
         [_outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                                  forMode:NSDefaultRunLoopMode];
+        self.on = YES;
     }
     else
         self.state = LEDControllerStateError;

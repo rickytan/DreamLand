@@ -157,12 +157,13 @@
 {
     if (_connectionTriggled != connectionTriggled) {
         _connectionTriggled = connectionTriggled;
-        CGFloat inset = _connectionTriggled ? -32 : 0;
+        CGFloat inset = _connectionTriggled ? 32 : 0;
         [UIView animateWithDuration:0.35
                               delay:0
                             options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut
                          animations:^{
                              self.tableView.contentInset = UIEdgeInsetsMake(inset, 0, 0, 0);
+                             self.tableView.contentOffset = CGPointZero;
                          }
                          completion:NULL];
     }
@@ -171,9 +172,9 @@
 - (void)lightConnectionStateChanged:(NSNotification *)notification
 {
     LEDController *controller = (LEDController *)notification.object;
-    self.connectionTriggled = NO;
     switch (controller.state) {
         case LEDControllerStateConnected:
+            self.connectionTriggled = NO;
             self.lightState = @"Light Connected!";
             break;
         case LEDControllerStateConnecting:
@@ -181,6 +182,7 @@
             break;
         case LEDControllerStateError:
         case LEDControllerStateNotConnected:
+            self.connectionTriggled = NO;
             self.lightState = @"Light Not Connected";
             break;
         default:

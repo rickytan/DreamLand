@@ -490,7 +490,6 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
-				9C37678218C065DF009CFE12 /* YahooWeather */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9C5B75FE18366F0600943394 /* FMDB */,
@@ -503,6 +502,7 @@
 				9CC3D460175EE732009AB5CA /* RTPulseWaveView.h */,
 				9CC3D461175EE732009AB5CA /* RTPulseWaveView.m */,
 				9C5C79BD175788CA0066D960 /* SVProgressHUD */,
+				9C37678218C065DF009CFE12 /* YahooWeather */,
 			);
 			sourceTree = "<group>";
 		};
