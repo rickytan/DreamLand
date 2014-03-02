@@ -42,6 +42,7 @@
 @property (nonatomic, assign) IBOutlet UILabel   * infoLabel;
 @property (nonatomic, assign) IBOutlet UILabel   * lightStateLabel;
 
+@property (nonatomic, assign) BOOL                 shouldTestLight;
 @property (nonatomic, assign) BOOL                 connectionTriggled;
 @property (nonatomic, retain) NSString           * lightState;
 @property (nonatomic, retain) NSIndexPath        * currentSelected;
@@ -68,6 +69,7 @@
                                              selector:@selector(lightConnectionStateChanged:)
                                                  name:LEDControllerStateDidChangedNotification
                                                object:nil];
+    self.shouldTestLight = YES;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -150,6 +152,18 @@
         [_lightState release];
         _lightState = [lightState retain];
         self.lightStateLabel.text = _lightState;
+        if ([_lightState isEqualToString:@"Light Connected!"]) {
+            CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+            anim.duration = 1.5;
+            anim.toValue = (id)[UIColor redColor].CGColor;
+            anim.autoreverses = YES;
+            anim.repeatCount = CGFLOAT_MAX;
+            [self.lightStateLabel.layer addAnimation:anim
+                                              forKey:@"Blink"];
+        }
+        else {
+            [self.lightStateLabel.layer removeAnimationForKey:@"Blink"];
+        }
     }
 }
 
@@ -176,6 +190,10 @@
         case LEDControllerStateConnected:
             self.connectionTriggled = NO;
             self.lightState = @"Light Connected!";
+            if (self.shouldTestLight) {
+                self.shouldTestLight = NO;
+                [((DLApplication *)[UIApplication sharedApplication]) testLight];
+            }
             break;
         case LEDControllerStateConnecting:
             self.lightState = @"Connecting...";
@@ -240,7 +258,8 @@
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
                   willDecelerate:(BOOL)decelerate
 {
-    if (!self.connectionTriggled && scrollView.contentOffset.y < -32) {
+    if (!((DLApplication *)[UIApplication sharedApplication]).isLightConnected &&
+        scrollView.contentOffset.y < -32) {
         self.connectionTriggled = YES;
 
         [((DLApplication *)[UIApplication sharedApplication]) searchAndConnectLight];

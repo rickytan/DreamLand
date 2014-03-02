@@ -12,6 +12,8 @@
 
 @property (nonatomic, readonly, getter = isLightConnected) BOOL lightConnected;
 - (void)searchAndConnectLight;
+- (void)disconnectLight;
+- (void)testLight;
 - (void)setLightColor:(UIColor *)color;
 
 - (void)playMusic;

@@ -29,6 +29,11 @@
     return self;
 }
 
+- (BOOL)isLightConnected
+{
+    return _controller.state == LEDControllerStateConnected;
+}
+
 - (void)searchAndConnectLight
 {
     // Demo version, not try to search here, directly connect to 192.168.10.1
@@ -37,6 +42,29 @@
         _controller.delegate = self;
     }
     [_controller connect];
+}
+
+- (void)disconnectLight
+{
+    [_controller disconnect];
+    [_controller release];
+    _controller = nil;
+}
+
+- (void)testLight
+{
+    if (self.lightConnected) {
+        _controller.mode = 1;
+        _controller.speed = 31;
+        _controller.pause = NO;
+        _controller.on = YES;
+        double delayInSeconds = 5.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            _controller.on = NO;
+            _controller.mode = 1;
+        });
+    }
 }
 
 - (void)findLEDLight
@@ -70,7 +98,7 @@
 {
     switch (controller.state) {
         case LEDControllerStateConnected:
-            _lightConnected = YES;
+
             break;
         case LEDControllerStateError:
         case LEDControllerStateNotConnected:

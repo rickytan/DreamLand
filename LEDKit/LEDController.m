@@ -20,18 +20,18 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 {
     struct sockaddr           _address;
     int                       _socketfd;
-    
+
     CFSocketRef                 _socket;
-    
+
     CFReadStreamRef             _readStream;
     CFWriteStreamRef            _writeStream;
     NSInputStream             * _inputStream;
     NSOutputStream            * _outputStream;
-    
+
     NSMutableData             * _writeData;
     NSMutableData             * _readData;
-    
-    
+
+
     struct {
         unsigned int isColorUpdated:1;
         unsigned int isModeUpdated:1;
@@ -83,11 +83,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     [self _close];
     CFRelease(_readStream);
     CFRelease(_writeStream);
-    
+
     self.error  = nil;
     self.color  = nil;
     self.device = nil;
-    
+
     [super dealloc];
 }
 
@@ -99,10 +99,10 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
                                        maxLength:512];
         if (bytesRead < 0) {
             NSLog(@"Read Error!");
-            
+
             break;
         }
-        
+
         if (!_readData)
             _readData = [[NSMutableData alloc] init];
         [_readData appendBytes:buffer
@@ -117,7 +117,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
                                           maxLength:_writeData.length];
         if (bytesWrite < 0) {
             NSLog(@"Write Error!");
-            
+
             break;
         }
         [_writeData replaceBytesInRange:NSMakeRange(0, bytesWrite)
@@ -128,9 +128,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 
 - (void)sendData:(const void *)bytes length:(NSInteger)len
 {
+    //send(_socketfd, bytes, len, 0);
+    //return;
     if (!_writeData)
         _writeData = [[NSMutableData alloc] init];
-    
+
     [_writeData appendBytes:bytes
                      length:len];
     [self _writeData];
@@ -151,11 +153,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)_processData
 {
     static BOOL isProcessing = NO;
-    
+
     if (isProcessing)
         return;
     isProcessing = YES;
-    
+
     uint8_t result[11] = {0};
     while ([self receiveData:result
                       length:11]) {
@@ -166,14 +168,14 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
             _mode  = (-36 + result[3]);
             _pause = result[4] == 32;
             _speed = result[5];
-            
+
             CGFloat comp[4] = {
                 1.0 * result[6] / 255,
                 1.0 * result[7] / 255,
                 1.0 * result[8] / 255,
                 1.0
             };
-            
+
             [_color release];
             _color = [[UIColor colorWithRed:comp[0]
                                       green:comp[1]
@@ -200,7 +202,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     _inputStream = nil;
     [_outputStream close];
     _outputStream = nil;
-    
+
     self.state = LEDControllerStateNotConnected;
 }
 
@@ -208,21 +210,25 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 {
     [_inputStream close];
     [_outputStream close];
-    
+
     self.state = LEDControllerStateConnecting;
-    
-    CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, (CFStringRef)self.device.address, self.device.port, &_readStream, &_writeStream);
+
+    CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault,
+                                       (CFStringRef)self.device.address,
+                                       self.device.port,
+                                       &_readStream, &_writeStream);
     _inputStream = (NSInputStream *)_readStream;
     _outputStream = (NSOutputStream *)_writeStream;
-    
+
     if (_inputStream && _outputStream) {
         _inputStream.delegate = self;
         _outputStream.delegate = self;
-        [_inputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+        [_inputStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
                                 forMode:NSDefaultRunLoopMode];
-        [_outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
+        [_outputStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
                                  forMode:NSDefaultRunLoopMode];
-        self.on = YES;
+        [_inputStream open];
+        [_outputStream open];
     }
     else
         self.state = LEDControllerStateError;
@@ -240,33 +246,33 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
  _socketfd = socket(AF_INET, SOCK_STREAM, 0);
  if (_socketfd == -1)
  return NO;
- 
+
  struct sockaddr_in *address = (struct sockaddr_in*)&_address;
  address->sin_family      = AF_INET;
  address->sin_port        = htons(self.device.port);
  address->sin_addr.s_addr = inet_addr([self.device.address UTF8String]);
- 
- 
+
+
  // if (bind(_socketfd, _address, sizeof(_address))) {
  // return NO;
- / }
- 
- 
+ // }
+
+
  int flags = fcntl(_socketfd, F_GETFL,0);
  fcntl(_socketfd,F_SETFL, flags | O_NONBLOCK);
- 
+
  if (connect(_socketfd, &(_address), sizeof(_address)) == -1) {
- 
+
  fd_set          fdwrite;
  struct timeval  timeout;
- 
+
  FD_ZERO(&fdwrite);
  FD_SET(_socketfd, &fdwrite);
  timeout.tv_sec = DEVICE_CONNECTION_TIMEOUT;
  timeout.tv_usec = 0;
- 
+
  if (select(_socketfd + 1,NULL, &fdwrite, NULL, &timeout) < 0) {
- 
+
  switch (errno) {
  case EBADF:
  NSLog(@"参数sockfd 非合法socket处理代码");
@@ -303,7 +309,8 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
  return NO;
  }
  }
- 
+ self.on = YES;
+
  return YES;
  }
  */
@@ -352,7 +359,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
             if (count < sizeof(buffer))
                 break;
         }
-        
+
         return [NSData dataWithData:fetchedData];
     }
     return nil;
@@ -368,60 +375,60 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 }
 
 /*
-- (BOOL)updateDeviceInfo
-{
-    unsigned char command[] = {-17,1,119};
-    NSData *data = [self fetchDataWithCommand:command
-                                       length:sizeof(command)];
-    
-    const unsigned char *result = data.bytes;
-    if (result) {
-        NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
-        if ((result[0] == 102) &&
-            (result[10] == (unsigned char)-103))
-        {
-            _on    = result[2] == 35;
-            _mode  = (-36 + result[3]);
-            _pause = result[4] == 32;
-            _speed = result[5];
-            
-            CGFloat comp[4] = {
-                1.0 * result[6] / 255,
-                1.0 * result[7] / 255,
-                1.0 * result[8] / 255,
-                1.0
-            };
-            
-            [_color release];
-            _color = [[UIColor colorWithRed:comp[0]
-                                      green:comp[1]
-                                       blue:comp[2]
-                                      alpha:comp[3]] retain];
-            _flags.isColorUpdated = 1;
-            _flags.isLuminanceUpdated = 1;
-            _flags.isModeUpdated = 1;
-            _flags.isSpeedUpdated = 1;
-            _flags.isPauseUpdated = 1;
-            _flags.isPowerUpdated = 1;
-            
-            return YES;
-        }
-    }
-    return NO;
-}
+ - (BOOL)updateDeviceInfo
+ {
+ unsigned char command[] = {-17,1,119};
+ NSData *data = [self fetchDataWithCommand:command
+ length:sizeof(command)];
+
+ const unsigned char *result = data.bytes;
+ if (result) {
+ NSLog(@"%d%d%d%d", result[0], result[10], result[3], result[4]);
+ if ((result[0] == 102) &&
+ (result[10] == (unsigned char)-103))
+ {
+ _on    = result[2] == 35;
+ _mode  = (-36 + result[3]);
+ _pause = result[4] == 32;
+ _speed = result[5];
+
+ CGFloat comp[4] = {
+ 1.0 * result[6] / 255,
+ 1.0 * result[7] / 255,
+ 1.0 * result[8] / 255,
+ 1.0
+ };
+
+ [_color release];
+ _color = [[UIColor colorWithRed:comp[0]
+ green:comp[1]
+ blue:comp[2]
+ alpha:comp[3]] retain];
+ _flags.isColorUpdated = 1;
+ _flags.isLuminanceUpdated = 1;
+ _flags.isModeUpdated = 1;
+ _flags.isSpeedUpdated = 1;
+ _flags.isPauseUpdated = 1;
+ _flags.isPowerUpdated = 1;
+
+ return YES;
+ }
+ }
+ return NO;
+ }
  */
 
 /*
-- (void)updateDeviceInfoWithBlock:(LEDControllerCallback)callback
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        __block BOOL success = [self updateDeviceInfo];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (callback)
-                callback(success);
-        });
-    });
-}
+ - (void)updateDeviceInfoWithBlock:(LEDControllerCallback)callback
+ {
+ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+ __block BOOL success = [self updateDeviceInfo];
+ dispatch_async(dispatch_get_main_queue(), ^{
+ if (callback)
+ callback(success);
+ });
+ });
+ }
  */
 
 #pragma mark - getter & setter
@@ -432,7 +439,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
         [_color release];
         _color                = [color retain];
         _flags.isColorUpdated = 1;
-        
+
         const CGFloat * comp  = CGColorGetComponents(_color.CGColor);
         unsigned char data[5] = {0};
         data[0]               = 86;
@@ -440,12 +447,12 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
         data[2]               = (char)(comp[1] * 255);
         data[3]               = (char)(comp[2] * 255);
         data[4]               = -86;
-        
+
         [self sendData:data
                 length:sizeof(data)];
-        
-//        [self sendCommand:data
-//                   length:sizeof(data)];
+
+        //        [self sendCommand:data
+        //                   length:sizeof(data)];
     }
 }
 
@@ -470,13 +477,13 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)setLuminance:(NSInteger)luminance
 {
     _luminance = luminance;
-    
+
     unsigned char data[3] = {86, _luminance, -86};
     [self sendData:data
             length:sizeof(data)];
-    
-//    [self sendCommand:data
-//               length:sizeof(data)];
+
+    //    [self sendCommand:data
+    //               length:sizeof(data)];
 }
 
 - (void)setLuminance:(NSInteger)luminance withBlock:(LEDControllerCallback)callback
@@ -493,14 +500,14 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)setMode:(NSInteger)mode
 {
     _mode = mode;
-    
+
     unsigned char data[] = {-69, 36 + _mode, _speed, 68};
     [self sendData:data
             length:sizeof(data)];
-    
-//    [self sendCommand:data
-//               length:sizeof(data)];
-    
+
+    //    [self sendCommand:data
+    //               length:sizeof(data)];
+
 }
 
 - (void)setMode:(NSInteger)mode withBlock:(LEDControllerCallback)callback
@@ -524,13 +531,13 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)setSpeed:(NSInteger)speed
 {
     _speed = speed;
-    
+
     unsigned char data[] = {-69, 36 + _mode, _speed, 68};
     [self sendData:data
             length:sizeof(data)];
-    
-//    [self sendCommand:data
-//               length:sizeof(data)];
+
+    //    [self sendCommand:data
+    //               length:sizeof(data)];
 }
 
 - (void)setSpeed:(NSInteger)speed withBlock:(LEDControllerCallback)callback
@@ -554,13 +561,13 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)setOn:(BOOL)on
 {
     _on = on;
-    
+
     unsigned char data[] = {-52, _on ? 35 : 36, 51};
     [self sendData:data
             length:sizeof(data)];
-    
-//    [self sendCommand:data
-//               length:sizeof(data)];
+
+    //    [self sendCommand:data
+    //               length:sizeof(data)];
 }
 
 - (void)setOn:(BOOL)on withBlock:(LEDControllerCallback)callback
@@ -577,13 +584,13 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 - (void)setPause:(BOOL)pause
 {
     _pause = pause;
-    
+
     unsigned char data[] = {-52, _pause ? 32 : 33, 51};
     [self sendData:data
             length:sizeof(data)];
-    
-//    [self sendCommand:data
-//               length:sizeof(data)];
+
+    //    [self sendCommand:data
+    //               length:sizeof(data)];
 }
 
 - (void)setPause:(BOOL)pause withBlock:(LEDControllerCallback)callback
@@ -604,7 +611,11 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 {
     switch (eventCode) {
         case NSStreamEventOpenCompleted:
-            self.state = LEDControllerStateConnected;
+            if (aStream == _outputStream)
+                self.state = LEDControllerStateConnected;
+            if (aStream == _inputStream) {
+                [self updateDeviceInfo];
+            }
             break;
         case NSStreamEventHasBytesAvailable:
             [self _readData];

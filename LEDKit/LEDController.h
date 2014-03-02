@@ -40,9 +40,9 @@ extern NSString *const LEDControllerDeviceInfoDidUpdatedNotification;
 @property (nonatomic, readonly) NSError                    * error;
 @property (nonatomic, assign) id<LEDControllerDelegate>      delegate;
 @property (nonatomic, retain, readwrite)         UIColor   * color;
-@property (nonatomic, assign)                    NSInteger   mode;
-@property (nonatomic, assign)                    NSInteger   speed;
-@property (nonatomic, assign)                    NSInteger   luminance;
+@property (nonatomic, assign)                    NSInteger   mode;          // 1~20, 21 is custom mode
+@property (nonatomic, assign)                    NSInteger   speed;         // 1~31
+@property (nonatomic, assign)                    NSInteger   luminance;     // 0~100
 @property (nonatomic, assign, getter = isOn)     BOOL        on;
 @property (nonatomic, assign, getter = isPaused) BOOL        pause;
 
