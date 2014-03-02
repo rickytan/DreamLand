@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class DLWeeklyAlerm;
+
 @interface DLAlarm : NSObject
 @property (nonatomic, assign)   NSInteger hour ,  minute;
 @property (nonatomic, assign)   NSUInteger        selectedWeekdays;

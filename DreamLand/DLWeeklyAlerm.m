@@ -56,6 +56,13 @@ static NSString *weekDay[] = {@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"
     }
 }
 
+- (void)setSelectedWeekday:(NSUInteger)selectedWeekday
+{
+    if (!_selectedWeekday != selectedWeekday) {
+        _selectedWeekday = selectedWeekday;
+        [self setNeedsDisplay];
+    }
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -65,12 +72,12 @@ static NSString *weekDay[] = {@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"
     CGFloat width = self.bounds.size.width / 7;
 
     [[UIColor colorWithRed:112.0/255
-                    green:94.0/255
-                     blue:117.0/255
+                     green:94.0/255
+                      blue:117.0/255
                      alpha:1.0] set];
     for (int i=0; i < 7; ++i) {
-    if (self.selectedWeekday & (0x1 << i))
-        CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(i * width, 0, width, 6));
+        if (self.selectedWeekday & (0x1 << i))
+            CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(i * width, 0, width, 6));
     }
 }
 
@@ -84,6 +91,7 @@ static NSString *weekDay[] = {@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"
     CGFloat width = self.bounds.size.width / 7;
     NSInteger day = (NSInteger)floorf(p.x / width);
     self.selectedWeekday ^= (0x1 << day);
+    [self sendActionsForControlEvents:UIControlEventValueChanged];
     [self setNeedsDisplay];
 }
 
