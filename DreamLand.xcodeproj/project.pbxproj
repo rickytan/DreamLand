@@ -131,6 +131,8 @@
 		9CD121A618718CCE00612DD8 /* none@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CD121A518718CCE00612DD8 /* none@2x.png */; };
 		9CD121A9187191F500612DD8 /* DLLeftPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */; };
 		9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */; };
+		9CEB417418C311F70009AC82 /* DLAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEB417318C311F70009AC82 /* DLAlarm.m */; };
+		9CEB417618C317450009AC82 /* alarm_sound_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9CEB417518C317450009AC82 /* alarm_sound_1.mp3 */; };
 		9CF9DE12187294BE002D45C9 /* DLTimePlate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9DE11187294BE002D45C9 /* DLTimePlate.m */; };
 		9CF9DE1418729D73002D45C9 /* circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9DE1318729D73002D45C9 /* circle@2x.png */; };
 		9CF9DE161872A12A002D45C9 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9CF9DE151872A12A002D45C9 /* menu@2x.png */; };
@@ -328,6 +330,9 @@
 		9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftPanelViewController.m; sourceTree = "<group>"; };
 		9CD121AA1871A0AF00612DD8 /* DLDialPlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDialPlate.h; sourceTree = "<group>"; };
 		9CD121AB1871A0AF00612DD8 /* DLDialPlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDialPlate.m; sourceTree = "<group>"; };
+		9CEB417218C311F70009AC82 /* DLAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAlarm.h; sourceTree = "<group>"; };
+		9CEB417318C311F70009AC82 /* DLAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAlarm.m; sourceTree = "<group>"; };
+		9CEB417518C317450009AC82 /* alarm_sound_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_sound_1.mp3; sourceTree = "<group>"; };
 		9CF9DE10187294BE002D45C9 /* DLTimePlate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTimePlate.h; sourceTree = "<group>"; };
 		9CF9DE11187294BE002D45C9 /* DLTimePlate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTimePlate.m; sourceTree = "<group>"; };
 		9CF9DE1318729D73002D45C9 /* circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "circle@2x.png"; sourceTree = "<group>"; };
@@ -432,23 +437,19 @@
 		9CAAF1C41869EFB700C666D2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9C9B214B18B9106B009D233E /* clock-tiny@2x.png */,
-				9C9B214918B90AA9009D233E /* slide@2x.png */,
-				9C9B213D18B8DE12009D233E /* charger@2x.png */,
-				9C9B213E18B8DE12009D233E /* cross@2x.png */,
-				9C9B213F18B8DE12009D233E /* tick@2x.png */,
-				9C6DD69818B11B25005A7E1E /* lighting@2x.png */,
-				9C6DD69918B11B25005A7E1E /* phase@2x.png */,
-				9C6DD69A18B11B25005A7E1E /* sound@2x.png */,
 				9CD121821871826900612DD8 /* alam@2x.png */,
+				9CEB417518C317450009AC82 /* alarm_sound_1.mp3 */,
 				9CAAF1C51869EFB700C666D2 /* background@2x.png */,
 				9CD1218C1871844E00612DD8 /* big dot@2x.png */,
+				9C9B213D18B8DE12009D233E /* charger@2x.png */,
 				9C287C6D187B0F7E00934786 /* circle-big-shadow@2x.png */,
 				9C287C6E187B0F7E00934786 /* circle-big@2x.png */,
 				9CF9DE1A1872ACAE002D45C9 /* circle-shadow@2x.png */,
 				9C287C6F187B0F7E00934786 /* circle-small-shadow@2x.png */,
 				9C287C70187B0F7E00934786 /* circle-small@2x.png */,
 				9CF9DE1318729D73002D45C9 /* circle@2x.png */,
+				9C9B214B18B9106B009D233E /* clock-tiny@2x.png */,
+				9C9B213E18B8DE12009D233E /* cross@2x.png */,
 				9C287C78187B2E5100934786 /* data-bg@2x.png */,
 				9CD121831871826900612DD8 /* data@2x.png */,
 				9CAAF1C61869EFB700C666D2 /* Default-568h@2x.png */,
@@ -463,6 +464,7 @@
 				9CAAF1CB1869EFB700C666D2 /* Icon-120@2x.png */,
 				9CAAF1CC1869EFB700C666D2 /* Icon.png */,
 				9CAAF1CD1869EFB700C666D2 /* Icon@2x.png */,
+				9C6DD69818B11B25005A7E1E /* lighting@2x.png */,
 				9CD121841871826900612DD8 /* location@2x.png */,
 				9CF9DE151872A12A002D45C9 /* menu@2x.png */,
 				9C287C7A187B2F6E00934786 /* more-data@2x.png */,
@@ -472,12 +474,16 @@
 				9CD121851871826900612DD8 /* nev bg@2x.png */,
 				9CD121A518718CCE00612DD8 /* none@2x.png */,
 				9CAAF1CF1869EFB700C666D2 /* password@2x.png */,
+				9C6DD69918B11B25005A7E1E /* phase@2x.png */,
 				9CAAF1D01869EFB700C666D2 /* photo@2x.png */,
 				9CD121861871826900612DD8 /* setting@2x.png */,
 				9C287C80187B303600934786 /* share@2x.png */,
+				9C9B214918B90AA9009D233E /* slide@2x.png */,
 				9CD1218F1871844E00612DD8 /* small dot@2x.png */,
+				9C6DD69A18B11B25005A7E1E /* sound@2x.png */,
 				9CD121901871844E00612DD8 /* start bg@2x.png */,
 				9CAAF1D11869EFB700C666D2 /* start.caf */,
+				9C9B213F18B8DE12009D233E /* tick@2x.png */,
 				9CAAF1D21869EFB700C666D2 /* wechat@2x.png */,
 				9CAAF1D31869EFB700C666D2 /* weibo@2x.png */,
 				9CAAF1D41869EFB700C666D2 /* WT Background1@2x.jpg */,
@@ -712,6 +718,8 @@
 				9C7A9653188D21BA006643D8 /* DLUser.m */,
 				9C7A9659188D3777006643D8 /* NSUserDefaults+Settings.h */,
 				9C7A965A188D3777006643D8 /* NSUserDefaults+Settings.m */,
+				9CEB417218C311F70009AC82 /* DLAlarm.h */,
+				9CEB417318C311F70009AC82 /* DLAlarm.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -800,6 +808,7 @@
 				9C6DD69B18B11B25005A7E1E /* lighting@2x.png in Resources */,
 				9C9B214118B8DE12009D233E /* cross@2x.png in Resources */,
 				9CAAF1E71869EFB700C666D2 /* WT Background2@2x.jpg in Resources */,
+				9CEB417618C317450009AC82 /* alarm_sound_1.mp3 in Resources */,
 				9CD121941871844E00612DD8 /* small dot@2x.png in Resources */,
 				9CAAF1DD1869EFB700C666D2 /* Icon-120@2x.png in Resources */,
 				9C5C79B6175621B00066D960 /* Localizable.strings in Resources */,
@@ -882,6 +891,7 @@
 				9C5B75FA18366E5B00943394 /* DLDataRecorder.m in Sources */,
 				9CF9DE12187294BE002D45C9 /* DLTimePlate.m in Sources */,
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
+				9CEB417418C311F70009AC82 /* DLAlarm.m in Sources */,
 				9C189565186D5C730013263D /* RAutoTextField.m in Sources */,
 				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
 				9C7A9654188D21BA006643D8 /* DLUser.m in Sources */,

@@ -56,6 +56,7 @@
     if (self.lightConnected) {
         _controller.mode = 1;
         _controller.speed = 31;
+        _controller.luminance = 100;
         _controller.pause = NO;
         _controller.on = YES;
         double delayInSeconds = 5.0;

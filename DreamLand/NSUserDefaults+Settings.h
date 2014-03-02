@@ -10,4 +10,11 @@
 
 @interface NSUserDefaults (Settings)
 
+@property (nonatomic, assign) NSUInteger selectedWeekdays;
+@property (nonatomic, assign) NSInteger alarmHour;
+@property (nonatomic, assign) NSInteger alarmMinute;
+
+- (NSArray *)e;
+- (NSUInteger)selectedWeekdays;
+
 @end
