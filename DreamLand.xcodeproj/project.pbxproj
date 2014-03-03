@@ -31,6 +31,7 @@
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
+		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
 		9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtwork */; };
 		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
@@ -175,6 +176,7 @@
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
+		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C5A96141862B85B00C673DB /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				9CAAF1CF1869EFB700C666D2 /* password@2x.png */,
 				9C6DD69918B11B25005A7E1E /* phase@2x.png */,
 				9CAAF1D01869EFB700C666D2 /* photo@2x.png */,
+				9C4F25B918C475BA000BA2AB /* pin@2x.png */,
 				9CD121861871826900612DD8 /* setting@2x.png */,
 				9C287C80187B303600934786 /* share@2x.png */,
 				9C9B214918B90AA9009D233E /* slide@2x.png */,
@@ -652,6 +655,8 @@
 			children = (
 				9CD121A21871898100612DD8 /* DLAlarmViewController.h */,
 				9CD121A31871898100612DD8 /* DLAlarmViewController.m */,
+				9C287C75187B2E0E00934786 /* DLDataViewController.h */,
+				9C287C76187B2E0E00934786 /* DLDataViewController.m */,
 				9C18955F186D55950013263D /* DLForgotViewController.h */,
 				9C189560186D55950013263D /* DLForgotViewController.m */,
 				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
@@ -660,22 +665,20 @@
 				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
 				9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */,
 				9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */,
+				9C6DD69518B11AC3005A7E1E /* DLSettingViewController.h */,
+				9C6DD69618B11AC3005A7E1E /* DLSettingViewController.m */,
 				9CD1219D187184CC00612DD8 /* DLSiderViewController.h */,
 				9CD1219E187184CC00612DD8 /* DLSiderViewController.m */,
 				9CAAF1E91869F32900C666D2 /* DLSignInViewController.h */,
 				9CAAF1EA1869F32900C666D2 /* DLSignInViewController.m */,
 				9C7C210B1869BC5C00F2B2EA /* DLSignUpViewController.h */,
 				9C7C210C1869BC5C00F2B2EA /* DLSignUpViewController.m */,
-				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
-				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
-				9C287C75187B2E0E00934786 /* DLDataViewController.h */,
-				9C287C76187B2E0E00934786 /* DLDataViewController.m */,
-				9C6DD69518B11AC3005A7E1E /* DLSettingViewController.h */,
-				9C6DD69618B11AC3005A7E1E /* DLSettingViewController.m */,
-				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
-				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
 				9C9B214618B905EC009D233E /* DLStartViewController.h */,
 				9C9B214718B905EC009D233E /* DLStartViewController.m */,
+				9CBD2CC7173F4464001FFAE0 /* DLViewController.h */,
+				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
+				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
+				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				9CAAF1E01869EFB700C666D2 /* nav@2x.png in Resources */,
 				9CAAF1DF1869EFB700C666D2 /* Icon@2x.png in Resources */,
 				9C287C79187B2E5100934786 /* data-bg@2x.png in Resources */,
+				9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */,
 				9CBD2CB7173F4464001FFAE0 /* InfoPlist.strings in Resources */,
 				9CAAF1D81869EFB700C666D2 /* Default-568h@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
