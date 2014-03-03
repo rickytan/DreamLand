@@ -33,6 +33,7 @@
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
+		9C4F25C018C4B811000BA2AB /* DLDataCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BF18C4B811000BA2AB /* DLDataCurveView.m */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
 		9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtwork */; };
 		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
@@ -180,6 +181,8 @@
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
 		9C4F25BB18C4AFDD000BA2AB /* DLDetailDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDetailDataViewController.h; sourceTree = "<group>"; };
 		9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDetailDataViewController.m; sourceTree = "<group>"; };
+		9C4F25BE18C4B811000BA2AB /* DLDataCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDataCurveView.h; sourceTree = "<group>"; };
+		9C4F25BF18C4B811000BA2AB /* DLDataCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDataCurveView.m; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C5A96141862B85B00C673DB /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 				9C6DD69318B112A7005A7E1E /* DLWeeklyAlerm.m */,
 				9C9B214318B9057A009D233E /* UIView+DL.h */,
 				9C9B214418B9057A009D233E /* UIView+DL.m */,
+				9C4F25BE18C4B811000BA2AB /* DLDataCurveView.h */,
+				9C4F25BF18C4B811000BA2AB /* DLDataCurveView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -900,6 +905,7 @@
 				9CF9DE12187294BE002D45C9 /* DLTimePlate.m in Sources */,
 				9C357E79184673B5004A927D /* DLRecord.m in Sources */,
 				9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */,
+				9C4F25C018C4B811000BA2AB /* DLDataCurveView.m in Sources */,
 				9CEB417418C311F70009AC82 /* DLAlarm.m in Sources */,
 				9C189565186D5C730013263D /* RAutoTextField.m in Sources */,
 				9C7C210D1869BC5C00F2B2EA /* DLSignUpViewController.m in Sources */,
