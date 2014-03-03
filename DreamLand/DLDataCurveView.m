@@ -13,6 +13,7 @@
 {
     int                granularity;
     CAGradientLayer * _gradientLayer;
+    CAShapeLayer    * _overlayShapeLayer;
 }
 
 + (Class)layerClass
@@ -36,20 +37,19 @@
 
     self.backgroundColor = [UIColor clearColor];
     CAShapeLayer *shape = (CAShapeLayer *)self.layer;
-    shape.path = [self buildPath];
     shape.fillColor = [UIColor clearColor].CGColor;
     shape.strokeColor = THEME_COLOR.CGColor;
     shape.lineWidth = 2.0;
     shape.masksToBounds = YES;
 
     CAShapeLayer *shapeCopy = [CAShapeLayer layer];
-    shapeCopy.path = shape.path;
     shapeCopy.fillColor = [UIColor clearColor].CGColor;
     shapeCopy.strokeColor = [UIColor whiteColor].CGColor;
     shapeCopy.lineWidth = 2.0;
     shapeCopy.frame = shape.bounds;
     shapeCopy.masksToBounds = YES;
     [self.layer addSublayer:shapeCopy];
+    _overlayShapeLayer = shapeCopy;
 
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor clearColor].CGColor];
@@ -92,8 +92,25 @@
     if (_data != data) {
         [_data release];
         _data = [data retain];
-
+        [self updateShape];
     }
+}
+
+- (void)updateShape
+{
+    CAShapeLayer *shape = (CAShapeLayer *)self.layer;
+    shape.path = [self buildPath];
+    _overlayShapeLayer.path = shape.path;
+
+    CGFloat min = self.frame.size.height, max = 0;
+    for (NSValue *v in self.data) {
+        CGFloat y = [v CGPointValue].y;
+        if (y < min)
+            min = y;
+        if (y > max)
+            max = y;
+    }
+    _gradientLayer.frame = CGRectMake(0, min - 2, self.frame.size.width, max - min + 4);
 }
 
 - (CGPathRef)buildPath

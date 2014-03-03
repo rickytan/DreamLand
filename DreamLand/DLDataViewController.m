@@ -94,7 +94,7 @@
         label.text = [NSString stringWithFormat:@"%02d", i];
         label.textColor = [UIColor whiteColor];
         [label sizeToFit];
-        label.center = CGPointMake(56 + i * 28, 510);
+        label.center = CGPointMake(56 + i * 28, 507);
         [self.view addSubview:label];
     }
 }
