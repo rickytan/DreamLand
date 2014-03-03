@@ -57,7 +57,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
-
+    [self setupHourRangeLabels];
+    [self updateEmotion];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -83,6 +84,19 @@
 {
     [self.emotionButton setImage:[self currentEmotionImage]
                         forState:UIControlStateNormal];
+}
+
+- (void)setupHourRangeLabels
+{
+    for (int i=0; i < 9; ++i) {
+        UILabel *label = [[[UILabel alloc] init] autorelease];
+        label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+        label.text = [NSString stringWithFormat:@"%02d", i];
+        label.textColor = [UIColor whiteColor];
+        [label sizeToFit];
+        label.center = CGPointMake(56 + i * 28, 510);
+        [self.view addSubview:label];
+    }
 }
 
 #pragma mark - Actions

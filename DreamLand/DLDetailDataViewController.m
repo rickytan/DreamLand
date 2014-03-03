@@ -9,6 +9,8 @@
 #import "DLDetailDataViewController.h"
 
 @interface DLDetailDataViewController ()
+@property (nonatomic, assign) IBOutlet UIScrollView  * scrollView;
+@property (nonatomic, assign) IBOutlet UIPageControl * pageControl;
 - (IBAction)onDismiss:(id)sender;
 @end
 
