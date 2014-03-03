@@ -34,7 +34,14 @@
 
 - (void)play
 {
+    _playing = YES;
     AudioServicesPlayAlertSound(soundID);
+}
+
+- (void)pause
+{
+    _playing = NO;
+    AudioServices
 }
 
 @end

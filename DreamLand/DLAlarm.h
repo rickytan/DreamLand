@@ -9,14 +9,23 @@
 #import <Foundation/Foundation.h>
 
 @class DLWeeklyAlerm;
+@class DLAlarm;
 
-@interface DLAlarm : NSObject
-@property (nonatomic, assign)   NSInteger hour ,  minute;
-@property (nonatomic, assign)   NSUInteger        selectedWeekdays;
-@property (nonatomic, retain)   NSString        * alarmSound;
-@property (nonatomic, readonly) NSDate          * nextAlarmDate;
-@property (nonatomic, assign)   NSTimeInterval    snoozeDuration;   // Default 10 minutes
-@property (nonatomic, assign)   NSTimeInterval    alarmRange;       // Default 30 minutes
+@protocol DLAlarmDelegate <NSObject>
+
+- (void)alarmDidFired:(DLAlarm *)alarm;
+- (void)alarmDidEnterAlarmRange:(DLAlarm *)alarm;
+
+@end
+
+@interface DLAlarm : NSObject <NSCoding>
+@property (nonatomic, assign)   NSInteger hour     ,  minute;
+@property (nonatomic, assign)   NSUInteger            selectedWeekdays;
+@property (nonatomic, retain)   NSString            * alarmSound;
+@property (nonatomic, readonly) NSDate              * nextAlarmDate;
+@property (nonatomic, assign)   NSTimeInterval        snoozeDuration;   // Default 10    minutes
+@property (nonatomic, assign)   NSTimeInterval        alarmRange;       // Default 30    minutes
+@property (nonatomic, assign)   id<DLAlarmDelegate >  delegate;
 
 + (instancetype)alarmWithHour:(NSInteger)hour andMinute:(NSInteger)minute;
 + (instancetype)alarmWithHour:(NSInteger)hour andMinute:(NSInteger)minute repeatWeekdays:(NSUInteger)selectedWeekdays;

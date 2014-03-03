@@ -35,7 +35,7 @@
     static int rtnval = -1;
     if (rtnval != -1)
         return rtnval;
-    
+
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *version = [userDefault stringForKey:@"LastLaunchVersion"];
     

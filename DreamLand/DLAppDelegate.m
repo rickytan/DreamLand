@@ -8,6 +8,7 @@
 
 #import "DLAppDelegate.h"
 #import "DLDataRecorder.h"
+#import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
 
 @implementation DLAppDelegate
@@ -20,6 +21,10 @@
 
 - (void)setupAppkey
 {
+    [AVOSCloud setApplicationId:@"w4f92crcf157iftzjn6zbuht27v7vrxqvhunsedhuxo96cee"
+                      clientKey:@"60llr27v4wmg6li0ygw5imcuanm9l457wvpqrnrpyau51i77"];
+    [AVOSCloud useAVCloudCN];
+
     [AVOSCloudSNS setupPlatform:AVOSCloudSNSSinaWeibo
                      withAppKey:@"1710935034"
                    andAppSecret:@"088b209b48f2b6c352a6bbc4b29d3c9e"

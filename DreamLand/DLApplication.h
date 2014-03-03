@@ -16,6 +16,4 @@
 - (void)testLight;
 - (void)setLightColor:(UIColor *)color;
 
-- (void)playMusic;
-
 @end

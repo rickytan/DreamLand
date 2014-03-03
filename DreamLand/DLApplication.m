@@ -8,9 +8,13 @@
 
 #import "DLApplication.h"
 #import "LEDKit.h"
+#import "DLAlarm.h"
+#import "DLSoundPlayer.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate>
-
+@interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate>
+@property (nonatomic, retain) AVPlayer * player;
 @end
 
 @implementation DLApplication
@@ -77,9 +81,12 @@
     [_finder startScanWithDelegate:self];
 }
 
-- (void)playMusic
+- (void)playMusic:(NSString *)musicFile
 {
-
+    if (self.player) {
+        self.player = [AVPlayer playerWithURL:[NSURL fileURLWithPath:musicFile]];
+        [self.player play];
+    }
 }
 
 - (void)setLightColor:(UIColor *)color
@@ -108,6 +115,18 @@
         default:
             break;
     }
+}
+
+#pragma mark - DLAlarm
+
+- (void)alarmDidFired:(DLAlarm *)alarm
+{
+    [self playMusic:alarm.alarmSound];
+}
+
+- (void)alarmDidEnterAlarmRange:(DLAlarm *)alarm
+{
+    
 }
 
 @end
