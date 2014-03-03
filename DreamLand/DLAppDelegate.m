@@ -10,6 +10,7 @@
 #import "DLDataRecorder.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudSNS/AVOSCloudSNS.h>
+#import "DLAlarm.h"
 
 @implementation DLAppDelegate
 

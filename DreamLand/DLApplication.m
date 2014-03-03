@@ -9,8 +9,6 @@
 #import "DLApplication.h"
 #import "LEDKit.h"
 #import "DLAlarm.h"
-#import "DLSoundPlayer.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate>

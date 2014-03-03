@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DLWeeklyAlerm.h"
 
-@class DLWeeklyAlerm;
 @class DLAlarm;
 
 @protocol DLAlarmDelegate <NSObject>
@@ -36,6 +36,5 @@
 - (void)cancel;
 
 - (void)startAlarm;
-- (void)stop;
 
 @end

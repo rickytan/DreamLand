@@ -13,7 +13,8 @@ static DLAlarm *theAlarm = nil;
 
 @implementation DLAlarm
 {
-    NSTimer                 * _fireTimer, _rangeTimer;
+    NSTimer                 * _fireTimer, * _rangeTimer;
+    NSDate                  * _nextFireDate;
 }
 
 + (id)alarmWithHour:(NSInteger)hour
@@ -91,15 +92,17 @@ static DLAlarm *theAlarm = nil;
     if ([self.delegate respondsToSelector:@selector(alarmDidEnterAlarmRange:)]) {
         [self.delegate alarmDidEnterAlarmRange:self];
     }
-    
+
     [_rangeTimer release];
     _rangeTimer = nil;
 }
 
 - (void)startAlarm
 {
-    
+    [self _fire];
+    [self cancel];
 }
+
 
 - (void)schedule
 {
@@ -136,17 +139,52 @@ static DLAlarm *theAlarm = nil;
 
 - (NSDate *)nextAlarmDate
 {
-    NSDate *alarmDate = [NSDate date];
-    NSCalendar *cal = [NSCalendar currentCalendar];
-    NSDateComponents *comp = [cal components:NSHourCalendarUnit | NSMinuteCalendarUnit
-                                    fromDate:alarmDate];
-    if (comp.hour > self.hour || comp.minute > self.minute) {   // 还是当天
+    if (!_nextFireDate) {
+        NSDate *alarmDate = [NSDate date];
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *comp = [cal components:NSHourCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit | NSWeekdayCalendarUnit
+                                        fromDate:alarmDate];
+        NSInteger daysToAdd = 0;
+        NSInteger extraDay = 0;
+        if (comp.hour > self.hour || comp.minute > self.minute) {   // 还是当天
+            extraDay = 1;
+        }
+        if (self.selectedWeekdays) {
+            for (int i=0; i < 7 && !(self.selectedWeekdays & (0x1 << ((i + comp.weekday - 1 + extraDay) % 7))); ++i, ++daysToAdd) {
+                // Nothing
+            }
+        }
+        daysToAdd += extraDay;
 
-        ++comp.day;
+
+        comp.hour = self.hour;
+        comp.minute = self.minute;
+        comp.day += daysToAdd;
+        _nextFireDate = [[cal dateFromComponents:comp] retain];
     }
-    comp.hour = self.hour;
-    comp.minute = self.minute;
-    return [cal dateFromComponents:comp];
+    return _nextFireDate;
+}
+
+- (void)setHour:(NSInteger)hour
+{
+    if (_hour != hour) {
+        _hour = hour;
+        [self cancel];
+
+        [_nextFireDate release];
+        _nextFireDate = nil;
+    }
+}
+
+- (void)setMinute:(NSInteger)minute
+{
+    if (_minute != minute) {
+        _minute = minute;
+        [self cancel];
+
+        [_nextFireDate release];
+        _nextFireDate = nil;
+    }
 }
 
 - (id)init
@@ -159,7 +197,7 @@ static DLAlarm *theAlarm = nil;
         self.alarmRange       = 30.0*60;
         self.snoozeDuration   = 10.0*60;
         self.alarmSound       = [[NSBundle mainBundle] pathForResource:@"alarm_sound_1"
-                                                                 ofType:@"mp3"];
+                                                                ofType:@"mp3"];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(_saveToDisk)
                                                      name:UIApplicationWillResignActiveNotification

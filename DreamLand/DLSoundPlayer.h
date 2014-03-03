@@ -12,5 +12,5 @@
 @property (nonatomic, readonly, getter = isPlaying) BOOL playing;
 - (id)initWithURL:(NSURL*)fileURL;
 - (void)play;
-- (void)pause;
+
 @end
