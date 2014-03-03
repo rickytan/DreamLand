@@ -1052,7 +1052,7 @@ natural and feel less stressed in the morings.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" id="UFP-p9-5mP">
-                                <rect key="frame" x="0.0" y="64" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="65" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick.png" id="o1f-ms-Mnu">
@@ -1118,6 +1118,8 @@ natural and feel less stressed in the morings.</string>
                         <outlet property="chargerLabel" destination="hZV-4k-78v" id="SyJ-6H-9xr"/>
                         <outlet property="pinImage" destination="q6D-Oi-K5H" id="Jtk-uV-JJf"/>
                         <outlet property="slideLabel" destination="hZt-hG-qD1" id="o3h-lb-77K"/>
+                        <outlet property="timeLabel" destination="IK1-Yt-msN" id="Ou5-m1-ejT"/>
+                        <outlet property="wakeUpLabel" destination="V67-dw-W5L" id="Xj3-82-TyU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgj-Ag-yQp" userLabel="First Responder" sceneMemberID="firstResponder"/>

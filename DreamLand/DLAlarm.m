@@ -103,9 +103,16 @@ static DLAlarm *theAlarm = nil;
     [self cancel];
 }
 
+- (BOOL)isRunning
+{
+    return _fireTimer.isValid;
+}
 
 - (void)schedule
 {
+    if (self.isRunning)
+        return;
+    
     [_fireTimer invalidate];
     [_fireTimer release];
     _fireTimer = [[NSTimer alloc] initWithFireDate:self.nextAlarmDate

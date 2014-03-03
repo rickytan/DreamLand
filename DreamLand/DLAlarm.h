@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSDate              * nextAlarmDate;
 @property (nonatomic, assign)   NSTimeInterval        snoozeDuration;   // Default 10 * 60 seconds
 @property (nonatomic, assign)   NSTimeInterval        alarmRange;       // Default 30      minutes
+@property (nonatomic, assign, readonly, getter = isRunning) BOOL running;
 @property (nonatomic, assign)   id<DLAlarmDelegate >  delegate;
 
 + (instancetype)alarmWithHour:(NSInteger)hour andMinute:(NSInteger)minute;

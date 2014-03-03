@@ -14,7 +14,8 @@
 @property (nonatomic, assign) IBOutlet UILabel     * slideLabel;
 @property (nonatomic, assign) IBOutlet UIImageView * pinImage;
 @property (nonatomic, assign) IBOutlet UILabel     * chargerLabel;
-@property (nonatomic, assign) IBOutlet UILabel     * w;
+@property (nonatomic, assign) IBOutlet UILabel     * wakeUpLabel;
+@property (nonatomic, assign) IBOutlet UILabel     * timeLabel;
 @property (nonatomic, retain) UIColor              * origColor;
 @end
 
@@ -43,7 +44,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
-
+    [self setupWakeUpLabel];
     [self.slideLabel startShining];
 
     [self onChargingStateChanged];
@@ -81,14 +82,12 @@
         CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"position"];
         anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(self.pinImage.center.x, self.pinImage.center.y + 32)];
         anim.duration = 1.5;
-        //anim.timeOffset = 0.5;
         anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
         CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
         fadeIn.fromValue = [NSNumber numberWithFloat:0];
         fadeIn.toValue = [NSNumber numberWithFloat:1];
         fadeIn.duration = .5;
-        //        fadeIn.timeOffset = 0.5;
 
         CAAnimationGroup *group = [CAAnimationGroup animation];
         group.animations = @[anim, fadeIn];
@@ -102,6 +101,21 @@
         [self.pinImage.layer removeAnimationForKey:@"PlugIn"];
         self.chargerLabel.hidden = YES;
     }
+}
+
+- (void)setupWakeUpLabel
+{
+
+    NSString *timeString = [NSString stringWithFormat:@"%d:%02d", [DLAlarm sharedAlarm].hour, [DLAlarm sharedAlarm].minute];
+    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    formatter.dateFormat = @"HH:mm";
+    NSDate *time = [formatter dateFromString:timeString];
+    time = [time dateByAddingTimeInterval:-[DLAlarm sharedAlarm].alarmRange*60];
+    NSDateComponents *component = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
+                                                                  fromDate:time];
+    NSInteger hour = component.hour;
+    NSInteger minute = component.minute;
+    self.wakeUpLabel.text = [NSString stringWithFormat:@"%d:%02d - %d:%02d %s", hour, minute, [DLAlarm sharedAlarm].hour, [DLAlarm sharedAlarm].minute, "AM"];
 }
 
 @end
