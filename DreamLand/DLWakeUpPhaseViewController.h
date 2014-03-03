@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DLWakeUpPhaseViewController : UITableViewController
-@property (nonatomic, assign) NSInteger selectedPhase;
+
 @end

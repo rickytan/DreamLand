@@ -33,7 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.alarmPeriod = [DLAlarm sharedAlarm].alarmRange;
+        self.alarmPeriod = [NSUserDefaults standardUserDefaults].wakeUpPhase;
     }
     return self;
 }
@@ -42,7 +42,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.alarmPeriod = [DLAlarm sharedAlarm].alarmRange;
+        self.alarmPeriod = [NSUserDefaults standardUserDefaults].wakeUpPhase;
     }
     return self;
 }
@@ -109,7 +109,7 @@
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     formatter.dateFormat = @"HH:mm";
     NSDate *time = [formatter dateFromString:self.timeLabel.text];
-    time = [time dateByAddingTimeInterval:-[DLAlarm sharedAlarm].alarmRange*60];
+    time = [time dateByAddingTimeInterval:-[NSUserDefaults standardUserDefaults].wakeUpPhase*60];
     NSDateComponents *component = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
                                     fromDate:time];
     NSInteger hour = component.hour;

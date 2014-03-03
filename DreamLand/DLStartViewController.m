@@ -9,6 +9,7 @@
 #import "DLStartViewController.h"
 #import "UIView+DL.h"
 #import "DLAlarm.h"
+#import "NSUserDefaults+Settings.h"
 
 @interface DLStartViewController ()
 @property (nonatomic, assign) IBOutlet UILabel     * slideLabel;
@@ -110,7 +111,7 @@
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     formatter.dateFormat = @"HH:mm";
     NSDate *time = [formatter dateFromString:timeString];
-    time = [time dateByAddingTimeInterval:-[DLAlarm sharedAlarm].alarmRange*60];
+    time = [time dateByAddingTimeInterval:-[NSUserDefaults standardUserDefaults].wakeUpPhase*60];
     NSDateComponents *component = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
                                                                   fromDate:time];
     NSInteger hour = component.hour;

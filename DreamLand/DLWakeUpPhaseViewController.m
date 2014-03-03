@@ -7,8 +7,19 @@
 //
 
 #import "DLWakeUpPhaseViewController.h"
+#import "NSUserDefaults+Settings.h"
 
-@interface DLWakeUpPhaseViewController ()
+@interface DLWakeUpPhaseViewCell : UITableViewCell
+@end
+
+@implementation DLWakeUpPhaseViewCell
+
+- (void)setSelected:(BOOL)selected
+           animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+    self.textLabel.highlighted = selected;
+}
 
 @end
 
@@ -26,13 +37,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:self.selectedPhase
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSInteger indices[] = {(10), (15), (20), (30), (45)};
+    NSInteger index = 0;
+    for (; index < sizeof(indices) / sizeof(NSInteger); ++index) {
+        if ((NSInteger)[NSUserDefaults standardUserDefaults].wakeUpPhase == indices[index])
+            break;
+    }
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:index
                                                             inSection:0]
                                 animated:NO
                           scrollPosition:UITableViewScrollPositionTop];
@@ -46,21 +62,13 @@
 
 #pragma mark - Table view data source
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSInteger indices[] = {(10), (15), (20), (30), (45)};
+    [NSUserDefaults standardUserDefaults].wakeUpPhase = indices[indexPath.row];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

@@ -8,9 +8,12 @@
 
 #import "DLSettingViewController.h"
 #import "RTSiderViewController.h"
+#import "NSUserDefaults+Settings.h"
 
 @interface DLSettingViewController ()
 - (IBAction)onLeft:(id)sender;
+- (IBAction)onSound:(UISwitch *)switcher;
+- (IBAction)onLight:(UISwitch *)switcher;
 @end
 
 @implementation DLSettingViewController
@@ -27,12 +30,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    UISwitch *s = (UISwitch *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                                                       inSection:0]].accessoryView;
+    s.on = [NSUserDefaults standardUserDefaults].isLightOn;
+
+    ((UISwitch *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1
+                                                                          inSection:0]].accessoryView).on = [NSUserDefaults standardUserDefaults].isSoundOn;
+    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2
+                                                             inSection:0]].detailTextLabel.text = [NSString stringWithFormat:@"%d mins", (int)[NSUserDefaults standardUserDefaults].wakeUpPhase];
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,57 +57,15 @@
     [self.siderViewController slideToRightAnimated:YES];
 }
 
-#pragma mark - Table view data source
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)onSound:(UISwitch *)switcher
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    [NSUserDefaults standardUserDefaults].soundOn = switcher.isOn;
 }
 
- */
+- (IBAction)onLight:(UISwitch *)switcher
+{
+    [NSUserDefaults standardUserDefaults].lightOn = switcher.isOn;
+}
+
 
 @end

@@ -8,6 +8,7 @@
 
 #import "DLAlarm.h"
 #import "DLWeeklyAlerm.h"
+#import "NSUserDefaults+Settings.h"
 
 static DLAlarm *theAlarm = nil;
 
@@ -112,7 +113,7 @@ static DLAlarm *theAlarm = nil;
 {
     if (self.isRunning)
         return;
-    
+
     [_fireTimer invalidate];
     [_fireTimer release];
     _fireTimer = [[NSTimer alloc] initWithFireDate:self.nextAlarmDate
@@ -125,7 +126,7 @@ static DLAlarm *theAlarm = nil;
     [_rangeTimer invalidate];
     [_rangeTimer release];
     _rangeTimer = [[NSTimer alloc] initWithFireDate:self.nextAlarmDate
-                                           interval:-self.alarmRange
+                                           interval:-[NSUserDefaults standardUserDefaults].wakeUpPhase
                                              target:self
                                            selector:@selector(_enterRange)
                                            userInfo:nil
@@ -201,7 +202,6 @@ static DLAlarm *theAlarm = nil;
         self.hour             = 8;
         self.minute           = 0;
         self.selectedWeekdays = DLWeekdayWorkday;
-        self.alarmRange       = 30.0;
         self.snoozeDuration   = 10.0*60;
         self.alarmSound       = [[NSBundle mainBundle] pathForResource:@"alarm_sound_1"
                                                                 ofType:@"mp3"];
@@ -221,7 +221,6 @@ static DLAlarm *theAlarm = nil;
         self.minute           = [aDecoder decodeIntegerForKey:@"Minute"];
         self.selectedWeekdays = [aDecoder decodeIntegerForKey:@"Weekdays"];
         self.alarmSound       = [aDecoder decodeObjectForKey:@"Sound"];
-        self.alarmRange       = [aDecoder decodeDoubleForKey:@"Range"];
         self.snoozeDuration   = [aDecoder decodeDoubleForKey:@"Snooze"];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -242,8 +241,6 @@ static DLAlarm *theAlarm = nil;
                    forKey:@"Weekdays"];
     [aCoder encodeObject:self.alarmSound
                   forKey:@"Sound"];
-    [aCoder encodeDouble:self.alarmRange
-                  forKey:@"Range"];
     [aCoder encodeDouble:self.snoozeDuration
                   forKey:@"Snooze"];
 }
