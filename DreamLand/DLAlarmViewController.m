@@ -58,6 +58,7 @@
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
 
     self.timePlate.hour = [DLAlarm sharedAlarm].hour;

@@ -14,6 +14,14 @@
 
 @implementation DLAppDelegate
 
++ (UIColor *)iOS7DefaultBlueTint
+{
+    return [UIColor colorWithRed:80.0/255
+                           green:136.0/255
+                            blue:253.0/255
+                           alpha:1.0];
+}
+
 - (void)dealloc
 {
     [_window release];
@@ -37,11 +45,31 @@
 
 }
 
+- (void)setupUI
+{
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[[UIImage alloc] init] autorelease]
+                                                                                        forState:UIControlStateNormal
+                                                                                      barMetrics:UIBarMetricsDefault];
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setBackgroundImage:[[[UIImage alloc] init] autorelease]
+                                                                                        forState:UIControlStateNormal
+                                                                                      barMetrics:UIBarMetricsLandscapePhone];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{UITextAttributeFont: [UIFont systemFontOfSize:16],
+                                                                                                       UITextAttributeTextColor: [DLAppDelegate iOS7DefaultBlueTint],
+                                                                                                       UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:CGSizeZero]}
+                                                                                            forState:UIControlStateNormal];
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:@{UITextAttributeTextColor: [UIColor grayColor],
+                                                                                                       UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:CGSizeZero]}
+                                                                                            forState:UIControlStateHighlighted];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeTextShadowOffset: [NSValue valueWithCGSize:CGSizeZero]}];
+}
+
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [self setupAppkey];
+    [self setupUI];
 
     //    [[CBCentralManager alloc] initWithDelegate:self
     //                                         queue:dispatch_get_main_queue()];
