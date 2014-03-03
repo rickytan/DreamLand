@@ -32,6 +32,7 @@
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
+		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
 		9C532F301860B4B500E391CE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C532F2F1860B4B500E391CE /* AudioToolbox.framework */; };
 		9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 9C5A96141862B85B00C673DB /* iTunesArtwork */; };
 		9C5A963718642BB700C673DB /* DLGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5A963618642BB700C673DB /* DLGuideViewController.m */; };
@@ -177,6 +178,8 @@
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		9C4F25BB18C4AFDD000BA2AB /* DLDetailDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDetailDataViewController.h; sourceTree = "<group>"; };
+		9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDetailDataViewController.m; sourceTree = "<group>"; };
 		9C532F2F1860B4B500E391CE /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		9C5A96141862B85B00C673DB /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
 		9C5A963518642BB700C673DB /* DLGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLGuideViewController.h; sourceTree = "<group>"; };
@@ -679,6 +682,8 @@
 				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
 				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
 				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
+				9C4F25BB18C4AFDD000BA2AB /* DLDetailDataViewController.h */,
+				9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -909,6 +914,7 @@
 				9C6DD69418B112A7005A7E1E /* DLWeeklyAlerm.m in Sources */,
 				9CA0DF8C17A2AA7B00037063 /* LEDFinder.m in Sources */,
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
+				9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */,
 				9CD1219B1871848700612DD8 /* RTNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

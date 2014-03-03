@@ -10,12 +10,30 @@
 #import "DLSiderViewController.h"
 
 @interface DLDataViewController () <UIActionSheetDelegate>
+@property (nonatomic, assign) IBOutlet UIButton *emotionButton;
+@property (nonatomic, assign) NSInteger currentEmotion;
+
 - (IBAction)onLeft:(id)sender;
 - (IBAction)onDelete:(id)sender;
 - (IBAction)onShare:(id)sender;
+- (IBAction)onEmotion:(id)sender;
 @end
 
 @implementation DLDataViewController
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
+
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onRotate:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +57,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -54,7 +73,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIImage *)currentEmotionImage
+{
+    NSArray *arr = @[@"emotion-normal.png", @"emotion-good.png", @"emotion-bad.png"];
+    return [UIImage imageNamed:arr[self.currentEmotion]];
+}
+
+- (void)updateEmotion
+{
+    [self.emotionButton setImage:[self currentEmotionImage]
+                        forState:UIControlStateNormal];
+}
+
 #pragma mark - Actions
+
+- (void)onRotate:(NSNotification *)notification
+{
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        
+    }
+}
+
+- (IBAction)onEmotion:(id)sender
+{
+    self.currentEmotion = (self.currentEmotion + 1) % 3;
+    [self updateEmotion];
+}
 
 - (IBAction)onLeft:(id)sender
 {
