@@ -9,6 +9,8 @@
 #import "DLApplication.h"
 #import "LEDKit.h"
 #import "DLAlarm.h"
+#import "UIApplication+RExtension.h"
+#import "NSUserDefaults+Settings.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate>

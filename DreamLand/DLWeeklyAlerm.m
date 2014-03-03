@@ -56,7 +56,7 @@ static NSString *weekDay[] = {@"Sun", @"Mon", @"Tue", @"Wed", @"Thu", @"Fri", @"
     }
 }
 
-- (void)setSelectedWeekday:(NSUInteger)selectedWeekday
+- (void)setSelectedWeekday:(DLWeekday)selectedWeekday
 {
     if (!_selectedWeekday != selectedWeekday) {
         _selectedWeekday = selectedWeekday;

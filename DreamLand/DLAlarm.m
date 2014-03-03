@@ -194,7 +194,7 @@ static DLAlarm *theAlarm = nil;
         self.hour             = 8;
         self.minute           = 0;
         self.selectedWeekdays = DLWeekdayWorkday;
-        self.alarmRange       = 30.0*60;
+        self.alarmRange       = 30.0;
         self.snoozeDuration   = 10.0*60;
         self.alarmSound       = [[NSBundle mainBundle] pathForResource:@"alarm_sound_1"
                                                                 ofType:@"mp3"];
@@ -216,6 +216,11 @@ static DLAlarm *theAlarm = nil;
         self.alarmSound       = [aDecoder decodeObjectForKey:@"Sound"];
         self.alarmRange       = [aDecoder decodeDoubleForKey:@"Range"];
         self.snoozeDuration   = [aDecoder decodeDoubleForKey:@"Snooze"];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(_saveToDisk)
+                                                     name:UIApplicationWillResignActiveNotification
+                                                   object:nil];
     }
     return self;
 }

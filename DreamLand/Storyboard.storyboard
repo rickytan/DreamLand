@@ -126,7 +126,7 @@
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.36470588240000001" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" id="st5-HZ-aXR" userLabel="Line">
-                                                <rect key="frame" x="0.0" y="78.999999978325576" width="320" height="1"/>
+                                                <rect key="frame" x="0.0" y="78.999999978325604" width="320" height="1"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <color key="backgroundColor" red="0.43529411759999997" green="0.36470588240000001" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
@@ -145,7 +145,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" minimumFontSize="17" id="zgV-Qi-giv" customClass="RAutoTextField">
-                                                <rect key="frame" x="100" y="43.000000056627712" width="126" height="35"/>
+                                                <rect key="frame" x="100" y="43" width="126" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -1004,6 +1004,9 @@ natural and feel less stressed in the morings.</string>
                                 <rect key="frame" x="-1" y="516" width="322" height="54"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="onWeekdayChanged:" destination="Yzh-5G-cjJ" eventType="valueChanged" id="W8S-wT-PtL"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.15294118225574493" green="0.16078431904315948" blue="0.20392158627510071" alpha="1" colorSpace="deviceRGB"/>
@@ -1018,8 +1021,11 @@ natural and feel less stressed in the morings.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="ampmLabel" destination="Dgk-sa-a4C" id="QQE-Ln-f1s"/>
+                        <outlet property="musicButton" destination="Jxh-R6-ePh" id="aGA-UA-THt"/>
                         <outlet property="timeLabel" destination="mLL-d7-VyD" id="QdP-iV-Ng7"/>
+                        <outlet property="timePlate" destination="Tmg-vz-KZf" id="XYu-v3-PaF"/>
                         <outlet property="wakeUpLabel" destination="wPP-ot-lff" id="XDK-ls-e8T"/>
+                        <outlet property="weekDay" destination="cs1-R4-0dL" id="1dp-SG-tQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg9-3g-rGr" userLabel="First Responder" sceneMemberID="firstResponder"/>

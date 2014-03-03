@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, DLWeekday) {
     DLWeekdayFriday     = 0x1 << 5,
     DLWeekdaySaturday   = 0x1 << 6,
     DLWeekdayWeekend    = DLWeekdaySunday | DLWeekdaySaturday,
-    DLWeekdayWorkday    = 0x7f ^ DLWeekdaySaturday ^ DLWeekdaySaturday,
+    DLWeekdayWorkday    = 0x7f ^ DLWeekdaySaturday ^ DLWeekdaySunday,
     DLWeekdayAll        = 0x7f,
 };
 

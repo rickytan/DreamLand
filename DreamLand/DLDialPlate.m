@@ -80,7 +80,6 @@
 {
     if (_endAngle != endAngle) {
         _endAngle = endAngle;
-        NSLog(@"%f", _endAngle);
         [self putThumb];
         [self setNeedsDisplay];
         [self sendActionsForControlEvents:UIControlEventValueChanged];

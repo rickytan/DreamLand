@@ -9,14 +9,21 @@
 #import "DLAlarmViewController.h"
 #import "RTSiderViewController.h"
 #import "DLTimePlate.h"
+#import "DLAlarm.h"
+#import "DLWeeklyAlerm.h"
+#import "NSUserDefaults+Settings.h"
 
 @interface DLAlarmViewController ()
 @property (nonatomic, assign) IBOutlet UILabel * wakeUpLabel;
 @property (nonatomic, assign) IBOutlet UILabel * timeLabel;
 @property (nonatomic, assign) IBOutlet UILabel * ampmLabel;
+@property (nonatomic, assign) IBOutlet DLTimePlate * timePlate;
+@property (nonatomic, assign) IBOutlet DLWeeklyAlerm * weekDay;
+@property (nonatomic, assign) IBOutlet UIButton * musicButton;
 - (IBAction)onMusic:(UIButton *)button;
 - (IBAction)onLeft:(id)sender;
 - (IBAction)onTimeChanged:(DLTimePlate *)timePlate;
+- (IBAction)onWeekdayChanged:(DLWeeklyAlerm *)weekday;
 @end
 
 @implementation DLAlarmViewController
@@ -26,7 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.alarmPeriod = 30;
+        self.alarmPeriod = [DLAlarm sharedAlarm].alarmRange;
     }
     return self;
 }
@@ -35,7 +42,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.alarmPeriod = 30;
+        self.alarmPeriod = [DLAlarm sharedAlarm].alarmRange;
     }
     return self;
 }
@@ -52,7 +59,13 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
+
+    self.timePlate.hour = [DLAlarm sharedAlarm].hour;
+    self.timePlate.minute = [DLAlarm sharedAlarm].minute;
+    [self onTimeChanged:self.timePlate];
     
+    self.weekDay.selectedWeekday = [DLAlarm sharedAlarm].selectedWeekdays;
+    self.musicButton.selected = [NSUserDefaults standardUserDefaults].isAlarmMusicOn;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -79,15 +92,24 @@
 - (IBAction)onMusic:(UIButton *)button
 {
     button.selected = !button.selected;
+    [NSUserDefaults standardUserDefaults].alarmMusicOn = button.selected;
+}
+
+- (IBAction)onWeekdayChanged:(DLWeeklyAlerm *)weekday
+{
+    [DLAlarm sharedAlarm].selectedWeekdays = weekday.selectedWeekday;
 }
 
 - (IBAction)onTimeChanged:(DLTimePlate *)timePlate
 {
+    [DLAlarm sharedAlarm].hour = timePlate.hour + (timePlate.isAM ? 0 : 12);
+    [DLAlarm sharedAlarm].minute = timePlate.minute;
+
     self.timeLabel.text = [NSString stringWithFormat:@"%d:%02d", timePlate.hour, timePlate.minute];
     NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
     formatter.dateFormat = @"HH:mm";
     NSDate *time = [formatter dateFromString:self.timeLabel.text];
-    time = [time dateByAddingTimeInterval:-30*60];
+    time = [time dateByAddingTimeInterval:-[DLAlarm sharedAlarm].alarmRange*60];
     NSDateComponents *component = [[NSCalendar currentCalendar] components:NSHourCalendarUnit | NSMinuteCalendarUnit
                                     fromDate:time];
     NSInteger hour = component.hour;

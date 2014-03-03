@@ -10,11 +10,9 @@
 
 @interface NSUserDefaults (Settings)
 
-@property (nonatomic, assign) NSUInteger selectedWeekdays;
-@property (nonatomic, assign) NSInteger alarmHour;
-@property (nonatomic, assign) NSInteger alarmMinute;
-
-- (NSArray *)e;
-- (NSUInteger)selectedWeekdays;
+@property (nonatomic, assign, getter = isAlarmMusicOn) BOOL alarmMusicOn;
+@property (nonatomic, assign, getter = isSoundOn) BOOL soundOn;
+@property (nonatomic, assign, getter = isLightOn) BOOL lightOn;
+@property (nonatomic, assign) NSTimeInterval wakeUpPhase;
 
 @end
