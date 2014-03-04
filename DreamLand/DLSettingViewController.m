@@ -55,6 +55,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (IBAction)onLeft:(id)sender
 {
     [self.siderViewController slideToRightAnimated:YES];

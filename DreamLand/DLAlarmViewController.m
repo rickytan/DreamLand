@@ -83,6 +83,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onLeft:(id)sender

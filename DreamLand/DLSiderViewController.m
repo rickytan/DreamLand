@@ -47,6 +47,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    return [self.currentMiddleViewController shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
+}
+
+- (BOOL)shouldAutorotate
+{
+    return [self.currentMiddleViewController shouldAutorotate];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return [self.currentMiddleViewController preferredInterfaceOrientationForPresentation];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return [self.currentMiddleViewController supportedInterfaceOrientations];
+}
+
 #pragma mark - RTSider Datasource
 
 - (BOOL)shouldAdjustWidthOfLeftViewController

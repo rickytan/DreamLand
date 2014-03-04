@@ -74,6 +74,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (UIImage *)currentEmotionImage
 {
     NSArray *arr = @[@"emotion-normal.png", @"emotion-good.png", @"emotion-bad.png"];
@@ -104,7 +109,16 @@
 - (void)onRotate:(NSNotification *)notification
 {
     if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
-        
+        if (!self.presentedViewController)
+            [self performSegueWithIdentifier:@"DetailData"
+                                      sender:self];
+    }
+    else {
+        if (self.presentedViewController)
+            [self dismissViewControllerAnimated:YES
+                                     completion:^{
+
+                                     }];
     }
 }
 

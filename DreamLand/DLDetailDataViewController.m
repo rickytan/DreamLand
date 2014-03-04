@@ -30,6 +30,11 @@
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
 
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return UIInterfaceOrientationLandscapeRight;

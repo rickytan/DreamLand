@@ -30,6 +30,9 @@
 		9C4824BF17462FF6002D06E8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4824BE17462FF6002D06E8 /* CoreMotion.framework */; };
 		9C482509174A5935002D06E8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C482508174A5935002D06E8 /* OpenGLES.framework */; };
 		9C48250E174A655C002D06E8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C48250A174A594F002D06E8 /* QuartzCore.framework */; };
+		9C49214518C5B7C800029A76 /* DLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49214418C5B7C800029A76 /* DLNavigationController.m */; };
+		9C49214718C5BCAF00029A76 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49214618C5BCAF00029A76 /* back@2x.png */; };
+		9C49214A18C5BD1200029A76 /* DLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49214918C5BD1200029A76 /* DLChartView.m */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
@@ -176,6 +179,11 @@
 		9C4824BE17462FF6002D06E8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		9C482508174A5935002D06E8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9C48250A174A594F002D06E8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9C49214318C5B7C800029A76 /* DLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLNavigationController.h; sourceTree = "<group>"; };
+		9C49214418C5B7C800029A76 /* DLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLNavigationController.m; sourceTree = "<group>"; };
+		9C49214618C5BCAF00029A76 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		9C49214818C5BD1200029A76 /* DLChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLChartView.h; sourceTree = "<group>"; };
+		9C49214918C5BD1200029A76 /* DLChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLChartView.m; sourceTree = "<group>"; };
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
@@ -447,6 +455,7 @@
 			children = (
 				9CD121821871826900612DD8 /* alam@2x.png */,
 				9CEB417518C317450009AC82 /* alarm_sound_1.mp3 */,
+				9C49214618C5BCAF00029A76 /* back@2x.png */,
 				9CAAF1C51869EFB700C666D2 /* background@2x.png */,
 				9CD1218C1871844E00612DD8 /* big dot@2x.png */,
 				9C9B213D18B8DE12009D233E /* charger@2x.png */,
@@ -663,6 +672,8 @@
 				9CD121A31871898100612DD8 /* DLAlarmViewController.m */,
 				9C287C75187B2E0E00934786 /* DLDataViewController.h */,
 				9C287C76187B2E0E00934786 /* DLDataViewController.m */,
+				9C4F25BB18C4AFDD000BA2AB /* DLDetailDataViewController.h */,
+				9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */,
 				9C18955F186D55950013263D /* DLForgotViewController.h */,
 				9C189560186D55950013263D /* DLForgotViewController.m */,
 				9C5A963518642BB700C673DB /* DLGuideViewController.h */,
@@ -671,6 +682,8 @@
 				9CC3D46A175EEBDD009AB5CA /* DLHistoryListViewController.m */,
 				9CD121A7187191F500612DD8 /* DLLeftPanelViewController.h */,
 				9CD121A8187191F500612DD8 /* DLLeftPanelViewController.m */,
+				9C49214318C5B7C800029A76 /* DLNavigationController.h */,
+				9C49214418C5B7C800029A76 /* DLNavigationController.m */,
 				9C6DD69518B11AC3005A7E1E /* DLSettingViewController.h */,
 				9C6DD69618B11AC3005A7E1E /* DLSettingViewController.m */,
 				9CD1219D187184CC00612DD8 /* DLSiderViewController.h */,
@@ -685,8 +698,6 @@
 				9CBD2CC8173F4464001FFAE0 /* DLViewController.m */,
 				9C1A0A4318B3AE9900A767FC /* DLWakeUpPhaseViewController.h */,
 				9C1A0A4418B3AE9900A767FC /* DLWakeUpPhaseViewController.m */,
-				9C4F25BB18C4AFDD000BA2AB /* DLDetailDataViewController.h */,
-				9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -710,6 +721,8 @@
 				9C9B214418B9057A009D233E /* UIView+DL.m */,
 				9C4F25BE18C4B811000BA2AB /* DLDataCurveView.h */,
 				9C4F25BF18C4B811000BA2AB /* DLDataCurveView.m */,
+				9C49214818C5BD1200029A76 /* DLChartView.h */,
+				9C49214918C5BD1200029A76 /* DLChartView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -849,6 +862,7 @@
 				9CAAF1E11869EFB700C666D2 /* password@2x.png in Resources */,
 				9C9B214018B8DE12009D233E /* charger@2x.png in Resources */,
 				9CAAF1E21869EFB700C666D2 /* photo@2x.png in Resources */,
+				9C49214718C5BCAF00029A76 /* back@2x.png in Resources */,
 				9CD121881871826900612DD8 /* data@2x.png in Resources */,
 				9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */,
 				9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */,
@@ -889,6 +903,7 @@
 				9C37678518C06629009CFE12 /* YHWeather.m in Sources */,
 				9C5C79BC175625CF0066D960 /* DLData.m in Sources */,
 				9C9B214818B905EC009D233E /* DLStartViewController.m in Sources */,
+				9C49214518C5B7C800029A76 /* DLNavigationController.m in Sources */,
 				9C5B760A18366F0600943394 /* FMDatabaseAdditions.m in Sources */,
 				9CD121AC1871A0AF00612DD8 /* DLDialPlate.m in Sources */,
 				9C1A0A4518B3AE9900A767FC /* DLWakeUpPhaseViewController.m in Sources */,
@@ -912,6 +927,7 @@
 				9C7A9654188D21BA006643D8 /* DLUser.m in Sources */,
 				9C287C77187B2E0E00934786 /* DLDataViewController.m in Sources */,
 				9C5B75FD18366E6B00943394 /* DLDataProvider.m in Sources */,
+				9C49214A18C5BD1200029A76 /* DLChartView.m in Sources */,
 				9CC3D46B175EEBDD009AB5CA /* DLHistoryListViewController.m in Sources */,
 				9C9B214518B9057A009D233E /* UIView+DL.m in Sources */,
 				9C5B760D18366F0600943394 /* FMResultSet.m in Sources */,
