@@ -15,6 +15,7 @@
 
 @interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate, UIAlertViewDelegate>
 @property (nonatomic, retain) AVAudioPlayer * player;
+@property (nonatomic, retain) NSTimer * musicTimer, * lightTimer;
 @end
 
 @implementation DLApplication
@@ -59,15 +60,35 @@
 {
     if (self.isLightConnected) {
         _controller.mode = 1;
-        _controller.speed = 31;
+        _controller.speed = 1;
         _controller.luminance = 100;
-        _controller.pause = NO;
+        _controller.color = [UIColor redColor];
         _controller.on = YES;
-        double delayInSeconds = 5.0;
+        double delayInSeconds = 1.0;
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            _controller.on = NO;
-            _controller.mode = 1;
+            _controller.mode = 2;
+            _controller.color = [UIColor greenColor];
+
+            double delayInSeconds = 1.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                _controller.mode = 2;
+                _controller.color = [UIColor blueColor];
+
+                double delayInSeconds = 1.0;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                    _controller.mode = 12;
+                    _controller.speed = 1;
+
+                    double delayInSeconds = 1.0;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        _controller.on = NO;
+                    });
+                });
+            });
         });
     }
 }
@@ -75,11 +96,9 @@
 - (void)lightUpLight
 {
     if (self.isLightConnected) {
-        _controller.speed = 10;
-        _controller.mode = 1;
-        _controller.luminance = 1;
-        _controller.pause = NO;
         _controller.on = YES;
+        _controller.color = THEME_COLOR;
+        _controller.luminance = 0;
         [self increaseLuminance];
     }
 }
@@ -87,22 +106,46 @@
 - (void)increaseLuminance
 {
     if (self.isLightConnected) {
-        if (_controller.luminance < 100) {
-            [self performSelector:@selector(increaseLuminance)
-                       withObject:Nil
-                       afterDelay:5.0];
+        if (!self.lightTimer) {
+            self.lightTimer = [NSTimer scheduledTimerWithTimeInterval:10
+                                                               target:self
+                                                             selector:@selector(increaseLuminance)
+                                                             userInfo:nil
+                                                              repeats:YES];
         }
-        _controller.luminance += 2;
+        if (_controller.luminance < 100) {
+            _controller.luminance += 1;
+        }
+        else {
+            _controller.luminance = 100;
+            [self.lightTimer invalidate];
+            self.lightTimer = nil;
+        }
+    }
+    else {
+        [self.lightTimer invalidate];
+        self.lightTimer = nil;
     }
 }
 
 - (void)increaseVolume
 {
-    if (self.player.volume < 0.9)
-        [self performSelector:@selector(increaseVolume)
-                   withObject:self
-                   afterDelay:10.0];
-    self.player.volume += 0.2;
+    if (!self.musicTimer) {
+        self.musicTimer = [NSTimer scheduledTimerWithTimeInterval:10
+                                                           target:self
+                                                         selector:@selector(increaseVolume)
+                                                         userInfo:nil
+                                                          repeats:YES];
+    }
+
+    if (self.player.volume < 0.9) {
+        self.player.volume += 0.2;
+    }
+    else {
+        self.player.volume = 1.0;
+        [self.musicTimer invalidate];
+        self.musicTimer = nil;
+    }
 }
 
 - (void)findLEDLight
@@ -122,7 +165,7 @@
                                                               error:NULL] autorelease];
         self.player.numberOfLoops = NSIntegerMax;
     }
-    self.player.volume = 0.1;
+    self.player.volume = 0.05;
     [self.player play];
     [self increaseVolume];
 }
@@ -143,6 +186,15 @@
                                 delegate:self
                        cancelButtonTitle:@"Stop"
                        otherButtonTitles:@"Snooze", nil] autorelease] show];
+    if (self.applicationState == UIApplicationStateBackground) {
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.fireDate = [NSDate date];
+        notification.alertBody = @"Time to Wake up!";
+        notification.alertAction = @"Slide to Stop";
+        notification.soundName = nil;
+        [self scheduleLocalNotification:notification];
+        [notification release];
+    }
 }
 
 #pragma mark - LEDFinder
@@ -176,7 +228,7 @@
 
 - (void)alarmDidEnterAlarmRange:(DLAlarm *)alarm
 {
-    
+
 }
 
 #pragma mark - UIAlert Delegate
@@ -184,6 +236,12 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (alertView.cancelButtonIndex == buttonIndex) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                 selector:@selector(increaseLuminance)
+                                                   object:nil];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                 selector:@selector(increaseVolume)
+                                                   object:nil];
         [self.player stop];
         _controller.on = NO;
     }

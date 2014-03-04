@@ -478,7 +478,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
 {
     _luminance = luminance;
 
-    unsigned char data[3] = {86, _luminance, -86};
+    unsigned char data[] = {86, _luminance, -86};
     [self sendData:data
             length:sizeof(data)];
 

@@ -250,7 +250,11 @@ CGFloat recordingStartValueThreshold = 0.0208f;
 
 - (BOOL)isRecording
 {
+#if TARGET_IPHONE_SIMULATOR
+    return self.updateTimer.isValid;
+#else
     return self.motionManager.isDeviceMotionActive;
+#endif
 }
 
 - (void)stop
