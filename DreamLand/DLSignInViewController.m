@@ -82,6 +82,11 @@
         }
         else {
             NSLog(@"%@", error);
+            [[[[UIAlertView alloc] initWithTitle:@"Error"
+                                        message:@"Please check you network connection!"
+                                       delegate:nil
+                              cancelButtonTitle:@"OK"
+                               otherButtonTitles:nil] autorelease] show];
         }
 
     }
@@ -104,6 +109,11 @@
         }
         else {
             NSLog(@"%@", error);
+            [[[[UIAlertView alloc] initWithTitle:@"Error"
+                                         message:@"Please check you network connection!"
+                                        delegate:nil
+                               cancelButtonTitle:@"OK"
+                               otherButtonTitles:nil] autorelease] show];
         }
 
     }

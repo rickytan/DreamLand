@@ -14,5 +14,7 @@
 @property (nonatomic, assign, getter = isSoundOn) BOOL soundOn;
 @property (nonatomic, assign, getter = isLightOn) BOOL lightOn;
 @property (nonatomic, assign) NSTimeInterval wakeUpPhase;
+@property (nonatomic, assign) NSString * alarmMusic;
+@property (nonatomic, assign) NSTimeInterval snoozeDuration;
 
 @end

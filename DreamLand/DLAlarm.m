@@ -9,6 +9,7 @@
 #import "DLAlarm.h"
 #import "DLWeeklyAlerm.h"
 #import "NSUserDefaults+Settings.h"
+#import "DLDataRecorder.h"
 
 static DLAlarm *theAlarm = nil;
 
@@ -65,8 +66,6 @@ static DLAlarm *theAlarm = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self cancel];
 
-    self.alarmSound = nil;
-
 
     [super dealloc];
 }
@@ -86,6 +85,7 @@ static DLAlarm *theAlarm = nil;
 
     [_fireTimer release];
     _fireTimer = nil;
+    [[DLDataRecorder sharedRecorder] stop];
 }
 
 - (void)_enterRange
@@ -122,7 +122,8 @@ static DLAlarm *theAlarm = nil;
                                           selector:@selector(_fire)
                                           userInfo:nil
                                            repeats:NO];
-
+    [[NSRunLoop currentRunLoop] addTimer:_fireTimer
+                                 forMode:NSRunLoopCommonModes];
     [_rangeTimer invalidate];
     [_rangeTimer release];
     _rangeTimer = [[NSTimer alloc] initWithFireDate:self.nextAlarmDate
@@ -131,7 +132,10 @@ static DLAlarm *theAlarm = nil;
                                            selector:@selector(_enterRange)
                                            userInfo:nil
                                             repeats:NO];
-
+    [[NSRunLoop currentRunLoop] addTimer:_rangeTimer
+                                 forMode:NSRunLoopCommonModes];
+    
+    [[DLDataRecorder sharedRecorder] start];
 }
 
 - (void)cancel
@@ -143,6 +147,9 @@ static DLAlarm *theAlarm = nil;
     [_rangeTimer invalidate];
     [_rangeTimer release];
     _rangeTimer = nil;
+
+    if ([DLDataRecorder sharedRecorder].isRecording)
+        [[DLDataRecorder sharedRecorder] stop];
 }
 
 - (NSDate *)nextAlarmDate
@@ -203,8 +210,7 @@ static DLAlarm *theAlarm = nil;
         self.minute           = 0;
         self.selectedWeekdays = DLWeekdayWorkday;
         self.snoozeDuration   = 10.0*60;
-        self.alarmSound       = [[NSBundle mainBundle] pathForResource:@"alarm_sound_1"
-                                                                ofType:@"mp3"];
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(_saveToDisk)
                                                      name:UIApplicationWillResignActiveNotification
@@ -220,7 +226,6 @@ static DLAlarm *theAlarm = nil;
         self.hour             = [aDecoder decodeIntegerForKey:@"Hour"];
         self.minute           = [aDecoder decodeIntegerForKey:@"Minute"];
         self.selectedWeekdays = [aDecoder decodeIntegerForKey:@"Weekdays"];
-        self.alarmSound       = [aDecoder decodeObjectForKey:@"Sound"];
         self.snoozeDuration   = [aDecoder decodeDoubleForKey:@"Snooze"];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -239,8 +244,6 @@ static DLAlarm *theAlarm = nil;
                    forKey:@"Minute"];
     [aCoder encodeInteger:self.selectedWeekdays
                    forKey:@"Weekdays"];
-    [aCoder encodeObject:self.alarmSound
-                  forKey:@"Sound"];
     [aCoder encodeDouble:self.snoozeDuration
                   forKey:@"Snooze"];
 }

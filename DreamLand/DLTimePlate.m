@@ -47,7 +47,7 @@
     self.minutePlate.radius          = 135.0;
     self.minutePlate.contentInsets   = UIEdgeInsetsMake(2, -2, -3.5, 2);
 
-    self.isAM = YES;
+    //self.isAM = YES;
     self.hour = 0;
     self.minute = 0;
 }
@@ -71,7 +71,9 @@
 
 - (void)setHour:(NSInteger)hour
 {
-    NSAssert(0 <= hour && hour < 12, @"Hour out of Range!");
+    //NSAssert(0 <= hour && hour < 12, @"Hour out of Range!");
+    if (hour >= 12)
+        hour -= 12;
     _hour = hour;
     self.hourPlate.endAngle = -M_PI + _hour * M_PI / 6 + M_PI_2;
 }

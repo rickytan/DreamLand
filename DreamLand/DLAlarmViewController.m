@@ -121,6 +121,7 @@
     NSInteger hour = component.hour;
     NSInteger minute = component.minute;
     self.wakeUpLabel.text = [NSString stringWithFormat:@"%d:%02d - %d:%02d %s", hour, minute, timePlate.hour, timePlate.minute, timePlate.isAM ? "AM" : "PM"];
+    self.ampmLabel.text = timePlate.isAM ? @"AM" : @"PM";
 }
 
 @end

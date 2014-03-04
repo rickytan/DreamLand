@@ -7,6 +7,7 @@
 //
 
 #import "DLSiderViewController.h"
+#import "DLDataViewController.h"
 
 @interface DLSiderViewController () <RTSiderViewControllerDatasource, RTSiderViewControllerDelegate>
 
@@ -82,8 +83,11 @@
 - (BOOL)siderViewController:(RTSiderViewController *)controller
         canSlideToDirection:(SlideState)state
 {
-    if (![controller.currentMiddleViewController isKindOfClass:[UINavigationController class]] || !(controller.currentMiddleViewController.childViewControllers.count == 1))
+    if (![controller.currentMiddleViewController isKindOfClass:[UINavigationController class]] ||
+        !(controller.currentMiddleViewController.childViewControllers.count == 1) ||
+        ([controller.currentMiddleViewController.childViewControllers.firstObject isKindOfClass:[DLDataViewController class]]))
         return NO;
+
     return YES;
 }
 

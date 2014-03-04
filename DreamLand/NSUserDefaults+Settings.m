@@ -15,10 +15,13 @@
 {
     NSMutableDictionary *settings = [self valueForKey:[UIApplication sharedApplication].appBundleID];
     if (!settings) {
-        settings = [[@{@"AlarmMusic": [NSNumber numberWithBool:YES],
-                      @"SoundOn": [NSNumber numberWithBool:YES],
-                      @"LightOn": [NSNumber numberWithBool:YES],
-                      @"WakeUpPhase": [NSNumber numberWithDouble:30]} mutableCopy] autorelease];
+        settings = [[@{@"AlarmMusicOn": [NSNumber numberWithBool:YES],
+                       @"SoundOn": [NSNumber numberWithBool:YES],
+                       @"LightOn": [NSNumber numberWithBool:YES],
+                       @"WakeUpPhase": [NSNumber numberWithDouble:30],
+                       @"AlarmMusic": [[NSBundle mainBundle] pathForResource:@"alarm_sound_1"
+                                                                      ofType:@"mp3"],
+                       @"SnoozeDuration": [NSNumber numberWithDouble:10*60]} mutableCopy] autorelease];
         [self setObject:settings
                  forKey:[UIApplication sharedApplication].appBundleID];
         [self synchronize];
@@ -28,13 +31,13 @@
 
 - (BOOL)isAlarmMusicOn
 {
-    return [[[self settingsDictionary] objectForKey:@"AlarmMusic"] boolValue];
+    return [[[self settingsDictionary] objectForKey:@"AlarmMusicOn"] boolValue];
 }
 
 - (void)setAlarmMusicOn:(BOOL)alarmMusicOn
 {
     [[self settingsDictionary] setValue:[NSNumber numberWithBool:alarmMusicOn]
-                                 forKey:@"AlarmMusic"];
+                                 forKey:@"AlarmMusicOn"];
     [self synchronize];
 }
 
@@ -72,6 +75,30 @@
     [[self settingsDictionary] setValue:[NSNumber numberWithDouble:wakeUpPhase]
                                  forKey:@"WakeUpPhase"];
     [self synchronize];
+}
+
+- (void)setAlarmMusic:(NSString *)alarmMusic
+{
+    [[self settingsDictionary] setValue:alarmMusic
+                                 forKey:@"AlarmMusic"];
+    [self synchronize];
+}
+
+- (NSString *)alarmMusic
+{
+    return [[self settingsDictionary] objectForKey:@"AlarmMusic"];
+}
+
+- (void)setSnoozeDuration:(NSTimeInterval)snoozeDuration
+{
+    [[self settingsDictionary] setValue:[NSNumber numberWithDouble:snoozeDuration]
+                                 forKey:@"SnoozeDuration"];
+    [self synchronize];
+}
+
+- (NSTimeInterval)snoozeDuration
+{
+    return [[[self settingsDictionary] objectForKey:@"SnoozeDuration"] doubleValue];
 }
 
 @end

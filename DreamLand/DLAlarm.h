@@ -21,7 +21,6 @@
 @interface DLAlarm : NSObject <NSCoding>
 @property (nonatomic, assign)   NSInteger hour     ,  minute;
 @property (nonatomic, assign)   NSUInteger            selectedWeekdays;
-@property (nonatomic, retain)   NSString            * alarmSound;
 @property (nonatomic, readonly) NSDate              * nextAlarmDate;
 @property (nonatomic, assign)   NSTimeInterval        snoozeDuration;   // Default 10 * 60 seconds
 @property (nonatomic, assign, readonly, getter = isRunning) BOOL running;

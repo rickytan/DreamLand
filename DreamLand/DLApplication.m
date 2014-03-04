@@ -13,8 +13,8 @@
 #import "NSUserDefaults+Settings.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate>
-@property (nonatomic, retain) AVPlayer * player;
+@interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate, UIAlertViewDelegate>
+@property (nonatomic, retain) AVAudioPlayer * player;
 @end
 
 @implementation DLApplication
@@ -28,7 +28,7 @@
 {
     self = [super init];
     if (self) {
-
+        [DLAlarm sharedAlarm].delegate = self;
     }
     return self;
 }
@@ -57,7 +57,7 @@
 
 - (void)testLight
 {
-    if (self.lightConnected) {
+    if (self.isLightConnected) {
         _controller.mode = 1;
         _controller.speed = 31;
         _controller.luminance = 100;
@@ -72,6 +72,39 @@
     }
 }
 
+- (void)lightUpLight
+{
+    if (self.isLightConnected) {
+        _controller.speed = 10;
+        _controller.mode = 1;
+        _controller.luminance = 1;
+        _controller.pause = NO;
+        _controller.on = YES;
+        [self increaseLuminance];
+    }
+}
+
+- (void)increaseLuminance
+{
+    if (self.isLightConnected) {
+        if (_controller.luminance < 100) {
+            [self performSelector:@selector(increaseLuminance)
+                       withObject:Nil
+                       afterDelay:5.0];
+        }
+        _controller.luminance += 2;
+    }
+}
+
+- (void)increaseVolume
+{
+    if (self.player.volume < 0.9)
+        [self performSelector:@selector(increaseVolume)
+                   withObject:self
+                   afterDelay:10.0];
+    self.player.volume += 0.2;
+}
+
 - (void)findLEDLight
 {
     if (_finder.isScanning)
@@ -83,16 +116,33 @@
 
 - (void)playMusic:(NSString *)musicFile
 {
-    if (self.player) {
-        self.player = [AVPlayer playerWithURL:[NSURL fileURLWithPath:musicFile]];
-        [self.player play];
+    if (!self.player) {
+        self.player = [[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:musicFile]
+                                                       fileTypeHint:@"mp3"
+                                                              error:NULL] autorelease];
+        self.player.numberOfLoops = NSIntegerMax;
     }
+    self.player.volume = 0.1;
+    [self.player play];
+    [self increaseVolume];
 }
 
 - (void)setLightColor:(UIColor *)color
 {
     if (self.isLightConnected)
         _controller.color = color;
+}
+
+- (void)timeUp
+{
+    [self playMusic:[NSUserDefaults standardUserDefaults].alarmMusic];
+    [self lightUpLight];
+
+    [[[[UIAlertView alloc] initWithTitle:@"Time to Wake up!"
+                                 message:nil
+                                delegate:self
+                       cancelButtonTitle:@"Stop"
+                       otherButtonTitles:@"Snooze", nil] autorelease] show];
 }
 
 #pragma mark - LEDFinder
@@ -121,12 +171,25 @@
 
 - (void)alarmDidFired:(DLAlarm *)alarm
 {
-    [self playMusic:alarm.alarmSound];
+    [self timeUp];
 }
 
 - (void)alarmDidEnterAlarmRange:(DLAlarm *)alarm
 {
     
+}
+
+#pragma mark - UIAlert Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.cancelButtonIndex == buttonIndex) {
+        [self.player stop];
+        _controller.on = NO;
+    }
+    else {
+        
+    }
 }
 
 @end

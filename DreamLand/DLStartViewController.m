@@ -11,13 +11,16 @@
 #import "DLAlarm.h"
 #import "NSUserDefaults+Settings.h"
 
-@interface DLStartViewController ()
-@property (nonatomic, assign) IBOutlet UILabel     * slideLabel;
-@property (nonatomic, assign) IBOutlet UIImageView * pinImage;
-@property (nonatomic, assign) IBOutlet UILabel     * chargerLabel;
-@property (nonatomic, assign) IBOutlet UILabel     * wakeUpLabel;
-@property (nonatomic, assign) IBOutlet UILabel     * timeLabel;
-@property (nonatomic, retain) UIColor              * origColor;
+@interface DLStartViewController () <UIScrollViewDelegate>
+@property (nonatomic, assign) IBOutlet UILabel      * slideLabel;
+@property (nonatomic, assign) IBOutlet UIImageView  * pinImage;
+@property (nonatomic, assign) IBOutlet UILabel      * chargerLabel;
+@property (nonatomic, assign) IBOutlet UILabel      * wakeUpLabel;
+@property (nonatomic, assign) IBOutlet UILabel      * timeLabel;
+@property (nonatomic, assign) IBOutlet UIScrollView * scrollView;
+@property (nonatomic, retain) UIColor               * origColor;
+@property (nonatomic, retain) NSDateFormatter       * formatter;
+- (IBAction)onBack:(id)sender;
 @end
 
 @implementation DLStartViewController
@@ -25,6 +28,8 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.formatter = nil;
+    self.origColor = nil;
     [super dealloc];
 }
 
@@ -50,11 +55,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.formatter = [[[NSDateFormatter alloc] init] autorelease];
+    self.formatter.dateFormat = @"HH:mm";
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width, 0);
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 200, 0, 0);
+    self.scrollView.decelerationRate = UIScrollViewDecelerationRateFast;
 
     [self setupWakeUpLabel];
     [self.slideLabel startShining];
-
     [self onChargingStateChanged];
+    [self updateTimeLabel];
+
+    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(updateTimeLabel)
+                                   userInfo:nil
+                                    repeats:YES];
+
+    [[DLAlarm sharedAlarm] schedule];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -81,6 +99,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateTimeLabel
+{
+    self.timeLabel.text = [self.formatter stringFromDate:[NSDate date]];
+}
+
+- (IBAction)onBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)onChargingStateChanged
@@ -123,6 +151,38 @@
     NSInteger hour = component.hour;
     NSInteger minute = component.minute;
     self.wakeUpLabel.text = [NSString stringWithFormat:@"%d:%02d - %d:%02d %s", hour, minute, [DLAlarm sharedAlarm].hour, [DLAlarm sharedAlarm].minute, "AM"];
+}
+
+#pragma mark - UIScroll Delegate
+
+#define DRAG_LENGTH     80.0
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.scrollView.alpha = MAX((DRAG_LENGTH + self.scrollView.contentOffset.x) / DRAG_LENGTH, 0.2);
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
+                  willDecelerate:(BOOL)decelerate
+{
+    if (self.scrollView.contentOffset.x < -DRAG_LENGTH) {
+        [[DLAlarm sharedAlarm] cancel];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (self.scrollView.contentOffset.x < -DRAG_LENGTH) {
+        [[DLAlarm sharedAlarm] cancel];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
 }
 
 @end
