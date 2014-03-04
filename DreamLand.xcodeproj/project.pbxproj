@@ -33,6 +33,9 @@
 		9C49214518C5B7C800029A76 /* DLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49214418C5B7C800029A76 /* DLNavigationController.m */; };
 		9C49214718C5BCAF00029A76 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49214618C5BCAF00029A76 /* back@2x.png */; };
 		9C49214A18C5BD1200029A76 /* DLChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49214918C5BD1200029A76 /* DLChartView.m */; };
+		9C49215218C5E16600029A76 /* data1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49214F18C5E16600029A76 /* data1@2x.png */; };
+		9C49215318C5E16600029A76 /* data2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215018C5E16600029A76 /* data2@2x.png */; };
+		9C49215418C5E16600029A76 /* data3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215118C5E16600029A76 /* data3@2x.png */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
@@ -184,6 +187,9 @@
 		9C49214618C5BCAF00029A76 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		9C49214818C5BD1200029A76 /* DLChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLChartView.h; sourceTree = "<group>"; };
 		9C49214918C5BD1200029A76 /* DLChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLChartView.m; sourceTree = "<group>"; };
+		9C49214F18C5E16600029A76 /* data1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data1@2x.png"; sourceTree = "<group>"; };
+		9C49215018C5E16600029A76 /* data2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data2@2x.png"; sourceTree = "<group>"; };
+		9C49215118C5E16600029A76 /* data3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data3@2x.png"; sourceTree = "<group>"; };
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
@@ -468,6 +474,9 @@
 				9C9B214B18B9106B009D233E /* clock-tiny@2x.png */,
 				9C9B213E18B8DE12009D233E /* cross@2x.png */,
 				9C287C78187B2E5100934786 /* data-bg@2x.png */,
+				9C49214F18C5E16600029A76 /* data1@2x.png */,
+				9C49215018C5E16600029A76 /* data2@2x.png */,
+				9C49215118C5E16600029A76 /* data3@2x.png */,
 				9CD121831871826900612DD8 /* data@2x.png */,
 				9CAAF1C61869EFB700C666D2 /* Default-568h@2x.png */,
 				9CAAF1C71869EFB700C666D2 /* Default.png */,
@@ -828,6 +837,7 @@
 				9CD121911871844E00612DD8 /* big dot@2x.png in Resources */,
 				9CAAF1DA1869EFB700C666D2 /* Default@2x.png in Resources */,
 				9C287C82187B303600934786 /* emotion-bad@2x.png in Resources */,
+				9C49215318C5E16600029A76 /* data2@2x.png in Resources */,
 				9CD1218B1871826900612DD8 /* setting@2x.png in Resources */,
 				9CD121921871844E00612DD8 /* music off@2x.png in Resources */,
 				9C287C81187B303600934786 /* delete@2x.png in Resources */,
@@ -844,6 +854,7 @@
 				9C5C79C1175788CA0066D960 /* SVProgressHUD.bundle in Resources */,
 				9CC3D455175EE6E0009AB5CA /* bluetooth.png in Resources */,
 				9C6DD69D18B11B25005A7E1E /* sound@2x.png in Resources */,
+				9C49215418C5E16600029A76 /* data3@2x.png in Resources */,
 				9CAAF1DB1869EFB700C666D2 /* DreamColor logo@2x.png in Resources */,
 				9CF9DE1B1872ACAE002D45C9 /* circle-shadow@2x.png in Resources */,
 				9C287C7B187B2F6E00934786 /* more-data@2x.png in Resources */,
@@ -865,6 +876,7 @@
 				9C49214718C5BCAF00029A76 /* back@2x.png in Resources */,
 				9CD121881871826900612DD8 /* data@2x.png in Resources */,
 				9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */,
+				9C49215218C5E16600029A76 /* data1@2x.png in Resources */,
 				9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */,
 				9CD121891871826900612DD8 /* location@2x.png in Resources */,
 				9C287C74187B0F7E00934786 /* circle-small@2x.png in Resources */,

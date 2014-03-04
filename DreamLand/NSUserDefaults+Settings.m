@@ -15,10 +15,10 @@
 {
     NSMutableDictionary *settings = [self valueForKey:[UIApplication sharedApplication].appBundleID];
     if (!settings) {
-        settings = [@{@"AlarmMusic": [NSNumber numberWithBool:YES],
+        settings = [[@{@"AlarmMusic": [NSNumber numberWithBool:YES],
                       @"SoundOn": [NSNumber numberWithBool:YES],
                       @"LightOn": [NSNumber numberWithBool:YES],
-                      @"WakeUpPhase": [NSNumber numberWithDouble:30]} mutableCopy];
+                      @"WakeUpPhase": [NSNumber numberWithDouble:30]} mutableCopy] autorelease];
         [self setObject:settings
                  forKey:[UIApplication sharedApplication].appBundleID];
         [self synchronize];

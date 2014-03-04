@@ -129,7 +129,7 @@
                      controlPoint:[self.data[1] CGPointValue]];
     }
     else {
-        NSMutableArray *points = (NSMutableArray*)[self.data mutableCopy];
+        NSMutableArray *points = [(NSMutableArray*)[self.data mutableCopy] autorelease];
 
         // Add control points to make the math make sense
         [points insertObject:[points objectAtIndex:0] atIndex:0];
