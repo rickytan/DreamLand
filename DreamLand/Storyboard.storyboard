@@ -1211,14 +1211,7 @@ natural and feel less stressed in the morings.</string>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                 </attributes>
                                             </fragment>
-                                            <fragment content=" ">
-                                                <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content="hours">
+                                            <fragment content=" hours">
                                                 <attributes>
                                                     <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <font key="NSFont" size="24" name="HelveticaNeue-Thin"/>
@@ -1227,8 +1220,8 @@ natural and feel less stressed in the morings.</string>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="24" name="HelveticaNeue-Thin"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                 </attributes>
                                             </fragment>
@@ -1241,8 +1234,8 @@ natural and feel less stressed in the morings.</string>
                                             </fragment>
                                             <fragment content=" ">
                                                 <attributes>
-                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="24" name="HelveticaNeue-Thin"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                 </attributes>
                                             </fragment>
@@ -1450,7 +1443,9 @@ Efficiency</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dayData" destination="ifV-ow-9OJ" id="qCy-sa-gTl"/>
+                        <outlet property="dateLabel" destination="J5p-3z-zkO" id="e7F-ks-Zer"/>
+                        <outlet property="durationLabel" destination="Rar-eD-Syf" id="6yF-Ua-MGh"/>
+                        <outlet property="efficiencyLabel" destination="Zn9-tW-Ht3" id="zId-G4-MaQ"/>
                         <outlet property="emotionButton" destination="2KU-hI-3vt" id="26L-Uk-5TI"/>
                         <outlet property="slideView" destination="WpG-32-Haf" id="JNb-Cp-UcU"/>
                     </connections>

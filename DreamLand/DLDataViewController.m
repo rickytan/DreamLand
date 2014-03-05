@@ -15,7 +15,7 @@
 @property (nonatomic, assign) IBOutlet UIButton *emotionButton;
 @property (nonatomic, assign) NSInteger currentEmotion;
 @property (nonatomic, assign) IBOutlet RSlideView *slideView;
-@property (nonatomic, retain) IBOutlet DLDayDataView *dayData;
+@property (nonatomic, assign) IBOutlet UILabel *dateLabel, *durationLabel, *efficiencyLabel;
 
 @property (nonatomic, retain) NSMutableArray * data;
 
@@ -30,7 +30,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.dayData = nil;
     self.data = nil;
     [super dealloc];
 }
@@ -65,7 +64,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
-    // [self setupHourRangeLabels];
     [self updateEmotion];
 
     [self.data removeAllObjects];
@@ -107,19 +105,6 @@
 {
     [self.emotionButton setImage:[self currentEmotionImage]
                         forState:UIControlStateNormal];
-}
-
-- (void)setupHourRangeLabels
-{
-    for (int i=0; i < 9; ++i) {
-        UILabel *label = [[[UILabel alloc] init] autorelease];
-        label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
-        label.text = [NSString stringWithFormat:@"%02d", i];
-        label.textColor = [UIColor whiteColor];
-        [label sizeToFit];
-        label.center = CGPointMake(56 + i * 28, 507);
-        [self.dayData addSubview:label];
-    }
 }
 
 - (NSMutableArray *)data
@@ -200,13 +185,44 @@
                                                    options:nil];
         dataView = [arr lastObject];
     }
-    dataView.hidden = NO;
-
-    NSMutableAttributedString *attString = nil;
-
     dataView.curveView.curveImage = [UIImage imageNamed:[NSString stringWithFormat:@"曲线%d.png", index + 1]];
     return dataView;
 }
 
+- (void)RSlideViewDidEndScrollAnimation:(RSlideView *)sliderView
+{
+    NSInteger emotion = [self.data[self.slideView.currentPage][@"Emotion"] intValue];
+    self.currentEmotion = emotion;
+    [self updateEmotion];
+
+    NSMutableAttributedString *attString = nil;
+
+    attString = [[self.efficiencyLabel.attributedText mutableCopy] autorelease];
+    [attString replaceCharactersInRange:NSMakeRange(0, 2)
+                             withString:[NSString stringWithFormat:@"%2d", [self.data[sliderView.currentPage][@"Efficiency"] intValue]]];
+    self.efficiencyLabel.attributedText = attString;
+
+    attString = [[self.durationLabel.attributedText mutableCopy] autorelease];
+    NSRange r0 = [attString.string rangeOfString:@" hours "];
+    NSRange r1 = [attString.string rangeOfString:@" minutes"];
+    NSInteger h = (NSInteger)([self.data[sliderView.currentPage][@"Duration"] floatValue] / 60);
+    NSInteger m = (NSInteger)(fmodf([self.data[sliderView.currentPage][@"Duration"] floatValue], 60));
+    [attString replaceCharactersInRange:NSMakeRange(r0.location + r0.length, r1.location - r0.length - r0.location)
+                             withString:[NSString stringWithFormat:@"%d", m]];
+    [attString replaceCharactersInRange:NSMakeRange(0, r0.location)
+                             withString:[NSString stringWithFormat:@"%d", h]];
+    self.durationLabel.attributedText = attString;
+
+    NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
+    NSArray *weeks = @[@"", @"Sun.", @"Mon.", @"Tues.", @"Wed.", @"Thus.", @"Fri.", @"Sat."];
+    NSDateComponents *comp = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit
+                                                             fromDate:self.data[sliderView.currentPage][@"Date"]];
+    NSInteger today = comp.day;
+    NSInteger yestoday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit
+                                                         fromDate:[NSDate dateWithTimeInterval:-24*3600
+                                                                                     sinceDate:self.data[self.slideView.currentPage][@"Date"]]].day;
+    self.dateLabel.text = [NSString stringWithFormat:@"%2d-%2d %@ / %@", yestoday, today, months[comp.month], weeks[comp.weekday]];
+
+}
 
 @end
