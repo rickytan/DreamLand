@@ -36,6 +36,15 @@
 		9C49215218C5E16600029A76 /* data1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49214F18C5E16600029A76 /* data1@2x.png */; };
 		9C49215318C5E16600029A76 /* data2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215018C5E16600029A76 /* data2@2x.png */; };
 		9C49215418C5E16600029A76 /* data3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215118C5E16600029A76 /* data3@2x.png */; };
+		9C49215918C7659400029A76 /* RSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49215818C7659400029A76 /* RSlideView.m */; };
+		9C49215C18C766C000029A76 /* DLDayDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49215B18C766C000029A76 /* DLDayDataView.m */; };
+		9C49215E18C7750900029A76 /* DLDayDataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215D18C7750900029A76 /* DLDayDataView.xib */; };
+		9C49216518C777BC00029A76 /* 曲线1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49215F18C777BC00029A76 /* 曲线1@2x.png */; };
+		9C49216618C777BC00029A76 /* 曲线2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216018C777BC00029A76 /* 曲线2@2x.png */; };
+		9C49216718C777BC00029A76 /* 曲线3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216118C777BC00029A76 /* 曲线3@2x.png */; };
+		9C49216818C777BC00029A76 /* 曲线4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216218C777BC00029A76 /* 曲线4@2x.png */; };
+		9C49216918C777BC00029A76 /* 曲线5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216318C777BC00029A76 /* 曲线5@2x.png */; };
+		9C49216A18C777BC00029A76 /* 曲线6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216418C777BC00029A76 /* 曲线6@2x.png */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
@@ -190,6 +199,18 @@
 		9C49214F18C5E16600029A76 /* data1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data1@2x.png"; sourceTree = "<group>"; };
 		9C49215018C5E16600029A76 /* data2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data2@2x.png"; sourceTree = "<group>"; };
 		9C49215118C5E16600029A76 /* data3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "data3@2x.png"; sourceTree = "<group>"; };
+		9C49215618C7659400029A76 /* RSlideView+PrivateMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RSlideView+PrivateMethods.h"; sourceTree = "<group>"; };
+		9C49215718C7659400029A76 /* RSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSlideView.h; sourceTree = "<group>"; };
+		9C49215818C7659400029A76 /* RSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSlideView.m; sourceTree = "<group>"; };
+		9C49215A18C766C000029A76 /* DLDayDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLDayDataView.h; sourceTree = "<group>"; };
+		9C49215B18C766C000029A76 /* DLDayDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLDayDataView.m; sourceTree = "<group>"; };
+		9C49215D18C7750900029A76 /* DLDayDataView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLDayDataView.xib; sourceTree = "<group>"; };
+		9C49215F18C777BC00029A76 /* 曲线1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线1@2x.png"; sourceTree = "<group>"; };
+		9C49216018C777BC00029A76 /* 曲线2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线2@2x.png"; sourceTree = "<group>"; };
+		9C49216118C777BC00029A76 /* 曲线3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线3@2x.png"; sourceTree = "<group>"; };
+		9C49216218C777BC00029A76 /* 曲线4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线4@2x.png"; sourceTree = "<group>"; };
+		9C49216318C777BC00029A76 /* 曲线5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线5@2x.png"; sourceTree = "<group>"; };
+		9C49216418C777BC00029A76 /* 曲线6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线6@2x.png"; sourceTree = "<group>"; };
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
@@ -415,6 +436,16 @@
 			path = YahooWeather;
 			sourceTree = "<group>";
 		};
+		9C49215518C7659400029A76 /* RSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				9C49215618C7659400029A76 /* RSlideView+PrivateMethods.h */,
+				9C49215718C7659400029A76 /* RSlideView.h */,
+				9C49215818C7659400029A76 /* RSlideView.m */,
+			);
+			path = RSlideView;
+			sourceTree = "<group>";
+		};
 		9C5B75FE18366F0600943394 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +547,12 @@
 				9CAAF1D41869EFB700C666D2 /* WT Background1@2x.jpg */,
 				9CAAF1D51869EFB700C666D2 /* WT Background2@2x.jpg */,
 				9CAAF1D61869EFB700C666D2 /* WT Background3@2x.jpg */,
+				9C49215F18C777BC00029A76 /* 曲线1@2x.png */,
+				9C49216018C777BC00029A76 /* 曲线2@2x.png */,
+				9C49216118C777BC00029A76 /* 曲线3@2x.png */,
+				9C49216218C777BC00029A76 /* 曲线4@2x.png */,
+				9C49216318C777BC00029A76 /* 曲线5@2x.png */,
+				9C49216418C777BC00029A76 /* 曲线6@2x.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -523,6 +560,7 @@
 		9CBD2CA0173F4464001FFAE0 = {
 			isa = PBXGroup;
 			children = (
+				9C49215518C7659400029A76 /* RSlideView */,
 				9CCF8856175101E700B1D838 /* BTstack */,
 				9CBD2CB2173F4464001FFAE0 /* DreamLand */,
 				9C5B75FE18366F0600943394 /* FMDB */,
@@ -585,6 +623,7 @@
 				9CBD2CBC173F4464001FFAE0 /* DLAppDelegate.m */,
 				9C3767A118C1CF6D009CFE12 /* DLApplication.h */,
 				9C3767A218C1CF6D009CFE12 /* DLApplication.m */,
+				9C49215D18C7750900029A76 /* DLDayDataView.xib */,
 				9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */,
 				9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */,
 				9C5C79B8175621B00066D960 /* Localizable.strings */,
@@ -732,6 +771,8 @@
 				9C4F25BF18C4B811000BA2AB /* DLDataCurveView.m */,
 				9C49214818C5BD1200029A76 /* DLChartView.h */,
 				9C49214918C5BD1200029A76 /* DLChartView.m */,
+				9C49215A18C766C000029A76 /* DLDayDataView.h */,
+				9C49215B18C766C000029A76 /* DLDayDataView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -824,12 +865,15 @@
 			files = (
 				9C9B214A18B90AA9009D233E /* slide@2x.png in Resources */,
 				9C9B214218B8DE12009D233E /* tick@2x.png in Resources */,
+				9C49216618C777BC00029A76 /* 曲线2@2x.png in Resources */,
 				9CAAF1DE1869EFB700C666D2 /* Icon.png in Resources */,
 				9CAAF1E01869EFB700C666D2 /* nav@2x.png in Resources */,
 				9CAAF1DF1869EFB700C666D2 /* Icon@2x.png in Resources */,
 				9C287C79187B2E5100934786 /* data-bg@2x.png in Resources */,
 				9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */,
+				9C49215E18C7750900029A76 /* DLDayDataView.xib in Resources */,
 				9CBD2CB7173F4464001FFAE0 /* InfoPlist.strings in Resources */,
+				9C49216A18C777BC00029A76 /* 曲线6@2x.png in Resources */,
 				9CAAF1D81869EFB700C666D2 /* Default-568h@2x.png in Resources */,
 				9C5A96151862B85B00C673DB /* iTunesArtwork in Resources */,
 				9C5C79B317561B9A0066D960 /* Storyboard.storyboard in Resources */,
@@ -857,6 +901,7 @@
 				9C49215418C5E16600029A76 /* data3@2x.png in Resources */,
 				9CAAF1DB1869EFB700C666D2 /* DreamColor logo@2x.png in Resources */,
 				9CF9DE1B1872ACAE002D45C9 /* circle-shadow@2x.png in Resources */,
+				9C49216918C777BC00029A76 /* 曲线5@2x.png in Resources */,
 				9C287C7B187B2F6E00934786 /* more-data@2x.png in Resources */,
 				9CAAF1E31869EFB700C666D2 /* start.caf in Resources */,
 				9CAAF1D91869EFB700C666D2 /* Default.png in Resources */,
@@ -871,6 +916,7 @@
 				9C287C85187B303600934786 /* share@2x.png in Resources */,
 				9CAAF1E81869EFB700C666D2 /* WT Background3@2x.jpg in Resources */,
 				9CAAF1E11869EFB700C666D2 /* password@2x.png in Resources */,
+				9C49216718C777BC00029A76 /* 曲线3@2x.png in Resources */,
 				9C9B214018B8DE12009D233E /* charger@2x.png in Resources */,
 				9CAAF1E21869EFB700C666D2 /* photo@2x.png in Resources */,
 				9C49214718C5BCAF00029A76 /* back@2x.png in Resources */,
@@ -878,6 +924,7 @@
 				9C287C72187B0F7E00934786 /* circle-big@2x.png in Resources */,
 				9C49215218C5E16600029A76 /* data1@2x.png in Resources */,
 				9CD1218A1871826900612DD8 /* nev bg@2x.png in Resources */,
+				9C49216518C777BC00029A76 /* 曲线1@2x.png in Resources */,
 				9CD121891871826900612DD8 /* location@2x.png in Resources */,
 				9C287C74187B0F7E00934786 /* circle-small@2x.png in Resources */,
 				9CAAF1E61869EFB700C666D2 /* WT Background1@2x.jpg in Resources */,
@@ -886,6 +933,7 @@
 				9C287C71187B0F7E00934786 /* circle-big-shadow@2x.png in Resources */,
 				9CD121871871826900612DD8 /* alam@2x.png in Resources */,
 				9CF9DE161872A12A002D45C9 /* menu@2x.png in Resources */,
+				9C49216818C777BC00029A76 /* 曲线4@2x.png in Resources */,
 				9CF9DE1418729D73002D45C9 /* circle@2x.png in Resources */,
 				9CD121951871844E00612DD8 /* start bg@2x.png in Resources */,
 			);
@@ -921,6 +969,7 @@
 				9C1A0A4518B3AE9900A767FC /* DLWakeUpPhaseViewController.m in Sources */,
 				9C5C79C2175788CA0066D960 /* SVProgressHUD.m in Sources */,
 				9CD121A41871898100612DD8 /* DLAlarmViewController.m in Sources */,
+				9C49215918C7659400029A76 /* RSlideView.m in Sources */,
 				9C189561186D55950013263D /* DLForgotViewController.m in Sources */,
 				9C5B760B18366F0600943394 /* FMDatabasePool.m in Sources */,
 				9CF9DE191872A23E002D45C9 /* NSDate+RExtension.m in Sources */,
@@ -950,6 +999,7 @@
 				9CA0DF8F17A2AAA700037063 /* LEDController.m in Sources */,
 				9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */,
 				9CD1219B1871848700612DD8 /* RTNavigationController.m in Sources */,
+				9C49215C18C766C000029A76 /* DLDayDataView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

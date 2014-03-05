@@ -69,7 +69,7 @@ CGFloat recordingStartValueThreshold = 0.0208f;
 {
     self = [super init];
     if (self) {
-        _player = [[DLSoundPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"start" withExtension:@"caf"]];
+        //_player = [[DLSoundPlayer alloc] initWithURL:[[NSBundle mainBundle] URLForResource:@"start" withExtension:@"caf"]];
         
         _motionManager = [[CMMotionManager alloc] init];
         _motionManager.deviceMotionUpdateInterval = 1.0 / 30;

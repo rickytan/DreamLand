@@ -8,10 +8,16 @@
 
 #import "DLDataViewController.h"
 #import "DLSiderViewController.h"
+#import "DLDayDataView.h"
+#import "RSlideView.h"
 
-@interface DLDataViewController () <UIActionSheetDelegate>
+@interface DLDataViewController () <UIActionSheetDelegate, RSlideViewDataSource, RSlideViewDelegate>
 @property (nonatomic, assign) IBOutlet UIButton *emotionButton;
 @property (nonatomic, assign) NSInteger currentEmotion;
+@property (nonatomic, assign) IBOutlet RSlideView *slideView;
+@property (nonatomic, retain) IBOutlet DLDayDataView *dayData;
+
+@property (nonatomic, retain) NSMutableArray * data;
 
 - (IBAction)onLeft:(id)sender;
 - (IBAction)onDelete:(id)sender;
@@ -24,6 +30,8 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.dayData = nil;
+    self.data = nil;
     [super dealloc];
 }
 
@@ -53,12 +61,22 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
     [self setupHourRangeLabels];
     [self updateEmotion];
+
+    [self.data removeAllObjects];
+    for (int i=0; i < 6; ++i) {
+        [self.data addObject:@{@"Duration": [NSNumber numberWithDouble:5 * 60 + random() % 300],
+                               @"Efficiency": [NSNumber numberWithFloat:60 + random() % 40],
+                               @"Date": [NSDate dateWithTimeIntervalSinceNow:(i - 6) * 24 * 3600],
+                               @"Emotion": [NSNumber numberWithInt: random() % 3]}];
+    }
+    [self.slideView reloadData];
+    [self.slideView scrollToPageAtIndex:self.data.count - 1];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -100,8 +118,16 @@
         label.textColor = [UIColor whiteColor];
         [label sizeToFit];
         label.center = CGPointMake(56 + i * 28, 507);
-        [self.view addSubview:label];
+        [self.dayData addSubview:label];
     }
+}
+
+- (NSMutableArray *)data
+{
+    if (!_data) {
+        _data = [[NSMutableArray alloc] init];
+    }
+    return _data;
 }
 
 #pragma mark - Actions
@@ -151,9 +177,49 @@
     [self presentViewController:activity
                        animated:YES
                      completion:^{
-                         
+
                      }];
     [activity release];
 }
+
+#pragma mark - RSlide Datasource & Delegate
+
+- (NSInteger)RSlideViewNumberOfPages
+{
+    return self.data.count;
+}
+
+- (UIView *)RSlideView:(RSlideView *)slideView
+    viewForPageAtIndex:(NSInteger)index
+{
+    DLDayDataView * dataView = (DLDayDataView *)[self.slideView dequeueReusableView];
+    if (!dataView) {
+        // make a copy form Xib
+        NSArray *arr = [[NSBundle mainBundle] loadNibNamed:@"DLDayDataView"
+                                                     owner:self
+                                                   options:nil];
+        dataView = [arr lastObject];
+    }
+    dataView.hidden = NO;
+
+    NSMutableAttributedString *attString = nil;
+
+    attString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%2d%%\nEfficiency", [self.data[index][@"Efficiency"] intValue]]];
+    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold"
+                                                                    size:23]}
+                       range:NSMakeRange(0, 2)];
+    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light"
+                                                                    size:15]}
+                       range:NSMakeRange(2, 1)];
+    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Thin"
+                                                                    size:11]}
+                       range:NSMakeRange(3, 11)];
+    dataView.efficiencyLabel.attributedText = attString;
+    [attString release];
+
+    dataView.curveView.curveImage = [UIImage imageNamed:[NSString stringWithFormat:@"曲线%d.png", index + 1]];
+    return dataView;
+}
+
 
 @end

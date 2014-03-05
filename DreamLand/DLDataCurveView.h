@@ -10,4 +10,5 @@
 
 @interface DLDataCurveView : UIView
 @property (nonatomic, retain) NSArray * data;
+@property (nonatomic, retain) UIImage * curveImage;
 @end

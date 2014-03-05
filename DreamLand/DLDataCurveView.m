@@ -21,6 +21,13 @@
     return [CAShapeLayer class];
 }
 
+- (void)dealloc
+{
+    self.data = nil;
+    self.curveImage = nil;
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -60,6 +67,8 @@
     shapeCopy.mask = gradient;
     _gradientLayer = gradient;
 
+    // Use image for demo, don't draw !
+    /*
     self.data = @[[NSValue valueWithCGPoint:CGPointMake(0, 4)],
                   [NSValue valueWithCGPoint:CGPointMake(8, 4)],
                   [NSValue valueWithCGPoint:CGPointMake(10, 5)],
@@ -85,6 +94,7 @@
                   [NSValue valueWithCGPoint:CGPointMake(289, 26)],
                   [NSValue valueWithCGPoint:CGPointMake(298, 50)],
                   [NSValue valueWithCGPoint:CGPointMake(310, 80)]];
+     */
 }
 
 - (void)setData:(NSArray *)data
@@ -93,6 +103,25 @@
         [_data release];
         _data = [data retain];
         [self updateShape];
+    }
+}
+
+- (void)setCurveImage:(UIImage *)curveImage
+{
+    if (_curveImage != curveImage) {
+        [_curveImage release];
+        _curveImage = [curveImage retain];
+
+        UIImageView *image = (UIImageView *)[self viewWithTag:123];
+        if (!image) {
+            image = [[UIImageView alloc] initWithFrame:self.bounds];
+            image.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+            image.contentMode = UIViewContentModeScaleAspectFit;
+            image.tag = 123;
+            [self addSubview:image];
+            [image release];
+        }
+        image.image = _curveImage;
     }
 }
 

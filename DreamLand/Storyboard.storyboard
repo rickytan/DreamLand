@@ -145,7 +145,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="********" minimumFontSize="17" id="zgV-Qi-giv" customClass="RAutoTextField">
-                                                <rect key="frame" x="100" y="43.00000002759716" width="126" height="35"/>
+                                                <rect key="frame" x="100" y="43.000000041928701" width="126" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="alphabet" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -1196,7 +1196,16 @@ natural and feel less stressed in the morings.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="ifV-ow-9OJ">
+                            <view contentMode="scaleToFill" id="WpG-32-Haf" customClass="RSlideView">
+                                <rect key="frame" x="0.0" y="360" width="320" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Lsc-jH-2wa" id="JQ7-O9-cvu"/>
+                                    <outlet property="delegate" destination="Lsc-jH-2wa" id="qO1-hI-XUF"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" id="ifV-ow-9OJ" customClass="DLDayDataView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -1398,28 +1407,6 @@ Efficiency</string>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VTp-Z8-hfF">
-                                        <rect key="frame" x="16" y="532" width="19" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="delete.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onDelete:" destination="Lsc-jH-2wa" eventType="touchUpInside" id="A4i-QL-93N"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zhn-5J-vQU">
-                                        <rect key="frame" x="285" y="531" width="19" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" image="share.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onShare:" destination="Lsc-jH-2wa" eventType="touchUpInside" id="rxo-hs-EkW"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" id="wYZ-Lc-wOE" customClass="DLDataCurveView">
                                         <rect key="frame" x="50" y="397" width="251" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1458,7 +1445,39 @@ Efficiency</string>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="bedTimeLabel" destination="iZ8-wG-YTQ" id="ZHs-b0-Oyz"/>
+                                    <outlet property="curveView" destination="wYZ-Lc-wOE" id="sFl-4P-X3U"/>
+                                    <outlet property="dateLabel" destination="J5p-3z-zkO" id="e1r-gL-sVq"/>
+                                    <outlet property="durationLabel" destination="Rar-eD-Syf" id="0Pe-Yi-cJ2"/>
+                                    <outlet property="efficiencyLabel" destination="Zn9-tW-Ht3" id="D8R-WJ-cpu"/>
+                                    <outlet property="heartButton" destination="2KU-hI-3vt" id="BxZ-ia-Iij"/>
+                                    <outlet property="timeInBedLabel" destination="ih6-7U-Fc9" id="NcL-X2-pjL"/>
+                                    <outlet property="totalLabel" destination="qfN-nA-kgi" id="eJO-Zn-YeD"/>
+                                </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dav-L3-eb4">
+                                <rect key="frame" x="16" y="532" width="19" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="delete.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onDelete:" destination="Lsc-jH-2wa" eventType="touchUpInside" id="6t7-vp-YnT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fkZ-EZ-JYf">
+                                <rect key="frame" x="285" y="531" width="19" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="share.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShare:" destination="Lsc-jH-2wa" eventType="touchUpInside" id="VJK-XD-nba"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.15294118230000001" green="0.16078431900000001" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
                     </view>
@@ -1477,7 +1496,9 @@ Efficiency</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dayData" destination="ifV-ow-9OJ" id="qCy-sa-gTl"/>
                         <outlet property="emotionButton" destination="2KU-hI-3vt" id="26L-Uk-5TI"/>
+                        <outlet property="slideView" destination="WpG-32-Haf" id="JNb-Cp-UcU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8SA-hG-sGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
