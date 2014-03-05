@@ -15,17 +15,27 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        [self setupHourRangeLabels];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)awakeFromNib
 {
-    // Drawing code
+    [self setupHourRangeLabels];
 }
-*/
+
+- (void)setupHourRangeLabels
+{
+    for (int i=0; i < 9; ++i) {
+        UILabel *label = [[[UILabel alloc] init] autorelease];
+        label.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
+        label.text = [NSString stringWithFormat:@"%02d", i];
+        label.textColor = [UIColor whiteColor];
+        [label sizeToFit];
+        label.center = CGPointMake(56 + i * 28, 147);
+        [self addSubview:label];
+    }
+}
 
 @end

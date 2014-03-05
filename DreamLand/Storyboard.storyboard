@@ -1196,16 +1196,7 @@ natural and feel less stressed in the morings.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" id="WpG-32-Haf" customClass="RSlideView">
-                                <rect key="frame" x="0.0" y="360" width="320" height="160"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Lsc-jH-2wa" id="JQ7-O9-cvu"/>
-                                    <outlet property="delegate" destination="Lsc-jH-2wa" id="qO1-hI-XUF"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" id="ifV-ow-9OJ" customClass="DLDayDataView">
+                            <view contentMode="scaleToFill" id="ifV-ow-9OJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -1407,53 +1398,16 @@ Efficiency</string>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" id="wYZ-Lc-wOE" customClass="DLDataCurveView">
-                                        <rect key="frame" x="50" y="397" width="251" height="95"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awake" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aGI-6f-UZf">
-                                        <rect key="frame" x="12" y="390" width="34" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q5X-4t-Mzp">
-                                        <rect key="frame" x="12" y="426" width="34" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Z0W-M4-lco">
-                                        <rect key="frame" x="11" y="478" width="34" height="15"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="12"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="dsd-Jo-uA7" userLabel="Line">
-                                        <rect key="frame" x="50" y="436" width="251" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view alpha="0.30000001192092896" contentMode="scaleToFill" id="NIX-8F-RVZ" userLabel="Line">
-                                        <rect key="frame" x="50" y="492" width="251" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="WpG-32-Haf" customClass="RSlideView">
+                                <rect key="frame" x="0.0" y="360" width="320" height="160"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="bedTimeLabel" destination="iZ8-wG-YTQ" id="ZHs-b0-Oyz"/>
-                                    <outlet property="curveView" destination="wYZ-Lc-wOE" id="sFl-4P-X3U"/>
-                                    <outlet property="dateLabel" destination="J5p-3z-zkO" id="e1r-gL-sVq"/>
-                                    <outlet property="durationLabel" destination="Rar-eD-Syf" id="0Pe-Yi-cJ2"/>
-                                    <outlet property="efficiencyLabel" destination="Zn9-tW-Ht3" id="D8R-WJ-cpu"/>
-                                    <outlet property="heartButton" destination="2KU-hI-3vt" id="BxZ-ia-Iij"/>
-                                    <outlet property="timeInBedLabel" destination="ih6-7U-Fc9" id="NcL-X2-pjL"/>
-                                    <outlet property="totalLabel" destination="qfN-nA-kgi" id="eJO-Zn-YeD"/>
+                                    <outlet property="dataSource" destination="Lsc-jH-2wa" id="JQ7-O9-cvu"/>
+                                    <outlet property="delegate" destination="Lsc-jH-2wa" id="qO1-hI-XUF"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dav-L3-eb4">

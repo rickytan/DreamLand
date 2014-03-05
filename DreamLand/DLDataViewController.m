@@ -65,7 +65,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"none.png"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[[[UIImage alloc] init] autorelease]];
-    [self setupHourRangeLabels];
+    // [self setupHourRangeLabels];
     [self updateEmotion];
 
     [self.data removeAllObjects];
@@ -203,19 +203,6 @@
     dataView.hidden = NO;
 
     NSMutableAttributedString *attString = nil;
-
-    attString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%2d%%\nEfficiency", [self.data[index][@"Efficiency"] intValue]]];
-    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Bold"
-                                                                    size:23]}
-                       range:NSMakeRange(0, 2)];
-    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light"
-                                                                    size:15]}
-                       range:NSMakeRange(2, 1)];
-    [attString addAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Thin"
-                                                                    size:11]}
-                       range:NSMakeRange(3, 11)];
-    dataView.efficiencyLabel.attributedText = attString;
-    [attString release];
 
     dataView.curveView.curveImage = [UIImage imageNamed:[NSString stringWithFormat:@"曲线%d.png", index + 1]];
     return dataView;

@@ -11,11 +11,4 @@
 
 @interface DLDayDataView : UIView
 @property (nonatomic, assign) IBOutlet DLDataCurveView * curveView;
-@property (nonatomic, assign) IBOutlet UIButton * heartButton;
-@property (nonatomic, assign) IBOutlet UILabel * dateLabel;
-@property (nonatomic, assign) IBOutlet UILabel * durationLabel;
-@property (nonatomic, assign) IBOutlet UILabel * totalLabel;
-@property (nonatomic, assign) IBOutlet UILabel * timeInBedLabel;
-@property (nonatomic, assign) IBOutlet UILabel * bedTimeLabel;
-@property (nonatomic, assign) IBOutlet UILabel * efficiencyLabel;
 @end
