@@ -148,8 +148,8 @@
                                if (!data) {
                                    if (retriedTimes++ < 3) {
                                        [weakSelf performSelector:@selector(getWeather:)
-                                                  withObject:woeid
-                                                  afterDelay:5.0];
+                                                      withObject:woeid
+                                                      afterDelay:5.0];
                                    }
                                    else {
                                        weakSelf.error = connectionError;
@@ -174,8 +174,10 @@
                                 withObject:self];
         if (_state == YHWeatherStateError ||
             _state == YHWeatherStateFinished) {
-            self.callback(self.weather, self.error);
-            self.callback = nil;
+            if (self.callback) {
+                self.callback(self.weather, self.error);
+                self.callback = nil;
+            }
         }
     }
 }
@@ -207,6 +209,7 @@
            fromLocation:(CLLocation *)oldLocation
 {
     [manager stopUpdatingLocation];
+    manager.delegate = nil;
     [manager release];
 
     [self getWoeid:newLocation];

@@ -12,6 +12,7 @@
 #import "UIApplication+RExtension.h"
 #import "NSUserDefaults+Settings.h"
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate, UIAlertViewDelegate>
 @property (nonatomic, retain) AVAudioPlayer * player;
@@ -98,7 +99,9 @@
     if (self.isLightConnected) {
         _controller.on = YES;
         _controller.color = THEME_COLOR;
-        _controller.luminance = 0;
+        _controller.mode = 1;
+        _controller.speed = 10;
+        _controller.luminance = 10;
         [self increaseLuminance];
     }
 }
@@ -114,7 +117,7 @@
                                                               repeats:YES];
         }
         if (_controller.luminance < 100) {
-            _controller.luminance += 1;
+            _controller.luminance += 5;
         }
         else {
             _controller.luminance = 100;
@@ -131,7 +134,7 @@
 - (void)increaseVolume
 {
     if (!self.musicTimer) {
-        self.musicTimer = [NSTimer scheduledTimerWithTimeInterval:10
+        self.musicTimer = [NSTimer scheduledTimerWithTimeInterval:5
                                                            target:self
                                                          selector:@selector(increaseVolume)
                                                          userInfo:nil
@@ -160,12 +163,27 @@
 - (void)playMusic:(NSString *)musicFile
 {
     if (!self.player) {
+        UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
+        AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
+                                sizeof(sessionCategory),
+                                &sessionCategory);
+
+        UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideAudioRoute,
+                                 sizeof (audioRouteOverride),
+                                 &audioRouteOverride);
+
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        //默认情况下扬声器播放
+        [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+        [audioSession setActive:YES error:nil];
+
         self.player = [[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:musicFile]
                                                        fileTypeHint:@"mp3"
                                                               error:NULL] autorelease];
         self.player.numberOfLoops = NSIntegerMax;
     }
-    self.player.volume = 0.05;
+    self.player.volume = 0.1;
     [self.player play];
     [self increaseVolume];
 }
@@ -243,10 +261,21 @@
                                                  selector:@selector(increaseVolume)
                                                    object:nil];
         [self.player stop];
+        _controller.pause = YES;
+        _controller.luminance = 0;
         _controller.on = NO;
     }
     else {
-        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                 selector:@selector(increaseLuminance)
+                                                   object:nil];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                 selector:@selector(increaseVolume)
+                                                   object:nil];
+        [self.player stop];
+        _controller.pause = YES;
+        _controller.luminance = 0;
+        _controller.on = NO;
     }
 }
 

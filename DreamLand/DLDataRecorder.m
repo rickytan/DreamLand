@@ -123,7 +123,6 @@ CGFloat recordingStartValueThreshold = 0.0208f;
 - (void)onEnterBackground:(NSNotification*)notification
 {
     if (self.isRecording) {
-
         [_recorder record];
     }
 }

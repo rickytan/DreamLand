@@ -102,6 +102,9 @@
     if (!self.lightState) {
         self.lightState = ((DLApplication *)[UIApplication sharedApplication]).isLightConnected ? @"Light Connected!" : @"Light Not Connected";
     }
+    else {
+        [self updateConnectionLabel];
+    }
 
     if (self.weatherData)
         [self showWeatherInfo:self.weatherData];
@@ -146,24 +149,29 @@
 
 #pragma mark - Methods
 
+- (void)updateConnectionLabel
+{
+    self.lightStateLabel.text = _lightState;
+    if ([_lightState isEqualToString:@"Light Connected!"]) {
+        CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+        anim.duration = 1.5;
+        anim.toValue = (id)[UIColor redColor].CGColor;
+        anim.autoreverses = YES;
+        anim.repeatCount = CGFLOAT_MAX;
+        [self.lightStateLabel.layer addAnimation:anim
+                                          forKey:@"Blink"];
+    }
+    else {
+        [self.lightStateLabel.layer removeAnimationForKey:@"Blink"];
+    }
+}
+
 - (void)setLightState:(NSString *)lightState
 {
     if (_lightState != lightState) {
         [_lightState release];
         _lightState = [lightState retain];
-        self.lightStateLabel.text = _lightState;
-        if ([_lightState isEqualToString:@"Light Connected!"]) {
-            CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
-            anim.duration = 1.5;
-            anim.toValue = (id)[UIColor redColor].CGColor;
-            anim.autoreverses = YES;
-            anim.repeatCount = CGFLOAT_MAX;
-            [self.lightStateLabel.layer addAnimation:anim
-                                              forKey:@"Blink"];
-        }
-        else {
-            [self.lightStateLabel.layer removeAnimationForKey:@"Blink"];
-        }
+        [self updateConnectionLabel];
     }
 }
 
