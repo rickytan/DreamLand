@@ -45,6 +45,7 @@
 		9C49216818C777BC00029A76 /* 曲线4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216218C777BC00029A76 /* 曲线4@2x.png */; };
 		9C49216918C777BC00029A76 /* 曲线5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216318C777BC00029A76 /* 曲线5@2x.png */; };
 		9C49216A18C777BC00029A76 /* 曲线6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C49216418C777BC00029A76 /* 曲线6@2x.png */; };
+		9C49216C18C85A1D00029A76 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C49216B18C85A1D00029A76 /* MediaPlayer.framework */; };
 		9C4F25B818C44F26000BA2AB /* DLSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */; };
 		9C4F25BA18C475BA000BA2AB /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C4F25B918C475BA000BA2AB /* pin@2x.png */; };
 		9C4F25BD18C4AFDD000BA2AB /* DLDetailDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4F25BC18C4AFDD000BA2AB /* DLDetailDataViewController.m */; };
@@ -211,6 +212,7 @@
 		9C49216218C777BC00029A76 /* 曲线4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线4@2x.png"; sourceTree = "<group>"; };
 		9C49216318C777BC00029A76 /* 曲线5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线5@2x.png"; sourceTree = "<group>"; };
 		9C49216418C777BC00029A76 /* 曲线6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "曲线6@2x.png"; sourceTree = "<group>"; };
+		9C49216B18C85A1D00029A76 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9C4F25B618C44F26000BA2AB /* DLSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSoundPlayer.h; sourceTree = "<group>"; };
 		9C4F25B718C44F26000BA2AB /* DLSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSoundPlayer.m; sourceTree = "<group>"; };
 		9C4F25B918C475BA000BA2AB /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C49216C18C85A1D00029A76 /* MediaPlayer.framework in Frameworks */,
 				9C7A9658188D3619006643D8 /* ImageIO.framework in Frameworks */,
 				9C7A9651188D1C3A006643D8 /* libicucore.dylib in Frameworks */,
 				9C7A964F188D1BFB006643D8 /* libz.1.2.5.dylib in Frameworks */,
@@ -588,6 +591,7 @@
 		9CBD2CAB173F4464001FFAE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C49216B18C85A1D00029A76 /* MediaPlayer.framework */,
 				9C7A9657188D3619006643D8 /* ImageIO.framework */,
 				9C7A9655188D3544006643D8 /* SDWebImage.framework */,
 				9C7A9650188D1C3A006643D8 /* libicucore.dylib */,

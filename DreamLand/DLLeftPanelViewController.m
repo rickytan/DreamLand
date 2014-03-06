@@ -113,6 +113,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self updateConnectionLabel];
     if ([DLUser currentUser].headerImage) {
         [self.headerButton setImage:[DLUser currentUser].headerImage
                            forState:UIControlStateNormal];
@@ -152,6 +153,9 @@
 - (void)updateConnectionLabel
 {
     self.lightStateLabel.text = _lightState;
+    if ([self.lightStateLabel.layer.animationKeys containsObject:@"Blink"])
+        return;
+
     if ([_lightState isEqualToString:@"Light Connected!"]) {
         CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
         anim.duration = 1.5;

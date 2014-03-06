@@ -13,6 +13,7 @@
 #import "NSUserDefaults+Settings.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface DLApplication () <LEDControllerDelegate, LEDFinderDelegate, DLAlarmDelegate, UIAlertViewDelegate>
 @property (nonatomic, retain) AVAudioPlayer * player;
@@ -82,6 +83,7 @@
                 dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                     _controller.mode = 12;
                     _controller.speed = 1;
+                    _controller.pause = NO;
 
                     double delayInSeconds = 1.0;
                     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -175,15 +177,18 @@
 
         AVAudioSession *audioSession = [AVAudioSession sharedInstance];
         //默认情况下扬声器播放
-        [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [audioSession setActive:YES error:nil];
+        [audioSession setCategory:AVAudioSessionCategoryPlayback
+                            error:nil];
+        [audioSession setActive:YES
+                          error:nil];
 
         self.player = [[[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:musicFile]
                                                        fileTypeHint:@"mp3"
                                                               error:NULL] autorelease];
         self.player.numberOfLoops = NSIntegerMax;
     }
-    self.player.volume = 0.1;
+    [MPMusicPlayerController applicationMusicPlayer].volume = 0.8;
+    self.player.volume = 0.05;
     [self.player play];
     [self increaseVolume];
 }
@@ -253,7 +258,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (alertView.cancelButtonIndex == buttonIndex) {
+    //if (alertView.cancelButtonIndex == buttonIndex) {
         [NSObject cancelPreviousPerformRequestsWithTarget:self
                                                  selector:@selector(increaseLuminance)
                                                    object:nil];
@@ -262,21 +267,9 @@
                                                    object:nil];
         [self.player stop];
         _controller.pause = YES;
-        _controller.luminance = 0;
+        _controller.mode = 1;
         _controller.on = NO;
-    }
-    else {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                                 selector:@selector(increaseLuminance)
-                                                   object:nil];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                                 selector:@selector(increaseVolume)
-                                                   object:nil];
-        [self.player stop];
-        _controller.pause = YES;
-        _controller.luminance = 0;
-        _controller.on = NO;
-    }
+    //}
 }
 
 @end

@@ -214,14 +214,14 @@
     self.durationLabel.attributedText = attString;
 
     NSArray *months = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
-    NSArray *weeks = @[@"", @"Sun.", @"Mon.", @"Tues.", @"Wed.", @"Thus.", @"Fri.", @"Sat."];
+    NSArray *weeks = @[@"Sun.", @"Mon.", @"Tues.", @"Wed.", @"Thus.", @"Fri.", @"Sat."];
     NSDateComponents *comp = [[NSCalendar currentCalendar] components:NSMonthCalendarUnit | NSWeekdayCalendarUnit | NSDayCalendarUnit
                                                              fromDate:self.data[sliderView.currentPage][@"Date"]];
     NSInteger today = comp.day;
     NSInteger yestoday = [[NSCalendar currentCalendar] components:NSDayCalendarUnit
                                                          fromDate:[NSDate dateWithTimeInterval:-24*3600
                                                                                      sinceDate:self.data[self.slideView.currentPage][@"Date"]]].day;
-    self.dateLabel.text = [NSString stringWithFormat:@"%2d-%2d %@ / %@", yestoday, today, months[comp.month], weeks[comp.weekday]];
+    self.dateLabel.text = [NSString stringWithFormat:@"%2d-%2d %@ / %@", yestoday, today, months[comp.month-1], weeks[comp.weekday-1]];
 
 }
 
