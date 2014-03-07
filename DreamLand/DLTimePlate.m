@@ -47,7 +47,7 @@
     self.minutePlate.radius          = 135.0;
     self.minutePlate.contentInsets   = UIEdgeInsetsMake(2, -2, -3.5, 2);
 
-    //self.isAM = YES;
+    self.isAM = YES;
     self.hour = 0;
     self.minute = 0;
 }
