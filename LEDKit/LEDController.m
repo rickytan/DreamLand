@@ -107,6 +107,7 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
             _readData = [[NSMutableData alloc] init];
         [_readData appendBytes:buffer
                         length:bytesRead];
+        [self _processData];
     }
 }
 
@@ -370,8 +371,6 @@ NSString *const LEDControllerDeviceInfoDidUpdatedNotification = @"LEDControllerD
     unsigned char command[] = {-17,1,119};
     [self sendData:command
             length:sizeof(command)];
-    [self performSelectorInBackground:@selector(_processData)
-                           withObject:nil];
 }
 
 /*

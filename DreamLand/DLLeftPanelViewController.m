@@ -204,7 +204,7 @@
             self.lightState = @"Light Connected!";
             if (self.shouldTestLight) {
                 self.shouldTestLight = NO;
-                [((DLApplication *)[UIApplication sharedApplication]) testLight];
+                //[((DLApplication *)[UIApplication sharedApplication]) testLight];
             }
             break;
         case LEDControllerStateConnecting:

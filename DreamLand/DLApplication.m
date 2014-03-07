@@ -58,41 +58,28 @@
     _controller = nil;
 }
 
+- (void)dimDown
+{
+    _controller.color = [UIColor colorWithRed:0.2
+                                        green:0
+                                         blue:0
+                                        alpha:1];
+}
+
+- (void)lightUp
+{
+
+}
+
 - (void)testLight
 {
     if (self.isLightConnected) {
-        _controller.mode = 1;
-        _controller.speed = 1;
-        _controller.luminance = 100;
-        _controller.color = [UIColor redColor];
         _controller.on = YES;
-        double delayInSeconds = 1.0;
-        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            _controller.mode = 2;
-            _controller.color = [UIColor greenColor];
-
-            double delayInSeconds = 1.0;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                _controller.mode = 2;
-                _controller.color = [UIColor blueColor];
-
-                double delayInSeconds = 1.0;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                    _controller.mode = 12;
-                    _controller.speed = 1;
-                    _controller.pause = NO;
-
-                    double delayInSeconds = 1.0;
-                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        _controller.on = NO;
-                    });
-                });
-            });
-        });
+        _controller.color = [UIColor orangeColor];
+        _controller.mode = 1;
+        _controller.speed = 10;
+        _controller.luminance = 1;
+        _controller.color = [UIColor orangeColor];
     }
 }
 
@@ -104,7 +91,8 @@
         _controller.mode = 1;
         _controller.speed = 10;
         _controller.luminance = 10;
-        [self increaseLuminance];
+        _controller.color = [UIColor purpleColor];
+        //[self increaseLuminance];
     }
 }
 
@@ -224,7 +212,7 @@
 
 - (void)LEDControllerDeviceInfoDidUpdated:(LEDController *)controller
 {
-
+    [self testLight];
 }
 
 - (void)LEDControllerStateDidChanged:(LEDController *)controller

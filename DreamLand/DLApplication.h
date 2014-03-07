@@ -14,6 +14,8 @@
 - (void)searchAndConnectLight;
 - (void)disconnectLight;
 - (void)testLight;
+- (void)lightUp;
+- (void)dimDown;
 - (void)setLightColor:(UIColor *)color;
 
 @end

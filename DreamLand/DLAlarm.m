@@ -10,6 +10,7 @@
 #import "DLWeeklyAlerm.h"
 #import "NSUserDefaults+Settings.h"
 #import "DLDataRecorder.h"
+#import "DLApplication.h"
 
 static DLAlarm *theAlarm = nil;
 
@@ -134,7 +135,7 @@ static DLAlarm *theAlarm = nil;
                                             repeats:NO];
     [[NSRunLoop currentRunLoop] addTimer:_rangeTimer
                                  forMode:NSRunLoopCommonModes];
-    
+    [((DLApplication *)[UIApplication sharedApplication]) dimDown];
     [[DLDataRecorder sharedRecorder] start];
 }
 
