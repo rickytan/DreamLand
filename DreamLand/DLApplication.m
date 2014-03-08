@@ -76,7 +76,7 @@
     if (self.isLightConnected) {
         _controller.on = YES;
         _controller.color = [UIColor orangeColor];
-        _controller.mode = 1;
+//        _controller.mode = 1;
         _controller.speed = 10;
         _controller.luminance = 1;
         _controller.color = [UIColor orangeColor];
@@ -124,7 +124,7 @@
 - (void)increaseVolume
 {
     if (!self.musicTimer) {
-        self.musicTimer = [NSTimer scheduledTimerWithTimeInterval:5
+        self.musicTimer = [NSTimer scheduledTimerWithTimeInterval:3
                                                            target:self
                                                          selector:@selector(increaseVolume)
                                                          userInfo:nil
@@ -152,6 +152,7 @@
 
 - (void)playMusic:(NSString *)musicFile
 {
+    NSLog(@"%@", musicFile);
     if (!self.player) {
         UInt32 sessionCategory = kAudioSessionCategory_MediaPlayback;
         AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,
@@ -176,7 +177,7 @@
         self.player.numberOfLoops = NSIntegerMax;
     }
     [MPMusicPlayerController applicationMusicPlayer].volume = 0.8;
-    self.player.volume = 0.05;
+    self.player.volume = 0.1;
     [self.player play];
     [self increaseVolume];
 }

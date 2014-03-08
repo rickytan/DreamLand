@@ -1119,7 +1119,10 @@
 					/Users/ricky/Data/Code/DreamLand/ShareSDK_v2.3.0/Extend/TencentWeiboSSO,
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "50592118-ECD8-42CD-ACCD-29257B4A0637";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "50592118-ECD8-42CD-ACCD-29257B4A0637";
@@ -1158,7 +1161,10 @@
 					/Users/ricky/Data/Code/DreamLand/ShareSDK_v2.3.0/Extend/SDKExport,
 					/Users/ricky/Data/Code/DreamLand/ShareSDK_v2.3.0/Extend/TencentWeiboSSO,
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "50592118-ECD8-42CD-ACCD-29257B4A0637";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "50592118-ECD8-42CD-ACCD-29257B4A0637";
