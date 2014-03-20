@@ -835,7 +835,6 @@
 				ORGANIZATIONNAME = ricky;
 				TargetAttributes = {
 					9CBD2CA8173F4464001FFAE0 = {
-						DevelopmentTeam = JM9WSY7Q38;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1087,8 +1086,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: sheng tan (67W4Z69735)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sheng tan (67W4Z69735)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1124,8 +1123,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B2291FC6-69E9-42B9-BF6F-397E08DC12E6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2291FC6-69E9-42B9-BF6F-397E08DC12E6";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1134,8 +1133,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: sheng tan (67W4Z69735)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sheng tan (67W4Z69735)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1166,8 +1165,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B2291FC6-69E9-42B9-BF6F-397E08DC12E6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B2291FC6-69E9-42B9-BF6F-397E08DC12E6";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
